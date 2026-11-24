@@ -30,12 +30,7 @@ _CLASS_WEIGHT = {TargetClass.drone: 1.0, Target.unk
         level = zi.zone.level
         if level_cap is not None and _LEVEL_WEIGHT[level] > _LEVEL_WEIGHT[level_cap]:
             level = level_cap
-        risk = float(np.clip(_CLASS_WEIGHT[cls] * proximity * _LEVEL_WEIGHT[level], 0.0, 1.0))
-        o = self._open.get(key)
-        if o is None:
-            alert = AlertOut(alert_id=uuid.uuid4().hex[:12], type=key[2], level=level, state="open",
-                             track_id=tr.track_id, zone_id=zi.zone.id, zone_name=zi.zone.name, opened_at=now,
-                             updated_at=now, closed_at=None, risk=risk, target_class=cls, message=message,
+        risk = float(np.clip(_CLASS_WEIGHT[ closed_at=None, risk=risk, target_class=cls, message=message,
                              lat=lat, lon=lon, alt_m=alt)
             self._open[key] = _Open(alert, now)
             events.append(alert)
