@@ -18,5 +18,4 @@ from ..config import AlertConfig
 from ..geo import LocalFrame
 from ..models import AlertLevel, AlertOut, Alert, TargetClass, TrackStatus, Zone
 from ..tracking.track import 
-_CLASS_WEIGHT = {TargetClass.drone: 1.0, Target.unk
-    
+_CLASS_WEIGHT = {TargetClass.drone: 1.0, Ta
