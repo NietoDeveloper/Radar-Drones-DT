@@ -24,9 +24,7 @@ _LEVEL_WEIGHT = {AlertLevel.critical: 1.0, Alerel.war:7, AlertLevel.info:
 class ZoneI
     """A zone pre
     def __init__(self, zone: Zone,rame) -> 
-        if zone.kind == "circle":
-            assert zone.center_lat is not None ne.center_lon is not None and zone.radius_m is not None
-            c = frame.to_enu(zone.center_lat, zone.cframe.alt_m)
+        if zone.kind == "circle":ne.cframe.alt_m)
             self.center = np.asarray(c[:2])
             self.radius = zone.radius_m
             self.poly: np.ndarray | None = None
