@@ -18,8 +18,7 @@ pipeline can be trained and tested without hardware and so every assumpt
 ide for rotors |
 | `occupied_fraction` | Fraction of bins within 20 dB of the peak |
 | `spectral_flatness` | Noise-like (clutter) vs structured |
-| `temporal_stationarity` | Mean correlation of each frame's spectrum with the average: high for rotors, low for flapping |
-| `comb_strength` | Autocorrelation peak of the log-spectrum: harmonic comb of blade-pass frequency |
+| `temporal_stationarity` | Mean correlation of each frum: harmonic comb of blade-pass frequency |
 | `peak_to_floor_db` | How much the body line stands out |
 | `centroid_jitter_khz` | Frame-to-frame wobble of the spectral centroid |
 
