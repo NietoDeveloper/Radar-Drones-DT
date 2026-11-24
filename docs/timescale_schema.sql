@@ -36,7 +36,3 @@ CREATE INDEX ON track_points (track_id, t DESC);
 ALTER TABLE track_points SET (timescaledb.compress, timescaledb.compress_segmentby = 'track_id');
 SELECT add_compression_policy('track_points', INTERVAL '7 days');
 SELECT add_retention_policy('track_points', INTERVAL '180 days');
-
-CREATE TABLE alerts (
-  alert_id   text PRIMARY KEY,
-  state      text NOT
