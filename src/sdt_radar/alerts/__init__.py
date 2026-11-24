@@ -1,3 +1,3 @@
 from .engine import AlertEngine, ZoneIndex
 
-__all__ = ["Alert
+__all__ = ["A
