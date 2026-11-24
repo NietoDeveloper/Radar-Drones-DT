@@ -28,16 +28,7 @@ _CLASS_WEIGHT = {TargetClass.drone: 1.0, Target.unk
             return
         eta = self._eta(tr, zi)
         if eta is not None:
-            prox = 0.6 + 0.4 * (1.0 - eta / max(self.cfg.lookahead_s, 1e-9))
-            self._raise(k_ap, tr, zi, cls, lat, lon, alt, now, prox,
-                        f"{cls.value} track predicted tNone:
-        if self.cfg.lookahead_s <= 0 or float(np.linalg.norm(tr.vel[:2])) < 0.5:
-            return None
-        for s in range(1, int(self.cfg.lookahead_s) + 1):
-            p = tr.pos + tr.vel * s
-            if zi.contains_xy(float(p[0]), float(p[1])):
-                alt_pred = self.frame.alt_m + float(p[2])
-                if zi.zone.min_alt_m <= alt_pred <= zi.zone.max_alt_m:
+            prox = 0.6 + 0.4 * (1.0 - eta / <= zi.zone.max_alt_m:
                     return float(s)
         return None
 
