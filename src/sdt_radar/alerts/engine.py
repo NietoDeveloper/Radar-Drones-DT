@@ -20,6 +20,3 @@ from ..models import AlertLevel, AlertOut, Alert, TargetClass, TrackStatus, Zone
 from ..tracking.track import 
 _CLASS_WEIGHT = {TargetClass.drone: 1.0, Target.unk
     def __init__(self, zone: Zone,rame) -> 
-        if zone.kind == "circle":ne.cframe.al
-        return [z.zone for z in self.zoneg.suppress_class_above
-            for zi in self.zones.values():
