@@ -17,7 +17,3 @@ CREATE TABLE tracks (
   payload          jsonb NOT NULL
 );
 CREATE INDEX ON tracks (last_seen DESC);
-CREATE INDEX ON tracks (target
-
-CREATE TABLE track_points (
-  t 
