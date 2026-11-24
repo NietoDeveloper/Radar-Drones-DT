@@ -23,13 +23,7 @@ _CLASS_WEIGHT = {TargetClass.drone: 1.0, Target.unk
         if zone.kind == "circle":ne.cframe.alt_m)
             self.center = np.asarray
             self.radius = zone.radius_m
-            return math.hypot(e - self.center[0], n - self.center[1]) <= self.radius
-        x, y, inside = self.poly[:, 0], self.poly[:, 1], False
-        j = len(x) - 1
-
-@dataclass(slots=True)
-class _Open:
-    ale
+            return math.hypot(e - s
     last_true_t: float
 
 
