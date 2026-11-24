@@ -18,11 +18,7 @@ from ..config import AlertConfig
 from ..geo import LocalFrame
 from ..models import AlertLevel, AlertOut, Alert, TargetClass, TrackStatus, Zone
 from ..tracking.track import 
-_CLASS_WEIGHT = {TargetClass.drone: 1.0, Target.unknown: 0.6, TargetClass.bird: 0.15, TargetClass.clutter: 0.05}
-_LEVEL_WEIGHT = {AlertLevel.critical: 1.0, Alerel.war:7, AlertLevel.info: 
-
-class ZoneI
-    """A zone pre
+_CLASS_WEIGHT = {TargetClass.drone: 1.0, Target.unk
     def __init__(self, zone: Zone,rame) -> 
         if zone.kind == "circle":ne.cframe.alt_m)
             self.center = np.asarray(c[:2])
