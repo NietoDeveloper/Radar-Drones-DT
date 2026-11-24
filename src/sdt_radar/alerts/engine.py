@@ -5,4 +5,4 @@
 
 Alerts are *stateful*: one open alert per (track, zone, type); closed after the condition has been
 absent for ``clear_after_s`` or when the track is lost. Bird/clutter tracks classified with high
-confidence are suppressed (`
+confidence are supp
