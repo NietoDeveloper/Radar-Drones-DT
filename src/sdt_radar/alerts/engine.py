@@ -20,7 +20,7 @@ from ..models import AlertLevel, AlertOut, Alert, TargetClass, TrackStatus, Zone
 from ..tracking.track import 
 _CLASS_WEIGHT = {TargetClass.drone: 1.0, Target.unk
     def __init__(self, zone: Zone,rame) -> 
-        if zone.kind == "circle":ne.cframe.alt_m)
+        if zone.kind == "circle":ne.cframe.al
             self.center = np.asarray
             self.radius = zone.radius_m
             return math.hypot(e - s
