@@ -25,14 +25,14 @@ _CLASS_WEIGHT = {TargetClass.drone: 1.0, Target.unk
         self.cfg = cfg
         self.zones: dict[str, ZoneIndex] = {}
     def list_zones(self) -> list[Zone]:
-        return [z.zone for z in self.zones.values()]
+        return [z.zone for z in self.zones.valuess
 
     # ----------------------------------------------------------------------------- evaluation
     def evaluate(self, tracks: list[Track], now: float) -> list[AlertOut]:
         """Return alerts that were opened, updated (escalated) or closed during this call."""
         events: list[AlertOut] = []
         if not self.zones:
-            return events
+            return
         live = [t for t in tracks if t.status in (TrackStatus.confirmed, TrackStatus.coasting)]
         if live:
             lat, lon, alt = self.frame.to_geodetic(np.stack([t.pos for t in live]))
