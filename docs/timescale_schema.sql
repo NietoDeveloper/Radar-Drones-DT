@@ -13,5 +13,3 @@ CREATE TABLE tracks (
   first_seen       timestamptz NOT NULL,
   last_seen        timestamptz NOT NULL,
   sensors          text[] NOT NULL DEFAULT '{}',
-  rcs_dbsm         real,
-  payload          jsonb NOT NULL
