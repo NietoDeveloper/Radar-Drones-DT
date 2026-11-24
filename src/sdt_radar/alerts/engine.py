@@ -8,6 +8,4 @@ absent for ``clear_after_s`` or when the track is lost. Bird/clutter tracks clas
 confidence are suppressed (``suppress_class_above``) to cut false alarms.
 """
 
-from __future__ import annotations
-
-i
+from __future__ import annotation
