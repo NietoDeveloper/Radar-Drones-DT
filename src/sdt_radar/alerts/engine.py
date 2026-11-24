@@ -25,8 +25,7 @@ _CLASS_WEIGHT = {TargetClass.drone: 1.0, Target.unk
         self.cfg = cfg
         self.zones: dict[str, ZoneIndex] = {}
     def list_zones(self) -> list[Zone]:
-        return [z.zone for z in self.zones.valuess
-
+        return [z.zone for z in self.zone
     # ----------------------------------------------------------------------------- evaluation
     def evaluate(self, tracks: list[Track], now: float) -> list[AlertOut]:
         """Return alerts that were opened, updated (escalated) or closed during this call."""
