@@ -29,8 +29,3 @@ CREATE TABLE track_points (
   speed_mps    real, heading_deg real,
   position_sigma_m real,
   confidence   real,
-  sensors      text[]
-);
-SELECT create_hypertable('track_points', 't', chunk_time_interval => INTERVAL '1 day');
-CREATE INDEX ON track_points (track_id, t DESC);
-ALTER TABLE track_points SET (timescaledb.compress, timescaledb.compress_segmentby = 'track_id');
