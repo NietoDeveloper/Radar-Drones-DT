@@ -21,7 +21,3 @@ CREATE INDEX ON tracks (target
 
 CREATE TABLE track_points (
   t            timestamptz NOT NULL,
-  track_id     text NOT NULL REFERENCES tracks(track_id),
-  lat          double precision NOT NULL,
-  lon          double precision NOT NULL,
-  alt_m        real NOT NULL,
