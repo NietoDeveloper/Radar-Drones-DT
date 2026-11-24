@@ -24,13 +24,6 @@ _CLASS_WEIGHT = {TargetClass.drone: 1.0, Target.unk
             self.center = np.asarray
         self.cfg = cfg
         self.zones: dict[str, ZoneIndex] = {}
-        self._open: dict[tuple[str, str, AlertType], _Open] = {}
-        for z in zones:
-            self.add_zone(z)
-
-    # -------------------------------------------
-        return self.zones.pop(zone_id, None) is not None
-
     def list_zones(self) -> list[Zone]:
         return [z.zone for z in self.zones.values()]
 
