@@ -1,1 +1,1 @@
-"""Zone intrusion / approach alerting with hysteresis and a transparent risk 
+"""Zone intrusion / approach alerting with hysteresis and a t
