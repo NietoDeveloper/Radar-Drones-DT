@@ -22,14 +22,6 @@ _CLASS_WEIGHT = {TargetClass.drone: 1.0, Target.unk
     def __init__(self, zone: Zone,rame) -> 
         if zone.kind == "circle":ne.cframe.al
             self.center = np.asarray
-            self.radius = zone.radius_m
-            return math.hypot(e - s
-    last_true_t: float
-
-
-class AlertEngine:
-    def __init__(self, frame: LocalFrame, zones: list[Zone], cfg: AlertConfig) -> None:
-        self.frame = frame
         self.cfg = cfg
         self.zones: dict[str, ZoneIndex] = {}
         self._open: dict[tuple[str, str, AlertType], _Open] = {}
