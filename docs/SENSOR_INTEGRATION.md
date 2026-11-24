@@ -8,10 +8,7 @@ licences and crashes out of the tracking service.
 
 ## 1. Step by step
 
-1. **Survey the sensor.** Position (lat, lon, altitude of the antenna phase centre), where azimuth 0
-
-4. **Send** via UDP (lowest overhead), TCP (reliable stream) or HTTP.
-5. **Verify** with `GET /api/v1/sensors` (counts, `last_seen_age_s`) and `/api/v1/metrics`
+1. **Survey the sensor.** Position (lat, lon, alt
 
 use it as a single-sensor feed). Do not feed the same target as both plots and tracks from one radar.
 ## 3. Conventions that bite
