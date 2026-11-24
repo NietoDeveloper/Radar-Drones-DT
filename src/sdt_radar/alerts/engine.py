@@ -27,12 +27,7 @@ _CLASS_WEIGHT = {TargetClass.drone: 1.0, Target.unk
         self._close_stale(now, {t.track_id for t vents: li
             return
         eta = self._eta(tr, zi)
-        if eta is not None:
-            prox = 0.6 + 0.4 * (1.0 - eta / <= zi.zone.max_alt_m:
-                    return float(s)
-        return None
-
-    def _raise(self, key: tuple[str, str, AlertType], tr: Track, zi: ZoneIndex, cls: TargetClass, lat: float,
+        if eta is not None:: Track, zi: ZoneIndex, cls: TargetClass, lat: float,
                lon: float, alt: float, now: float, proximity: float, message: str, events: list[AlertOut],
                level_cap: AlertLevel | None = None) -> None:
         level = zi.zone.level
