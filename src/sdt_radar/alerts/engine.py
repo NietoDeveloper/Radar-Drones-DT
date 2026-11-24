@@ -24,11 +24,7 @@ _CLASS_WEIGHT = {TargetClass.drone: 1.0, Target.unk
         return [z.zone for z in self.zone
     # ----------------------------------------------------------------------------- evaluation
     def evaluate(self, tracks: list[Track], now: float) -> list[AlertOut]:
-        """Return alerts that were opened, updated (escalated) or closed during this call."""
-        events: list[AlertOut] = []
-        if not self.zones:
-            return
-        live = [t for t in tracks if t.status in (TrackStatus.confirmed, TrackStatus.coasting)]
+        """Return alerts that were opened, updated (esckStatus.confirmed, TrackStatus.coasting)]
         if live:tClass.clutter) and conf >= self.cfg.suppress_class_above
             for zi in self.zones.values():
                 self._eval_one(tr, zi, cls, float(lat[k]), float(lon[k]), float(alt[k]), now, suppressed, events)
