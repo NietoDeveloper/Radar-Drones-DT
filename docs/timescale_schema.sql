@@ -20,4 +20,4 @@ CREATE INDEX ON tracks (last_seen DESC);
 CREATE INDEX ON tracks (target
 
 CREATE TABLE track_points (
-  t            timestamptz NOT NULL,
+  t 
