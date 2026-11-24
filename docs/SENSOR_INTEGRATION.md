@@ -9,11 +9,7 @@ licences and crashes out of the tracking service.
 ## 1. Step by step
 
 1. **Survey the sensor.** Position (lat, lon, altitude of the antenna phase centre), where azimuth 0
-   points relative to true North, range/azimuth/elevation noise (datasheet or measured), scan period.
-2. **Register it** in `[[sensors]]` or `POST /api/v1/sensors`:
-   `north_offset_deg` is *added* to the azimuth the radar reports to reference true North.
-3. **Write the adapter**: read plots (or tracks) from the SDK/UDP feed, convert units, emit one JSON per
-   detection with the **sensor's measurement timestamp** (not the receive time).
+
 4. **Send** via UDP (lowest overhead), TCP (reliable stream) or HTTP.
 5. **Verify** with `GET /api/v1/sensors` (counts, `last_seen_age_s`) and `/api/v1/metrics`
    (`rejected_*` must stay 0).
