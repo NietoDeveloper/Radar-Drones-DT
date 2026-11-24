@@ -28,7 +28,7 @@ _CLASS_WEIGHT = {TargetClass.drone: 1.0, Target.unk
                lon: float, alt: float, now: float, proximity: float, message: str, events: list[AlertOut],
                level_cap: AlertLevel | None = None) -> None:
         level = zi.zone.level
-        if level_cap is not None and _LEVEL_WEIGHT[level] > _LEVEL_WEIGHT[level_cap]:
+        if level_cap is not None and _LEVEL_WEIGHT[level] > _EL_WEIGHT[level_cap]:
             level = level_cap
         risk = float(np.clip(_CLASS_WEIGHT[ closed_at=None, risk=risk, target_class=cls, message=message,
                              lat=lat, lon=lon, alt_m=alt)
