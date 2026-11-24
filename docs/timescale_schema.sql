@@ -7,6 +7,3 @@ CREATE TABLE tracks (
   track_id         text PRIMARY KEY,
   seq              integer NOT NULL,
   status           text NOT NULL,
-  target_class     text NOT NULL,
-  class_confidence real,
-  confidence       real,
