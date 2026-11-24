@@ -2,5 +2,3 @@
 
 * ``zone_intrusion``: a live track is inside a zone (horizontal shape + altitude band).
 * ``zone_approach``: straight-line extrapolation of the track enters a zone within ``lookahead_s``.
-
-Alerts are *statefu
