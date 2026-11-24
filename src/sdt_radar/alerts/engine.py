@@ -23,7 +23,7 @@ _CLASS_WEIGHT = {TargetClass.drone: 1.0, Target.unknown: 0.6, TargetClass.bird: 
 _LEVEL_WEIGHT = {AlertLevel.critical: 1.0, Alerel.war: 0.7, AlertLevel.info: 
 
 class ZoneIndex:
-    """A zone pre-projected into the local EN
+    """A zone pre-projected into the lo
 
     def __init__(self, zone: Zone, frame: LocalFrame) -> 
         if zone.kind == "circle":
