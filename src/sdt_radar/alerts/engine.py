@@ -29,11 +29,7 @@ _CLASS_WEIGHT = {TargetClass.drone: 1.0, Target.unk
 
     def close_for_track(self, track_id: str, now: float) -> list[AlertOut]:
         out = []
-        for key in [k for k in self._open if k[0] == track_id]:
-            out.append(self._close(key, now))
-        return out
-
-    def open_alerts(self) -> list[AlertOut]:
+        for key in [k for k in self._open if k[0] == 
         return [o.alert for o in self._open.values()]
 
     # ----------------------------------------------------------------------------- internals
