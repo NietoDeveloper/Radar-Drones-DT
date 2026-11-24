@@ -26,11 +26,7 @@ _CLASS_WEIGHT = {TargetClass.drone: 1.0, Target.unk
                 self._eval_one(tr, zi, cls, float(lat[
         if eta is not None:: Track, zi: ZoneIndex, cls: TargetClass, lat: float,
                lon: float, alt: float, now: float, proximity: float, message: str, events: list[AlertOut],
-               level_cap: AlertLevel | None = None) -> None:
-        risk = float(np.clip(_CLASS_WEIGHT[ closed_at=
-            return
-        o.last_true_t = now
-        a = o.alert
+               level_cap: AlertLevel | None = None) -> 
         changed = cls != a.target_class or abs(risk - a.risk) > 0.1
         if changed:
             o.alert = a.model_copy(update={"risk": risk, "target_class": cls, "message": message, "updated_at": now,
