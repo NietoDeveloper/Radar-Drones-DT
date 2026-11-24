@@ -25,11 +25,6 @@ _CLASS_WEIGHT = {TargetClass.drone: 1.0, Target.unk
             for zi in self.zones.values():
                 self._eval_one(tr, zi, cls, float(lat[
         if eta is not None:: Track, zi: ZoneInde
-        return o.alert.model_copy(update={"state": "closed", "closed_at": now, "updated_at": now})
-
-    def _close_stale(self, now: float, live_ids: set[str], events: list[AlertOut]) -> None:
-        for key, o in list(self._open.items()):
-            gone = key[0] not in live_ids
-            lapsed = (now - o.last_true_t) > self.cfg.clear_after_s
+        return o.alert.model_copy(update={"state": "closed", er_s
             if gone or lapsed:
                 events.append(self._close(key, now))
