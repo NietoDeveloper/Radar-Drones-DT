@@ -13,13 +13,7 @@ phase-modulate the return around it:
 * **Clutter** (rain, foliage): Gaussian-shaped, noi these models (random rotor count, b
 count, rpm, radius, projection, flap rate, amplitu`. The track keeps
 `logp ← 0.92·logp + log p` (forgetting 0.92rts the posteriong props, helicopters, fixed-wing drones with a
-single pusher propeller). **Treat the classifier as a working, testable baseline and a plug-in point, not
-as a validated 97 % system.** The reported > 97 % in the literature is for deep models trained on real
-recordings.
-
-## 6. Making it real
-
-1. Record labelled dwells at your site (drone flights with known models; bird-rich periods; rain/clutter).
+single pusher propeller). **Treat the classifier as a working, testable baseline and a plug-in point, notwith known models; bird-rich periods; rain/clutter).
 2. Export them in the same shape (`complex64` slow-time samples + PRF) and extend `make_dataset` or
    write your own loader.
 3. Retrain; evaluate on held-out *sites/days*, not only held-out samples.
