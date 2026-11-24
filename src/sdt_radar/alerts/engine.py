@@ -24,9 +24,7 @@ _CLASS_WEIGHT = {TargetClass.drone: 1.0, Target.unk
         return [z.zone for z in self.zoneg.suppress_class_above
             for zi in self.zones.values():
                 self._eval_one(tr, zi, cls, float(lat[k]), float(lon[k]), float(alt[k]), now, suppressed, events)
-        self._close_stale(now, {t.track_id for t i--------------------------------- internals
-    def _eval_one(self, tr: Track, zi: ZoneIndex, cls: TargetClass, lat: float, lon: float, alt: float,
-                  now: float, suppressed: bool, events: list[AlertOut]) -> None:
+        self._close_stale(now, {t.track_id for t vents: list[AlertOut]) -> None:
         inside = zi.contains(tr.pos, alt)
         k_in = (tr.track_id, zi.zone.id, AlertType.zone_intrusion)
         k_ap = (tr.track_id, zi.zone.id, AlertType.zone_approach)
