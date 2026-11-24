@@ -15,5 +15,3 @@ CREATE TABLE tracks (
   sensors          text[] NOT NULL DEFAULT '{}',
   rcs_dbsm         real,
   payload          jsonb NOT NULL
-);
-CREATE INDEX ON tracks (last_seen DESC);
