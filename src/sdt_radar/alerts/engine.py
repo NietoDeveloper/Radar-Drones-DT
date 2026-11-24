@@ -26,8 +26,7 @@ _LEVEL_WEIGHT = {AlertLevel.critical: 1.0, Alerel.warning: 0.7, AlertLevel.info:
 class ZoneIndex:
     """A zone pre-projected into the local ENU frame."""
 
-    def __init__(self, zone: Zone, frame: LocalFrame) -> None:
-        self.zone = zone
+    def __init__(self, zone: Zone, frame: LocalFrame) -> 
         if zone.kind == "circle":
             assert zone.center_lat is not None and zone.center_lon is not None and zone.radius_m is not None
             c = frame.to_enu(zone.center_lat, zone.center_lon, frame.alt_m)
