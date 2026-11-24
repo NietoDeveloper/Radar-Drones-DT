@@ -5,5 +5,3 @@ CREATE EXTENSION IF NOT EXISTS timescaledb;
 
 CREATE TABLE tracks (
   track_id         text PRIMARY KEY,
-  seq              integer NOT NULL,
-  status           text NOT NULL,
