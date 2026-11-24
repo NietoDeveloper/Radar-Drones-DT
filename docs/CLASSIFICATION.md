@@ -12,10 +12,7 @@ phase-modulate the return around it:
   **strongly time-varying** (flap cycle, glide phases).
 * **Clutter** (rain, foliage): Gaussian-shaped, noi these models (random rotor count, b
 count, rpm, radius, projection, flap rate, amplitu`. The track keeps
-`logp ← 0.92·logp + log p` (forgetting 0.92rts the posterior; it is labelled only when the
-These numbers come from signatures made by the same generator that built the training set. Real
-radars add range-cell leakage, antenna patterns, multipath, receiver non-linearities, real animal and
-drone variety (large birds, flocks, small drones with folding props, helicopters, fixed-wing drones with a
+`logp ← 0.92·logp + log p` (forgetting 0.92rts the posteriong props, helicopters, fixed-wing drones with a
 single pusher propeller). **Treat the classifier as a working, testable baseline and a plug-in point, not
 as a validated 97 % system.** The reported > 97 % in the literature is for deep models trained on real
 recordings.
