@@ -11,7 +11,4 @@ phase-modulate the return around it:
 * **Bird:** wings flap at ~3–14 Hz with sub-metre amplitude → a spread of a few hundred Hz that is
   **strongly time-varying** (flap cycle, glide phases).
 * **Clutter** (rain, foliage): Gaussian-shaped, noi these models (random rotor count, b
-count, rpm, radius, projection, flap rate, amplitu`. The track keepss or range-Doppler maps. Implement
-
-Minimum dwell is 256 samples (shorter payloads are counted as `classifier_rejected`). Feature units are
-Hz-based, so training should cover the PRFs you will use (10 240 and 16 384 Hz are covered).
+count, rpm, radius, projection, flap rate, amplitu
