@@ -12,10 +12,6 @@ licences and crashes out of the tracking service.
 
 4. **Send** via UDP (lowest overhead), TCP (reliable stream) or HTTP.
 5. **Verify** with `GET /api/v1/sensors` (counts, `last_seen_age_s`) and `/api/v1/metrics`
-   (`rejected_*` must stay 0).
-6. **Record** raw detections (`storage.recorder_path`) and replay them to tune the tracker.
-
-## 2. Plots or tracks?
 
 Prefer **plots** (unfiltered detections). The backend's tracker then fuses sensors with proper
 covariances. If a radar only exposes its own tracks, send those as detections too (each carries the
