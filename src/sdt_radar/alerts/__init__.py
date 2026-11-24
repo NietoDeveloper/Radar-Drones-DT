@@ -1,1 +1,1 @@
-from .engine import AlertEngine, ZoneInde
+from .engine import AlertEngine, Zone
