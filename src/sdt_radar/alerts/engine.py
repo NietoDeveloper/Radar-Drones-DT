@@ -24,13 +24,7 @@ _CLASS_WEIGHT = {TargetClass.drone: 1.0, Target.unk
         return [z.zone for z in self.zoneg.suppress_class_above
             for zi in self.zones.values():
                 self._eval_one(tr, zi, cls, float(lat[k]), float(lon[k]), float(alt[k]), now, suppressed, events)
-        self._close_stale(now, {t.track_id for t vents: list[AlertOut]) -> None:
-        inside = zi.contains(tr.pos, alt)
-            return
-        if inside:
-            self._raise(k_in, tr, zi, cls, lat, lon, alt, now, 1.0, f"{cls.value} track inside '{zi.zone.name}'", events)
-            if k_ap in self._open:
-                events.append(self._close(k_ap, now))
+        self._close_stale(now, {t.track_id for t vents: li
             return
         eta = self._eta(tr, zi)
         if eta is not None:
