@@ -34,5 +34,3 @@ CREATE TABLE track_points (
 SELECT create_hypertable('track_points', 't', chunk_time_interval => INTERVAL '1 day');
 CREATE INDEX ON track_points (track_id, t DESC);
 ALTER TABLE track_points SET (timescaledb.compress, timescaledb.compress_segmentby = 'track_id');
-SELECT add_compression_policy('track_points', INTERVAL '7 days');
-SELECT add_retention_policy('track_points', INTERVAL '180 days');
