@@ -4,14 +4,7 @@ The backend never talks to hardware. A **sensor adapter** (a small process or th
 vendor SDK or protocol into `Detection` JSON and sends it to the ingest ports. This keeps vendor code,
 licences and crashes out of the tracking service.
 
-> The adapter skeletons below are illustrative starting points, not shipped or tested drivers.
-
-## 1. Step by step
-
-1. **Survey the sensor.** Position (lat, lon, alt
-
-use it as a single-sensor feed). Do not feed the same target as both plots and tracks from one radar.
-## 3. Conventions that bite
+> The adapter skeletons below are illustrative sta
 
 | Topic | Convention here | Common mistake |
 |---|---|---|
