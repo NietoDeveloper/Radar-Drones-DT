@@ -28,11 +28,7 @@ _CLASS_WEIGHT = {TargetClass.drone: 1.0, Target.unk
         for z in zones:
             self.add_zone(z)
 
-    # ------------------------------------------------------------------------------- zones
-    def add_zone(self, zone: Zone) -> None:
-        self.zones[zone.id] = ZoneIndex(zone, self.frame)
-
-    def remove_zone(self, zone_id: str) -> bool:
+    # -------------------------------------------
         return self.zones.pop(zone_id, None) is not None
 
     def list_zones(self) -> list[Zone]:
