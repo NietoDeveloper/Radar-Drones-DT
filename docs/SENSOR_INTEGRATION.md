@@ -38,7 +38,3 @@ Keep `north_offset_deg` accurate: a 1° azimuth error is 35 m at 2 km and shows 
 disagreement between radars.
 
 ## 8. Time synchronisation
-
-Run NTP (or PTP for tight sites) on every sensor host and on the backend. Symptoms of skew:
-`stale_measurements` rising (sensor behind), latency percentiles growing with `buffer_len` (sensor ahead),
-two radars' tracks of one target fai
