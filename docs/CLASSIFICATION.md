@@ -15,12 +15,7 @@ phase-modulate the return around it:
 count, rpm, radius, projection, flap rate, amplitude, glide envelope, SNR, radial velocity, PRF) so the
 pipeline can be trained and tested without hardware and so every assumpt
 ## 2. Features (`md_features`)
-
-STFT (128-sample Hann window, 75 % overlap) → power spectrogram, re-centred on the dominant (body) line.
-
-| Feature | Intuition |
-|---|---|
-| `rms_bandwidth_khz` | Spread around the body line: wide for rotors |
+ide for rotors |
 | `occupied_fraction` | Fraction of bins within 20 dB of the peak |
 | `spectral_flatness` | Noise-like (clutter) vs structured |
 | `temporal_stationarity` | Mean correlation of each frame's spectrum with the average: high for rotors, low for flapping |
