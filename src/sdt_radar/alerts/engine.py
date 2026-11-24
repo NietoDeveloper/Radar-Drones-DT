@@ -10,4 +10,4 @@ confidence are suppressed (``suppress_class_above``) to cut false alarms.
 
 from __future__ import annotations
 
-impor
+i
