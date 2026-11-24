@@ -13,9 +13,6 @@ licences and crashes out of the tracking service.
 4. **Send** via UDP (lowest overhead), TCP (reliable stream) or HTTP.
 5. **Verify** with `GET /api/v1/sensors` (counts, `last_seen_age_s`) and `/api/v1/metrics`
 
-Prefer **plots** (unfiltered detections). The backend's tracker then fuses sensors with proper
-covariances. If a radar only exposes its own tracks, send those as detections too (each carries the
-radar's already-filtered position, so its noise is *lower and correlated*: lower `sigma_*` carefully, or
 use it as a single-sensor feed). Do not feed the same target as both plots and tracks from one radar.
 
 ## 3. Conventions that bite
