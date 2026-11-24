@@ -20,7 +20,7 @@ from ..geo import LocalFrame
 from ..models import AlertLevel, AlertOut, Alert, TargetClass, TrackStatus, Zone
 from ..tracking.track import 
 _CLASS_WEIGHT = {TargetClass.drone: 1.0, TargetClass.unknown: 0.6, TargetClass.bird: 0.15, TargetClass.clutter: 0.05}
-_LEVEL_WEIGHT = {AlertLevel.critical: 1.0, AlertLevel.warning: 0.7, AlertLevel.info: 0.4}
+_LEVEL_WEIGHT = {AlertLevel.critical: 1.0, Alerel.warning: 0.7, AlertLevel.info: 0.4}
 
 
 class ZoneIndex:
