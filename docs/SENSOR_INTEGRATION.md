@@ -14,7 +14,6 @@ licences and crashes out of the tracking service.
 5. **Verify** with `GET /api/v1/sensors` (counts, `last_seen_age_s`) and `/api/v1/metrics`
 
 use it as a single-sensor feed). Do not feed the same target as both plots and tracks from one radar.
-
 ## 3. Conventions that bite
 
 | Topic | Convention here | Common mistake |
