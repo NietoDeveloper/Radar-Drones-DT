@@ -16,6 +16,6 @@ from dataclasses import d
 import numpy as
 from ..config import AlertConfig
 from ..geo import LocalFrame
-from ..models import AlertLevel, AlertOut, Alert, TargetClass, TrackStatus, Zone
+from ..models import AlertLevel, AlertOut, Alert, TetClass, TrackStatus, Zone
 from ..tracking.track import 
-_CLASS_WEIGHT = {TargetClass
+_CLASS_WEIGHT = {TargetC
