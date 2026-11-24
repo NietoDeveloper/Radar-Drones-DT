@@ -16,10 +16,6 @@ count, rpm, radius, projection, flap rate, amplitude, glide envelope, SNR, radia
 pipeline can be trained and tested without hardware and so every assumpt
 ## 2. Features (`md_features`)
 ide for rotors |
-| `occupied_fraction` | Fraction of bins within 2
-## 3. Model
-
-Standardised features + squared terms → multinomial logistic regression (numpy at inference, scipy L-BFGS
 for training). Packaged weights: `classification/models/microdoppler_v1.npz`; the file records the feature
 names and the loader refuses a mismatch.
 
