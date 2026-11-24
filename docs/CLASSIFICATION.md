@@ -16,12 +16,7 @@ count, rpm, radius, projection, flap rate, amplitude, glide envelope, SNR, radia
 pipeline can be trained and tested without hardware and so every assumpt
 ## 2. Features (`md_features`)
 ide for rotors |
-for training). Packaged weights: `classification/models/microdoppler_v1.npz`; the file records the feature
-names and the loader refuses a mismatch.
-
-Retrain: `sdt-radar train-classifier` (deterministic seed; writes the packaged file).
-
-**Per-track evidence.** Each dwell yields class probabilities `p`. The track keeps
+for training). Packaged weights: `clas probabilities `p`. The track keeps
 `logp ← 0.92·logp + log p` (forgetting 0.92) and reports the posterior; it is labelled only when the
 maximum reaches `decision_threshold` (0.7), otherwise `unknown`. A few dwells turn a ~91 % per-dwell
 classifier into a near-certain track-level label (tested: 6 dwells at 10 dB SNR → bird with > 0.9).
