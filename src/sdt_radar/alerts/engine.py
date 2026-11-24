@@ -23,10 +23,6 @@ _CLASS_WEIGHT = {TargetClass.drone: 1.0, Target.unk
         if zone.kind == "circle":ne.cframe.alt_m)
             self.center = np.asarray(c[:2])
             self.radius = zone.radius_m
-            self.poly: np.ndarray | None = None
-        else:
-            assert zone.polygon is not None
-            pts = [frame.to_enu(la, lo, f
             return math.hypot(e - self.center[0], n - self.center[1]) <= self.radius
         x, y, inside = self.poly[:, 0], self.poly[:, 1], False
         j = len(x) - 1
