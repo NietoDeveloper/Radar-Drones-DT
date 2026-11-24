@@ -29,11 +29,7 @@ _CLASS_WEIGHT = {TargetClass.drone: 1.0, Target.unk
         if not self.zones:
             return
         live = [t for t in tracks if t.status in (TrackStatus.confirmed, TrackStatus.coasting)]
-        if live:
-            lat, lon, alt = self.frame.to_geodetic(np.stack([t.pos for t in live]))
-        for k, tr in enumerate(live):
-            cls, conf = tr.klass.decide(0.5)
-            suppressed = cls in (TargetClass.bird, TargetClass.clutter) and conf >= self.cfg.suppress_class_above
+        if live:tClass.clutter) and conf >= self.cfg.suppress_class_above
             for zi in self.zones.values():
                 self._eval_one(tr, zi, cls, float(lat[k]), float(lon[k]), float(alt[k]), now, suppressed, events)
         self._close_stale(now, {t.track_id for t in live}, events)
