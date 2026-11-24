@@ -15,5 +15,4 @@ import uuid
 from dataclasses import d
 import numpy as
 from ..config import AlertCo
-from ..geo import LocalFrame
-fro
+from ..geo import LocalFra
