@@ -27,10 +27,7 @@ _CLASS_WEIGHT = {TargetClass.drone: 1.0, Target.unk
         if eta is not None:: Track, zi: ZoneIndex, cls: TargetClass, lat: float,
                lon: float, alt: float, now: float, proximity: float, message: str, events: list[AlertOut],
                level_cap: AlertLevel | None = None) -> None:
-        risk = float(np.clip(_CLASS_WEIGHT[ closed_at=None, risk=risk, target_class=cls, message=message,
-                             lat=lat, lon=lon, alt_m=alt)
-            self._open[key] = _Open(alert, now)
-            events.append(alert)
+        risk = float(np.clip(_CLASS_WEIGHT[ closed_at=
             return
         o.last_true_t = now
         a = o.alert
