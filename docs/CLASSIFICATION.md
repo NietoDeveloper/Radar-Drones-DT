@@ -11,12 +11,8 @@ phase-modulate the return around it:
 * **Bird:** wings flap at ~3–14 Hz with sub-metre amplitude → a spread of a few hundred Hz that is
   **strongly time-varying** (flap cycle, glide phases).
 * **Clutter** (rain, foliage): Gaussian-shaped, noise-like spectrum without a ri
-`classification/microdoppler.py` synthesises all three rom these models (random rotor count, blade
-count, rpm, radius, projection, flap rate, amplitude, glide envelope, SNR, radial velocity, PRF) so the
-pipeline can be trained and tested without hardware and so every assumpt
-## 2. Features (`md_features`)
-ide for rotors |
-for training). Packaged weights: `clas probabilities `p`. The track keeps
+`classification/microdoppler.py` synthesises all three rom these models (random rotor count, b
+count, rpm, radius, projection, flap rate, amplitu`. The track keeps
 `logp ← 0.92·logp + log p` (forgetting 0.92) and reports the posterior; it is labelled only when the
 maximum reaches `decision_threshold` (0.7), otherwise `unknown`. A few dwells turn a ~91 % per-dwell
 classifier into a near-certain track-level label (tested: 6 dwells at 10 dB SNR → bird with > 0.9).
