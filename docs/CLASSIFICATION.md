@@ -12,7 +12,7 @@ phase-modulate the return around it:
   **strongly time-varying** (flap cycle, glide phases).
 * **Clutter** (rain, foliage): Gaussian-shaped, noi these models (random rotor count, b
 count, rpm, radius, projection, flap rate, amplitu`. The track keeps
-`logp ← 0.92·logp + log p` (forgetting 0.92) and reports the posterior; it is labelled only when the
+`logp ← 0.92·logp + log p` (forgetting 0.92rts the posterior; it is labelled only when the
 maximum reaches `decision_threshold` (0.7), otherwise `unknown`. A few dwells turn a ~91 % per-dwell
 classifier into a near-certain track-level label (tested: 6 dwells at 10 dB SNR → bird with > 0.9).
 
