@@ -4,5 +4,4 @@
 * ``zone_approach``: straight-line extrapolation of the track enters a zone within ``lookahead_s``.
 
 Alerts are *stateful*: one open  (track, zone, type); closed after the condition has been
-absent for ``clear_after_s`` or when the track is lost. Bird/clutter tracks classified with high
-c
+absent for ``clear_after_s`` or when the track is lost. Bird/clutter tracks classified with 
