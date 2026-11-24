@@ -27,5 +27,3 @@ CREATE TABLE track_points (
   alt_m        real NOT NULL,
   vel_e_mps    real, vel_n_mps real, vel_u_mps real,
   speed_mps    real, heading_deg real,
-  position_sigma_m real,
-  confidence   real,
