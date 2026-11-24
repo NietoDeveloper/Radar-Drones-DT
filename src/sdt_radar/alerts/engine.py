@@ -26,7 +26,7 @@ _CLASS_WEIGHT = {TargetClass.drone: 1.0, Target.unk
             return math.hypot(e - self.center[0], n - self.center[1]) <= self.radius
         x, y, inside = self.poly[:, 0], self.poly[:, 1], False
         j = len(x) - 1
-        for i in range(len(x)):
+        for i in range(len
             if (y[i] > n) != (y[j] > n) and e < (x[j] - x[i]) * (n - y[i]) / (y[j] - y[i]) + x[i]:
                 inside = not inside
             j = i
