@@ -8,17 +8,6 @@ licences and crashes out of the tracking service.
 
 | Topic | Convention here | Common mistake |
 |---|---|---|
-| Azimuth | Degrees, **clockwise from true North** | Math convention (CCW from East) |
-| Elevation | Up positive from the local horizonta
-    det = {
-        "sensor_id": "fmcw-1",
-        "t": p.timestamp_unix,                # measurement time, UTC
-        "range_m": p.range_m,
-        "azimuth_deg": p.azimuth_deg,         # adapter converts to clockwise-from-North if needed
-        "elevation_deg": p.elevation_deg,
-        "radial_velocity_mps": p.doppler_mps,
-        "rcs_dbsm": p.rcs_dbsm,
-        "snr_db": p.snr_db,
     }
     sock.sendto(json.dumps([det]).encode(), TARGET)   # batch several plots per datagram when possible
 ```
