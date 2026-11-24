@@ -14,10 +14,7 @@ phase-modulate the return around it:
 count, rpm, radius, projection, flap rate, amplitu`. The track keeps
 `logp ← 0.92·logp + log p` (forgetting 0.92rts the posterior; it is labelled only when the
 maximum reaches `decision_threshold` (0.7), otherwise `unknown`. A few dwells turn a ~91 % per-dwell
-classifier into a near-certain track-level label (tested: 6 dwells at 10 dB SNR → bird with > 0.9).
-
-## 4. Measured performance (synthetic, held-out seeds)
-
+classifier into a near-certain track-level label (
 | Metric | Value |
 |---|---|
 | Per-dwell accuracy, all SNR 4–25 dB | **91 %** |
