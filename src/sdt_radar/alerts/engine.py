@@ -14,8 +14,7 @@ import math
 import uuid
 from dataclasses import dataclass
 
-import numpy as np
-
+import numpy as
 from ..config import AlertConfig
 from ..geo import LocalFrame
 from ..models import AlertLevel, AlertOut, AlertType, TargetClass, TrackStatus, Zone
