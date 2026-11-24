@@ -1,0 +1,77 @@
+# SoftwareDT drone-radar backend — example configuration.
+# Every key is optional (defaults shown). Unknown keys are errors, so typos never pass silently.
+# Secrets: set SDT_RADAR_API_KEY in the environment instead of api.api_key.
+
+[site]                      # origin of the shared local ENU frame (usually the protected site)
+lat = 4.7110
+lon = -74.0721
+alt_m = 2600.0
+
+[ingest]
+host = "127.0.0.1"          # bind loopback unless a reverse proxy / firewall protects the ports
+udp_port = 9100             # JSON datagrams: object, array, or newline-delimited
+tcp_port = 9101             # newline-delimited JSON stream
+allow_unknown_sensors = false
+
+[fusion]
+reorder_window_s = 0.2      # hold measurements this long (data time) to restore ordering
+batch_bucket_s = 0.25
+
+[tracker]
+gate_chi2 = 21.1            # Mahalanobis^2 association gate (3 dof, 99.99 %)
+confirm_hits = 4
+confirm_window_s = 12.0
+tentative_timeout_s = 4.0
+coast_after_s = 2.0
+max_coast_s = 8.0
+sigma_accel_h_mps2 = 4.0
+sigma_accel_v_mps2 = 2.5
+max_confirm_speed_mps = 50.0
+max_tracks = 2000
+
+[classifier]
+enabled = true
+decision_threshold = 0.7
+forgetting = 0.92
+
+[alerts]
+lookahead_s = 30.0
+clear_after_s = 5.0
+suppress_class_above = 0.9  # bird/clutter tracks classified this confidently raise no alerts
+
+[storage]
+kind = "sqlite"             # or "memory"
+path = "data/radar.db"
+point_interval_s = 1.0      # one stored trajectory point per track per second
+# recorder_path = "data/raw.jsonl"   # raw detections for audit / deterministic replay
+
+[api]
+host = "127.0.0.1"
+port = 8080
+snapshot_hz = 5.0
+# api_key = "..."           # prefer the SDT_RADAR_API_KEY environment variable
+cors_origins = []           # e.g. ["http://localhost:3000"] for a browser dashboard
+
+# --- sensors: the position and noise model of each source ----------------------------------
+[[sensors]]
+id = "fmcw-1"
+kind = "radar_fmcw"
+lat = 4.7110
+lon = -74.0721
+alt_m = 2608.0
+north_offset_deg = 0.0      # added to reported azimuth to reference true North
+sigma_range_m = 4.0
+sigma_az_deg = 1.2
+sigma_el_deg = 2.5
+max_range_m = 3500
+scan_period_s = 1.0
+
+# --- zones (also manageable at runtime through POST /api/v1/zones) -------------------------
+[[zones]]
+id = "core"
+name = "Protected core"
+kind = "circle"
+center_lat = 4.7110
+center_lon = -74.0721
+radius_m = 400.0
+level = "critical"
