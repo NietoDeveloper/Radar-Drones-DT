@@ -14,13 +14,7 @@ licences and crashes out of the tracking service.
 
 ## 4. Skeleton: UDP radar adapter
 
-```python
-import json, socket, time
-
-sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-TARGET = ("127.0.0.1", 9100)
-
-def on_vendor_plot(p):                        # called by the vendor SDK
+```python by the vendor SDK
     det = {
         "sensor_id": "fmcw-1",
         "t": p.timestamp_unix,                # measurement time, UTC
