@@ -23,10 +23,7 @@ _CLASS_WEIGHT = {TargetClass.drone: 1.0, Target.unk
         if zone.kind == "circle":ne.cframe.al
         return [z.zone for z in self.zoneg.suppress_class_above
             for zi in self.zones.values():
-                self._eval_one(tr, zi, cls, float(lat[k]), float(lon[k]), float(alt[k]), now, suppressed, events)
-        self._close_stale(now, {t.track_id for t vents: li
-            return
-        eta = self._eta(tr, zi)
+                self._eval_one(tr, zi, cls, float(lat[
         if eta is not None:: Track, zi: ZoneIndex, cls: TargetClass, lat: float,
                lon: float, alt: float, now: float, proximity: float, message: str, events: list[AlertOut],
                level_cap: AlertLevel | None = None) -> None:
