@@ -1,1 +1,0 @@
--- Reference schema for a PostgreSQL + TimescaleDB deployment of the Store protocol.
