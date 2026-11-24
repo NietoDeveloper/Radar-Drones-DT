@@ -41,8 +41,4 @@ disagreement between radars.
 
 Run NTP (or PTP for tight sites) on every sensor host and on the backend. Symptoms of skew:
 `stale_measurements` rising (sensor behind), latency percentiles growing with `buffer_len` (sensor ahead),
-two radars' tracks of one target failing to merge.
-
-## 9. Acceptance checklist
-
-* `rejected_invalid`, 
+two radars' tracks of one target fai
