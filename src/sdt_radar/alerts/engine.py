@@ -24,12 +24,7 @@ _CLASS_WEIGHT = {TargetClass.drone: 1.0, Target.unk
         return [z.zone for z in self.zoneg.suppress_class_above
             for zi in self.zones.values():
                 self._eval_one(tr, zi, cls, float(lat[
-        if eta is not None:: Track, zi: ZoneIndex, cls: TargetClass, lat: float,
-               lon: float, alt: float, now: float, prox: float, message: str, events: list[AlertOut],
-               level_cap: AlertLevel | None = None) -> 
-        changed = cls != a.target_class or abs(risk - a.risk) > 0.1
-        if changed:Type], now: float) -> AlertOut:
-        o = self._open.pop(key)
+        if eta is not None:: Track, zi: ZoneInde
         return o.alert.model_copy(update={"state": "closed", "closed_at": now, "updated_at": now})
 
     def _close_stale(self, now: float, live_ids: set[str], events: list[AlertOut]) -> None:
