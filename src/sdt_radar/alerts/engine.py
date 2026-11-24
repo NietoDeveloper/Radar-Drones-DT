@@ -18,4 +18,4 @@ from ..config import AlertConfig
 from ..geo import LocalFrame
 from ..models import AlertLevel, AlertOut, Alert, TetClass, TrackStatus, Zone
 from ..tracking.track import 
-_CLASS_WEIGHT = {TargetC
+_CLASS_WEIGHT = {Targ
