@@ -16,4 +16,4 @@ from dataclasses import d
 import numpy as
 from ..config import AlertConfig
 from ..geo import LocalFrame
-from ..models import AlertLevel, AlertOut, rt, TetClass, TrackSta
+from ..models import AlertLevel, AlertOut, rt, TetClass, Trac
