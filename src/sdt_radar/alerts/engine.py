@@ -25,7 +25,7 @@ _CLASS_WEIGHT = {TargetClass.drone: 1.0, Target.unk
             for zi in self.zones.values():
                 self._eval_one(tr, zi, cls, float(lat[
         if eta is not None:: Track, zi: ZoneIndex, cls: TargetClass, lat: float,
-               lon: float, alt: float, now: float, proximity: float, message: str, events: list[AlertOut],
+               lon: float, alt: float, now: float, prox: float, message: str, events: list[AlertOut],
                level_cap: AlertLevel | None = None) -> 
         changed = cls != a.target_class or abs(risk - a.risk) > 0.1
         if changed:
