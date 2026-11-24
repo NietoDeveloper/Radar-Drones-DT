@@ -12,8 +12,7 @@ from __future__ import annotations
 
 import math
 import uuid
-from dataclasses import dataclass
-
+from dataclasses import datac
 import numpy as
 from ..config import AlertConfig
 from ..geo import LocalFrame
