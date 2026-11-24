@@ -12,11 +12,6 @@ phase-modulate the return around it:
   **strongly time-varying** (flap cycle, glide phases).
 * **Clutter** (rain, foliage): Gaussian-shaped, noi these models (random rotor count, b
 count, rpm, radius, projection, flap rate, amplitu`. The track keepss or range-Doppler maps. Implement
-   `predict_proba(iq, prf_hz) -> np.ndarray[3]` in the order `[drone, bird, clutter]` and pass it:
-   `Pipeline(settings, classifier=MyCnn())`. No other code changes.
-5. Keep per-band models: the packaged one assumes X band (λ = 3 cm).
-
-## 6.1 Limits to respect
 
 Minimum dwell is 256 samples (shorter payloads are counted as `classifier_rejected`). Feature units are
 Hz-based, so training should cover the PRFs you will use (10 240 and 16 384 Hz are covered).
