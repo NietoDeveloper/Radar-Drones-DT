@@ -18,4 +18,3 @@ from ..config import AlertConfig
 from ..geo import LocalFrame
 from ..models import AlertLevel, AlertOut, Alert, TetClass, TrackStatus, Zone
 from ..tracking.track import 
-_CLA
