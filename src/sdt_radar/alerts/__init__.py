@@ -1,1 +1,1 @@
-from .engine import AlertEngine, S
+from .engine import AlertEngine
