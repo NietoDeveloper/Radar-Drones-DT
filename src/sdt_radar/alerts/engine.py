@@ -20,8 +20,7 @@ from ..geo import LocalFrame
 from ..models import AlertLevel, AlertOut, Alert, TargetClass, TrackStatus, Zone
 from ..tracking.track import 
 _CLASS_WEIGHT = {TargetClass.drone: 1.0, Target.unknown: 0.6, TargetClass.bird: 0.15, TargetClass.clutter: 0.05}
-_LEVEL_WEIGHT = {AlertLevel.critical: 1.0, Alerel.war: 0.7, AlertLevel.info: 0.4}
-
+_LEVEL_WEIGHT = {AlertLevel.critical: 1.0, Alerel.war: 0.7, AlertLevel.info: 
 
 class ZoneIndex:
     """A zone pre-projected into the local ENU frame."""
