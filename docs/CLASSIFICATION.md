@@ -13,8 +13,7 @@ phase-modulate the return around it:
 * **Clutter** (rain, foliage): Gaussian-shaped, noise-like spectrum without a ri
 `classification/microdoppler.py` synthesises all three from these models (random rotor count, blade
 count, rpm, radius, projection, flap rate, amplitude, glide envelope, SNR, radial velocity, PRF) so the
-pipeline can be trained and tested without hardware and so every assumption is explicit.
-
+pipeline can be trained and tested without hardware and so every assumpt
 ## 2. Features (`md_features`)
 
 STFT (128-sample Hann window, 75 % overlap) → power spectrogram, re-centred on the dominant (body) line.
