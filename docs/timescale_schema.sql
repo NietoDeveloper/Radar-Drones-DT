@@ -26,4 +26,4 @@ CREATE TABLE track_points (
   lon          double precision NOT NULL,
   alt_m        real NOT NULL,
   vel_e_mps    real, vel_n_mps real, vel_u_mps real,
-  speed_mps    real, heading_deg real,
+al,
