@@ -18,9 +18,7 @@ classifier into a near-certain track-level label (
 | Metric | Value |
 |---|---|
 | Per-dwell accuracy, all SNR 4–25 dB | **91 %** |
-| Drone recall / bird recall / clutter recall | 97 % / 94 % / 81 % |
-| Clutter mistaken for bird | the main error (≈ 10–16 %) |
-| Drone ↔ bird confusion | < 5 % per dwell in tests (the confusion that matters) |
+| Drone recall / bird recall / clutter recall | 97 % / 94 % 
 | Track level, perimeter scenario (8 seeds) | 100 % class accuracy on classified matched tracks, 0 drone↔bird confusions |
 | Accuracy by SNR band (4–10 / 10–16 / 16–25 dB) | ≈ 90 % / 95 % / 96 % |
 
