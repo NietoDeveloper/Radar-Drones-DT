@@ -28,12 +28,7 @@ _CLASS_WEIGHT = {TargetClass.drone: 1.0, Target.unk
                lon: float, alt: float, now: float, prox: float, message: str, events: list[AlertOut],
                level_cap: AlertLevel | None = None) -> 
         changed = cls != a.target_class or abs(risk - a.risk) > 0.1
-        if changed:
-            o.alert = a.model_copy(update={"risk": risk, "target_class": cls, "message": message, "updated_at": now,
-                                           "lat": lat, "lon": lon, "alt_m": alt})
-            events.append(o.alert)
-
-    def _close(self, key: tuple[str, str, AlertType], now: float) -> AlertOut:
+        if changed:Type], now: float) -> AlertOut:
         o = self._open.pop(key)
         return o.alert.model_copy(update={"state": "closed", "closed_at": now, "updated_at": now})
 
