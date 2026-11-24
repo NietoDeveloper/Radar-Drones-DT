@@ -21,11 +21,7 @@ from ..tracking.track import
 _CLASS_WEIGHT = {TargetClass.drone: 1.0, Target.unk
     def __init__(self, zone: Zone,rame) -> 
         if zone.kind == "circle":ne.cframe.al
-        return [z.zone for z in self.zone
-    # ----------------------------------------------------------------------------- evaluation
-    def evaluate(self, tracks: list[Track], now: float) -> list[AlertOut]:
-        """Return alerts that were opened, updated (esckStatus.confirmed, TrackStatus.coasting)]
-        if live:tClass.clutter) and conf >= self.cfg.suppress_class_above
+        return [z.zone for z in self.zoneg.suppress_class_above
             for zi in self.zones.values():
                 self._eval_one(tr, zi, cls, float(lat[k]), float(lon[k]), float(alt[k]), now, suppressed, events)
         self._close_stale(now, {t.track_id for t in live}, events)
