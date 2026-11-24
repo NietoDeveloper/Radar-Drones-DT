@@ -11,7 +11,7 @@ phase-modulate the return around it:
 * **Bird:** wings flap at ~3–14 Hz with sub-metre amplitude → a spread of a few hundred Hz that is
   **strongly time-varying** (flap cycle, glide phases).
 * **Clutter** (rain, foliage): Gaussian-shaped, noise-like spectrum without a ri
-`classification/microdoppler.py` synthesises all three from these models (random rotor count, blade
+`classification/microdoppler.py` synthesises all three rom these models (random rotor count, blade
 count, rpm, radius, projection, flap rate, amplitude, glide envelope, SNR, radial velocity, PRF) so the
 pipeline can be trained and tested without hardware and so every assumpt
 ## 2. Features (`md_features`)
