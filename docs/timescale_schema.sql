@@ -10,6 +10,3 @@ CREATE TABLE tracks (
   target_class     text NOT NULL,
   class_confidence real,
   confidence       real,
-  first_seen       timestamptz NOT NULL,
-  last_seen        timestamptz NOT NULL,
-  sensors          text[] NOT NULL DEFAULT '{}',
