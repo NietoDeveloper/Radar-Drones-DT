@@ -33,7 +33,7 @@ _CLASS_WEIGHT = {TargetClass.drone: 1.0, Target.unk
 
 @dataclass(slots=True)
 class _Open:
-    alert: AlertOut
+    ale
     last_true_t: float
 
 
