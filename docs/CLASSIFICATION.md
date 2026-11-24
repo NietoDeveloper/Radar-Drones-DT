@@ -13,13 +13,6 @@ phase-modulate the return around it:
 * **Clutter** (rain, foliage): Gaussian-shaped, noi these models (random rotor count, b
 count, rpm, radius, projection, flap rate, amplitu`. The track keeps
 `logp ← 0.92·logp + log p` (forgetting 0.92rts the posterior; it is labelled only when the
-maximum reaches `decision_threshold` (0.7), otherwise `unknown`. A few dwells turn a ~91 % per-dwell
-classifier into a near-certain track-level label (
-| Metric | Value |
-|---|---|95 % / 96 % |
-
-## 5. What this does NOT prove
-
 These numbers come from signatures made by the same generator that built the training set. Real
 radars add range-cell leakage, antenna patterns, multipath, receiver non-linearities, real animal and
 drone variety (large birds, flocks, small drones with folding props, helicopters, fixed-wing drones with a
