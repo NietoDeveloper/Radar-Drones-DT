@@ -9,12 +9,7 @@ licences and crashes out of the tracking service.
 | Topic | Convention here | Common mistake |
 |---|---|---|
 | Azimuth | Degrees, **clockwise from true North** | Math convention (CCW from East) |
-| Elevation | Up positive from the local horizontal | Sensor tilt not removed |
-| Units | SI everywhere; dBsm for RCS | Mixed units |
-
-## 4. Skeleton: UDP radar adapter
-
-```python by the vendor SDK
+| Elevation | Up positive from the local horizonta
     det = {
         "sensor_id": "fmcw-1",
         "t": p.timestamp_unix,                # measurement time, UTC
