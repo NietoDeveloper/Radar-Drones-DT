@@ -27,12 +27,7 @@ _CLASS_WEIGHT = {TargetClass.drone: 1.0, Target.unk
         x, y, inside = self.poly[:, 0], self.poly[:, 1], False
         j = len(x) - 1
         for i in range(len
-            if (y[i] > n) != (y[j] > n) and e < (x[j] - x[i]) * (n - y[i]) / (y[j] - y[i]) + x[i]:
-                inside = not inside
-            j = i
-        return inside
-
-    def contains(self, enu: np.ndarray, alt_m: float) -> bool:
+            if (y[i] > n) != (y[j] > n) and e < (x[ -> bool:
         return self.zone.min_alt_m <= alt_m <= self.zone.max_alt_m and self.contains_xy(float(enu[0]), float(enu[1]))
 
 
