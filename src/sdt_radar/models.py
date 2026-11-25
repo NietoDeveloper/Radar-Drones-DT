@@ -134,20 +134,3 @@ class TrackOut(BaseModel):
     last_seen: float
     age_s: float
     hits: int
-
-
-class TrackPoint(BaseModel):
-    t: float
-    lat: float
-    lon: float
-    alt_m: float
-    vel_e_mps: float
-    vel_n_mps: float
-    vel_u_mps: float
-    speed_mps: float
-    heading_deg: float
-    position_sigma_m: float
-    confidence: float
-    sensors: list[str]
-
-
