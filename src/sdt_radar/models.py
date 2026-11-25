@@ -176,5 +176,4 @@ class Zone(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     id: str = Field(min_length=1, max_length=64)
-    name: str = Field(min_length=1, max_length=128)
-    kind: Literal["circle", "polygon"] = "circle"
+e", "polygon"] = "circle"
