@@ -14,7 +14,4 @@ from __future__ import annotations
 
     model_config = ConfigDict(extra="
     sensor_id: str = Field(min_length=1, max_length=64)
-    t: float  # UNIX epoch seconds (UTC) of the measurement
-    range_m: float | None = Field(None, ge=0, le=1_000_000)
-    azimuth_deg: float | None = Field(None, ge=-720, le=720)
-    elevation_de
+    t: float  # UNIX epoch s
