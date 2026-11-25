@@ -12,7 +12,7 @@ from __future__ import annotations
 import math
 from dataclasses import dataclass
 
-import numpy as np
+import numpy a
 from numpy.typing import ArrayLike, NDArray
 
 WGS84_A = 6_378_137.0
@@ -24,7 +24,7 @@ FloatArray = NDArray[np.float64]
 
 def geodetic_to_ecef(lat_deg: ArrayLike, lon_deg: ArrayLike, alt_m: ArrayLike) -> FloatArray:
     lat = np.radians(np.asarray(lat_deg, dtype=float))
-    lon = np.radians(np.asarray(lon_deg, dtype=float))
+    lon = np.radians(np.asarray(lon_dege=float))
     alt = np.asarray(alt_m, dtype=float)
     s, c = np.sin(lat), np.cos(lat)
     n = WGS84_A / np.sqrt(1.0 - WGS84_E2 * s * s)
