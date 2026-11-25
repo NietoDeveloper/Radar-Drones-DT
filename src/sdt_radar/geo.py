@@ -12,14 +12,7 @@ import math
 from dataclasses import dataclass
 th.sin(lon), math.cos(lon)
         rot = np.array([[-so, co, 0.0], [-sl * co, -sl * so, cl], [cl * co, cl * so, sl]])
-        object.__setattr__(self, "_rot", rot)
-        object.__setattr__(self, "_ecef0", geodetic_to_ecef(self.lat, self.lon, self.alt_m))
-
-    def to_enu(self, lat: ArrayLike, lon: ArrayLike, alt_m: ArrayLike) -> FloatArray:
-        ecef = geodetic_to_ecef(lat, lon, alt_mlockwise from North)."""
-    az, el = math.radians(az_deg), math.radians(el_deg)
-    ce = math.cos(el)
-    return np.array([range_m * ce * math.sin(az), range_m * ce * math.cos(az), range_m * math.sin(el)])
+        object.__setattr * ce * math.sin(az), range_m * ce * math.cos(az), range_m * math.sin(el)])
 
 
 def polar_covariance(
