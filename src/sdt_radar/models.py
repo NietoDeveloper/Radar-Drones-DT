@@ -62,4 +62,4 @@ from __future__ import annotations
 
 @dataclass(slots=True)
 class Measurement:
-    """Detection converted to the local ENU fra
+    """Detection converted to the local E
