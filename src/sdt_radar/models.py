@@ -173,4 +173,3 @@ class AlertOut(BaseModel):
 class Zone(BaseModel):
     """Protected / alert zone: a circle or a polygon, with an altitude band."""
 
-    model_config = ConfigDict(extra="forbid")
