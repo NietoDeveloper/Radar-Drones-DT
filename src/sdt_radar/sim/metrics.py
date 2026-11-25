@@ -11,14 +11,7 @@ from ..models import TrackOut
 
 
 @dataclass
-class Score:
-    expected: int = 0  # (target, instant) pairs that should have been tracked
-    matched: int = 0
-    evals: int = 0
-    unmatched_track_instants: int = 0
-    horiz_sq_err: float = 0.0
-    vert_sq_err: float = 0.0
-    id_switches: int = 0
+class Score
     class_known: int = 0
     class_correct: int = 0
     class_drone_vs_bird_wrong: int = 0
