@@ -10,15 +10,7 @@ waveform-level simulation.
 from __future__ import annotations
 
 import math
-from collections.abc import Callable
-from dataclasses import dataclass
-from typing import Any
-
-import numpy as np
-
-from ..classification.microdoppler import synth_bird, synth_clutter, synth_multirotor
-from ..geo import LocalFrame, enu_to_polar
-from ..models import Detection, SensorConfig, encode_iq
+from collections.abc import Callableonfig, encode_iq
 from .targets import Target
 
 RCS_REF_DBSM = -20.0  # 0.01 m²
