@@ -11,9 +11,7 @@ import urllib.request
 from typing import Any
 
 from . import __version__
-from .config import load_settings
-
-
+from .config import load_setti
 def _http_json(method: str, url: str, body: Any, api_key: str | None) -> Any:
     req = urllib.request.Request(url, method=method, data=json.dumps(body).encode(),
                                  headers={"content-type": "application/json", **({"x-api-key": api_key} if api_key else {})})
