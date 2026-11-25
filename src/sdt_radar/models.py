@@ -19,7 +19,5 @@ from __future__ import annotations
     azimuth_deg: float | None = Field(None, ge=-720, le=720)
     elevation_deg: float | None = Field(None, ge=-90, le=90)
     lat: float | None = Field(None, ge=-90, le=90)
-    lon: float | None = Field(None, ge=-180, le=180)
-    alt_m: float | None = Field(None, ge=-1000, le=100_000)
-    sigma_h_m: float | None = Field(None, gt=0, le=10_000)
+  e = Field(None, gt=0, le=10_000)
     sigma_v_m: flo
