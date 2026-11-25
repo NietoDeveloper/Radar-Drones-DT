@@ -7,15 +7,6 @@ follows the Swerling-I relation ``Pd = Pfa ** (1 / (1 + SNR))``. This is a plann
 waveform-level simulation.
 """
 
-from __future__ import annotations
-
-import math
-from collections.abc import Callableonfig, encode_iq
-from .targets import Target
-
-RCS_REF_DBSM = -20.0  # 0.01 m²
-
-
 @dataclass
 class RadarModel:
     sensor: SensorConfig
