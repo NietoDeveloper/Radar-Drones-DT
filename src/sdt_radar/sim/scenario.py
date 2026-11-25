@@ -14,14 +14,6 @@ from .metrics import Score, evaluate_snapshot
 from .sensors import FixModel, RadarModel
 from .targets import Target, make_bird, make_drone
 
-
-    @property
-    def frame(self) -> LocalFrame:
-        return LocalFrame(self.site.lat, self.site.lon, self.site.alt_m)
-
-    def sensor_configs(self) -> list[SensorConfig]:
-        return [r.sensor for r in self.radars] + [f.sensor for f in self.fixes]
-
     def settings(self, **overrides: object) -> Settings:
         data = {"site": self.site, "sensors": self.sensor_configs(), "zones": self.zones,
                 "storage": {"kind": "memory"}}
