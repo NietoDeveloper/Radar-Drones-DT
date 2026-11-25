@@ -32,7 +32,3 @@ def generate(scn: Scenario) -> list[Detection]:
     """Full detection stream, sorted by measurement time."""
     rng = np.random.default_rng(scn.seed + 1000)
     frame = scn.frame
-    dets: list[Detection] = []
-    for r in scn.radars:
-        k = 0
-        while k * r.scan_period_s 
