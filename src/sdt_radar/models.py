@@ -103,7 +103,3 @@ class ClassPosterior:
         if p[i] < threshold:
             return TargetClass.unknown, float(p[i])
         return self.classes[i], float(p[i])
-
-
-# ---------------------------------------------------------------------------------- API outputs
-
