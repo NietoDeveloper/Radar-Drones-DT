@@ -178,6 +178,3 @@ class Zone(BaseModel):
     id: str = Field(min_length=1, max_length=64)
     name: str = Field(min_length=1, max_length=128)
     kind: Literal["circle", "polygon"] = "circle"
-    center_lat: float | None = Field(None, ge=-90, le=90)
-    center_lon: float | None = Field(None, ge=-180, le=180)
-    radius_m: float | None = Field(None, gt=0, le=200_000)
