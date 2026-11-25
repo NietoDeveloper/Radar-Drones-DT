@@ -14,20 +14,6 @@ from .metrics import Score, evaluate_snapshot
 from .sensors import FixModel, RadarModel
 from .targets import Target, make_bird, make_drone
 
-T0_EPOCH = 1_795_000_000.0  # 2026-11-18 UTC; any plausible epoch works
-
-
-@dataclass
-class Scenario:
-    name: str
-    duration_s: float
-    site: SiteConfig
-    radars: list[RadarModel]
-    fixes: list[FixModel]
-    targets: list[Target]
-    zones: list[Zone] = field(default_factory=list)
-    seed: int = 1
-    t0_epoch: float = T0_EPOCH
 
     @property
     def frame(self) -> LocalFrame:
