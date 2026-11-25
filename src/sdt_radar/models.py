@@ -56,6 +56,3 @@ from __future__ import annotations
     def is_polar(self) -> bool:
         return self.range_m is not None
 
-
-# --------------------------------------------------------------------------- internal structures
-
