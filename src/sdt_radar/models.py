@@ -22,6 +22,4 @@ from __future__ import annotations
     lon: float | None = Field(None, ge=-180, le=180)
     alt_m: float | None = Field(None, ge=-1000, le=100_000)
     sigma_h_m: float | None = Field(None, gt=0, le=10_000)
-    sigma_v_m: float | None = Field(None, gt=0, le=10_000)
-    radial_velocity_mps: float | None = Field(None, ge=-1000, le=1000)
-    rcs_dbsm: float | None 
+    sigma_v_m: flo
