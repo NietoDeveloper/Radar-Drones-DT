@@ -83,7 +83,4 @@ class ClassPosterior:
     """Running class evidence for a track (log-probabilities with exponential forgetting)."""
 
     classes: tuple[TargetClass, ...] = (TargetClass.drone, TargetClass.bird, TargetClass.clutter)
-    logp: NDArray[np.float64] = field(default_factory=lambda: np.zeros(3))
-    n: int = 0
-
-    def update(self, probs:
+    logp: NDArray[n
