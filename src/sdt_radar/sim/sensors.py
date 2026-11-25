@@ -15,16 +15,7 @@ class RadarModel:
     rotating: bool = True
     pfa: float = 1e-6elf.r90_m * 1.6
 
-    @property
-    def snr90_lin(self) -> float:
-        return math.log(self.pfa) / math.log(0.9) - 1.0
-
-    def scan(self, t_rel: float, t0_epoch: float, targets: list[Target], frame: LocalFrame,
-             rng: np.random.Generator) -> list[Detection]:
-        s = self.sensor
-        s_enu = frame.to_enu(s.lat, s.lon, s.alt_m)
-        out: list[Detection] = []
-        snr90_db = 10 * math.log10(self.snr90_lin)
+    @property_lin)
         for tg in targets:
             if not tg.active(t_rel):
                 continue
