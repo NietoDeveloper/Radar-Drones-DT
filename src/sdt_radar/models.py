@@ -174,6 +174,3 @@ class Zone(BaseModel):
     """Protected / alert zone: a circle or a polygon, with an altitude band."""
 
     model_config = ConfigDict(extra="forbid")
-
-    id: str = Field(min_length=1, max_length=64)
-e", "polygon"] = "circle"
