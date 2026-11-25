@@ -19,13 +19,6 @@ from scipy.optimize import linea
     matched_tracks = set()
     for gi, ti in pairs:
         tid, kind, gpos = truth[gi]
-        if prev is not None and prev != tr.track_id:
-            score.id_switches += 1
-        score._last_id[tid] = tr.track_id
-        if tr.target_class.value != "unknown":
-            score.class_known += 1
-            ok = tr.target_class.value == kind
-            score.class_correct += int(ok)
             if not ok and {tr.target_class.value, kind} == {"drone", "bird"}:
                 score.class_drone_vs_bird_wrong += 1
     for i, tr in enumerate(confirmed):
