@@ -52,4 +52,4 @@ from __future__ import annotations
             raise ValueError("md_iq_b64 and md_prf_hz must be provided together")
         return self
 
-    @property
+    @prop
