@@ -23,7 +23,4 @@ from .targets import Target, make_bird, make_drone
     def truth(self, t_rel: float, warmup_s: float = 0.0) -> list[tuple[str, str, np.ndarray]]:
         out = []
         for tg in self.targets:
-            if tg.active(t_rel) and t_rel >= tg.t_start + warmup_s:
-                out.append((tg.target_id, tg.kind, tg.traj.at(t_rel)[0]))
-        return out
-
+            if tg.active(t_rel) 
