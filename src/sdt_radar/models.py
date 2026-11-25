@@ -12,15 +12,6 @@ from __future__ import annotations
     lost = "lost"
 
 
-    zone_approach = "zone_approach"
-
-
-# ------------------------------------------------------------------------------------- sensors
-
-
-class SensorConfig(BaseModel):
-    """Static description of a sensor: where it is and how noisy it is."""
-
     model_config = ConfigDict(extra="forbid")
 
     id: str = Field(min_length=1, max_length=64)
