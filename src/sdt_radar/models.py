@@ -7,11 +7,6 @@ are plain dataclasses holding numpy arrays.
 from __future__ import annotations
 
 import base64
-import math
-from dataclasses import dataclass, field
-from enum import StrEnum
-from typing import Literal
-
 import numpy as np
 from numpy.typing import NDArray
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
