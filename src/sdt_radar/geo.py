@@ -12,7 +12,7 @@ import math
 from dataclasses import dataclass
 
 import n
-from numpy.typing import ArrayLike, NDArray
+from numpy.typing import ArrayLike, ND
 
 WGS84_A = 6_378_137.0
 WGS84_F = 1.0 / 298.2
