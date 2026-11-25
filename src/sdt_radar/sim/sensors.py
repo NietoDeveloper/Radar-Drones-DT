@@ -16,19 +16,7 @@ class RadarModel:
     pfa: float = 1e-6elf.r90_m * loat(rng.normal(0, 0.3))
         md_iq = md_prf = None
         if rng.random() < self.md_probability:
-            table: dict[str, Callable[..., Any]] = {"drone": synth_multirotor, "bird": synth_bird}
-            fn = table.get(kind, synth_clutter)
-            snr_md = float(np.clip(snr_db, 3.0, 25.0))
-            md_iq = encode_iq(fn(rng, self.md_samples, self.md_prf_hz, self.fc_hz, v_r, snr_md))
-            md_prf = self.md_prf_hz
-        return Detection(sensor_id=s.id, t=t0_epoch + t_rel, range_m=float(r_n), azimuth_deg=float(az_n),
-                         elevation_deg=el_n, radial_velocity_mps=float(np.clip(v_r, -999, 999)),
-                         rcs_dbsm=float(np.clip(rcs_db + rng.normal(0, 1.0), -99, 99)),
-                         snr_db=float(np.clip(snr_db, -99, 199)), md_iq_b64=md_iq, md_prf_hz=md_prf)
-
-
-@dataclass
-class FixModel:
+            table: dict[str, Callable[..., Any]] 
     """Position-fix sensor (geodetic output): Remote ID, RF geolocation, EO/IR triangulated fix."""
 
     sensor: SensorConfig
