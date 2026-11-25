@@ -18,16 +18,6 @@ th.sin(lon), math.cos(lon)
 def polar_covariance(
     range_m: float, az_deg: float, el_deg: float, sigma_r: float, sigma_az_deg: float, sigma_el_deg: float
 ) -> FloatArray:
-    """Cartesian covariance of a polar measurement (first-order Jacobian propagation)."""
-    az, el = math.radians(az_deg), math.radians(el_deg)
-    sa, ca, se, ce = math.sin(az), math.cos(az), math.sin(el), math.cos(el)
-    jac = np.array(
-        [
-            [ce * sa, range_m * ce * ca, -range_m * se * sa],
-            [ce * ca, -range_m * ce * sa, -range_m * se * ca],
-            [se, 0.0, range_m * ce],
-        ]
-    )
     var = np.diag([sigma_r**2, math.radians(sigma_az_deg) ** 2, math.radians(sigma_el_deg) ** 2])
     return np.asarray(jac @ var @ jac.T)
 
