@@ -1,1 +1,1 @@
-"""Geodesy helpers: WGS-84 <-> local ENU, polar senso
+"""Geodesy helpers: WGS-84 <-> local ENU,
