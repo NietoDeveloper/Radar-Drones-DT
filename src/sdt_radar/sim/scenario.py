@@ -70,8 +70,4 @@ def perimeter_scenario(seed: int = 1, duration_s: float = 150.0, n_drones: int =
                    fa_per_scan=1.0),
     ]
     fixes = [FixModel(_sensor("rid-1", SensorKind.remote_id, frame, 0, 0, 3, sigma_range_m=4.0), rate_hz=1.0,
-                      sigma_h_m=4.0, sigma_v_m=6.0, max_range_m=3000, only_cooperative=True, send_serial=True)]
-    targets: list[Target] = []
-    for i in range(n_drones):
-        targets.append(make_drone(rng, i, duration_s, 0.1, approach=(i % 2 == 0), bearing_deg=float(rng.uniform(0, 360)),
-                                
+                      sigma_h_m=4.0, 
