@@ -19,13 +19,6 @@ class Score
     unmatched_ids: set[str] = field(defau
         return self.class_correct / self.class_known if self.class_known else float("nan")
 
-    @propertyracks_per_eval, "rmse_horizontal_m": self.rmse_horizontal_m,
-            "rmse_vertical_m": self.rmse_vertical_m, "id_switches": float(self.id_switches),
-            "class_accuracy": self.class_accuracy, "class_coverage": self.class_coverage,
-            "drone_bird_confusions": float(self.class_drone_vs_bird_wrong),
-        }
-
-
 def evaluate_snapshot(score: Score, truth: list[tuple[str, str, np.ndarray]], tracks: list[TrackOut],
                       gate_m: float = 100.0) -> None:
     """Match confirmed tracks to truth (Hungarian on ENU position) and accumulate metrics.
