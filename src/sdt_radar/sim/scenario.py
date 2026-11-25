@@ -51,8 +51,4 @@ def _site() -> SiteConfig:
     return SiteConfig(lat=4.7110, lon=-74.0721, alt_m=2600.0)
 
 
-def _sensor(sid: str, kind: SensorKind, frame: LocalFrame, east_m: float = 0.0, north_m: float = 0.0, alt_m: float = 5.0,
-            **kw: float) -> SensorConfig:
-    lat, lon, alt = frame.to_geodetic(np.array([east_m, north_m, alt_m]))
-    return SensorConfig(id=sid, kind=kind, lat=float(lat), lon=float(lon), alt_m=float(alt) + 0.0, **kw)
-
+def _sensor(
