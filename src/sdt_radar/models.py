@@ -193,10 +193,4 @@ class Zone(BaseModel):
                 raise ValueError("circle zone needs center_lat, center_lon and radius_m")
         else:
             if not self.polygon or len(self.polygon) < 3:
-                raise ValueError("polygon zone needs at least 3 (lat, lon) vertices")
-            for lat, lon in self.polygon:
-                if not (-90 <= lat <= 90 and -180 <= lon <= 180 and math.isfinite(lat + lon)):
-                    raise ValueError("polygon vertex out of range")
-        if self.min_alt_m >= self.max_alt_m:
-            raise ValueError("min_alt_m must be below max_alt_m")
-        return self
+                raise Value
