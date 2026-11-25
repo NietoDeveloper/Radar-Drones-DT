@@ -56,18 +56,3 @@ def _sensor(sid: str, kind: SensorKind, frame: LocalFrame, east_m: float = 0.0, 
     lat, lon, alt = frame.to_geodetic(np.array([east_m, north_m, alt_m]))
     return SensorConfig(id=sid, kind=kind, lat=float(lat), lon=float(lon), alt_m=float(alt) + 0.0, **kw)
 
-
-def perimeter_scenario(seed: int = 1, duration_s: float = 150.0, n_drones: int = 6, n_birds: int = 15) -> Scenario:
-    """Campus/prison perimeter: FMCW radar + AESA panel + Remote ID receiver; drones, birds, a protected zone."""
-    rng = np.random.default_rng(seed)
-    site = _site()
-    frame = LocalFrame(site.lat, site.lon, site.alt_m)
-    radars = [
-        RadarModel(_sensor("fmcw-1", SensorKind.radar_fmcw, frame, 0, 0, 8, sigma_range_m=4.0, sigma_az_deg=1.2,
-                           sigma_el_deg=2.5, max_range_m=3500), r90_m=2500, scan_period_s=1.0, fa_per_scan=1.5),
-        RadarModel(_sensor("aesa-1", SensorKind.radar_aesa, frame, 1200, 300, 10, sigma_range_m=3.0, sigma_az_deg=0.5,
-                           sigma_el_deg=0.8, max_range_m=5500), r90_m=3500, scan_period_s=0.5, rotating=False,
-                   fa_per_scan=1.0),
-    ]
-    fixes = [FixModel(_sensor("rid-1", SensorKind.remote_id, frame, 0, 0, 3, sigma_range_m=4.0), rate_hz=1.0,
-                      sigma_h_m=4.0, 
