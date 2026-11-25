@@ -118,13 +118,5 @@ class TrackOut(BaseModel):
     lat: float
     lon: float
     alt_m: float
-    east_m: float
-    north_m: float
-    up_m: float
-    vel_e_mps: float
-    vel_n_mps: float
-    vel_u_mps: float
-    speed_mps: float
-    heading_deg: float
-    climb_mps: float
+ climb_mps: float
     rcs_dbsm: float | None
