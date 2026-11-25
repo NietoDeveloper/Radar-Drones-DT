@@ -7,8 +7,7 @@ Conventions (used everywhere in the package):
 * Elevation is positive above the local horizon.
 """
 
-from __future__ import annotations
-
+from __future__ import annotati
 import math
 from dataclasses import dataclass
 
