@@ -184,6 +184,3 @@ class Zone(BaseModel):
     polygon: list[tuple[float, float]] | None = None  # (lat, lon) vertices
     min_alt_m: float = -1000.0
     max_alt_m: float = 100_000.0
-    level: AlertLevel = AlertLevel.critical
-
-    @model_validator(mode="after")
