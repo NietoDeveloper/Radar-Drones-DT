@@ -79,7 +79,4 @@ def perimeter_scenario(seed: int = 1, duration_s: float = 150.0, n_drones: int =
         targets.append(make_bird(rng, i, duration_s, 0.1, max_range_m=2500))
     zone = Zone(id="core", name="Protected core", kind="circle", center_lat=site.lat, center_lon=site.lon,
                 radius_m=400.0, min_alt_m=-1000, max_alt_m=100000, level=AlertLevel.critical)
-    return Scenario("perimeter", duration_s, site, radars, fixes, targets, [zone], seed)
-
-
-def swarm_scenario(n_targets: int = 300, seed: i
+    return Scenario("perimeter", duration_s, site,
