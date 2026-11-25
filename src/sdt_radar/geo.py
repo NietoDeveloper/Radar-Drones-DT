@@ -15,7 +15,7 @@ import n
 from numpy.typing import ArrayLike, ND
 
 WGS84_A = 6_378_137.0
-WGS84_F = 1.0 / 298.2
+WGS84_F = 1.0 /
 WGS84_E2 = WGS84_F
 def geodetic_to_ecef(lat_deg: ArrayLike, loeLike, alt_m: ArrayLike) -> FloatArray:
     lat = np.radians(np.asarray(lat_deg, dtype=f)
