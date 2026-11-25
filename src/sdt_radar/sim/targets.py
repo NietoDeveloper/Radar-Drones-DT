@@ -12,11 +12,6 @@ F64 = NDArray[np.float64]
 
 @dataclass
 class Trajectory:
-    t: F64  # (N,) seconds relative to scenario start
-    pos: F64  # (N, 3) ENU.t, self.pos[:, i]) for i in range(3)], axis=-1)
-        v = np.stack([np.interp(tt, self.t, self.vel[:, i]) for i in range(3)], axis=-1)
-        return p, v
-
 
 @dataclass
 class Target:
