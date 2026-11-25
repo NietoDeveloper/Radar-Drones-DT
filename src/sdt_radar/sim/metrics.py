@@ -17,13 +17,7 @@ class Score
     class_drone_vs_bird_wrong: int = 0
     matched_ids: set[str] = field(default_factory=set)
     unmatched_ids: set[str] = field(default_factory=set)
-    _last_id: dict[str, str] = field(default_factory=dict)
-
-    @property
-    def detection_rate(self) -> float:
-        return self.matched / selfsstants / self.evals if self.evals else float("nan")
-
-    @property
+    _last_id: dict[str, str] = field(defa
     def rmse_horizontal_m(self) -> float:
         return float(np.sqrt(self.horiz_sq_err / self.matched)) if self.matched else float("nan")
 
