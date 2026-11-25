@@ -5,19 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 
 import numpy as np
-from scipy.optimize import linear_sum_assignment
-
-from ..models import TrackOut
-
-
-@dataclass
-class Score
-    class_known: int = 0
-    class_correct: int = 0
-    class_drone_vs_bird_wrong: int = 0
-    matched_ids: set[str] = field(default_factory=set)
-    unmatched_ids: set[str] = field(dealue in ("confirmed", "coasting")]
-    score.expected += len(truth)
+from scipy.optimize import linea
     if not confirmed:
         return
     tp = np.array([[t.east_m, t.north_m, t.up_m] for t in confirmed])
