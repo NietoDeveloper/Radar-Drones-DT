@@ -19,13 +19,6 @@ from __future__ import annotations
     lat: float = Field(ge=-90, le=90)
     lon: float = Field(ge=-180, le=180)
     alt_m: float = 0.0
-    north_offset_deg: float = 0.0  # added to reported azimuth to reference true North
-    sigma_range_m: float = Field(5.0, gt=0)
-    sigma_az_deg: float = Field(1.0, gt=0)
-    sigma_el_deg: float = Field(2.0, gt=0)
-    max_range_m: float | None = Field(None, gt=0)
-    scan_period_s: float | None = Field(None, gt=0)
-
 
 # ------------------------------------------------------------------------------- wire detection
 
