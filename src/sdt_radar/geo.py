@@ -21,16 +21,6 @@ def polar_covariance(
     var = np.diag([sigma_r**2, math.radians(sigma_az_deg) ** 2, math.radians(sigma_el_deg) ** 2])
     return np.asarray(jac @ var @ jac.T)
 
-
-def enu_to_polar(enu: ArrayLike) -> tuple[float, float, float]:
-    """ENU offset -> (range, azimuth_deg in [0, 360), elevation_deg)."""
-    e, n, u = (float(v) for v in np.asarray(enu, dtype=float))
-    rng = math.sqrt(e * e + n * n + u * u)
-    az = math.degrees(math.atan2(e, n)) % 360.0
-    el = math.degrees(math.atan2(u, math.hypot(e, n)))
-    return rng, az, el
-
-
 def heading_deg(ve: float, vn: float) -> float:
     """Course over ground, degrees clockwise from North in [0, 360)."""
     return math.degrees(math.atan2(ve, vn)) % 360.0
