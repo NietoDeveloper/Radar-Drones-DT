@@ -89,7 +89,4 @@ def swarm_scenario(n_targets: int = 300, seed: int = 2, duration_s: float = 60.0
     frame = LocalFrame(site.lat, site.lon, site.alt_m)
     radar = RadarModel(_sensor("pd-1", SensorKind.radar_pulse_doppler, frame, 0, 0, 10, sigma_range_m=8.0,
                                sigma_az_deg=0.6, sigma_el_deg=1.0, max_range_m=15000), r90_m=9000,
-                       scan_period_s=2.0, fa_per_scan=3.0, md_probability=0.0)
-    targets = [make_drone(rng, i, duration_s, 0.2, approach=False, bearing_deg=float(rng.uniform(0, 360)),
-                          start_range_m=float(rng.uniform(1500, 7000)), cooperative=False) for i in range(n_targets)]
-    return Scenario(f"swarm-{n_targets}", duration_s, site, [radar], [], targets, [], seed)
+                       scan_period_s
