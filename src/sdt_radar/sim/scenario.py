@@ -45,6 +45,3 @@ def generate(scn: Scenario) -> list[Detection]:
             k += 1
     dets.sort(key=lambda d: d.t)
     return dets
-
-
-def _site() -> SiteConfig:
