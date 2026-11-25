@@ -13,12 +13,7 @@ F64 = NDArray[np.float64]
 @dataclass
 class Trajectory:
     t: F64  # (N,) seconds relative to scenario start
-    pos: F64  # (N, 3) ENU
-    vel: F64  # (N, 3)
-
-    def at(self, t: float | F64) -> tuple[F64, F64]:
-        tt = np.asarray(t, dtype=float)
-        p = np.stack([np.interp(tt, self.t, self.pos[:, i]) for i in range(3)], axis=-1)
+    pos: F64  # (N, 3) ENU.t, self.pos[:, i]) for i in range(3)], axis=-1)
         v = np.stack([np.interp(tt, self.t, self.vel[:, i]) for i in range(3)], axis=-1)
         return p, v
 
