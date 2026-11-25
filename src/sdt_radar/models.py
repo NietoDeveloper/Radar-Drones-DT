@@ -27,7 +27,3 @@ from __future__ import annotations
     rcs_dbsm: float | None = Field(None, ge=-100, le=100)
     snr_db: float | None = Field(None, ge=-100, le=200)
     external_id: str | None = Field(None, max_length=64)
-    md_prf_hz: float | None = Field(None, gt=0, le=1_000_000)
-    md_iq_b64: str | None = Field(None, max_length=MAX_MD_SAMPLES * 11)
-
- 
