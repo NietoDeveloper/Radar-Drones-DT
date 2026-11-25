@@ -12,7 +12,7 @@ from scipy.optimize import linea
     pairs: list[tuple[int, int]] = []
     if truth:
         gp = np.stack([p for _, _, p in truth])
-        d = np.linalg.norm(gp[:, None, :] - tp[None,= {"drone", "bird"}:
+        d = np.linalg.norm(gp[:, None, :] -tp[None,= {"drone", "bird"}:
                 score.class_drone_vs_bird_wrong += 1
     for i, tr in enumerate(confirmed):
         if i not in matched_tracks:
