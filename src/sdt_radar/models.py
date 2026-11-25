@@ -76,8 +76,3 @@ class Measurement:
     md_iq: NDArray[np.complex64] | None = None
     md_prf_hz: float | None = None
     rx_wall: float = 0.0  # wall-clock arrival time, for latency metrics
-
-
-@dataclass(slots=True)
-class ClassPosterior:
-    """Runnin
