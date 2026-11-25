@@ -16,17 +16,7 @@ class Score
     class_correct: int = 0
     class_drone_vs_bird_wrong: int = 0
     matched_ids: set[str] = field(default_factory=set)
-    unmatched_ids: set[str] = field(defau
-        return self.class_correct / self.class_known if self.class_known else float("nan")
-
-def evaluate_snapshot(score: Score, truth: list[tuple[str, str, np.ndarray]], tracks: list[TrackOut],
-                      gate_m: float = 100.0) -> None:
-    """Match confirmed tracks to truth (Hungarian on ENU position) and accumulate metrics.
-
-    ``truth`` holds only targets that are expected to be tracked at this instant.
-    """
-    score.evals += 1
-    confirmed = [t for t in tracks if t.status.value in ("confirmed", "coasting")]
+    unmatched_ids: set[str] = field(dealue in ("confirmed", "coasting")]
     score.expected += len(truth)
     if not confirmed:
         return
