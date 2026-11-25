@@ -14,14 +14,6 @@ F64 = NDArray[np.float64]
 class Trajectory:
 
     t_end: float = 1e9
-    aim = np.array([0.0, 0.0, alt]) if approach else None
-    heading = float(np.arctan2(-pos0[0], -pos0[1]) + rng.normal(0, 0.3)) if approach else float(rng.uniform(0, 2 * np.pi))
-    traj = make_trajectory(rng, duration, dt, pos0, speed, heading, turn_sigma=0.08, speed_sigma=1.0,
-                           climb_sigma=0.4, alt_range=(20, 180), aim_at=aim)
-    return Target(f"drone-{idx:03d}", "drone", float(rng.uniform(-23, -17)), traj, cooperative=cooperative,
-                  serial=f"1581F{idx:08d}" if cooperative else None, t_start=t_start)
-
-
 def make_bird(rng: np.random.Generator, idx: int, duration: float, dt: float, *, max_range_m: float) -> Target:
     r = float(rng.uniform(300, max_range_m * 0.8))
     b = float(rng.uniform(0, 2 * np.pi))
