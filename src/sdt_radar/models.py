@@ -114,9 +114,4 @@ class TrackOut(BaseModel):
     status: TrackStatus
     target_class: TargetClass
     class_confidence: float
-    confidence: float
-    lat: float
-    lon: float
-    alt_m: float
- climb_mps: float
-    rcs_dbsm: float | None
+    con
