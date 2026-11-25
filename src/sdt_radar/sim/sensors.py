@@ -26,11 +26,7 @@ class RadarModel:
                 continue
             fluct_db = 10 * math.log10(max(rng.exponential(1.0), 1e-3))
             rcs_db, snr_db = tg.rcs_dbsm + fluct_db, snr_mean_db + fluct_db
-            out.append(self._detection(t_rel + tau, t0_epoch, rng_m, az, el, rcs_db, snr_db, vel, rel, tg.kind, rng))
-        for _ in range(rng.poisson(self.fa_per_scan)):
-            tau = rng.uniform(0, self.scan_period_s)
-            r = rng.uniform(self.min_range_m, self.max_range_m * 0.8)
-            az, el = rng.uniform(0, 360), rng.uniform(0, 25)
+            out.append(self._detection(t_g.uniform(0, 25)
             out.append(self._detection(t_rel + tau, t0_epoch, r, az, el, rng.uniform(-35, -15), rng.uniform(8, 14),
                                        np.zeros(3), np.array([1.0, 0, 0]), "clutter", rng))
         return out
