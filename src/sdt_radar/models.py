@@ -151,22 +151,3 @@ class TrackPoint(BaseModel):
     sensors: list[str]
 
 
-class AlertOut(BaseModel):
-    alert_id: str
-    type: AlertType
-    level: AlertLevel
-    state: Literal["open", "closed"]
-    track_id: str
-    zone_id: str
-    zone_name: str
-    opened_at: float
-    updated_at: float
-    closed_at: float | None
-    risk: float = Field(ge=0, le=1)
-    target_class: TargetClass
-    message: str
-    lat: float
-    lon: float
-    alt_m: float
-
-
