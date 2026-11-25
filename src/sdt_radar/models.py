@@ -13,10 +13,6 @@ from pydantic import BaseModel, ConfigDict, Field, field_validator, model_valida
 
 # ----------------------------------------------------------------------------------------- enums
 
-
-class SensorKind(StrEnum):
-    radar_fmcw = "radar_fmcw"
-    radar_pulse_doppler = "radar_pulse_doppler"
     radar_aesa = "radar_aesa"
     radar_passive = "radar_passive"
     rf = "rf"
