@@ -15,4 +15,4 @@ th.sin(lon), math.cos(lon)
         object.__setattr * ce * math.sin(az), range_m * ce * math.cos(az), range_m * math.sin(el)])
 
 
-def polar_covariance(
+def polar_covari
