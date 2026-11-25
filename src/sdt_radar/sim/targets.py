@@ -17,14 +17,7 @@ class Trajectory:
 
     def active(self, t: float) -> bool:
         return self.t_start <= t <= self.t_end
-
-
-def _wrap(a: float) -> float:
-    return (a + np.pi) % (2 * np.pi) - np.pi
-
-
-def make_trajectory(rng: np.random.Generator, duration: float, dt: float, pos0: F64, speed: float,
-                    heading: float, *, turn_sigma: float, speed_sigma: float, climb_sigma: float,
+a: float, speed_sigma: float, climb_sigma: float,
                     alt_range: tuple[float, float], aim_at: F64 | None = None, soar: bool = False, loiter_radius_m: float = 200.0,
                     speed_limits: tuple[float, float] = (2.0, 30.0)) -> Trajectory:
     n = int(duration / dt) + 1
