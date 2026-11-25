@@ -63,7 +63,3 @@ from __future__ import annotations
 @dataclass(slots=True)
 class Measurement:
     """Detection converted to the local ENU frame with its covariance."""
-
-    sensor_id: str
-    t: float
-    z: NDArray[np.float
