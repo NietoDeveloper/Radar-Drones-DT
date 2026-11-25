@@ -16,17 +16,7 @@ class Trajectory:
     t_end: float = 1e9
 
     def active(self, t: float) -> bool:
-        return self.t_start <= t <= self.t_end
-a: float, speed_sigma: float, climb_sigma: float,
-                    alt_range: tuple[float, float], loiter_radius_m:  # reached the objective: orbit it
-                    turn = v / loiter_radius_m
-                else:
-                    bearing = np.arctan2(d[0], d[1])
-                    turn = float(np.clip(0.8 * _wrap(bearing - h), -0.6, 0.6))
-            else:
-                turn = turn_bias + rng.normal(0, turn_sigma)
-            h += turn * dt
-            v = float(np.clip(v + rng.normal(0, speed_sigma) * dt, *speed_limits))
+        return self.t_start <= t <= self.t_endspeed_sigma) * dt, *speed_limits))
             z = pos[i + 1, 2]
             target_vz = np.clip(0.2 * (np.mean(alt_range) - z), -3, 3)
             vz += 0.5 * (target_vz - vz) * dt + rng.normal(0, climb_sigma) * dt
