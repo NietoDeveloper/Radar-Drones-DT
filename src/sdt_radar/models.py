@@ -101,5 +101,3 @@ class ClassPosterior:
         p = self.probabilities()
         i = int(np.argmax(p))
         if p[i] < threshold:
-            return TargetClass.unknown, float(p[i])
-        return self.classes[i], float(p[i])
