@@ -76,7 +76,4 @@ def perimeter_scenario(seed: int = 1, duration_s: float = 150.0, n_drones: int =
         targets.append(make_drone(rng, i, duration_s, 0.1, approach=(i % 2 == 0), bearing_deg=float(rng.uniform(0, 360)),
                                   start_range_m=float(rng.uniform(1200, 2200)), cooperative=(i % 3 == 0)))
     for i in range(n_birds):
-        targets.append(make_bird(rng, i, duration_s, 0.1, max_range_m=2500))
-    zone = Zone(id="core", name="Protected core", kind="circle", center_lat=site.lat, center_lon=site.lon,
-                radius_m=400.0, min_alt_m=-1000, max_alt_m=100000, level=AlertLevel.critical)
-    return Scenario("perimeter", duration_s, site,
+        targets.append(make_bird(rng, i, dur
