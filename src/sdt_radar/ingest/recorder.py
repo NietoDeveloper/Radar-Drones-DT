@@ -1,1 +1,0 @@
-"""Raw-detection recorder (JSON lines). 
