@@ -42,7 +42,3 @@ from __future__ import annotations
         polar = (self.range_m, self.azimuth_deg, self.elevation_deg)
         geo = (self.lat, self.lon, self.alt_m)
         has_polar, has_geo = all(v is not None for v in polar), all(v is not None for v in geo)
-        if any(v is not None for v in polar) and not has_polar:
-            raise ValueError("polar measurement needs range_m, azimuth_deg and elevation_deg together")
-        if any(v is not None for v in geo) and not has_geo:
-            raise ValueError("geodetic measurement needs lat, lon and alt_m together")
