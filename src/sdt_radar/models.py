@@ -14,18 +14,7 @@ from __future__ import annotations
 
     model_config = ConfigDict(extra="forbid")
 
-
-def decode_iq(b64: str) -> NDArray[np.complex64]:
-    raw = base64.b64decode(b64.encode("ascii"), validate=True)
-    if len(raw) % 8 != 0:
-        raise ValueError("micro-Doppler payload must be a whole number of complex64 samples")
-    inter = np.frombuffer(raw, dtype="<f4")
-class Detection(BaseModel):
-    """One measurement as it arrives from a sensor (UDP / TCP / HTTP / replay).
-
-    Exactly one measurement geometry must be present:
-
-    * polar   -> ``range_m`` + ``azimuth_deg`` + ``elevation_deg`` (relative to the sensor), or
+ ``elevation_deg`` (relative to the sensor), or
     * geodetic-> ``lat`` + ``lon`` + ``alt_m`` (e.g. Remote ID, RF geolocation, EO/IR triangulation).
     """
 
