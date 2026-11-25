@@ -18,16 +18,7 @@ class Trajectory:
     def active(self, t: float) -> bool:
         return self.t_start <= t <= self.t_end
 a: float, speed_sigma: float, climb_sigma: float,
-                    alt_range: tuple[float, float], aim_at: F64 | None = None, soar: bool = False, loiter_radius_m: float = 200.0,
-                    speed_limits: tuple[float, float] = (2.0, 30.0)) -> Trajectory:
-    n = int(duration / dt) + 1
-    t = np.arange(n, dtype=float) * dt
-    pos = np.zeros((n, 3))heading clockwise from North
-        if i + 1 < n:
-            pos[i + 1] = pos[i] + vel[i] * dt
-            if aim_at is not None:
-                d = aim_at - pos[i]
-                if float(np.hypot(d[0], d[1])) < loiter_radius_m:  # reached the objective: orbit it
+                    alt_range: tuple[float, float], loiter_radius_m:  # reached the objective: orbit it
                     turn = v / loiter_radius_m
                 else:
                     bearing = np.arctan2(d[0], d[1])
