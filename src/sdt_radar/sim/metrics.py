@@ -13,8 +13,4 @@ from scipy.optimize import linea
     if truth:
         gp = np.stack([p for _, _, p in truth])
         d = np.linalg.norm(gp[:, None, :] -tp[None,= {"drone", "bird"}:
-                score.class_drone_vs_bird_wrong += 1
-    for i, tr in enumerate(confirmed):
-        if i not in matched_tracks:
-            score.unmatched_track_instants += 1
-            score.unmatched_ids.add(tr.track_id)
+                score.class_drone_vs_bird_wro
