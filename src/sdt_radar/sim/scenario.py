@@ -107,15 +107,4 @@ def run_scenario(scn: Scenario, settings: Settings | None = None, pipeline: Pipe
     i, n = 0, len(dets)
     t_rel = 0.0
     next_eval = 0.0
-    while t_rel <= scn.duration_s + 1.0:
-        now = scn.t0_epoch + t_rel
-        while i < n and dets[i].t <= now:
-            pipe.ingest(dets[i], rx_wall=0.0)
-            i += 1
-        res = pipe.step(now)
-        alerts.extend(res.alerts)
-        if t_rel >= max(next_eval, warmup_s):  # no scoring during warm-up
-            next_eval += eval_every_s
-            evaluate_snapshot(score, scn.truth(t_rel, warmup_s), pipe.snapshot(now), gate_m)
-        t_rel += step_s
-    return pipe, score, alerts
+    while t_rel <= scn.duration_s +
