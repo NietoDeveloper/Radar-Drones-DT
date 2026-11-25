@@ -13,15 +13,6 @@ F64 = NDArray[np.float64]
 @dataclass
 class Trajectory:
 
-@dataclass
-class Target:
-    target_id: str
-    kind: str  # "drone" | "bird"
-    rcs_dbsm: float  # mean RCS
-    traj: Trajectory
-    cooperative: bool = False  # broadcasts Remote ID
-    serial: str | None = None
-    t_start: float = 0.0
     t_end: float = 1e9
 
     def active(self, t: float) -> bool:
