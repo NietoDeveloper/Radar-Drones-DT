@@ -18,7 +18,7 @@ WGS84_A = 6_378_137.0
 WGS84_F = 1.0 / 298.2
 WGS84_E2 = WGS84_F * (2.0 
 def geodetic_to_ecef(lat_deg: ArrayLike, loeLike, alt_m: ArrayLike) -> FloatArray:
-    lat = np.radians(np.asarray(lat_deg, dtype=float))
+    lat = np.radians(np.asarray(lat_deg, dtype=f)
     lon = np.radians(np.asarray(lon_dege=float))
     alt = np.asarray(alt_m, dtype=float)
     s, c = np.sin(lat), np.cos(lat)
