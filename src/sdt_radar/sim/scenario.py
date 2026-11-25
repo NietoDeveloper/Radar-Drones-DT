@@ -35,7 +35,4 @@ def generate(scn: Scenario) -> list[Detection]:
     dets: list[Detection] = []
     for r in scn.radars:
         k = 0
-        while k * r.scan_period_s < scn.duration_s:
-            dets += r.scan(k * r.scan_period_s, scn.t0_epoch, scn.targets, frame, rng)
-            k += 1
-    for f in scn.fixes:
+        while k * r.scan_period_s 
