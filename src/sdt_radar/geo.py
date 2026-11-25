@@ -10,19 +10,7 @@ Conventions (used everywhere in the package):
 from __future__ import annotati
 import math
 from dataclasses import dataclass
-
-import n alt_m: ArrayLike) -> FloatArray:
-    lat = np.radians(np.asarray(lat_deg, dtype=f)
-    lon = np.radians(np.asarray(lon_dege=f
-    alt = np.asarray(alt_m, dtype=floatodetic origin."""
-
-    lat: float
-    lon: float
-    alt_m: float = 0.0
-
-    def __post_init__(self) -> None:
-        lat, lon = math.radians(self.lat), math.radians(self.lon)
-        sl, cl, so, co = math.sin(lat), math.cos(lat), math.sin(lon), math.cos(lon)
+th.sin(lon), math.cos(lon)
         rot = np.array([[-so, co, 0.0], [-sl * co, -sl * so, cl], [cl * co, cl * so, sl]])
         object.__setattr__(self, "_rot", rot)
         object.__setattr__(self, "_ecef0", geodetic_to_ecef(self.lat, self.lon, self.alt_m))
