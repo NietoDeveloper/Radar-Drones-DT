@@ -40,4 +40,3 @@ from __future__ import annotations
     @model_validator(mode="after")
     def _one_geometry(self) -> Detection:
         polar = (self.range_m, self.azimuth_deg, self.elevation_deg)
-        geo = (self
