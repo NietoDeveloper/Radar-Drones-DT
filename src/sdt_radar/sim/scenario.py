@@ -20,7 +20,4 @@ from .targets import Target, make_bird, make_drone
         data.update(overrides)
         return Settings.model_validate(data)
 
-    def truth(self, t_rel: float, warmup_s: float = 0.0) -> list[tuple[str, str, np.ndarray]]:
-        out = []
-        for tg in self.targets:
-            if tg.active(t_rel) 
+    def truth(self, t_rel: float, war
