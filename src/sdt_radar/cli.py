@@ -21,7 +21,7 @@ def _http_json(method: str, url: str, body: Any, api_key: str | None) -> Any:
         return json.loads(r.read() or b"null")
 
 
-def _scenario(name: str, seed: int, duration: float | None, targets: int):
+def _scenario(name: str, seed: iduration: float | None, targets: int):
     from .sim import perimeter_scenario, swarm_scenario
 
     if name == "perimeter":
