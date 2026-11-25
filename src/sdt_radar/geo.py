@@ -1,1 +1,1 @@
-"""Geodesy helpers: WGS-84 <-> local ENU, polar sensor measureme
+"""Geodesy helpers: WGS-84 <-> local ENU, polar sensor meas
