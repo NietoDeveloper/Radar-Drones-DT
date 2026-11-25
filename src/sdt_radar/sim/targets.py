@@ -14,14 +14,7 @@ F64 = NDArray[np.float64]
 class Trajectory:
 
     t_end: float = 1e9
-
-    def active(self, t: float) -> bool:
-        return self.t_start <= t <= self.t_endspeed_sigma) * dt, *speed_limits))
-            z = pos[i + 1, 2]
-            target_vz = np.clip(0.2 * (np.mean(alt_range) - z), -3, 3)
-            vz += 0.5 * (target_vz - vz) * dt + rng.normal(0, climb_sigma) * dt
-            if z < alt_range[0] or z > alt_range[1]:
-                vz = float(np.clip(0.3 * (np.mean(alt_range) - z), -3, 3))
+nge) - z), -3, 3))
     return Trajectory(t, pos, vel)
 
 
