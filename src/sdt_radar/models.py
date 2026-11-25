@@ -20,13 +20,6 @@ def decode_iq(b64: str) -> NDArray[np.complex64]:
     if len(raw) % 8 != 0:
         raise ValueError("micro-Doppler payload must be a whole number of complex64 samples")
     inter = np.frombuffer(raw, dtype="<f4")
-    if not np.all(np.isfinite(inter)):
-        raise ValueError("micro-Doppler payload contains non-finite samples")
-    out = np.empty(inter.size // 2, dtype=np.complex64)
-    out.real, out.imag = inter[0::2], inter[1::2]
-    return out
-
-
 class Detection(BaseModel):
     """One measurement as it arrives from a sensor (UDP / TCP / HTTP / replay).
 
