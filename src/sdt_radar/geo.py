@@ -12,7 +12,7 @@ from __future__ import annotations
 import math
 from dataclasses import dataclass
 
-import numpy a
+import n
 from numpy.typing import ArrayLike, NDArray
 
 WGS84_A = 6_378_137.0
