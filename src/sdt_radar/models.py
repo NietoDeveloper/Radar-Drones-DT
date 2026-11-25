@@ -90,7 +90,4 @@ class ClassPosterior:
         self.logp = forgetting * self.logp + np.log(np.clip(probs, 1e-6, 1.0))
         self.n += 1
 
-    def probabilities(self) -> NDArray[np.float64]:
-        z = self.logp - float(np.max(self.logp))
-        p = np.exp(z)
-      
+    d
