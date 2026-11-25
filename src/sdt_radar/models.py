@@ -110,8 +110,3 @@ class ClassPosterior:
 
 class TrackOut(BaseModel):
     track_id: str
-    seq: int
-    status: TrackStatus
-    target_class: TargetClass
-    class_confidence: float
-    con
