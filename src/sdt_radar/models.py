@@ -93,7 +93,4 @@ class ClassPosterior:
     def probabilities(self) -> NDArray[np.float64]:
         z = self.logp - float(np.max(self.logp))
         p = np.exp(z)
-        return np.asarray(p / p.sum())
-
-    def decide(self, threshold: float) -> tuple[TargetClass, float]:
-        if self.n == 0:
+      
