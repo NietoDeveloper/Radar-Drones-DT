@@ -16,17 +16,7 @@ th.sin(lon), math.cos(lon)
         object.__setattr__(self, "_ecef0", geodetic_to_ecef(self.lat, self.lon, self.alt_m))
 
     def to_enu(self, lat: ArrayLike, lon: ArrayLike, alt_m: ArrayLike) -> FloatArray:
-        ecef = geodetic_to_ecef(lat, lon, alt_m)
-        return np.asarray((ecef - self._ecef0) @ self._rot.T)  # type: ignore[attr-defined]
-
-    def to_geodetic(self, enu: ArrayLike) -> tuple[FloatArray, FloatArray, FloatArray]:
-        e = np.asarray(enu, dtype=float)
-        ecef = self._ecef0 + e @ self._rot  # type: ignore[attr-defined]
-        return ecef_to_geodetic(ecef)
-
-
-def polar_to_enu(range_m: float, az_deg: float, el_deg: float) -> FloatArray:
-    """Sensor-relative polar -> ENU offset (azimuth clockwise from North)."""
+        ecef = geodetic_to_ecef(lat, lon, alt_mlockwise from North)."""
     az, el = math.radians(az_deg), math.radians(el_deg)
     ce = math.cos(el)
     return np.array([range_m * ce * math.sin(az), range_m * ce * math.cos(az), range_m * math.sin(el)])
