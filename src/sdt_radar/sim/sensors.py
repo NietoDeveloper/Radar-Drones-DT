@@ -18,15 +18,7 @@ class RadarModel:
     @property_lin)
         for tg in targets:
             fluct_db = 10 * math.log10(max(rng.exponential(1.0), 1e-3))
-            rcs_db, snr_db = tg.rcs_dbsm + fluct_db, snr_mean_db + fluct_db
-            out.append(self._detection(t_g.uniform(0, 25)
-            out.append(self._detection(t_rel + tau, t0_epoch, r, az, el, rng.uniform(-35, -15), rng.uniform(8, 14),
-                                       np.zeros(3), np.array([1.0, 0, 0]), "clutter", rng))
-        return out
-
-    def _detection(self, t_rel: float, t0_epoch: float, r: float, az: float, el: float, rcs_db: float, snr_db: float,
-                   vel: np.ndarray, rel: np.ndarray, kind: str, rng: np.random.Generator) -> Detection:
-        s = self.sensor
+            rcs_db, snr_db = tg.rc
         scale = float(np.clip(math.sqrt(self.snr90_lin / max(10 ** (snr_db / 10), 1e-6)), 0.7, 2.5))
         r_n = max(0.0, r + rng.normal(0, s.sigma_range_m * scale))
         az_n = (az + rng.normal(0, s.sigma_az_deg * scale)) % 360.0
