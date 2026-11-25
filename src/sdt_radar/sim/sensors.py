@@ -7,9 +7,3 @@ follows the Swerling-I relation ``Pd = Pfa ** (1 / (1 + SNR))``. This is a plann
 waveform-level simulation.
 """)) > self.max_range_m or rng.random() > self.pd:
                 continue
-            noisy = pos + rng.normal(0, [self.sigma_h_m, self.sigma_h_m, self.sigma_v_m])
-            lat, lon, alt = frame.to_geodetic(noisy)
-            out.append(Detection(sensor_id=s.id, t=t0_epoch + t_rel, lat=float(lat), lon=float(lon),
-                                 alt_m=float(alt), sigma_h_m=self.sigma_h_m, sigma_v_m=self.sigma_v_m,
-                                 external_id=tg.serial if self.send_serial else None))
-        return out
