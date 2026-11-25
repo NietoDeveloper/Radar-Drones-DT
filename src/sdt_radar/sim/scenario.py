@@ -101,8 +101,4 @@ def run_scenario(scn: Scenario, settings: Settings | None = None, pipeline: Pipe
     """Run a scenario through a pipeline in data time (faster than real time) and score the result."""
     pipe = pipeline or Pipeline(settings or scn.settings())
     pipe.start()
-    dets = detections if detections is not None else generate(scn)
-    score = Score()
-    alerts: list = []
-    i, n = 0, len(dets)
-    t_rel = 0
+    dets = detect
