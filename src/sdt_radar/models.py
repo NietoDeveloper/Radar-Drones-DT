@@ -70,7 +70,4 @@ class Measurement:
     R: NDArray[np.float64]  # (3, 3) position covariance
     kind: SensorKind
     radial_velocity: float | None = None
-    rcs_dbsm: float | None = None
-    snr_db: float | None = None
-    external_id: str | None = None
-    md_iq: ND
+    rcs_dbsm: float | None
