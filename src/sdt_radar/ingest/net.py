@@ -6,10 +6,6 @@ Wire format (one of):
 * a JSON array of objects             -> a batch
 * newline-delimited JSON (TCP / UDP)  -> one detection per line
 
-Everything is validated by the ``Detection`` model; invalid input is counted, never trusted.
-Vendor protocols (SAPIENT, ASTERIX, proprietary SDKs) are bridged by small adapters that emit this
-format (see ``docs/SENSOR_INTEGRATION.md``).
-"""
 
 from __future__ import annotations
 
