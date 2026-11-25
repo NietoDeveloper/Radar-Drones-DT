@@ -59,7 +59,3 @@ from __future__ import annotations
 
 # --------------------------------------------------------------------------- internal structures
 
-
-@dataclass(slots=True)
-class Measurement:
-    """Detection converted to the local E
