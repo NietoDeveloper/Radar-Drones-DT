@@ -26,8 +26,7 @@ def geodetic_to_ecef(lat_deg: ArrayLike, loeLike, alt_m: ArrayLike) -> FloatArra
     x = (n + alt) * c * np.cos(lon)
     y = (n + alt) * c * np.sin(lon)
     z = (n * (1.0 - WGS84_E2) + alt) * s
-    return np.stack([x, y, z], axis=-1)
-
+    return np.stack([
 
 def ecef_to_geodetic(xyz: ArrayLike) -> tuple[FloatArray, FloatArray, FloatArray]:
     a = np.asarray(xyz, dtype=float)
