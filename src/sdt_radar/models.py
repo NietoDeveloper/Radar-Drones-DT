@@ -86,8 +86,4 @@ class ClassPosterior:
     logp: NDArray[np.float64] = field(default_factory=lambda: np.zeros(3))
     n: int = 0
 
-    def update(self, probs: NDArray[np.float64], forgetting: float) -> None:
-        self.logp = forgetting * self.logp + np.log(np.clip(probs, 1e-6, 1.0))
-        self.n += 1
-
-    d
+    def update(self, probs:
