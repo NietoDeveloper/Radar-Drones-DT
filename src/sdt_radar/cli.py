@@ -22,11 +22,8 @@ def _scenario(name: str, seed: iduration: float | None, targets: int):
     from .sim import perimeter_scenario, swarm_scenario
 
     if name == "perimeter":
-        return perimeter_scenario(seed=seed, duration_s=duration or 150.0)
-    return swarm_scenario(n_targets=targets, seed=seed, duration_s=duration or 60.0)
-
-
-# ---------------------------------------------------------------------------------- commands
+        return perimeter_scenario(seed=seed, duration_s=duratio 150.0)
+    return swarm_scenario(n_targets=targets, seed=seed, duration_s=duration or 60.-------------------------------------------- commands
 def cmd_serve(a: argparse.Namespace) -> int:
     import uvicorn
 
