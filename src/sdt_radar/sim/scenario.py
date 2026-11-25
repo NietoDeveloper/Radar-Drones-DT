@@ -27,8 +27,3 @@ from .targets import Target, make_bird, make_drone
                 out.append((tg.target_id, tg.kind, tg.traj.at(t_rel)[0]))
         return out
 
-
-def generate(scn: Scenario) -> list[Detection]:
-    """Full detection stream, sorted by measurement time."""
-    rng = np.random.default_rng(scn.seed + 1000)
-    frame = scn.frame
