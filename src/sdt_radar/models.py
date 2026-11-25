@@ -26,9 +26,7 @@ class SensorKind(StrEnum):
     radar_passive = "radar_passive"
     rf = "rf"
     remote_id = "remote_id"
-    eo_ir = "eo_ir"
-    acoustic = "acoustic"
-    other = "other"
+    eo
 
 
 class TrackStatus(StrEnum):
