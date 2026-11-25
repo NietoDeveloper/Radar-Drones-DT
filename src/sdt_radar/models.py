@@ -62,4 +62,4 @@ from __future__ import annotations
 
 @dataclass(slots=True)
 class Measurement:
-    """Detection converted to the local ENU frame with its covari
+    """Detection converted to the local ENU frame with its c
