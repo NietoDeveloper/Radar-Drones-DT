@@ -16,8 +16,7 @@ def _http_json(method: str, url: str, body: Any, api_key: str | None) -> Any:
     req = urllib.request.Request(url, method=method, data=json.dumps(body).encode(),
                                  headertent-type": "application/json", **({"x-api-key": api_key} if api_key else {})})
     with urllib.request.urlopen(req, timeout=10) as r:  # noqa: S310 - operator-supplied URL
-        return json.loads(r.read() or b"null")
-
+        return json.loads(r.read() or b"nu
 
 def _scenario(name: str, seed: iduration: float | None, targets: int):
     from .sim import perimeter_scenario, swarm_scenario
