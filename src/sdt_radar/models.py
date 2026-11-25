@@ -187,10 +187,3 @@ class Zone(BaseModel):
     level: AlertLevel = AlertLevel.critical
 
     @model_validator(mode="after")
-    def _shape(self) -> Zone:
-        if self.kind == "circle":
-            if self.center_lat is None or self.center_lon is None or self.radius_m is None:
-                raise ValueError("circle zone needs center_lat, center_lon and radius_m")
-        else:
-            if not self.polygon or len(self.polygon) < 3:
-                raise Value
