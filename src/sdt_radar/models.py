@@ -14,17 +14,6 @@ from __future__ import annotations
 
     model_config = ConfigDict(extra="forbid")
 
-    id: str = Field(min_length=1, max_length=64)
-    kind: SensorKind
-    lat: float = Field(ge=-90, le=90)
-    lon: float = Field(ge=-180, le=180)
-    alt_m: float = 0.0
-terleaved little-endian float32 (I, Q, I, Q, ...)."""
-    a = np.asarray(iq, dtype=np.complex64)
-    inter = np.empty(a.size * 2, dtype="<f4")
-    inter[0::2], inter[1::2] = a.real, a.imag
-    return base64.b64encode(inter.tobytes()).decode("ascii")
-
 
 def decode_iq(b64: str) -> NDArray[np.complex64]:
     raw = base64.b64decode(b64.encode("ascii"), validate=True)
