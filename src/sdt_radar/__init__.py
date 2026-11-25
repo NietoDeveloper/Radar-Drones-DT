@@ -1,3 +1,1 @@
-"""SoftwareDT drone-radar backend."""
-
-_
+"""SoftwareDT drone-radar backend.""
