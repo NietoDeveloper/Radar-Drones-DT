@@ -11,12 +11,7 @@ import numpy as np
 from numpy.typing import NDArray
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
-# ----------------------------------------------------------------------------------------- enums
-
-    radar_aesa = "radar_aesa"
-    radar_passive = "radar_passive"
-    rf = "rf"
-    remote_id = "remote_id"
+# -----------------------------
     eo
 
 
