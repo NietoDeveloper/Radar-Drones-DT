@@ -74,6 +74,4 @@ def perimeter_scenario(seed: int = 1, duration_s: float = 150.0, n_drones: int =
     targets: list[Target] = []
     for i in range(n_drones):
         targets.append(make_drone(rng, i, duration_s, 0.1, approach=(i % 2 == 0), bearing_deg=float(rng.uniform(0, 360)),
-                                  start_range_m=float(rng.uniform(1200, 2200)), cooperative=(i % 3 == 0)))
-    for i in range(n_birds):
-        targets.append(make_bird(rng, i, dur
+                                
