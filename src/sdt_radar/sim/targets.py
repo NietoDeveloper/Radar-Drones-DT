@@ -22,13 +22,7 @@ a: float, speed_sigma: float, climb_sigma: float,
                     speed_limits: tuple[float, float] = (2.0, 30.0)) -> Trajectory:
     n = int(duration / dt) + 1
     t = np.arange(n, dtype=float) * dt
-    pos = np.zeros((n, 3))
-    vel = np.zeros((n, 3))
-    pos[0] = pos0
-    h, v, vz = heading, speed, 0.0
-    turn_bias = rng.choice([-0.4, 0.4]) if soar else 0.0
-    for i in range(n):
-        vel[i] = (v * np.sin(h), v * np.cos(h), vz)  # heading clockwise from North
+    pos = np.zeros((n, 3))heading clockwise from North
         if i + 1 < n:
             pos[i + 1] = pos[i] + vel[i] * dt
             if aim_at is not None:
