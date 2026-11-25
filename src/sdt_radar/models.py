@@ -170,6 +170,3 @@ class AlertOut(BaseModel):
     alt_m: float
 
 
-class Zone(BaseModel):
-    """Protected / alert zone: a circle or a polygon, with an altitude band."""
-
