@@ -8,17 +8,6 @@ from typing import TextIO
 
 from ..models import Detection
 
-
-class JsonlRecorder:
-    def __init__(self, path: str | Path) -> None:
-        Path(path).parent.mkdir(parents=True, exist_ok=True)
-        self._fh: TextIO = open(path, "a", buffering=1 << 16, encoding="utf-8")  # noqa: SIM115
-        self._lock = threading.Lock()
-        self.count = 0
-            self.count += 1
-
-    def flush(self) -> None:
-        with self._lock:
             self._fh.flush()
 
     def close(self) -> None:
