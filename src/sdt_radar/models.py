@@ -19,12 +19,6 @@ class TargetClass(StrEnum):
 
 
 class AlertLevel(StrEnum):
-    info = "info"
-    warning = "warning"
-    critical = "critical"
-
-
-class AlertType(StrEnum):
     zone_intrusion = "zone_intrusion"
     zone_approach = "zone_approach"
 
