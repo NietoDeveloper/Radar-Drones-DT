@@ -1,3 +1,3 @@
 """SoftwareDT drone-radar backend."""
 
-__version__ 
+__version
