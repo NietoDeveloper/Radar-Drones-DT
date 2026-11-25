@@ -66,8 +66,4 @@ class Measurement:
 
     sensor_id: str
     t: float
-    z: NDArray[np.float64]  # (3,) ENU position, metres
-    R: NDArray[np.float64]  # (3, 3) position covariance
-    kind: SensorKind
-    radial_velocity: float | None = None
-    rcs_dbsm: float | None
+    z: NDArray[np.float
