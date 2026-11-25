@@ -82,8 +82,4 @@ def perimeter_scenario(seed: int = 1, duration_s: float = 150.0, n_drones: int =
     return Scenario("perimeter", duration_s, site, radars, fixes, targets, [zone], seed)
 
 
-def swarm_scenario(n_targets: int = 300, seed: int = 2, duration_s: float = 60.0) -> Scenario:
-    """Stress test: hundreds of simultaneous tracks over a pulse-Doppler radar (no micro-Doppler payload)."""
-    rng = np.random.default_rng(seed)
-    site = _site()
-    frame = LocalFrame(site.lat, si
+def swarm_scenario(n_targets: int = 300, seed: i
