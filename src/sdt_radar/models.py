@@ -12,14 +12,6 @@ from __future__ import annotations
     lost = "lost"
 
 
-class TargetClass(StrEnum):
-    drone = "drone"
-    bird = "bird"
-    clutter = "clu
-
-
-class AlertLevel(StrEnum):
-    zone_intrusion = "zone_intrusion"
     zone_approach = "zone_approach"
 
 
