@@ -19,14 +19,6 @@ from scipy.optimize import linea
     matched_tracks = set()
     for gi, ti in pairs:
         tid, kind, gpos = truth[gi]
-        tr = confirmed[ti]
-        matched_tracks.add(ti)
-        score.matched += 1
-        e = tp[ti] - gpos
-        score.horiz_sq_err += float(e[0] ** 2 + e[1] ** 2)
-        score.vert_sq_err += float(e[2] ** 2)
-        score.matched_ids.add(tr.track_id)
-        prev = score._last_id.get(tid)
         if prev is not None and prev != tr.track_id:
             score.id_switches += 1
         score._last_id[tid] = tr.track_id
