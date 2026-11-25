@@ -93,8 +93,3 @@ def swarm_scenario(n_targets: int = 300, seed: int = 2, duration_s: float = 60.0
     targets = [make_drone(rng, i, duration_s, 0.2, approach=False, bearing_deg=float(rng.uniform(0, 360)),
                           start_range_m=float(rng.uniform(1500, 7000)), cooperative=False) for i in range(n_targets)]
     return Scenario(f"swarm-{n_targets}", duration_s, site, [radar], [], targets, [], seed)
-
-
-def run_scenario(scn: Scenario, settings: Settings | None = None, pipeline: Pipeline | None = None,
-                 step_s: float = 0.5, eval_every_s: float = 1.0, warmup_s: float = 15.0,
-                 detecti
