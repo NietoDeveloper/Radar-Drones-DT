@@ -13,18 +13,7 @@ class RadarModel:
     r90_m: float
     scan_period_s: float
     rotating: bool = True
-    pfa: float = 1e-6elf.r90_m * 1.6
-
-    @property_lin)
-        for tg in targets:
-            fluct_db = 10 * math.log10(max(rng.exponential(1.0), 1e-3))
-            rcs_db, snr_db = tg.rc
-        scale = float(np.clip(math.sqrt(self.snr90_lin / max(10 ** (snr_db / 10), 1e-6)), 0.7, 2.5))
-        r_n = max(0.0, r + rng.normal(0, s.sigma_range_m * scale))
-        az_n = (az + rng.normal(0, s.sigma_az_deg * scale)) % 360.0
-        el_n = float(np.clip(el + rng.normal(0, s.sigma_el_deg * scale), -90, 90))
-        unit = rel / max(float(np.linalg.norm(rel)), 1e-9)
-        v_r = float(np.dot(vel, unit)) + float(rng.normal(0, 0.3))
+    pfa: float = 1e-6elf.r90_m * loat(rng.normal(0, 0.3))
         md_iq = md_prf = None
         if rng.random() < self.md_probability:
             table: dict[str, Callable[..., Any]] = {"drone": synth_multirotor, "bird": synth_bird}
