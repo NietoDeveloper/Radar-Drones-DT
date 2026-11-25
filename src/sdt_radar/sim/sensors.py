@@ -18,16 +18,7 @@ class RadarModel:
     @property_lin)
         for tg in targets:
             if not tg.active(t_rel):
-                continue
-            pos0, _ = tg.traj.at(t_rel)
-            _, az0, _ = enu_to_polar(pos0 - s_enu)
-            tau = az0 / 360.0 * self.scan_period_s if self.rotating else 0.005 * self.scan_period_s
-            pos, vel = tg.traj.at(t_rel + tau)
-            rel = pos - s_enu
-            rng_m, az, el = enu_to_polar(rel)
-            if not (self.min_range_m <= rng_m <= self.max_range_m) or not (0.0 <= el <= self.max_elev_deg):
-                continue
-            # Swerling-I: Pd is the *fluctuation-averaged* detection probability for the mean SNR, so Pd is
+                continuetion-averaged* detection probability for the mean SNR, so Pd is
             # computed from the mean RCS; the reported RCS/SNR of a detection are then one fluctuating draw.
             snr_mean_db = snr90_db + 40 * math.log10(self.r90_m / rng_m) + (tg.rcs_dbsm - RCS_REF_DBSM)
             pd = self.pfa ** (1.0 / (1.0 + 10 ** (snr_mean_db / 10)))
