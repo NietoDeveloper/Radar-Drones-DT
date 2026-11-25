@@ -41,7 +41,4 @@ def generate(scn: Scenario) -> list[Detection]:
     for f in scn.fixes:
         k = 0
         while k / f.rate_hz < scn.duration_s:
-            dets += f.sample(k / f.rate_hz, scn.t0_epoch, scn.targets, frame, rng)
-            k += 1
-    dets.sort(key=lambda d: d.t)
-    return dets
+            dets
