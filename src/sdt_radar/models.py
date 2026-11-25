@@ -48,8 +48,4 @@ from __future__ import annotations
             raise ValueError("geodetic measurement needs lat, lon and alt_m together")
         if has_polar == has_geo:
             raise ValueError("provide exactly one of: polar (range/azimuth/elevation) or geodetic (lat/lon/alt)")
-        if (self.md_iq_b64 is None) != (self.md_prf_hz is None):
-            raise ValueError("md_iq_b64 and md_prf_hz must be provided together")
-        return self
-
-    @prop
+        if (
