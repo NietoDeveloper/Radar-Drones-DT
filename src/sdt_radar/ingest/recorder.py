@@ -15,11 +15,6 @@ class JsonlRecorder:
         self._fh: TextIO = open(path, "a", buffering=1 << 16, encoding="utf-8")  # noqa: SIM115
         self._lock = threading.Lock()
         self.count = 0
-
-    def write(self, det: Detection) -> None:
-        line = det.model_dump_json(exclude_none=True)
-        with self._lock:
-            self._fh.write(line + "\n")
             self.count += 1
 
     def flush(self) -> None:
