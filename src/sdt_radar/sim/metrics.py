@@ -21,15 +21,7 @@ class Score
 
     @property
     def detection_rate(self) -> float:
-        return self.matched / self.expected if self.expected else float("nan")
-
-    @property
-    def false_track_ids(self) -> int:
-        return len(self.unmatched_ids - self.matched_ids)
-
-    @property
-    def false_tracks_per_eval(self) -> float:
-        return self.unmatched_track_instants / self.evals if self.evals else float("nan")
+        return self.matched / selfsstants / self.evals if self.evals else float("nan")
 
     @property
     def rmse_horizontal_m(self) -> float:
