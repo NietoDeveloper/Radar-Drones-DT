@@ -1,1 +1,1 @@
-"""SoftwareDT drone-radar backend.""
+"""SoftwareDT drone-radar backen
