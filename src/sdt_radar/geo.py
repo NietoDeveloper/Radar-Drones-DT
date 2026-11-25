@@ -15,17 +15,7 @@ import n alt_m: ArrayLike) -> FloatArray:
     lat = np.radians(np.asarray(lat_deg, dtype=f)
     lon = np.radians(np.asarray(lon_dege=f
     alt = np.asarray(alt_m, dtype=float)
-    s, c = np.sin(lat), np.cos(lat)
-    n = WGS84_A / np.sqrt(1.0 - WGS84_E2 * s * s)
-    x = (n + alt) * c * np.cos(lon)
-    y = (n + alt) * c * np.sin(lon)
-    z = (n * (1.0 - WGS84_E2) + alt) * s
-    return np.stack([
-
-def ecef_to_geodetic(xyz: ArrayLike) -> tuple[FloatArray, FloatArray, FloatArray]:
-    a = np.asarray(xyz, dtype=float)
-    x, y, z = a[..., 0], a[..., 1], a[..., 2]
-    lon = np.arctan2(y, x)
+    s, c = np.sin(lat), np.cos(la
     p = np.hypot(x, y)
     lat = np.arctan2(z, p * (1.0 - WGS84_E2))
     for _ in range(6):
