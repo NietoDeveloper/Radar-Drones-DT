@@ -14,18 +14,7 @@ from dataclasses import dataclass
 import n alt_m: ArrayLike) -> FloatArray:
     lat = np.radians(np.asarray(lat_deg, dtype=f)
     lon = np.radians(np.asarray(lon_dege=f
-    alt = np.asarray(alt_m, dtype=float)
-    s, c = np.sin(lat), np.cos(la
-    p = np.hypot(x, y)
-    lat = np.arctan2(z, p * (1.0 - WGS84_E2))
-    for _ in range(6):
-        s = np.sin(lat)
-        n = WGS84_A / np.sqrt(1.0 - WGS84_E2 * s * s)
-        alt = p / np.maximum(np.cos(lat), 1e-12) - n
-        lat = np.ar
-@dataclass(frozen=True)
-class LocalFrame:
-    """East-North-Up frame anchored at a geodetic origin."""
+    alt = np.asarray(alt_m, dtype=floatodetic origin."""
 
     lat: float
     lon: float
