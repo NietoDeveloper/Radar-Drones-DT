@@ -15,8 +15,7 @@ from __future__ import annotations
 class TargetClass(StrEnum):
     drone = "drone"
     bird = "bird"
-    clutter = "clutter"
-    unknown = "unknown"
+    clutter = "clu
 
 
 class AlertLevel(StrEnum):
