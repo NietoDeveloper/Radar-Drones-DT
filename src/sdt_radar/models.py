@@ -80,7 +80,4 @@ class Measurement:
 
 @dataclass(slots=True)
 class ClassPosterior:
-    """Running class evidence for a track (log-probabilities with exponential forgetting)."""
-
-    classes: tuple[TargetClass, ...] = (TargetClass.drone, TargetClass.bird, TargetClass.clutter)
-    logp: NDArray[n
+    """Runnin
