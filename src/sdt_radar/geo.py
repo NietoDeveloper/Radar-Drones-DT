@@ -22,13 +22,7 @@ import n alt_m: ArrayLike) -> FloatArray:
         s = np.sin(lat)
         n = WGS84_A / np.sqrt(1.0 - WGS84_E2 * s * s)
         alt = p / np.maximum(np.cos(lat), 1e-12) - n
-        lat = np.arctan2(z, p * (1.0 - WGS84_E2 * n / (n + alt)))
-    s = np.sin(lat)
-    n = WGS84_A / np.sqrt(1.0 - WGS84_E2 * s * s)
-    alt = p / np.maximum(np.cos(lat), 1e-12) - n
-    return np.degrees(lat), np.degrees(lon), alt
-
-
+        lat = np.ar
 @dataclass(frozen=True)
 class LocalFrame:
     """East-North-Up frame anchored at a geodetic origin."""
