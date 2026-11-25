@@ -5,7 +5,6 @@ are plain dataclasses holding numpy arrays.
 """
 
 from __future__ import annotations
-
-    tentative = "tentative"
+e = "tentative"
     confirmed = "confirmed"
     coasting = "coasting"
