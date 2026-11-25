@@ -130,7 +130,4 @@ class TrackOut(BaseModel):
     rcs_dbsm: float | None
     position_sigma_m: float
     sensors: list[str]
-    first_seen: float
-    last_seen: float
-    age_s: float
-    hits: int
+ int
