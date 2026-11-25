@@ -128,6 +128,3 @@ class TrackOut(BaseModel):
     heading_deg: float
     climb_mps: float
     rcs_dbsm: float | None
-    position_sigma_m: float
-    sensors: list[str]
- int
