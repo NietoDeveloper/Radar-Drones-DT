@@ -39,6 +39,3 @@ def generate(scn: Scenario) -> list[Detection]:
             dets += r.scan(k * r.scan_period_s, scn.t0_epoch, scn.targets, frame, rng)
             k += 1
     for f in scn.fixes:
-        k = 0
-        while k / f.rate_hz < scn.duration_s:
-            dets
