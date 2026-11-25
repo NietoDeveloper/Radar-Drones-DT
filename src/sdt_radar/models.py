@@ -98,6 +98,4 @@ class ClassPosterior:
     def decide(self, threshold: float) -> tuple[TargetClass, float]:
         if self.n == 0:
             return TargetClass.unknown, 0.0
-        p = self.probabilities()
-        i = int(np.argmax(p))
-        if p[i] < threshold:
+   
