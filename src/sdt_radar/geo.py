@@ -14,5 +14,3 @@ th.sin(lon), math.cos(lon)
         rot = np.array([[-so, co, 0.0], [-sl * co, -sl * so, cl], [cl * co, cl * so, sl]])
         object.__setattr * ce * math.sin(az), range_m * ce * math.cos(az), range_m * math.sin(el)])
 
-
-def po
