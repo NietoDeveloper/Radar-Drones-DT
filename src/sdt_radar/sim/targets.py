@@ -8,7 +8,3 @@ import numpy as np
 from numpy.typing import NDArray
 
 F64 = NDArray[np.float64]
-
-
-@dataclass
-class Trajectory:
