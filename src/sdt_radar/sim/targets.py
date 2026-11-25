@@ -14,17 +14,6 @@ F64 = NDArray[np.float64]
 class Trajectory:
 
     t_end: float = 1e9
-nge) - z), -3, 3))
-    return Trajectory(t, pos, vel)
-
-
-def make_drone(rng: np.random.Generator, idx: int, duration: float, dt: float, *, approach: bool,
-               bearing_deg: float, start_range_m: float, cooperative: bool, site_alt: float = 0.0,
-               t_start: float = 0.0) -> Target:
-    b = np.radians(bearing_deg)
-    alt = float(rng.uniform(40, 150))
-    pos0 = np.array([start_range_m * np.sin(b), start_range_m * np.cos(b), alt])
-    speed = float(rng.uniform(6, 22))
     aim = np.array([0.0, 0.0, alt]) if approach else None
     heading = float(np.arctan2(-pos0[0], -pos0[1]) + rng.normal(0, 0.3)) if approach else float(rng.uniform(0, 2 * np.pi))
     traj = make_trajectory(rng, duration, dt, pos0, speed, heading, turn_sigma=0.08, speed_sigma=1.0,
