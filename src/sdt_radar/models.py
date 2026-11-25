@@ -19,14 +19,7 @@ from __future__ import annotations
     lat: float = Field(ge=-90, le=90)
     lon: float = Field(ge=-180, le=180)
     alt_m: float = 0.0
-
-# ------------------------------------------------------------------------------- wire detection
-
-MAX_MD_SAMPLES = 16_384
-
-
-def encode_iq(iq: NDArray[np.complex64] | NDArray[np.complex128]) -> str:
-    """Complex slow-time samples -> base64 of interleaved little-endian float32 (I, Q, I, Q, ...)."""
+terleaved little-endian float32 (I, Q, I, Q, ...)."""
     a = np.asarray(iq, dtype=np.complex64)
     inter = np.empty(a.size * 2, dtype="<f4")
     inter[0::2], inter[1::2] = a.real, a.imag
