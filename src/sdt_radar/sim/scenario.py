@@ -97,8 +97,4 @@ def swarm_scenario(n_targets: int = 300, seed: int = 2, duration_s: float = 60.0
 
 def run_scenario(scn: Scenario, settings: Settings | None = None, pipeline: Pipeline | None = None,
                  step_s: float = 0.5, eval_every_s: float = 1.0, warmup_s: float = 15.0,
-                 detections: list[Detection] | None = None, gate_m: float = 100.0) -> tuple[Pipeline, Score, list]:
-    """Run a scenario through a pipeline in data time (faster than real time) and score the result."""
-    pipe = pipeline or Pipeline(settings or scn.settings())
-    pipe.start()
-    dets = detect
+                 detecti
