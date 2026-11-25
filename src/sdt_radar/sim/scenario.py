@@ -48,7 +48,3 @@ def generate(scn: Scenario) -> list[Detection]:
 
 
 def _site() -> SiteConfig:
-    return SiteConfig(lat=4.7110, lon=-74.0721, alt_m=2600.0)
-
-
-def _sensor(
