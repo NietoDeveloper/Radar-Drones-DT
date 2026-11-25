@@ -12,14 +12,7 @@ from __future__ import annotations
     lost = "lost"
 
 
-    model_config = ConfigDict(extra="forbid")
-
- ``elevation_deg`` (relative to the sensor), or
-    * geodetic-> ``lat`` + ``lon`` + ``alt_m`` (e.g. Remote ID, RF geolocation, EO/IR triangulation).
-    """
-
-    model_config = ConfigDict(extra="forbid", allow_inf_nan=False)
-
+    model_config = ConfigDict(extra="
     sensor_id: str = Field(min_length=1, max_length=64)
     t: float  # UNIX epoch seconds (UTC) of the measurement
     range_m: float | None = Field(None, ge=0, le=1_000_000)
