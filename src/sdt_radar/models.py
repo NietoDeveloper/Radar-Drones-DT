@@ -33,8 +33,3 @@ from __future__ import annotations
     @field_validator("t")
     @classmethod
     def _plausible_time(cls, v: float) -> float:
-        if not (946_684_800.0 <= v <= 4_102_444_800.0):  # 2000-01-01 .. 2100-01-01
-            raise ValueError("t must be UNIX epoch seconds between 2000 and 2100")
-        return v
-
-    @model_validator(mode="after")
