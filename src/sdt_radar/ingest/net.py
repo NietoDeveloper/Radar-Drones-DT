@@ -20,15 +20,6 @@ if TYPE_CHECKING:
 log = logging.getLogger("sdt_radar.ingest")
 
 MAX_DATAGRAM = 65_507
-MAX_LINE = 1 << 20
-
-
-def parse_payload(data: bytes, pipeline: Pipeline) -> int:
-    """Parse one datagram / line group; returns the number of accepted detections."""
-    accepted = 0
-    text = data.decode("utf-8", errors="replace").strip()
-    if not text:
-        return 0
     objs: list[Any] = []
     try:
         parsed = json.loads(text)
