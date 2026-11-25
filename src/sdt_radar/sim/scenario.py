@@ -105,6 +105,4 @@ def run_scenario(scn: Scenario, settings: Settings | None = None, pipeline: Pipe
     score = Score()
     alerts: list = []
     i, n = 0, len(dets)
-    t_rel = 0.0
-    next_eval = 0.0
-    while t_rel <= scn.duration_s +
+    t_rel = 0
