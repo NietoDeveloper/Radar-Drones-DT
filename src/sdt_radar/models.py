@@ -24,6 +24,4 @@ from __future__ import annotations
     sigma_h_m: float | None = Field(None, gt=0, le=10_000)
     sigma_v_m: float | None = Field(None, gt=0, le=10_000)
     radial_velocity_mps: float | None = Field(None, ge=-1000, le=1000)
-    rcs_dbsm: float | None = Field(None, ge=-100, le=100)
-    snr_db: float | None = Field(None, ge=-100, le=200)
-    external_id: str | None = Field(None, max_length=64)
+    rcs_dbsm: float | None 
