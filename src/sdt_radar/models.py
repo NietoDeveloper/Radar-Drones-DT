@@ -30,6 +30,4 @@ from __future__ import annotations
     md_prf_hz: float | None = Field(None, gt=0, le=1_000_000)
     md_iq_b64: str | None = Field(None, max_length=MAX_MD_SAMPLES * 11)
 
-    @field_validator("t")
-    @classmethod
-    def _plausible_time(cls, v: float) -> float:
+ 
