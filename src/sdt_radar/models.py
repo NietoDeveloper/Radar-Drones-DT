@@ -73,6 +73,4 @@ class Measurement:
     rcs_dbsm: float | None = None
     snr_db: float | None = None
     external_id: str | None = None
-    md_iq: NDArray[np.complex64] | None = None
-    md_prf_hz: float | None = None
-    rx_wall: float = 0.0  # wall-clock arrival time, for latency metrics
+    md_iq: ND
