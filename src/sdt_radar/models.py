@@ -107,6 +107,3 @@ class ClassPosterior:
 
 # ---------------------------------------------------------------------------------- API outputs
 
-
-class TrackOut(BaseModel):
-    track_id: str
