@@ -9,4 +9,3 @@ from __future__ import annotations
     tentative = "tentative"
     confirmed = "confirmed"
     coasting = "coasting"
-    lost = "lost"
