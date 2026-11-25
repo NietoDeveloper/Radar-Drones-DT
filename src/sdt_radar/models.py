@@ -181,6 +181,3 @@ class Zone(BaseModel):
     center_lat: float | None = Field(None, ge=-90, le=90)
     center_lon: float | None = Field(None, ge=-180, le=180)
     radius_m: float | None = Field(None, gt=0, le=200_000)
-    polygon: list[tuple[float, float]] | None = None  # (lat, lon) vertices
-    min_alt_m: float = -1000.0
-    max_alt_m: float = 100_000.0
