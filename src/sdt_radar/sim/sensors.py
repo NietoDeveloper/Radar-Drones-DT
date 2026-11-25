@@ -13,18 +13,7 @@ class RadarModel:
     r90_m: float
     scan_period_s: float
     rotating: bool = True
-    pfa: float = 1e-6
-    fa_per_scan: float = 1.0
-    min_range_m: float = 60.0
-    max_elev_deg: float = 60.0
-    md_prf_hz: float = 10_240.0
-    md_samples: int = 1024
-    md_probability: float = 0.5
-    fc_hz: float = 10e9
-
-    @property
-    def max_range_m(self) -> float:
-        return self.sensor.max_range_m or self.r90_m * 1.6
+    pfa: float = 1e-6elf.r90_m * 1.6
 
     @property
     def snr90_lin(self) -> float:
