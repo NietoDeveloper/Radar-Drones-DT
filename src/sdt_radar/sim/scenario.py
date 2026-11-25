@@ -16,8 +16,4 @@ from .targets import Target, make_bird, make_drone
 
     def settings(self, **overrides: object) -> Settings:
         data = {"site": self.site, "sensors": self.sensor_configs(), "zones": self.zones,
-                "storage": {"kind": "memory"}}
-        data.update(overrides)
-        return Settings.model_validate(data)
-
-    def truth(self, t_rel: float, war
+                "storage": {"kind": 
