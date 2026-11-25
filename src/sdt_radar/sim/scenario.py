@@ -86,7 +86,4 @@ def swarm_scenario(n_targets: int = 300, seed: int = 2, duration_s: float = 60.0
     """Stress test: hundreds of simultaneous tracks over a pulse-Doppler radar (no micro-Doppler payload)."""
     rng = np.random.default_rng(seed)
     site = _site()
-    frame = LocalFrame(site.lat, site.lon, site.alt_m)
-    radar = RadarModel(_sensor("pd-1", SensorKind.radar_pulse_doppler, frame, 0, 0, 10, sigma_range_m=8.0,
-                               sigma_az_deg=0.6, sigma_el_deg=1.0, max_range_m=15000), r90_m=9000,
-                       scan_period_s
+    frame = LocalFrame(site.lat, si
