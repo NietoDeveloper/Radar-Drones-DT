@@ -17,13 +17,6 @@ class RadarModel:
 
     @property_lin)
         for tg in targets:
-            if not tg.active(t_rel):
-                continuetion-averaged* detection probability for the mean SNR, so Pd is
-            # computed from the mean RCS; the reported RCS/SNR of a detection are then one fluctuating draw.
-            snr_mean_db = snr90_db + 40 * math.log10(self.r90_m / rng_m) + (tg.rcs_dbsm - RCS_REF_DBSM)
-            pd = self.pfa ** (1.0 / (1.0 + 10 ** (snr_mean_db / 10)))
-            if rng.random() > pd:
-                continue
             fluct_db = 10 * math.log10(max(rng.exponential(1.0), 1e-3))
             rcs_db, snr_db = tg.rcs_dbsm + fluct_db, snr_mean_db + fluct_db
             out.append(self._detection(t_g.uniform(0, 25)
