@@ -5,9 +5,3 @@ A TimescaleDB/PostgreSQL adapter implements the same protocol; the schema to sta
 """
 
 from __future__ import annotations
-
-from typing import Protocol
-
-from ..models import AlertOut, TargetClass, TrackOut, TrackPoint, TrackStatus, Zone
--> None: ...
-    def prune(self, older_than: float) -> int: ...
