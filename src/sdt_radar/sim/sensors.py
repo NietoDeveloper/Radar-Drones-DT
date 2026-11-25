@@ -6,25 +6,6 @@ is detected with Pd = 0.9 at the configured Pfa. SNR then scales as ``-40 log10(
 follows the Swerling-I relation ``Pd = Pfa ** (1 / (1 + SNR))``. This is a planning-grade model, not a
 waveform-level simulation.
 """
-
-@dataclass
-class RadarModel:
-    sensor: SensorConfig
-    r90_m: float
-    scan_period_s: float
-    rotating: bool = True
-    pfa: float = 1e-6elf.r90_m * loat(rng.normal(0, 0.3))
-        md_iq = md_prf = None
-        if rng.random() < self.md_probability:
-            table: dict[str, Callable[..., Any]] 
-    """Position-fix sensor (geodetic output): Remote ID, RF geolocation, EO/IR triangulated fix."""
-
-    sensor: SensorConfig
-    rate_hz: float
-    sigma_h_m: float
-    sigma_v_m: float
-    max_range_m: float
-    pd: float = 0.9
     only_cooperative: bool = False  # Remote ID: only cooperative drones transmit
     drones_only: bool = True  # RF: only emitters with a control link
     send_serial: bool = False
