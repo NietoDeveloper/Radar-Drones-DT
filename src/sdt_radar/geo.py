@@ -16,11 +16,3 @@ th.sin(lon), math.cos(lon)
 
 
 def polar_covariance(
-    range_m: float, az_deg: float, el_deg: float, sigma_r: float, sigma_az_deg: float, sigma_el_deg: float
-) -> FloatArray:
-    var = np.diag([sigma_r**2, math.radians(sigma_az_deg) ** 2, math.radians(sigma_el_deg) ** 2])
-    return np.asarray(jac @ var @ jac.T)
-
-def heading_deg(ve: float, vn: float) -> float:
-    """Course over ground, degrees clockwise from North in [0, 360)."""
-    return math.degrees(math.atan2(ve, vn)) % 360.0
