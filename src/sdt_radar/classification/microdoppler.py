@@ -10,16 +10,6 @@ Everything works on *slow-time complex samples* at the radar PRF (a short dwell 
 """
 
 from __future__ import annotations
-        for b in range(blades):
-            ph = theta0 + 2 * np.pi * b / blades
-            for frac, amp in ((1.0, 0.25), (0
-    snr_db: float = 15.0,
-    flap_hz: float | None = None,
-    wing_amp_m: float | None = None,sniform(0.5, 3.0) * t + rng.uniform(0, 6.28))
-    phase = 2 * np.pi * flap * np.cumsum(drift) / prf_hz
-    envelope = 0.5 * (1 + np.tanh(6 * np.sin(2 * np.pi * rng.uniform(1.0, 4.0) * t + rng.uniform(0, 6.28))))
-    s = np.exp(1j * 2 * np.pi * fd * t)
-    for side in (-1.0, 1.0):
         r_wing = amp * envelope * np.sin(phase + (0.0 if side < 0 else rng.uniform(-0.3, 0.3)))
         s = s + 0.5 * np.exp(1j * (2 * np.pi * fd * t + 4 * np.pi * r_wing / lam))
     bob = 0.02 * np.sin(phase * 0.5)
