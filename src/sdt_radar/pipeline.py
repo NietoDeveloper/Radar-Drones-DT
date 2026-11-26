@@ -63,16 +63,5 @@ from dataclasses import dataclass, field
                         self.latency_ms.append((time.time() - ms.rx_wall) * 1000.0)
                 for tr in ev.confirmed:
                     tr.announced = True
-                for dropped, _kept in ev.merged:
-                    touched.pop(dropped.track_id, None)
-                    res.alerts.extend(self.alerts.close_for_track(dropped.track_id, now))
-                    if dropped.announced:
-                        self.store.write_track(self._track_out(dropped, now, False, TrackStatus.lost))
-                for tr in ev.lost:
-                    touched.pop(tr.track_id, None)
-                    res.alerts.extend(self.alerts.close_for_track(tr.track_id, now))
-                    if tr.announced:
-                        self.store.write_track(self._track_out(tr, now, False, TrackStatus.lost))
-            if not ready:
-                ev = self.tracker.sweep(now)
+f.tracker.sweep(now)
  
