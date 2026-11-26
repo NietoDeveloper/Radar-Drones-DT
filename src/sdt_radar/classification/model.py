@@ -16,13 +16,6 @@ import numpy as np
 from numpy.typing import NDArray
 from scipy.optimize import minimize
 
-from ..models import TargetClass
-from .microdoppler import FEATURE_NAMES, md_features, synth_bird, synth_clutter, synth_multirotor
-
-CLASSES = (TargetClass.drone, TargetClass.bird, TargetClass.clutter)
-MODEL_DIR = Path(__file__).parent / "models"
-DEFAULT_MODEL = MODEL_DIR / "microdoppler_v1.npz"
-
 
 class Classifier(Protocol):
     classes: tuple[TargetClass, ...]
