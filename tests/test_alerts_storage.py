@@ -8,16 +8,6 @@ from sdt_radar.storage import MemoryStore, SqliteStore
 from sdt_radar.tracking.track import Track
 from tests.helpers import FRAME, SITE
 
-
-def mk_track(pos, vel=(0, 0, 0), status=TrackStatus.confirmed, cls=None, conf_n=6, seq=1):
-    x = np.array([*pos, *vel], float)
-    tr = Track(seq=seq, x=x, P=np.eye(6), t=100.0, first_t=90.0, last_hit_t=100.0, hits=10, status=status)
-    if cls is not None:
-        probs = np.array([0.9, 0.05, 0.05]) if cls == TargetClass.drone else np.array([0.03, 0.94, 0.03])
-        for _ in range(conf_n):
-            tr.klass.update(probs, 0.95)
-    return tr
-
 def test_intrusion_opens_once_escalates_and_closes_with_hysteresis():
     eng = AlertEngine(FRAME, [circle(300)], AlertConfig(clear_after_s=5.0, lookahead_s=0))
     inside = mk_track([50, 50, 100], cls=TargetClass.drone)
