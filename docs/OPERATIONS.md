@@ -11,12 +11,6 @@
 Description=SoftwareDT drone radar backend
 After=network-online.target
 NoNewPrivileges=true
-ProtectSystem=strict
-ReadWritePaths=/var/lib/sdt-radar
-Ports: **8080** API + WebSocket, **9100/udp** and **9101/tcp** detection ingest (all configurable).
-
-## 2. Security checklist
-
 * **API key:** set `SDT_RADAR_API_KEY` (never commit it). The CLI refuses a non-loopback bind without one.
 * **TLS:** not built in. Terminate TLS (and add rate limiting / user auth / CORS policy) in a reverse
   proxy (nginx, Caddy, Traefik) or a VPN. The WebSocket must be proxied with upgrade headers.
