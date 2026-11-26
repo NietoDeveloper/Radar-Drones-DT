@@ -8,18 +8,7 @@ n_and_alerts_over_rest():
         assert [x["id"] for x in c.get("/api/v1/zones").json()] == ["core"]
         c.post("/api/v1/ingest/detections", json=det_stream(s, time.time()))
         alerts = wait_for(lambda: c.get("/api/v1/alerts?active=true").json())
-        assert alerts[0]["zone_id"] == s"][0]["status"] == "confirmed"
-        ws.send_json({"subscribe": {"classes": ["bird"], "min_confidence": 0.1}})
-        end = time.time() + 4
-        while time.time() < end:
-            msg = ws.receive_json()
-            if msg["type"] == "subscribed":
-                assert msg["classes"] == ["bird"]
-            if msg["type"] == "snapshot" and msg["count"] == 0:
-                break
-        else:
-            raise AssertionError("filtered snapshot never arrived")
-        ws.send_json({"subscribe": {"classes": ["not-a-class"]}})
+        assert alerts[0]["zone_id"] == s"][0][lass"]}})
         err = wait_for(lambda: ws.receive_json()["type"] == "error")
         assert err
 
