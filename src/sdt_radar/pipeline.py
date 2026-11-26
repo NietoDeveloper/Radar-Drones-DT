@@ -170,6 +170,3 @@ from dataclasses import dataclass, field
         pts = []
         for i, h in enumerate(hs):
             ve, vn, vu = (float(v) for v in h.x[3:])
-            pts.append(TrackPoint(t=h.t, lat=float(lat[i]), lon=float(lon[i]), alt_m=float(alt[i]), vel_e_mps=ve,
-                                  vel_n_mps=vn, vel_u_mps=vu, speed_mps=float(np.linalg.norm(h.x[3:])),
-                                  heading_deg=heading_deg(ve, vn), position_sigma_m=h.pos_sigma,
