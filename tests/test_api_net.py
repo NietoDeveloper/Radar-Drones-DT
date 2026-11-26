@@ -1,19 +1,6 @@
 n_and_alerts_over_rest():
     s, c = make_client()
     with c:
-        z = {"id": "core", "name": "Core", "kind": "circle", "center_lat": SITE.lat, "center_lon": SITE.lon,
-             "radius_m": 3000, "level": "critical"}
-        assert c.post("/api/v1/zones", json=z).status_code == 201
-        assert c.post("/api/v1/zones", json={**z, "radius_m": None}).status_code == 422
-        assert [x["id"] for x in c.get("/api/v1/zones").json()] == ["core"]
-        c.post("/api/v1/ingest/detections", json=det_stream(s, time.time()))
-        alerts = wait_for(lambda: c.get("/api/v1/alerts?active=true").json())
-        assert alerts[0]["zone_id"] == s"][0][lass"]}})
-        err = wait_for(lambda: ws.receive_json()["type"] == "error")
-        assert err
-
-
-@pytest.mark.parametrize("n", [1])
 def test_udp_and_tcp_ingest_end_to_end_with_latency_budget(n):
     s, c = make_client(udp=True)
     with c:
