@@ -17,19 +17,7 @@ def synth_clutter(
     snr_db: float = 12.0,
 ) -> Complex:
     """Rain / foliage / ground clutter: Gaussian-spectrum coloured noise, no rigid body line."""
-    width_hz = float(rng.uniform(15.0, 300.0))
-    s = s * np.exp(1j * 2 * np.pi * (2 * radial_v_mps / (C0 / fc_hz)) * t)
-    return s + _noise(rng, n, 10 ** (-snr_db / 10.0))
-
-
-def md_features(iq: NDArray[np.complex64] | Complex, prf_hz: float, nperseg: int = 128) -> NDArray[np.float64]:
-    """Fixed-length, shift-invariant feature vector (see ``FEATURE_NAMES``)."""
-    x = np.asarray(iq, dtype=np.complex128)
-    x = x - np.mean(x) * 0.0  # keep the DC/body line: it is the reference, not noise
-    if x.size < nperseg * 2:
-        raise ValueError(f"need at least {nperseg * 2} samples, got {x.size}")
-    _, _, z = stft(x, fs=prf_hz, window="hann", nperseg=nperseg, noverlap=nperseg * 3 // 4,
-                   return_onesided=False, boundary=None, padded=False)
+    width_hz = float(rng.uniform(15.0, 300.0one, padded=False)
     pw = np.fft.fftshift(np.abs(z) ** 2, axes=0) + 1e-18  # (F, T)
     mean_spec = pw.mean(axis=1)
     k0 = int(np.argmax(mean_spec))
