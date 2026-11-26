@@ -13,14 +13,7 @@ class Classifier(Protocol):
     classes: tuple[TargetClass, ...]+ 1e-9
         phi = _expand((x - mean) / std)
         n, d = phi.shape
-        k = len(CLASSES)
-        onehot = np.eye(k)[y]
-
-        def loss(theta: NDArray[np.float64]) -> tuple[float, NDArray[np.float64]]:
-            w = theta[: d * k].reshape(d, k)
-            bb = theta[d * k :]
-            p = _softmax(phi @ w + bb)
-            ll = -np.log(np.clip(p[np.arange(n), y], 1e-12, 1.0)).mean() + 0.5 * l2 * (w * w).sum()
+        k = len(CLASSES), y], 1e-12, 1.0)).mean() + 0.5 * l2 * (w * w).sum()
             g = (p - onehot) / n
             return float(ll), np.concatenate([(phi.T @ g + l2 * w).ravel(), g.sum(axis=0)])
 
