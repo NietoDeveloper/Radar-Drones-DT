@@ -9,12 +9,6 @@ UI with < 500 ms display latency; scale
 ## 2. Data flow
    alerts ◄── AlertEngine ◄── tracks ◄── MultiTargetTracker ◄──────────────────────────────┘sotropic). Geodetic: 
 
-* **Data time vs wall time.** `Pipeline.step(now)` takes time explicitly. Live: `now = time.time()`.
-  Replay/simulation: `now` is the latest data timestamp. Nothing reads the clock internally except
-  latency metrics.
-* **Clock sync is assumed** (NTP/PTP). A sensor whose clock runs ahead has its data held until
-  `t ≤ now − 0.2 s`; one that runs behind is processed immediately but may be counted stale.
-* **Latency budget (live, measured):** reorder window 200 ms + tick 50 ms ≈ 250 ms ingest→tracked
   (p50 237 ms, p99 249 ms), + ≤ 200 ms until the next WebSocket snapshot ≈ 450 ms worst case.
   Lowering `fusion.reorder_window_s` trades latency for ordering robustness.
 
