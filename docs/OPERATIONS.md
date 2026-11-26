@@ -6,11 +6,7 @@
 |---|---|---|
 | Virtualenv | `pip install . && sdt-radar serve --config /etc/sdt-radar/radar.toml` | Simplest; runs on one core of any Linux/macOS/Windows host with Python ≥ 3.11 |
 | systemd | unit below | Restarts on failure, journald logs |
-| Docker | `docker build -t sdt-drone-radar .` then `docker run -e SDT_RADAR_API_KEY=… -p 8080:8080 -p 9100:9100/udp -p 9101:9101 -v radar-data:/data …` | Dockerfile pr
-[Unit]nknown fields and NaN/Inf are rejected. Message
-
-`GET /api/v1/metrics` (JSON). Alert on:
-
+| Docker | `docker build -t sdt-dron
 | Signal | Meaning | Action |
 |---|---|---|
 | `counters.rejected_invalid / rejected_sensor / rejected_malformed` rising | Adapter bug, wrong sensor id, garbage on the port | Fix adapter / registration / firewall |
