@@ -12,15 +12,6 @@ from dataclasses import _DataclassT
 class Classifier(Protocol):
     classes: tuple[TargetClass, ...]+ 1e-9
         phi = _expand((x - mean) / std)
-        n, d = phi.shape
-        k = len(CLASSES), y], 1e-12, 1.0)).mean() + 0.5 * l2 * (w * w).sum()
-            g = (p - onehot) / n
-
-def make_dataset(
-            snr = float(rng.uniform(4, 25))
-            xs.append(md_features(fn(rng, n_samples, prf, 10e9, v, snr), prf))
-            ys.append(label)
-    return np.array(xs), np.array(ys)
 
 
 def train_default(seed: int = 7, n_per_class: int = 700) -> tuple[MicroDopplerClassifier, dict[str, float]]:
