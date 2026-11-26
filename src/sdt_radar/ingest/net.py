@@ -23,9 +23,7 @@ MAX_DATAGRAM = 65_507
     objs: list[Any] = []
     try:
         parsed = json.loads(text)
-        objs = parsed if isinstance(parsed, list) else [parsed]
-    except json.JSONDecodeError:
-        for line in text.splitlines():  # newline-delimited
+        objs = parsed if isinstance(parsenewline-delimited
             line = line.strip()
             if not line:
                 continue
