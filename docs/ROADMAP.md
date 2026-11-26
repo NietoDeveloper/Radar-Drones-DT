@@ -3,13 +3,7 @@
 v1.0 establishes the architecture and a simulator-verified baseline. The plan below is ordered by risk
 reduction first, features second; it is a plan, not a commitment.
 
-## v1.0 — Baseline (this release)
-
-* Ingest (UDP/TCP/HTTP), strict validation, fusion of polar and geodetic sources, reorder buffer.
-* GNN Kalman tracker with lifecycle, statistical merging, per-measurement covariance.
-* Micro-Doppler classifier (synthetic-trained) with per-track evidence; zone alerts with risk and suppression.
-* SQLite store with writer thread, JSONL audit log, deterministic replay; REST + WebSocket API with API key.
-* Simulator, scoring, 500-target benchmark, radar-equation tool; 58 tests; lint and type checks clean.
+## v1.0 — Base type checks clean.
 
 ## v1.1 — Real data
 
