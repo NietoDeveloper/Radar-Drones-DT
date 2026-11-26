@@ -7,16 +7,6 @@ reduction first, features second; it is a plan, not a commitment.
 
 ## v1.1 — Real data
 
-* Reference adapters for one commercial radar SDK and a Remote ID receiver; SAPIENT bridge.
-* Recorded-data tooling: label dwells, retrain classifier, evaluate on held-out sites.
-* TimescaleDB/PostgreSQL `Store` implementation (schema in `docs/timescale_schema.sql`), Redis queue option.
-* Use of radial velocity in the filter (Doppler-aided tracking) and in association.
-* Track-to-track fusion for sensors that only expose their own tracks.
-
-## v2.0 — Scale and trust
-
-* Horizontal scaling: partitioned tracking by sector, multi-node fusion hub for distributed SDR/edge nodes.
-* TLS, user accounts/roles, audit trail of API actions, signed detections, rate limiting.
 * Alerts: dwell-time, loitering, no-fly corridors, geofence schedules, webhook/MQTT/SMS delivery.
 * Evidence export (track + raw detections + media references) for incident reports.
 
