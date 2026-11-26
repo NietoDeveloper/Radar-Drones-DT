@@ -12,19 +12,7 @@ Everything works on *slow-time complex samples* at the radar PRF (a short dwell 
 from __future__ import annotations
         for b in range(blades):
             ph = theta0 + 2 * np.pi * b / blades
-            for frac, amp in ((1.0, 0.25), (0.55, 0.15)):
-                rng_mod = frac * radius * tilt * np.cos(omega * t + ph)
-                s = s + amp * np.exp(1j * (2 * np.pi * fd * t + 4 * np.pi * rng_mod / lam))
-    s = s / np.sqrt(np.mean(np.abs(s) ** 2))
-    return s + _noise(rng, n, 10 ** (-snr_db / 10.0))
-
-
-def synth_bird(
-    rng: np.random.Generator,
-    n: int,
-    prf_hz: float,
-    fc_hz: float = 10e9,
-    radial_v_mps: float = 8.0,
+            for frac, amp in ((1.0, 0.25), (0
     snr_db: float = 15.0,
     flap_hz: float | None = None,
     wing_amp_m: float | None = None,
