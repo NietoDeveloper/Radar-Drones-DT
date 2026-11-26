@@ -7,15 +7,7 @@
 | Virtualenv | `pip install . && sdt-radar serve --config /etc/sdt-radar/radar.toml` | Simplest; runs on one core of any Linux/macOS/Windows host with Python ≥ 3.11 |
 | systemd | unit below | Restarts on failure, journald logs |
 | Docker | `docker build -t sdt-drone-radar .` then `docker run -e SDT_RADAR_API_KEY=… -p 8080:8080 -p 9100:9100/udp -p 9101:9101 -v radar-data:/data …` | Dockerfile pr
-[Unit]nknown fields and NaN/Inf are rejected. Message sizes
-  are capped (UDP 64 KB, TCP line 1 MiB, HTTP batch 5 000).
-* **Data protection:** tracks and recordings can be sensitive (site layout, security events). Restrict
-  filesystem access to `data/`; plan retention (below).
-* **Remote ID and RF data are untrusted** (spoofable). They improve a track; they must not be the only
-  basis for a security decision.
-* This service **detects and records only**; it does not control effectors.
-
-## 3. Monitoring
+[Unit]nknown fields and NaN/Inf are rejected. Message
 
 `GET /api/v1/metrics` (JSON). Alert on:
 
