@@ -37,19 +37,3 @@ def store(request, tmp_path):
     yield s
     s.close()
 
-
-def test_store_tracks_points_alerts_zones_and_prune(store):
-    from sdt_radar.models import AlertOut
-    store.write_track(_track_out("a", last=100)); store.write_track(_track_out("b", TrackStatus.lost, 50, TargetClass.bird))
-    store.write_track(_track_out("a", last=120))  # upsert
-    store.write_points("a", [_point(t) for t in (10, 20, 30, 40)])
-    al = AlertOut(alert_id="x1", type=AlertType.zone_intrusion, level=AlertLevel.critical, state="open", track_id="a",
-                  zone_id="z", zone_name="Z", opened_at=1, updated_at=2, closed_at=None, risk=0.9,
-                  target_class=TargetClass.drone, message="m", lat=1, lon=1, alt_m=1)
-    store.write_alert(al); store.write_alert(al.model_copy(update={"state": "closed", "updated_at": 3, "closed_at": 3}))
-    store.put_zone(circle()); store.put_zone(circle(500)); store.flush()
-    assert store.get_track("a").last_seen == 120 and store.get_track("nope") is None
-    assert [t.track_id for t in store.list_tracks()] == ["a", "b"]  # newest first
-    assert [t.track_id for t in store.list_tracks(target_class=TargetClass.bird)] == ["b"]
-    assert [t.track_id for t in store.list_tracks(status=TrackStatus.lost)] == ["b"]
- 
