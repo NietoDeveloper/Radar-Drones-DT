@@ -22,7 +22,7 @@ class Runtime:
         self.pipeline, self.settings, self.hub = pipeline, settings, hub
         self._tasks: list[asyncio.Task] = []
         self.udp: UdpIngest | None = None
-        self.tcp: TcpIngest | None = None
+        self.tcp: TcpIngest | None = 
 
     async def start(self) -> None:
         cfg = self.settings.ingest
