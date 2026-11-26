@@ -24,6 +24,3 @@ class _Cfg(BaseModel):
     sigma_accel_h_mps2: float = Field(4.0, gt=0)
     sigma_accel_v_mps2: float = Field(2.5, gt=0)
     init_velocity_sigma_mps: float = Field(20.0, gt=0)
-    max_tracks: int = Field(2000, ge=1)
-    history_len: int = Field(600, ge=1)
-    history_min_dt_s: float = Field(0.5, ge=0)
