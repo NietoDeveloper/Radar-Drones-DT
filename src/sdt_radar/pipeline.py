@@ -31,7 +31,4 @@ from dataclasses import dataclass, field
             if self.recorder:
                 self.recorder.write(det)
             self.buffer.push(m)
-            self.stats["received"] += 1
-            st = self.sensor_state.setdefault(det.sensor_id, {"count": 0.0, "last_rx": 0.0, "last_t": 0.0})
-            st["count"] += 1
-            st["last_rx"], st["last_t"] = rx, det.t
+        
