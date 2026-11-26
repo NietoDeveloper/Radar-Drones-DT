@@ -12,17 +12,6 @@ hardware, and so every radar-band / PRF assumption is explicit.
     floor = float(np.median(mean_spec))
     sig = np.clip(mean_spec - floor, 0.0, None)
     tot = float(sig.sum()) + 1e-18
-    centroid = float((f_khz * sig).sum() / tot)
-    rms_bw = float(np.sqrt(((f_khz - centroid) ** 2 * sig).sum() / tot))
-
-    peak = float(np.max(mean_spec))
-    occupied = float(np.mean(mean_spec > peak * 10 ** (-2.0)))  # bins within 20 dB of the peak
-    flat = float(np.exp(np.mean(np.log(mean_spec))) / np.mean(mean_spec))
-
-    logs = np.log(pw)
-    logm = np.log(mean_spec)
-    a = logs - logs.mean(axis=0, keepdims=True)
-    b = (logm - logm.mean())[:, None]
     corr = (a * b).sum(axis=0) / (np.linalg.norm(a, axis=0) * np.linalg.norm(b) + 1e-12)
     stationarity = float(corr.mean())
 
