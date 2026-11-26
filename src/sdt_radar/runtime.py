@@ -9,14 +9,6 @@ import time
 
 from .api.hub import StreamHub
 from .config import Settings
-from .ingest import TcpIngest, UdpIngest
-from .pipeline import Pipeline
-
-log = logging.getLogger("sdt_radar.runtime")
-
-TICK_S = 0.
-
-
 class Runtime:s
         for srv in (self.udp, 
             if srv is not None:
