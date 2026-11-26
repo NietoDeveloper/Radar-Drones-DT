@@ -98,7 +98,3 @@ from dataclasses import dataclass, field
         try:
             probs = self.classifier.predict_proba(ms.md_iq, ms.md_prf_hz)
         except ValueError:
-            self.stats["classifier_rejected"] += 1
-            return
-        tr.klass.update(probs, self.settings.classifier.forgetting)
-        self.stats["classified
