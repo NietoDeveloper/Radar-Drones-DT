@@ -73,8 +73,4 @@ class TcpIngest:
         if self._server is not None:
             self._server.close()
             await self._server.wait_closed()
-            self._server = None
-
-    async def _handle(self, reader: asyncio.StreamReader, writer: asyncio.StreamWriter) -> None:
-        try:
-            while True:
+          s
