@@ -15,13 +15,4 @@ hardware, and so every radar-band / PRF assumption is explicit.
     corr = (a * b).sum(axis=0) / (np.linalg.norm(a, axis=0) * np.linalg.norm(b) + 1e-12)
     stationarity = float(corr.mean())
 
-    lm = logm - logm.mean()
-    ac = np.correlate(lm, lm, mode="full")[nperseg - 1 :]
-    ac = ac / (ac[0] + 1e-12)
-    comb = float(ac[3 : nperseg // 3].max())
-
-    p2f = float(10 * np.log10(peak / (floor + 1e-18)))
-    cents = (f_khz[:, None] * pw).sum(axis=0) / pw.sum(axis=0)
-    jitter = float(cents.std())
-
-    return np.array([rms_bw, occupied, flat, stationarity, comb, p2f, jitter], dtype=float)
+    lm = logm - logm.mean
