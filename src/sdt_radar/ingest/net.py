@@ -78,13 +78,3 @@ class TcpIngest:
     async def _handle(self, reader: asyncio.StreamReader, writer: asyncio.StreamWriter) -> None:
         try:
             while True:
-                try:
-                    line = await reader.readuntil(b"\n")
-                except asyncio.IncompleteReadError as exc:
-                    if exc.partial:
-                        parse_payload(exc.partial, self.pipeline)
-                    break
-                except asyncio.LimitOverrunError:
-                    self.pipeline.stats["rejected_malformed"] += 1
-                    break  # drop the connection: framing is lost
-                par
