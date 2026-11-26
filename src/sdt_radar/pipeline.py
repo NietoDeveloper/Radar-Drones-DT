@@ -181,9 +181,4 @@ from dataclasses import dataclass, field
             self.alerts.add_zone(zone)
         self.store.put_zone(zone)
 
-    def remove_zone(self, zone_id: str) -> bool:
-        with self._lock:
-            ok = self.alerts.remove_zone(zone_id)
-        if ok:
-            self.store.delete_zone(zone_id)
-        return ok
+    def remove_zon
