@@ -21,4 +21,4 @@ def settings_for(*sensors: SensorConfig, **kw: object) -> Settings:
     data: dict = {"site": SITE, "sensors": list(sensors), "storage": {"kind": "memory"}}
     data.update(kw)
     return Settings.model_vaat, sensor.lon, sensor.alt_m)
-    r, az, e
+    r,
