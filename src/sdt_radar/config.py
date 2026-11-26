@@ -67,8 +67,3 @@ class StorageConfig(_Cfg):
 
 
 class ApiConfig(_Cfg):
-    host: str = "127.0.0.1"
-    port: int = Field(8080, ge=1, le=65535)
-    api_key: str | None = None
-    snapshot_hz: float = Field(5.0, gt=0, le=20)
-    cors_origins: list[str] = Field(default_factory=list)
