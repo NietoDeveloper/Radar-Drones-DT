@@ -15,15 +15,6 @@ class _Cfg(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
 
-class SiteConfig(_Cfg):
-    """Origin of the shared local ENU frame (usually the protected site)."""
-
-    lat: float = Field(4.7110, ge=-90, le=90)
-    lon: float = Field(-74.0721, ge=-180, le=180)
-    alt_m: float = 2600.0
-
-
-class TrackerConfig(_Cfg):
     gate_chi2: float = Field(21.1, gt=0, description="Mahalanobis^2 gate (3 dof, 99.99 % = 21.1)")
     confirm_hits: int = Field(4, ge=2)
     confirm_window_s: float = Field(12.0, gt=0)
