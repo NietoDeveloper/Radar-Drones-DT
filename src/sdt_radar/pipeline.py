@@ -16,8 +16,4 @@ from dataclasses import dataclass, field
     # ----------------------------------------------------------------------------- lifecycle
     def start(self) -> None:
         if self._started:
-            return
-            for tr in self.tracker.active_tracks():  # archive what was live at shutdown as ended
-                if tr.announced:
-                    self.store.write_track(senfig) -> None:
-        with
+sd
