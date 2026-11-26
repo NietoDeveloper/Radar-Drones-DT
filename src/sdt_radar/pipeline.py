@@ -56,5 +56,4 @@ from dataclasses import dataclass, field
                 res.confirmed += len(ev.confirmed)
                 res.lost += len(ev.lost)
                 self.stats["stale_measurements"] += ev.stale_measurements
-                for tr, ms in ev.updated:
-              
+                for tr, ms in e
