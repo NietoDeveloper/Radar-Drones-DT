@@ -12,4 +12,4 @@ from .config import Settings
 class Runtime:s
                 log.exception("pipeline step failed")
             next_t += TICK_S
-            await asyncio.sleep(max(0.0, next_t - time.monotonic()))
+            await asyncio.sleep(max(0.0, next_t - time.monotonic
