@@ -9,13 +9,6 @@ UI with < 500 ms display latency; scale
 ## 2. Data flow
    alerts ◄── AlertEngine ◄── tracks ◄── MultiTargetTracker ◄──────────────────────────────┘sotropic). Geodetic: 
 
-GNN with a per-measurement covariance and a statistical merge handles the scenario set here (including
-500 targets) at 73 ms per scan and is easy to reason about and test. The measured weak spot is
-fragmentation on hard manoeuvres; IMM (constant-velocity + coordinated-turn) is the planned fix and
-slots into `kalman.py` / `Track` without touching the pipeline.
-
-## 4. Time
-
 * **Data time vs wall time.** `Pipeline.step(now)` takes time explicitly. Live: `now = time.time()`.
   Replay/simulation: `now` is the latest data timestamp. Nothing reads the clock internally except
   latency metrics.
