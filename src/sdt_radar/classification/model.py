@@ -17,16 +17,6 @@ class Classifier(Protocol):
             g = (p - onehot) / n
 
 def make_dataset(
-    n_per_class: int, seed: int, n_samples: int = 1024, prfs: tuple[float, ...] = (10_240.0, 16_384.0)
-) -> tuple[NDArray[np.float64], NDArray[np.int_]]:
-    """Synthetic labelled snippets with randomised physical and radar parameters."""
-    rng = np.random.default_rng(seed)
-    xs, ys = [], []
-    generators: tuple[Callable[..., Any], ...] = (synth_multirotor, synth_bird, synth_clutter)
-    for label, fn in enumerate(generators):
-        for _ in range(n_per_class):
-            prf = float(rng.choice(prfs))
-            v = float(rng.uniform(-15, 15))
             snr = float(rng.uniform(4, 25))
             xs.append(md_features(fn(rng, n_samples, prf, 10e9, v, snr), prf))
             ys.append(label)
