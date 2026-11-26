@@ -12,14 +12,6 @@ Everything works on *slow-time complex samples* at the radar PRF (a short dwell 
 from __future__ import annotations
 
 import numpy as np
-from numpy.typing import NDArray
-from scipy.signal import stft
-
-def synth_multirotor(
-    rng: np.random.Generator,
-    n: int,
-    prf_hz: float,
-    fc_hz: float = 10e9,
     radial_v_mps: float = 5.0,
     snr_db: float = 15.0,
     n_rotors: int | None = None,
