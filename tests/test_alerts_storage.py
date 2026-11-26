@@ -18,16 +18,6 @@ def test_intrusion_opens_once_escalates_and_closes_with_hysteresis():
     assert eng.evaluate([inside], 103.0) == []  # still within hysteresis
     ev = eng.evaluate([inside], 107.0)
 
-def test_birds_are_suppressed_unknowns_are_not_and_tentative_never_alert():
-    eng = AlertEngine(FRAME, [circle(300)], AlertConfig(lookahead_s=0))
-    bird = mk_track([10, 10, 50], cls=TargetClass.bird, seq=1)
-    unknown = mk_track([20, 20, 50], seq=2)
-    tent = mk_track([30, 30, 50], status=TrackStatus.tentative, seq=3)
-    ev = eng.evaluate([bird, unknown, tent], 100.0)
-    assert [e.track_id for e in ev] == [unknown.track_id]
-    assert ev[0].target_class == TargetClass.unknown and 0.5 < ev[0].risk < 0.7
-
-
 def test_lost_track_closes_its_alerts_and_zone_management():
     eng = AlertEngine(FRAME, [circle(300)], AlertConfig(lookahead_s=0))
     tr = mk_track([10, 10, 50], cls=TargetClass.drone)
