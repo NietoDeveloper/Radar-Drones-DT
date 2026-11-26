@@ -57,8 +57,4 @@ from dataclasses import dataclass, field
                 res.lost += len(ev.lost)
                 self.stats["stale_measurements"] += ev.stale_measurements
                 for tr, ms in ev.updated:
-                    self._classify(tr, ms)
-                    touched[tr.track_id] = tr
-                    if ms.rx_wall > 0:
-                        self.latency_ms.append((time.time() - ms.rx_wall) * 1000.0)
-          
+              
