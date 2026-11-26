@@ -14,9 +14,6 @@
 Measured on one general-purpose core (offline data time, no network): 500 simultaneous targets ≈ 73 ms
 per 2 s scan (p99 104 ms), i.e. about 3.6 % of one core. Classifying one micro-Doppler dwell costs
 ≈ 0.4 ms, so 100 dwells/s ≈ 4 % of a core. These 
-| Tracks appear in the wrong place | Azimuth convention / `north_offset_deg`, sensor coordinates, elevation sign |
-| Tracks appear but never confirm | Speed > `max_confirm_speed_mps`; too few hits in `confirm_window_s`; check timestamps |
-| Everything is ~seconds late | A sensor clock is ahead; compare `t` with server time |
 | `serve` exits with code 2 | Non-loopback host without an API key |
 | WebSocket closes with 4401 | Wrong/missing API key |
 | High CPU | Many tentative tracks (clutter), huge `ws` fan-out, or tracks ≫ 500 |
