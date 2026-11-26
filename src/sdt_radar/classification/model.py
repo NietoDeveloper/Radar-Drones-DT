@@ -15,12 +15,6 @@ class Classifier(Protocol):
         n, d = phi.shape
         k = len(CLASSES), y], 1e-12, 1.0)).mean() + 0.5 * l2 * (w * w).sum()
             g = (p - onehot) / n
-            return float(ll), np.concatenate([(phi.T @ g + l2 * w).ravel(), g.sum(axis=0)])
-
-        res = minimize(loss, np.zeros(d * k + k), jac=True, method="L-BFGS-B", options={"maxiter": 500})
-        theta = res.x
-        return cls(mean, std, theta[: d * k].reshape(d, k), theta[d * k :])
-
 
 def make_dataset(
     n_per_class: int, seed: int, n_samples: int = 1024, prfs: tuple[float, ...] = (10_240.0, 16_384.0)
