@@ -5,13 +5,7 @@
 | Option | Command | Notes |
 |---|---|---|
 | Virtualenv | `pip install . && sdt-radar serve --config /etc/sdt-radar/radar.toml` | Simplest; runs on one core of any Linux/macOS/Windows host with Python ≥ 3.11 |
-| systemd | unit below | Restarts on failure, journa Too many tracks per core | Reduce load / raise gate efficiency / ay raw.jsonl --config tuned.toml` is deterministic,
-so before/after comparisons are exact.
-
-## 5. Storage, retention, backups
-ON →
-  100 tracks ≈ 30 KB/s ≈ 2.6 GB/day. Raise `storage.point_interval_s` to thin it (e.g. 2–5 s).
-* **Retention:** `SqliteStore.prune(older_than_epoch)` deletes old points and closed/lost records;
+| systemd | unit below | Restarts on failure, journa Too many tracks per core | Reduce load / raise gate efficiencdeletes old points and closed/lost records;
   schedule it (cron job calling a short Python snippet) or move to TimescaleDB retention policies.
 * **Raw log:** `storage.recorder_path` grows without bound; rotate with `logrotate` (`copytruncate`).
 * **Backup:** copy the database with `sqlite3 radar.db ".backup backup.db"` (consistent under WAL).
