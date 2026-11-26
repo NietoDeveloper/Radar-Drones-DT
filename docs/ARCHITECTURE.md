@@ -10,13 +10,6 @@ UI with < 500 ms display latency; scale
    alerts ◄── AlertEngine ◄── tracks ◄── MultiTargetTracker ◄──────────────────────────────┘sotropic). Geodetic: WGS-84 → ENU, diagonal covariance from
    `sigma_h_m` / `sigma_v_m`. Unknown sensors → `rejected_sensor`.
 3. **Re-ordering (`fusion/reorder.py`).** A heap sorted by measurement time. `release(now)` pops
-   everything older than `now − 0.2 s`. Overflow sheds the *oldest* data and is counted (`buffer_dropped`).
-4. **Batching.** Released measurements are grouped by `(sensor_id, time bucket 0.25 s)`: one coherent
-   "scan" per association pass.
-5. **Tracking (`tracking/tracker.py`).** See §3.
-6. **Classification (`pipeline._classify`).** Each matched measurement carrying a micro-Doppler dwell
-   updates its track's `ClassPosterior`.
-7. **Alerting (`alerts/engine.py`).** Evaluated at most every 0.5 s over live tracks.
 8. **Persistence.** Confirmed tracks write metadata + one point per `point_interval_s`; alerts are upserted.
 9. **Publication.** REST reads live state; the WebSocket hub snapshots at `snapshot_hz` (5 Hz) and pushes
    alerts immediately.
