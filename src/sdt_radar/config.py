@@ -48,5 +48,4 @@ class ClassifierConfig(_Cfg):
 
 class FusionConfig(_Cfg):
     reorder_window_s: float = Field(0.2, ge=0)
-    batch_bucket_s: float = Field(0.25, gt=0)
-
+    batch_bucket_s: float = Field(0.25, g
