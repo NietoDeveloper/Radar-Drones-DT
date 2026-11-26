@@ -194,9 +194,4 @@ from dataclasses import dataclass, field
 
         with self._lock:
             by_status: dict[str, int] = defaultdict(int)
-            for t in self.tracker.tracks.values():
-                by_status[t.status.value] += 1
-            return {
-                "counters": dict(self.stats), "tracker": dict(self.tracker.stats), "tracks_by_status": dict(by_status),
-                "buffer_len": len(self.buffer), "buffer_dropped": self.buffer.dropped_overflow,
-                "la
+          
