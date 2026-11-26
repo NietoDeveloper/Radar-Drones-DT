@@ -43,4 +43,4 @@ class ClassifierConfig(_Cfg):
     enabled: bool = True
     model_path: str | None = None  # None = packaged model
     decision_threshold: float = Field(0.7, ge=0.34, le=1.0)
-    forgetting: float = Field(0.92, g
+    forgetting: float = Field(0.9
