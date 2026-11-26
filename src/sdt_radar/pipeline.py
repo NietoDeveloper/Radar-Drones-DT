@@ -119,5 +119,4 @@ from dataclasses import dataclass, field
     def _track_out(self, tr: Track, now: float, extrapolate: bool, status: TrackStatus | None = None) -> TrackOut:
         return self._track_outs([tr], now, extrapolate, status)[0]
 
-    def _track_outs(self, tracks: list[Track], now: float, extrapolate: bool = True,
-                   
+    def _track_outs(self, tracks: list[Track], now: float, extrapolate: bool 
