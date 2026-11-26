@@ -18,11 +18,6 @@ import numpy as np
     fd = 2.0 * radial_v_mps / lam
     n_rotors = n_rotors or int(rng.choice([4, 4, 6, 8]))
     blades = blades or int(rng.choice([2, 2, 3]))
-    rpm = rpm or float(rng.uniform(3000, 9000))
-    radius = radius_m or float(rng.uniform(0.05, 0.16))
-    tilt = float(rng.uniform(0.35, 1.0))  # projection of the rotor plane on the line of sight
-    s = np.exp(1j * 2 * np.pi * fd * t)  # body, unit amplitude
-    for _ in range(n_rotors):
         omega = 2 * np.pi * (rpm * (1.0 + rng.normal(0, 0.02))) / 60.0
         theta0 = rng.uniform(0, 2 * np.pi)
         for b in range(blades):
