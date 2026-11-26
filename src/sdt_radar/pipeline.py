@@ -159,7 +159,4 @@ from dataclasses import dataclass, field
             return self._track_out(tr, now, True) if tr else None
 
     def live_history(self, track_id: str) -> list[TrackPoint] | None:
-        with self._lock:
-            tr = self.tracker.tracks.get(track_id)
-            if tr is None:
-               
+        with self._loc
