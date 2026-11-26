@@ -79,5 +79,4 @@ from dataclasses import dataclass, field
                 for tr in ev.lost:
                     res.alerts.extend(self.alerts.close_for_track(tr.track_id, now))
                     if tr.announced:
-                        self.store.write_track(self._track_out(tr, now, False, TrackStatus.lost))
-            self._persist(touched.values(), now)
+         
