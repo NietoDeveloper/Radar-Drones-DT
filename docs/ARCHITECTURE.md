@@ -8,11 +8,7 @@ UI with < 500 ms display latency; scale
 
 ## 2. Data flow
    alerts ◄── AlertEngine ◄── tracks ◄── MultiTargetTracker ◄──────────────────────────────┘sotropic). Geodetic: WGS-84 → ENU, diagonal covariance from
-   `sigma_h_m` / `sigma_v_m`. Unknown sensors →o **its own measurement's timestamp** (rotating radars
-  time-stamp plots across the scan) then updated in Joseph form (keeps `P` symmetric positive-definite).
-* **Spawn:** unmatched measurements become tentative tracks (`x = z`, `P_pos = R`, `P_vel = 20² I`).
-* **Lifecycle (time-based, sensor-agnostic):**
-
+   `sigma_h_m` / `sigma_v_m`. Unknown sensors →o **
   | Transition | Rule (defaults) |
   |---|---|
   | tentative → confirmed | ≥ 4 hits within 12 s **and** speed estimate ≤ 50 m/s |
