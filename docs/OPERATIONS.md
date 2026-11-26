@@ -5,10 +5,7 @@
 | Option | Command | Notes |
 |---|---|---|
 | Virtualenv | `pip install . && sdt-radar serve --config /etc/sdt-radar/radar.toml` | Simplest; runs on one core of any Linux/macOS/Windows host with Python ≥ 3.11 |
-| systemd | unit below | Restarts on failure, journa Too many tracks per core | Reduce load / raise gate efficiencdeletes old points and closed/lost records;
-  schedule it (cron job calling a short Python snippet) or move to TimescaleDB retention policies.
-* **Raw log:** `storage.recorder_path` grows without bound; rotate with `logrotate` (`copytruncate`).
-* **Backup:** copy the database with `sqlite3 radar.db ".backup backup.db"` (consistent under WAL).
+| systemd | unit below | Restarts on failure, journa Too
 * **Zones** created through the API are persisted and reloaded at startup (zones in the config file are
   upserted too).
 
