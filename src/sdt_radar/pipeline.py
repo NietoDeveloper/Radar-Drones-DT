@@ -135,11 +135,7 @@ from dataclasses import dataclass, field
             out.append(TrackOut(
                 track_id=tr.track_id, seq=tr.seq, status=status or tr.status, target_class=cls,
                 class_confidence=cc, confidence=tr.confidence(now, cfg.tracker.max_coast_s),
-                lat=float(lat[i]), lon=float(lon[i]), alt_m=float(alt[i]),
-                east_m=float(pos[i, 0]), north_m=float(pos[i, 1]), up_m=float(pos[i, 2]),
-                vel_e_mps=ve, vel_n_mps=vn, vel_u_mps=vu, speed_mps=float(np.linalg.norm(tr.vel)),
-                heading_deg=heading_deg(ve, vn), climb_mps=vu, rcs_dbsm=tr.rcs_dbsm,
-                position_sigma_m=tr.position_sigma, sensors=tr.sensor_list(), first_seen=tr.first_t,
+                lat=float(lat[i]), lon=fn_sigma, sensors=tr.sensor_list(), first_seen=tr.first_t,
                 last_seen=tr.last_hit_t, age_s=max(now - tr.first_t, 0.0), hits=tr.hits))
         return out
 
