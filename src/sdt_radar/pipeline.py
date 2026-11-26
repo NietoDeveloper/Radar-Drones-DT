@@ -61,7 +61,4 @@ from dataclasses import dataclass, field
                     touched[tr.track_id] = tr
                     if ms.rx_wall > 0:
                         self.latency_ms.append((time.time() - ms.rx_wall) * 1000.0)
-                for tr in ev.confirmed:
-                    tr.announced = True
-f.tracker.sweep(now)
- 
+          
