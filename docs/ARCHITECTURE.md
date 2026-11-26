@@ -11,15 +11,7 @@ UI with < 500 ms display latency; scale
    `sigma_h_m` / `sigma_v_m`. Unknown sensors →o **
   | Transition | Rule (defaults) |
   |---|---|
-  | tentative → confirmed | ≥ 4 hits within 12 s **and** speed estimate ≤ 50 m/s |
-  | tentative → deleted | no hit for 4 s |
-  | confirmed → coasting | no hit for 2 s |
-  | coasting → confirmed | new hit gates in |
-  | coasting → deleted | no hit for 8 s |
-  | duplicate merge | 6-D state difference χ² < 16.8 (velocity within 10 m/s), or < 15 m / 5 m/s; older track survives |
-
-* **Mixed-sensor batches** are split per sensor and processed in time order.
-* **Stale measurements** (older than a track's state) cannot rewind a filter; they are counted.
+  | tentative → confirmed | ≥ 4 hits within 12 s **and** speed estimate ≤ 50 m/s |ate) cannot rewind a filter; they are counted.
 * **Confidence** (`Track.confidence`): `(1 − 0.5^(hits−1)) × (0.4 + 0.6 × freshness)` — a monotone,
   explainable score. It is **not** a calibrated probability.
 
