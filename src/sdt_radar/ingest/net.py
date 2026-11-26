@@ -7,6 +7,4 @@ Wire format (one of):
 * newline-delimited JSON (TCP / UDP)  -> one detection per line
 
 
-from __future__ import annotations
-
-import 
+from __future__ s
