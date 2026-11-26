@@ -127,9 +127,3 @@ from dataclasses import dataclass, field
         pos = np.stack([
             t.pos + t.vel * float(np.clip(now - t.t, 0.0, cfg.tracker.max_coast_s)) if extrapolate else t.pos
             for t in tracks])
-        lat, lon, alt = self.frame.to_geodetic(pos)
-        out: list[TrackOut] = []
-        for i, tr in enumerate(tracks):
-            cls, cc = tr.klass.decide(cfg.classifier.decision_threshold)
-            ve, vn, vu = (float(v) for v in tr.vel)
-            out.append(TrackOut(
