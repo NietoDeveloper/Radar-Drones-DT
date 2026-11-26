@@ -4,10 +4,7 @@
 
 **Goals:** ingest detections from heterogeneous sensors; keep one coherent picture of every airborne
 target (tracks); tell drones from birds; alert on protected zones; record everything; serve a real-time
-UI with < 500 ms display latency; scale to hundreds of simultaneous tracks; be testable without hardware.
-
-**Non-goals (v1):** radar signal processing (range-Doppler, CFAR — the radar/SDK does that and emits
-plots), the frontend, effectors/countermeasures, vendor-specific drivers.
+UI with < 500 ms display latency; scale
 
 ## 2. Data flow
 
