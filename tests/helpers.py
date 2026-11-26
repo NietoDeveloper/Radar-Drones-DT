@@ -20,12 +20,7 @@ def sensor_cfg(sid: str = "r1", kind: SensorKind = SensorKind.radar_fmcw, east: 
 def settings_for(*sensors: SensorConfig, **kw: object) -> Settings:
     data: dict = {"site": SITE, "sensors": list(sensors), "storage": {"kind": "memory"}}
     data.update(kw)
-    return Settings.model_validate(data)
-
-
-def polar_det(sensor: SensorConfig, target_enu: np.ndarray, t: float, noise: np.ndarray | None = None,
-              **extra: object) -> Detection:
-    s_enu = FRAME.to_enu(sensor.lat, sensor.lon, sensor.alt_m)
+    return Settings.model_vaat, sensor.lon, sensor.alt_m)
     r, az, el = enu_to_polar(target_enu - s_enu)
     if noise is not None:
         r, az, el = r + noise[0], (az + noise[1]) % 360.0, float(np.clip(el + noise[2], -89, 89))
