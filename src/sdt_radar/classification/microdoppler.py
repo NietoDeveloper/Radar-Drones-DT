@@ -18,13 +18,6 @@ def synth_clutter(
 ) -> Complex:
     """Rain / foliage / ground clutter: Gaussian-spectrum coloured noise, no rigid body line."""
     width_hz = float(rng.uniform(15.0, 300.0))
-    white = _noise(rng, n, 1.0)
-    spec = np.fft.fft(white)
-    f = np.fft.fftfreq(n, d=1.0 / prf_hz)
-    shape = np.exp(-0.5 * (f / width_hz) ** 2)
-    s = np.fft.ifft(spec * shape)
-    s = s / np.sqrt(np.mean(np.abs(s) ** 2))
-    t = np.arange(n) / prf_hz
     s = s * np.exp(1j * 2 * np.pi * (2 * radial_v_mps / (C0 / fc_hz)) * t)
     return s + _noise(rng, n, 10 ** (-snr_db / 10.0))
 
