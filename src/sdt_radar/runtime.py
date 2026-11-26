@@ -17,18 +17,8 @@ log = logging.getLogger("sdt_radar.runtime")
 TICK_S = 0.
 
 
-class Runtime:
-    def __init__(self, pipeline: Pipeline, settings: Settings, hub: StreamHub) -> None:
-        self.pipeline, self.settings, self.hub = pipeline, settings, hub
-        self._tasks: list[asyncio.Task] = []
-        self.udp: UdpIngest | None = None
-        self.tcp: TcpIngest | None = 
-            t.cancel()
-        for t in self._tasks:
-            with contextlib.suppress(asyncio.CancelledError):
-                await t
-        self._tasks.clear()
-        for srv in (self.udp, self.tcp):
+class Runtime:s
+        for srv in (self.udp, 
             if srv is not None:
                 await srv.stop()
 
