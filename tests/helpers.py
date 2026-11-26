@@ -23,10 +23,4 @@ def settings_for(*sensors: SensorConfig, **kw: object) -> Settings:
     return Settings.model_vaat, sensor.lon, sensor.alt_m)
     r, az, el = enu_to_polar(target_enu - s_enu)
     if noise is not None:
-        r, az, el = r + noise[0], (az + noise[1]) % 360.0, float(np.clip(el + noise[2], -89, 89))
-    return Detection(sensor_id=sensor.id, t=t, range_m=max(r, 0.0), azimuth_deg=az, elevation_deg=el, **extra)  # type: ignore[arg-type]
-
-
-def geodetic_det(sensor_id: str, target_enu: np.ndarray, t: float, **extra: object) -> Detection:
-    lat, lon, alt = FRAME.to_geodetic(target_enu)
-    return Detection(sensor_id=sensor_id, t=t, lat=float(lat), lon=float(lon), alt_m=float(alt), **extra)  # type: ignore[arg-type]
+        r, Detection(sensor_id=sensor_id, t=t, lat=float(lat), lon=float(lon), alt_m=float(alt), **extra)  # type: ignore[arg-type]
