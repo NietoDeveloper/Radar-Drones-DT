@@ -23,15 +23,6 @@ class Runtime:
         self._tasks: list[asyncio.Task] = []
         self.udp: UdpIngest | None = None
         self.tcp: TcpIngest | None = 
-
-    async def start(self) -> None:
-        cfg = self.settings.ingest.host, cfg.tcp_port)
-            log.info("TCP ingest on %s:%d", cfg.host, await self.tcp.start())
-        self._tasks = [asyncio.create_task(self._tick(), name="sdt-tick"),
-                       asyncio.create_task(self.hub.run(self.pipeline), name="sdt-hub")]
-
-    async def stop(self) -> None:
-        for t in self._tasks:
             t.cancel()
         for t in self._tasks:
             with contextlib.suppress(asyncio.CancelledError):
