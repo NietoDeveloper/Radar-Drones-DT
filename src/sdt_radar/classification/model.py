@@ -8,29 +8,14 @@ range-Doppler maps or spectrograms (ONNX / PyTorch) can replace it without touch
 from __future__ import annotations
 
 from collections.abc import Callable
-from dataclasses import dataclass
-from pathlib import Path
-from typing import Any, Protocol
-
-import numpy as np
-from numpy.typing import NDArray
-from scipy.optimize import minimize
-
-
+from dataclasses import _DataclassT
 class Classifier(Protocol):
     classes: tuple[TargetClass, ...]
 
     def predict_proba(self, iq: NDArray, prf_hz: fl
 
 
-def _softmax(z: NDArray[np.float64]) -> NDArray[np.float64]:
-    z = z - z.max(axis=-1, keepdims=True)
-    e = np.exp(z)
-    return np.asarray(e / e.sum(axis=-1, keepdims=True))
-
-
-@dataclass
-class MicroDopplerClassifier:
+def _softmax(z: NDArray[np.float64]) ->
     mean: NDArray[np.float64]
     std: NDArray[np.float64]
     W: NDArray[np.float64]  # (2*F, C)
