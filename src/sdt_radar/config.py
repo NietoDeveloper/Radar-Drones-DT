@@ -77,16 +77,4 @@ class ApiConfig(_Cfg):
 class AlertConfig(_Cfg):
     lookahead_s: float = Field(30.0, ge=0)
     clear_after_s: float = Field(5.0, ge=0)
-    suppress_class_above: float = Fiel
-
-def load_settings(path: str | Path | None = None) -> Settings:
-    """Load settings from a TOML file (or defaults). ``SDT_RADAR_API_KEY`` overrides ``api.api_key``."""
-    data: dict = {}
-    if path is not None:
-        with open(path, "rb") as fh:
-            data = tomllib.load(fh)
-    settings = Settings.model_validate(data)
-    key = os.environ.get("SDT_RADAR_API_KEY")
-    if key:
-        settings.api.api_key = key
-    return settings
+    suppress_class_
