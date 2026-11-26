@@ -7,16 +7,7 @@ target (tracks); tell drones from birds; alert on protected zones; record everyt
 UI with < 500 ms display latency; scale
 
 ## 2. Data flow
-   alerts ◄── AlertEngine ◄── tracks ◄── MultiTargetTracker ◄──────────────────────────────┘
-      │            ▲              │ ▲
-      │            │              │ └── classifier posterior per track (micro-Doppler dwell)
-      ▼            │              ▼
-  Store / WS    zones          Store (points) / REST / WS
-```
-   ranges, plausible time, no unknown fields, micro-Doppler fields together. Invalid → `rejected_invalid`.
-2. **Conversion (`fusion/measurement.py`).** Polar: sensor ENU position + `polar_to_enu(range, az +
-   north_offset, el)`, covariance from a first-order Jacobian of the sensor's σ_range/σ_az/σ_el (so
-   uncertainty grows with range and is anisotropic). Geodetic: WGS-84 → ENU, diagonal covariance from
+   alerts ◄── AlertEngine ◄── tracks ◄── MultiTargetTracker ◄──────────────────────────────┘sotropic). Geodetic: WGS-84 → ENU, diagonal covariance from
    `sigma_h_m` / `sigma_v_m`. Unknown sensors → `rejected_sensor`.
 3. **Re-ordering (`fusion/reorder.py`).** A heap sorted by measurement time. `release(now)` pops
    everything older than `now − 0.2 s`. Overflow sheds the *oldest* data and is counted (`buffer_dropped`).
