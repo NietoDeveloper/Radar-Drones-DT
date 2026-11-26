@@ -45,7 +45,3 @@ from dataclasses import dataclass, field
         """Release time-ordered measurements, track, classify, alert, record. Returns what happened."""
         t0 = time.perf_counter()
         res = StepResult()
-        with self._lock:
-            ready = self.buffer.flush() if flush else self.buffer.release(now)
-            touched: dict[str, Track] = {}
-    
