@@ -35,7 +35,3 @@ from dataclasses import dataclass, field
             st = self.sensor_state.setdefault(det.sensor_id, {"count": 0.0, "last_rx": 0.0, "last_t": 0.0})
             st["count"] += 1
             st["last_rx"], st["last_t"] = rx, det.t
-        return True
-
-    def ingest_many(self, dets: Iterable[Detection]) -> int:
-        return sum(1 for d in dets if self.ingest(d))
