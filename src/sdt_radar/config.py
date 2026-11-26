@@ -58,7 +58,3 @@ class IngestConfig(_Cfg):
     queue_size: int = Field(50_000, ge=1)
     allow_unknown_sensors: bool = False
 
-
-class StorageConfig(_Cfg):
-    kind: str = Field("sqlite", pattern="^(sqlite|memory)$")
-    path: str = "data/radar.db"
