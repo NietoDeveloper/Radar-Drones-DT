@@ -62,8 +62,3 @@ class IngestConfig(_Cfg):
 class StorageConfig(_Cfg):
     kind: str = Field("sqlite", pattern="^(sqlite|memory)$")
     path: str = "data/radar.db"
-    point_interval_s: float = Field(1.0, ge=0)
-    recorder_path: str | None = None  # raw detections as JSON-lines, for replay and audit
-
-
-class ApiConfig(_Cfg):
