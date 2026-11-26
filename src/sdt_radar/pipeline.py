@@ -25,6 +25,3 @@ from dataclasses import dataclass, field
         try:
             m = self.factory.convert(det, rx)
         except RejectedDetection:
-            self.stats["rejected_sensor"] += 1
-            return False
-        with self._lock:
