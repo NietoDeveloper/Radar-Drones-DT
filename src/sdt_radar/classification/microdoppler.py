@@ -9,10 +9,3 @@ hardware, and so every radar-band / PRF assumption is explicit.
 ) -> Complex:
     """Rain / foliage / ground clutter: Gaussian-spectrum coloured noise, no rigid body line."""
     width_hz = float(rng.uniform(15.s
-    floor = float(np.median(mean_spec))
-    sig = np.clip(mean_spec - floor, 0.0, None)
-    tot = float(sig.sum()) + 1e-18
-    corr = (a * b).sum(axis=0) / (np.linalg.norm(a, axis=0) * np.linalg.norm(b) + 1e-12)
-    stationarity = float(corr.mean())
-
-    lm = logm - logm.mean
