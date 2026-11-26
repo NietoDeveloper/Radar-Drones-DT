@@ -162,8 +162,4 @@ from dataclasses import dataclass, field
         with self._lock:
             tr = self.tracker.tracks.get(track_id)
             if tr is None:
-                return None
-            hs = list(tr.history)
-        if not hs:
-            return []
-        lat, lon
+               
