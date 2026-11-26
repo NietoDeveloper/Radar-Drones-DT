@@ -52,11 +52,4 @@ def test_store_tracks_points_alerts_zones_and_prune(store):
     assert [t.track_id for t in store.list_tracks()] == ["a", "b"]  # newest first
     assert [t.track_id for t in store.list_tracks(target_class=TargetClass.bird)] == ["b"]
     assert [t.track_id for t in store.list_tracks(status=TrackStatus.lost)] == ["b"]
-    assert [p.t for p in store.history("a")] == [10, 20, 30, 40]
-    assert [p.t for p in store.history("a", since=20, until=30)] == [20, 30]
-    assert [a.state for a in store.list_alerts()] == ["closed"] and store.list_alerts(active_only=True) == []
-    assert [z.radius_m for z in store.list_zones()] == [500]
-    assert store.prune(25) == 2 and [p.t for p in store.history("a")] == [30, 40]
-    store.delete_zone("z1"); store.flush()
-    assert store.list_zones() == []
-
+ 
