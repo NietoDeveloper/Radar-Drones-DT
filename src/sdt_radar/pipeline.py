@@ -176,5 +176,3 @@ from dataclasses import dataclass, field
                                   confidence=h.confidence, sensors=list(h.sensors)))
         return pts
 
-    def add_zone(self, zone: Zone) -> None:
-        with self._lock:
