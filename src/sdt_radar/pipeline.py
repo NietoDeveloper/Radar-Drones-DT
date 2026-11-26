@@ -17,19 +17,6 @@ from dataclasses import dataclass, field
     def start(self) -> None:
         if self._started:
             return
-        self.store.start()
-        known = {z.id for z in self.alerts.list_zones()}
-        for z in self.store.list_zones():  # zones created through the API survive restarts
-            if z.id not in known:
-                self.alerts.add_zone(z)
-        for z in self.settings.zones:
-            self.store.put_zone(z)
-        self._started = True
-
-    def close(self) -> None:
-        with self._lock:
-            now = time.time()
-            self.step(now, flush=True)
             for tr in self.tracker.active_tracks():  # archive what was live at shutdown as ended
                 if tr.announced:
                     self.store.write_track(self._track_out(tr, now, False, TrackStatus.lost))
