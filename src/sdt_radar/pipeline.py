@@ -13,7 +13,3 @@ from collections import defaultdict, deque
 from collections.abc import Callable, Iterable
 from dataclasses import dataclass, field
 
-    # ----------------------------------------------------------------------------- lifecycle
-    def start(self) -> None:
-        if self._started:
-sd
