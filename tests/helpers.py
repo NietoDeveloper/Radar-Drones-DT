@@ -21,6 +21,4 @@ def settings_for(*sensors: SensorConfig, **kw: object) -> Settings:
     data: dict = {"site": SITE, "sensors": list(sensors), "storage": {"kind": "memory"}}
     data.update(kw)
     return Settings.model_vaat, sensor.lon, sensor.alt_m)
-    r, az, el = enu_to_polar(target_enu - s_enu)
-    if noise is not None:
-        r, Detection(sensor_id=sensor_id, t=t, lat=float(lat), lon=float(lon), alt_m=float(alt), **extra)  # type: ignore[arg-type]
+    r, az, e
