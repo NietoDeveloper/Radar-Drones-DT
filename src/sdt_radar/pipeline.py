@@ -84,6 +84,3 @@ from dataclasses import dataclass, field
             if now - self._last_alert_eval >= 0.5 or flush:
                 self._last_alert_eval = now
                 res.alerts.extend(self.alerts.evaluate(self.tracker.active_tracks(), now))
-            for a in res.alerts:
-                self.store.write_alert(a)
-                for fn in self._alert_listeners:
