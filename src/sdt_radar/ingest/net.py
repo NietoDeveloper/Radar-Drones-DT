@@ -87,8 +87,4 @@ class TcpIngest:
                 except asyncio.LimitOverrunError:
                     self.pipeline.stats["rejected_malformed"] += 1
                     break  # drop the connection: framing is lost
-                parse_payload(line, self.pipeline)
-        except (ConnectionResetError, asyncio.CancelledError):  # pragma: no cover
-            pass
-        finally:
-            writer.close()
+                par
