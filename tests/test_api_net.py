@@ -9,19 +9,7 @@ from fastapi.testclient import TestClient
 from sdt_radar.api import create_app
 from sdt_radar.models import Zone
 from sdt_radar.pipeline import Pipeline
-from tests.helpers import SITE, polar
-        now = time.time()
-        r = c.post("/api/v1/ingest/detections", json=det_stream(s, now) + [{"sensor_id": "r1", "t": 1}, {"junk": True}])
-        assert r.json() == {"accepted": 8, "rejected": 2}
-        tracks = wait_for(lambda: c.get("/api/v1/tracks").json())
-        t = tracks[0]
-        assert t["status"] == "confirmed" and t["sensors"] == ["r1"] and t["speed_mps"] > 5
-        assert c.get("/api/v1/tracks?target_class=bird").json() == []
-        assert c.get("/api/v1/tracks?min_confidence=0.99").json() == []
-        one = c.get(f"/api/v1/tracks/{t['track_id']}").json()
-        assert one["track_id"] == t["track_id"]
-        hist = wait_for(lambda: c.get(f"/api/v1/tracks/{t['track_id']}/history").json())
-        assert hist[0]["t"] <= hist[-1]["t"] and {"lat", "lon", "alt_m", "speed_mps"} <= set(hist[0])
+from tests.helpers import SITE, polar "alt_m", "speed_mps"} <= set(hist[0])
         assert c.get("/api/v1/tracks/doesnotexist").status_code == 404
         assert c.get("/api/v1/tracks/doesnotexist/history").status_code == 404
         assert c.get("/api/v1/tracks?min_confidence=2").status_code == 422
