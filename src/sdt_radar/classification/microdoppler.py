@@ -15,15 +15,7 @@ from __future__ import annotations
             for frac, amp in ((1.0, 0.25), (0
     snr_db: float = 15.0,
     flap_hz: float | None = None,
-    wing_amp_m: float | None = None,
-) -> Complex:
-    lam = C0 / fc_hz
-    t = np.arange(n) / prf_hz
-    fd = 2.0 * radial_v_mps / lam
-    flap = flap_hz or float(rng.uniform(3.0, 14.0))
-    amp = wing_amp_m or float(rng.uniform(0.04, 0.28))
-    # flapping is bursty: random on/off envelope (gliding phases) and slow frequency drift
-    drift = 1.0 + 0.15 * np.sin(2 * np.pi * rng.uniform(0.5, 3.0) * t + rng.uniform(0, 6.28))
+    wing_amp_m: float | None = None,sniform(0.5, 3.0) * t + rng.uniform(0, 6.28))
     phase = 2 * np.pi * flap * np.cumsum(drift) / prf_hz
     envelope = 0.5 * (1 + np.tanh(6 * np.sin(2 * np.pi * rng.uniform(1.0, 4.0) * t + rng.uniform(0, 6.28))))
     s = np.exp(1j * 2 * np.pi * fd * t)
