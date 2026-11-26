@@ -101,5 +101,4 @@ from dataclasses import dataclass, field
             self.stats["classifier_rejected"] += 1
             return
         tr.klass.update(probs, self.settings.classifier.forgetting)
-        self.stats["classified"] += 1
-
+        self.stats["classified
