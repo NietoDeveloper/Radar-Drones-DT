@@ -105,8 +105,4 @@ from dataclasses import dataclass, field
 
     def _persist(self, tracks: Iterable[Track], now: float) -> None:
         interval = self.settings.storage.point_interval_s
-        for tr in tracks:
-            if not tr.announced or tr.t - tr.stored_t < interval:
-                continue
-            tr.stored_t = tr.t
-            
+        for tr 
