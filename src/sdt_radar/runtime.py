@@ -32,7 +32,7 @@ class Runtime:
         if cfg.udp_port is not None:
             self.udp = UdpIngest(self.pipeline, cfg.host, cfg.udp_port)
             log.info("UDP ingest on %s:%d", cfg.host, await self.udp.start())
-        if cfg.tcp_port is not None:
+        if cfg.tcp_port is not N
             self.tcp = TcpIngest(self.pipeline, cfg.host, cfg.tcp_port)
             log.info("TCP ingest on %s:%d", cfg.host, await self.tcp.start())
         self._tasks = [asyncio.create_task(self._tick(), name="sdt-tick"),
