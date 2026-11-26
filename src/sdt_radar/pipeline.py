@@ -17,15 +17,6 @@ from dataclasses import dataclass, field
 class StepResult:
     batches: int = 0
     measurements: int = 0
-    created: int = 0
-    confirmed: int = 0
-    lost: int = 0
-    alerts: list[AlertOut] = field(default_factory=list)
-
-    def merge(self, o: StepResult) -> None:
-        self.batches += o.batches
-        self.measurements += o.measurements
-        self.created += o.created
         self.confirmed += o.confirmed
         self.lost += o.lost
         self.alerts.extend(o.alerts)
