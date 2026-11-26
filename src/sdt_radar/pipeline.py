@@ -111,7 +111,4 @@ from dataclasses import dataclass, field
             tr.stored_t = tr.t
             out = self._track_out(tr, now, False)
             self.store.write_track(out)
-            self.store.write_points(tr.track_id, [TrackPoint(
-                t=tr.t, lat=out.lat, lon=out.lon, alt_m=out.alt_m, vel_e_mps=out.vel_e_mps, vel_n_mps=out.vel_n_mps,
-                vel_u_mps=out.vel_u_mps, speed_mps=out.speed_mps, heading_deg=out.heading_deg,
-                position_sigma_m=out.position_sigma_m, confidence=out.confidence, sensors=out.sensors)])
+            self.store.write_point
