@@ -19,17 +19,7 @@ from dataclasses import dataclass, field
             return
             for tr in self.tracker.active_tracks():  # archive what was live at shutdown as ended
                 if tr.announced:
-                    self.store.write_track(self._track_out(tr, now, False, TrackStatus.lost))
-            if self.recorder:
-                self.recorder.close()
-        self.store.flush()
-        self.store.close()
-
-    def add_alert_listener(self, fn: AlertListener) -> None:
-        self._alert_listeners.append(fn)
-
-    # ------------------------------------------------------------------------------- ingest
-    def register_sensor(self, sensor: SensorConfig) -> None:
+                    self.store.write_track(senfig) -> None:
         with self._lock:
             self.factory.add_sensor(sensor)
 
