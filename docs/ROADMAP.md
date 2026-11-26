@@ -11,12 +11,6 @@ reduction first, features second; it is a plan, not a commitment.
 * Recorded-data tooling: label dwells, retrain classifier, evaluate on held-out sites.
 * TimescaleDB/PostgreSQL `Store` implementation (schema in `docs/timescale_schema.sql`), Redis queue option.
 * Use of radial velocity in the filter (Doppler-aided tracking) and in association.
-
-## v1.2 — Tracking quality
-
-* IMM (constant-velocity + coordinated-turn) to cut fragmentation on manoeuvres (current weak point).
-* Adaptive process noise per class (birds vs drones); per-sensor adaptive covariance from SNR.
-* Bearing-only fusion (EO/IR, acoustic arrays) via EKF/UKF updates.
 * Track-to-track fusion for sensors that only expose their own tracks.
 
 ## v2.0 — Scale and trust
