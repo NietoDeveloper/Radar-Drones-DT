@@ -27,12 +27,3 @@ class _Cfg(BaseModel):
     max_tracks: int = Field(2000, ge=1)
     history_len: int = Field(600, ge=1)
     history_min_dt_s: float = Field(0.5, ge=0)
-    merge_distance_m: float = Field(15.0, ge=0)
-    merge_speed_diff_mps: float = Field(5.0, ge=0)
-    merge_chi2: float = Field(16.8, ge=0, description="statistical merge gate on the 6-D state difference (0 disables)")
-    max_confirm_speed_mps: float = Field(50.0, gt=0, description="speed estimate above this blocks confirmation")
-
-    @model_validator(mode="after")
-    def _ordering(self) -> TrackerConfig:
-        if self.max_coast_s <= self.coast_after_s:
-            raise ValueError("max_coast_s must exceed coast_after_s")
