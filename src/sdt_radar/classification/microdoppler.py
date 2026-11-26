@@ -15,14 +15,6 @@ import numpy as np
 from numpy.typing import NDArray
 from scipy.signal import stft
 
-C0 = 299_792_458.0
-
-
-def _noise(rng: np.random.Generator, n: int, power: float) -> Complex:
-    s = np.sqrt(power / 2.0)
-    return rng.normal(0.0, s, n) + 1j * rng.normal(0.0, s, n)
-
-
 def synth_multirotor(
     rng: np.random.Generator,
     n: int,
