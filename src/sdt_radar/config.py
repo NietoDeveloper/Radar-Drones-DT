@@ -16,6 +16,3 @@ class _Cfg(BaseModel):
 
 
     gate_chi2: float = Field(21.1, gt=0, description="Mahalanobis^2 gate (3 dof, 99.99 % = 21.1)")
-    confirm_hits: int = Field(4, ge=2)
-    confirm_window_s: float = Field(12.0, gt=0)
-    tentative_timeout_s: float = Field(4.0, gt=0)
