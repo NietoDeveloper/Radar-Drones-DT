@@ -1,28 +1,4 @@
-import json
-import socket
-import time
-
-import numpy as np
-import pytest
-from fastapi.testclient import TestClient
-
-from sdt_radar.api import create_app
-from sdt_radar.models import Zone
-from sdt_radar.pipeline import Pipeline
-from tests.helpers import SITE, polar "alt_m", "speed_mps"} <= set(hist[0])
-        assert c.get("/api/v1/tracks/doesnotexist").status_code == 404
-        assert c.get("/api/v1/tracks/doesnotexist/history").status_code == 404
-        assert c.get("/api/v1/tracks?min_confidence=2").status_code == 422
-        assert c.post("/api/v1/ingest/detections", json=[{}] * 5001).status_code == 413
-        arch = wait_for(lambda: c.get("/api/v1/archive/tracks").json())
-        assert arch[0]["track_id"] == t["track_id"]
-        m = c.get("/api/v1/metrics").json()
-        assert m["counters"]["received"] == 8 and m["counters"]["rejected_invalid"] == 2 and m["classifier"]
-        sens = c.get("/api/v1/sensors").json()
-        assert sens[0]["id"] == "r1" and sens[0]["detections"] == 8
-
-
-def test_zone_crud_sensor_registration_and_alerts_over_rest():
+n_and_alerts_over_rest():
     s, c = make_client()
     with c:
         z = {"id": "core", "name": "Core", "kind": "circle", "center_lat": SITE.lat, "center_lon": SITE.lon,
