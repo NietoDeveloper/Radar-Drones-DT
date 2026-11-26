@@ -13,10 +13,6 @@ After=network-online.target
 NoNewPrivileges=true
 ProtectSystem=strict
 ReadWritePaths=/var/lib/sdt-radar
-[Install]
-WantedBy=multi-user.target
-```
-
 Ports: **8080** API + WebSocket, **9100/udp** and **9101/tcp** detection ingest (all configurable).
 
 ## 2. Security checklist
