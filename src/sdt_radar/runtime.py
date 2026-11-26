@@ -29,7 +29,7 @@ class Runtime:
         loop = asyncio.get_running_loop()
         self.hub.bind_loop(loop)
         self.pipeline.add_alert_listener(self.hub.publish_alert_threadsafe)
-        if cfg.udp_port is not None:
+        if cfg.udp_port 
             self.udp = UdpIngest(self.pipeline, cfg.host, cfg.udp_port)
             log.info("UDP ingest on %s:%d", cfg.host, await self.udp.start())
         if cfg.tcp_port is not N
