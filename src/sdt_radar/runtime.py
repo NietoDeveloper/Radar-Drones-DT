@@ -25,15 +25,7 @@ class Runtime:
         self.tcp: TcpIngest | None = 
 
     async def start(self) -> None:
-        cfg = self.settings.ingest
-        loop = asyncio.get_running_loop()
-        self.hub.bind_loop(loop)
-        self.pipeline.add_alert_listener(self.hub.publish_alert_threadsafe)
-        if cfg.udp_port 
-            self.udp = UdpIngest(self.pipeline, cfg.host, cfg.udp_port)
-            log.info("UDP ingest on %s:%d", cfg.host, await self.udp.start())
-        if cfg.tcp_port is not N
-            self.tcp = TcpIngest(self.pipeline, cfg.host, cfg.tcp_port)
+        cfg = self.settings.ingest.host, cfg.tcp_port)
             log.info("TCP ingest on %s:%d", cfg.host, await self.tcp.start())
         self._tasks = [asyncio.create_task(self._tick(), name="sdt-tick"),
                        asyncio.create_task(self.hub.run(self.pipeline), name="sdt-hub")]
