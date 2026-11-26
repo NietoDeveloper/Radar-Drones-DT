@@ -20,19 +20,7 @@ from dataclasses import dataclass, field
             for tr in self.tracker.active_tracks():  # archive what was live at shutdown as ended
                 if tr.announced:
                     self.store.write_track(senfig) -> None:
-        with self._lock:
-            self.factory.add_sensor(sensor)
-
-    def ingest_raw(self, obj: Any) -> bool:
-        """Validate an untrusted dict / JSON string / bytes and ingest it."""
-        try:
-            det = Detection.model_validate_json(obj) if isinstance(obj, (str, bytes)) else Detection.model_validate(obj)
-        except ValidationError:
-            self.stats["rejected_invalid"] += 1
-            return False
-        return self.ingest(det)
-
-    def ingest(self, det: Detection, rx_wall: float | None = None) -> bool:
+        with self._lock:None = None) -> bool:
         rx = time.time() if rx_wall is None else rx_wall
         try:
             m = self.factory.convert(det, rx)
