@@ -11,12 +11,6 @@ from sdt_radar.models import Zone
 from sdt_radar.pipeline import Pipeline
 from tests.helpers import SITE, polar_det, sensor_cfg, settings_for
 
-
-def det_stream(sensor, now, n=8, p0=(1500.0, 500.0, 90.0), v=(-15.0, -5.0, 0.0)):
-    """n ra plots of one drone, 1 Hz, ending at `now` (timestamps are recent, as in a live feed)."""
-    return [polar_det(sensor, np.array(p0) + np.ar) * k, now - (n - 1 - k)).model_dump(mode="json", exclude_none=True)
-            for k in range(n
-
 def make_client(api_key=None, udp=False, zones=()):
     s = sensor_cfg("r1")
     settings = settings_for(s, zones=list(zones), api={"api_key": api_key},
