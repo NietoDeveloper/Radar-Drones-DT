@@ -9,17 +9,6 @@ from __future__ import annotations
 
 from collections.abc import Callable
 from dataclasses import _DataclassT
-class Classifier(Protocol):
-    classes: tuple[TargetClass, ...]+ 1e-9
-        phi = _expand((x - mean) / std)
-
-
-def train_default(seed: int = 7, n_per_class: int = 700) -> tuple[MicroDopplerClassifier, dict[str, float]]:
-    x, y = make_dataset(n_per_class, seed)
-    model = MicroDopplerClassifier.fit(x, y)
-    xt, yt = make_dataset(300, seed + 1000)
-    pred = model.predict_proba_features(xt).argmax(axis=1)
-    acc = float((pred == yt).mean())
     per_class = {c.value: float((pred[yt == i] == i).mean()) for i, c in enumerate(CLASSES)}
     return model, {"accuracy": acc, **{f"recall_{k}": v for k, v in per_class.items()}}
 
