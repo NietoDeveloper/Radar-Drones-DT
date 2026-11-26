@@ -13,10 +13,6 @@ UI with < 500 ms display latency; scale
       ▼            │              ▼
   Store / WS    zones          Store (points) / REST / WS
 ```
-
-### Stage by stage
-
-1. **Validation (`models.Detection`).** Exactly one geometry (polar *or* geodetic), finite numbers,
    ranges, plausible time, no unknown fields, micro-Doppler fields together. Invalid → `rejected_invalid`.
 2. **Conversion (`fusion/measurement.py`).** Polar: sensor ENU position + `polar_to_enu(range, az +
    north_offset, el)`, covariance from a first-order Jacobian of the sensor's σ_range/σ_az/σ_el (so
