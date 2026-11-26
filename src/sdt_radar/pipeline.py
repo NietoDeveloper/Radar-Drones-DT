@@ -28,7 +28,3 @@ from dataclasses import dataclass, field
             self.stats["rejected_sensor"] += 1
             return False
         with self._lock:
-            if self.recorder:
-                self.recorder.write(det)
-            self.buffer.push(m)
-        
