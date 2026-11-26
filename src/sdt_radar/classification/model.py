@@ -13,18 +13,7 @@ class Classifier(Protocol):
     classes: tuple[TargetClass, ...]
 
     # --------------------------------------------------------------------------- inference
-    def predict_proba_features(self, feats: NDArray[np.float64]) -> NDArray[np.float64]:
-        z = (np.atleast_2d(feats) - self.mean) / self.std
-        out = _softmax(_expand(z) @ self.W + self.b)
-        return np.asarray(out[0] if np.ndim(feats) == 1 else out)
-
-    def predict_proba(self, iq: NDArray, prf_hz: float) -> NDArray[np.float64]:
-        return self.predict_proba_features(md_features(iq, prf_hz))
-
-    # ------------------------------------------------------------------------------ io
-    def save(self, path: str | Path) -> None:
-        np.savez(path, mean=self.mean, std=self.std, W=self.W, b=self.b, version=self.version,
-                 classes=np.array([c.value for c in self.classes]), features=np.array(FEATURE_NAMES))
+    def predict_proba_features(self, featsn self.classes]), features=np.array(FEATURE_NAMES))
 
     @classmethod
     def load(cls, path: str | Path) -> MicroDopplerClassifier:
