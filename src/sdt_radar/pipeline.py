@@ -39,5 +39,3 @@ from dataclasses import dataclass, field
 
     def ingest_many(self, dets: Iterable[Detection]) -> int:
         return sum(1 for d in dets if self.ingest(d))
-
-    # --------------------------------------------------------------------------------- step
