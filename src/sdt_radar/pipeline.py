@@ -178,7 +178,3 @@ from dataclasses import dataclass, field
 
     def add_zone(self, zone: Zone) -> None:
         with self._lock:
-            self.alerts.add_zone(zone)
-        self.store.put_zone(zone)
-
-    def remove_zon
