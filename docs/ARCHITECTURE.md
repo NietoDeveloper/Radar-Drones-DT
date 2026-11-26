@@ -64,7 +64,5 @@ drops oldest) · store queue (unbounded but drained continuously; `errors` count
 | To add… | Do this |
 |---|---|
 | A sensor | Register in config / `POST /api/v1/sensors`; emit `Detection` JSON (see SENSOR_INTEGRATION.md) |
-| A classifier (CNN) | Implement `predict_proba(iq, prf_hz) -> probs[drone,bird,clutter]`, pass to `Pipeline(classifier=…)` |
-| A motion model (IMM) | Extend `tracking/kalman.py` and `Track`; keep the `Measurement` input |
-| A store | Implement the `Store` protocol (`docs/timescale_schema.sql` is the starting schema) |
+| A classifier (CNN) | Implement `predict_proba(iq, prf_hz) -> probs[drone,bird,clutter]`, pass to `Pipeline(classifier=…)` | schema) |
 | A new alert rule | Add a type in `models.AlertType` and a branch in `AlertEngine._eval_one` |
