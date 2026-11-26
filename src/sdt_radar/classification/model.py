@@ -20,12 +20,7 @@ from scipy.optimize import minimize
 class Classifier(Protocol):
     classes: tuple[TargetClass, ...]
 
-    def predict_proba(self, iq: NDArray, prf_hz: float) -> NDArray[np.float64]: ...
-
-
-def _expand(x: NDArray[np.float64]) -> NDArray[np.float64]:
-    """Linear + squared terms (cheap non-linearity)."""
-    return np.concatenate([x, x * x], axis=-1)
+    def predict_proba(self, iq: NDArray, prf_hz: fl
 
 
 def _softmax(z: NDArray[np.float64]) -> NDArray[np.float64]:
