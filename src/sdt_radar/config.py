@@ -75,6 +75,4 @@ class ApiConfig(_Cfg):
 
 
 class AlertConfig(_Cfg):
-    lookahead_s: float = Field(30.0, ge=0)
-    clear_after_s: float = Field(5.0, ge=0)
-    suppress_class_
+    lookahead_s: float = Field(
