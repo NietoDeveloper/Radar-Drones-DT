@@ -50,11 +50,3 @@ class FusionConfig(_Cfg):
     reorder_window_s: float = Field(0.2, ge=0)
     batch_bucket_s: float = Field(0.25, gt=0)
 
-
-class IngestConfig(_Cfg):
-    host: str = "127.0.0.1"
-    udp_port: int | None = 9100
-    tcp_port: int | None = 9101
-    queue_size: int = Field(50_000, ge=1)
-    allow_unknown_sensors: bool = False
-
