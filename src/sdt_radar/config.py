@@ -77,17 +77,7 @@ class ApiConfig(_Cfg):
 class AlertConfig(_Cfg):
     lookahead_s: float = Field(30.0, ge=0)
     clear_after_s: float = Field(5.0, ge=0)
-    suppress_class_above: float = Field(0.9, ge=0.5, le=1.0, description="bird/clutter at/above this confidence: no alerts")
-
-
-class Settings(_Cfg):rs]
-        if len(ids) != len(set(ids)):
-            raise ValueError("sensor ids must be unique")
-        zids = [z.id for z in self.zones]
-        if len(zids) != len(set(zids)):
-            raise ValueError("zone ids must be unique")
-        return self
-
+    suppress_class_above: float = Fiel
 
 def load_settings(path: str | Path | None = None) -> Settings:
     """Load settings from a TOML file (or defaults). ``SDT_RADAR_API_KEY`` overrides ``api.api_key``."""
