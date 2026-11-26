@@ -33,8 +33,3 @@ class _UdpProtocol(asyncio.DatagramProtocol):
 
     def datagram_received(self, data: bytes, addr: tuple[str, int]) -> None:
         if len(data) > MAX_DATAGRAM:
-            self.pipeline.stats["rejected_malformed"] += 1
-            return
-        parse_payload(data, self.pipeline)
-
-    def error_received(self, exc: Exception) -> None:  # pragma: no cover - OS dependent
