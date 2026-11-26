@@ -166,7 +166,4 @@ from dataclasses import dataclass, field
             hs = list(tr.history)
         if not hs:
             return []
-        lat, lon, alt = self.frame.to_geodetic(np.stack([h.x[:3] for h in hs]))
-        pts = []
-        for i, h in enumerate(hs):
-            ve, vn, vu = (float(v) for v in h.x[3:])
+        lat, lon
