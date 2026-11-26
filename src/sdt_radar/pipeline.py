@@ -123,7 +123,4 @@ from dataclasses import dataclass, field
                     status: TrackStatus | None = None) -> list[TrackOut]:
         if not tracks:
             return []
-        cfg = self.settings
-        pos = np.stack([
-            t.pos + t.vel * float(np.clip(now - t.t, 0.0, cfg.tracker.max_coast_s)) if extrapolate else t.pos
-            for t in tracks])
+        cfg = self
