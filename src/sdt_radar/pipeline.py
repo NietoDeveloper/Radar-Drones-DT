@@ -199,9 +199,4 @@ from dataclasses import dataclass, field
             return {
                 "counters": dict(self.stats), "tracker": dict(self.tracker.stats), "tracks_by_status": dict(by_status),
                 "buffer_len": len(self.buffer), "buffer_dropped": self.buffer.dropped_overflow,
-                "latency_ms": {"p50": pct(self.latency_ms, 50), "p95": pct(self.latency_ms, 95),
-                               "p99": pct(self.latency_ms, 99)},
-                "step_ms": {"p50": pct(self.step_ms, 50), "p99": pct(self.step_ms, 99)},
-                "sensors": {k: dict(v) for k, v in self.sensor_state.items()},
-                "classifier": None if self.classifier is None else self.classifier.version,
-            }
+                "la
