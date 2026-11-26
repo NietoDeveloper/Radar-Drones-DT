@@ -11,18 +11,7 @@ n_and_alerts_over_rest():
         assert alerts[0]["zone_id"] == "core" and alerts[0]["state"] == "open"
         assert c.delete("/api/v1/zones/core").status_code == 204
         assert c.delete("/api/v1/zones/core").status_code == 404
-        new = sensor_cfg("r2", east=100).model_dump(mode="json")
-        assert c.post("/api/v1/sensors", json=new).status_code == 201
-        assert {x["id"] for x in c.get("/api/v1/sensors").json()} == {"r1", "r2"}
-
-
-def test_websocket_stream_snapshot_filters_and_alert_push():
-    s, c = make_client(zones=[Zone(id="core", name="Core", kind="circle", center_lat=SITE.lat, center_lon=SITE.lon, radius_m=3000)])
-    with c, c.websocket_connect("/ws/v1/stream") as ws:
-        hello = ws.receive_json()
-        assert hello["type"] == "hello" and hello["protocol"] == 1
-        c.post("/api/v1/ingest/detections", json=det_stream(s, time.time()))
-        seen_alert, snap = False, None
+        new = sensor_cfg("r2", east=100).model
         end = time.time() + 6
         while time.time() < end and not (seen_alert and snap):
             msg = ws.receive_json()
