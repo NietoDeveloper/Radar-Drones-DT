@@ -133,15 +133,3 @@ from dataclasses import dataclass, field
             cls, cc = tr.klass.decide(cfg.classifier.decision_threshold)
             ve, vn, vu = (float(v) for v in tr.vel)
             out.append(TrackOut(
-                track_id=tr.track_id, seq=tr.seq, staacks()
-                      if include_tentative or t.status != TrackStatus.tentative]
-            return self._track_outs(tracks, now, extrapolate)
-
-    def live_track(self, track_id: str, now: float | None = None) -> TrackOut | None:
-        now = time.time() if now is None else now
-        with self._lock:
-            tr = self.tracker.tracks.get(track_id)
-            return self._track_out(tr, now, True) if tr else None
-
-    def live_history(self, track_id: str) -> list[TrackPoint] | None:
-        with self._loc
