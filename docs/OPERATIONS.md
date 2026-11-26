@@ -5,15 +5,7 @@
 | Option | Command | Notes |
 |---|---|---|
 | Virtualenv | `pip install . && sdt-radar serve --config /etc/sdt-radar/radar.toml` | Simplest; runs on one core of any Linux/macOS/Windows host with Python ≥ 3.11 |
-| systemd | unit below | Restarts on failure, journald logs |
-| Docker | `docker build -t sdt-dron
-| Signal | Meaning | Action |
-|---|---|---|
-| `counters.rejected_invalid / rejected_sensor / rejected_malformed` rising | Adapter bug, wrong sensor id, garbage on the port | Fix adapter / registration / firewall |
-| `counters.stale_measurements` rising | A sensor clock is behind or its path is reordering heavily | Check NTP; raise `fusion.reorder_window_s` |
-| `buffer_dropped > 0` | Backlog beyond `ingest.queue_size` | Find the flood; check CPU |
-| `latency_ms.p99` > 400 | Pipeline or event loop saturated, or a sensor clock ahead | Check `step_ms`, CPU, clock skew |
-| `step_ms.p99` approaching the scan period | Too many tracks per core | Reduce load / raise gate efficiency / scale out (roadmap) |
+| systemd | unit below | Restarts on failure, journa Too many tracks per core | Reduce load / raise gate efficiency / scale out (roadmap) |
 | `tracker.dropped_capacity > 0` | `max_tracks` reached | Raise `tracker.max_tracks` or investigate clutter storm |
 | `tracks_by_status.tentative` consistently large | Clutter / false-alarm storm | Tune the radar CFAR, raise `confirm_hits` |
 | `sensors[*].last_rx` stale (`/api/v1/sensors` `last_seen_age_s`) | Sensor or network down | Check the sensor |
