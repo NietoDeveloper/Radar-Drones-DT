@@ -53,5 +53,3 @@ from dataclasses import dataclass, field
                 res.batches += 1
                 res.measurements += len(batch)
                 res.created += len(ev.created)
-                res.confirmed += len(ev.confirmed)
-                res.lost += len(ev.lost)
