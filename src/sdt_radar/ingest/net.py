@@ -69,8 +69,4 @@ class TcpIngest:
         self.port = self._server.sockets[0].getsockname()[1]
         return self.port
 
-    async def stop(self) -> None:
-        if self._server is not None:
-            self._server.close()
-            await self._server.wait_closed()
-          s
+    asyn
