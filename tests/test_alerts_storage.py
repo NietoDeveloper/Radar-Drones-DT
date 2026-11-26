@@ -29,11 +29,3 @@ def _point(t):
     return TrackPoint(t=t, lat=4.7, lon=-74.0, alt_m=2700, vel_e_mps=1, vel_n_mps=0, vel_u_mps=0, speed_mps=1,
                       heading_deg=90, position_sigma_m=5, confidence=0.8, sensors=["r1"])
 
-
-@pytest.fixture(params=["memory", "sqlite"])
-def store(request, tmp_path):
-    s = MemoryStore() if request.param == "memory" else SqliteStore(tmp_path / "radar.db")
-    s.start()
-    yield s
-    s.close()
-
