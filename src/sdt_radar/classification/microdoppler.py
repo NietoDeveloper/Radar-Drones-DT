@@ -16,17 +16,6 @@ from numpy.typing import NDArray
 from scipy.signal import stft
 
 C0 = 299_792_458.0
-Complex = NDArray[np.complex128]
-
-FEATURE_NAMES = (
-    "rms_bandwidth_khz",
-    "occupied_fraction",
-    "spectral_flatness",
-    "temporal_stationarity",
-    "comb_strength",
-    "peak_to_floor_db",
-    "centroid_jitter_khz",
-)
 
 
 def _noise(rng: np.random.Generator, n: int, power: float) -> Complex:
