@@ -19,15 +19,6 @@ def make_client(api_key=None, udp=False, zones=()):
 
 
 def wait_for(fn, timeout=5.0, step=0.05):
-    end = time.time() + timeout
-    while time.time() < e
-        v = fn()
-        if v:
-            return v
-        time.sleep(step)
-    raise AssertionError("condition not met in time")
-
-
 def test_health_is_open_and_api_requires_key_when_configured():
     _, c = make_client(api_key="s3cret")
     with c:
