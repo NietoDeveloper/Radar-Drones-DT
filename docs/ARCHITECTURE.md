@@ -10,12 +10,7 @@ UI with < 500 ms display latency; scale
    alerts ◄── AlertEngine ◄── tracks ◄── MultiTargetTracker ◄──────────────────────────────┘sotropic). Geodetic: WGS-84 → ENU, diagonal covariance from
    `sigma_h_m` / `sigma_v_m`. Unknown sensors → `rejected_sensor`.
 3. **Re-ordering (`fusion/reorder.py`).** A heap sorted by measurement time. `release(now)` popss are
-  predicted together with `einsum` (`kalman.batch_predict`), verified equal to the scalar version.
-* **Gate:** tracks × measurements → Euclidean distance matrix; only pairs within
-  `5·(σ_track + σ_meas) + 5 m` get the exact `d² = yᵀ(P_pos + R_meas)⁻¹y` (batched `np.linalg.solve`);
-  accept `d² < 21.1`.
-* **Assign:** `scipy.optimize.linear_sum_assignment` on the cost matrix, in two stages:
-  confirmed/coasting tracks first, tentatives on the remainder.
+  predicted together with `einsum` (`kalman.batch_predict`), verified equal to the scalar version.remainder.
 * **Update:** each matched track is predicted to **its own measurement's timestamp** (rotating radars
   time-stamp plots across the scan) then updated in Joseph form (keeps `P` symmetric positive-definite).
 * **Spawn:** unmatched measurements become tentative tracks (`x = z`, `P_pos = R`, `P_vel = 20² I`).
