@@ -133,18 +133,7 @@ from dataclasses import dataclass, field
             cls, cc = tr.klass.decide(cfg.classifier.decision_threshold)
             ve, vn, vu = (float(v) for v in tr.vel)
             out.append(TrackOut(
-                track_id=tr.track_id, seq=tr.seq, status=status or tr.status, target_class=cls,
-                class_confidence=cc, confidence=tr.confidence(now, cfg.tracker.max_coast_s),
-                lat=float(lat[i]), lon=fn_sigma, sensors=tr.sensor_list(), first_seen=tr.first_t,
-                last_seen=tr.last_hit_t, age_s=max(now - tr.first_t, 0.0), hits=tr.hits))
-        return out
-
-    # ------------------------------------------------------------------------------- queries
-    def snapshot(self, now: float | None = None, include_tentative: bool = False,
-                 extrapolate: bool = True) -> list[TrackOut]:
-        now = time.time() if now is None else now
-        with self._lock:
-            tracks = [t for t in self.tracker.active_tracks()
+                track_id=tr.track_id, seq=tr.seq, staacks()
                       if include_tentative or t.status != TrackStatus.tentative]
             return self._track_outs(tracks, now, extrapolate)
 
