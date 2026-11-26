@@ -72,7 +72,3 @@ class ApiConfig(_Cfg):
     api_key: str | None = None
     snapshot_hz: float = Field(5.0, gt=0, le=20)
     cors_origins: list[str] = Field(default_factory=list)
-
-
-class AlertConfig(_Cfg):
-    lookahead_s: float = Field(
