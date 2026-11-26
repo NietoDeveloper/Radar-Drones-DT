@@ -10,16 +10,6 @@ Everything works on *slow-time complex samples* at the radar PRF (a short dwell 
 """
 
 from __future__ import annotations
-
-import numpy as np
-    radial_v_mps: float = 5.0,
-    snr_db: float = 15.0,
-    t = np.arange(n) / prf_hz
-    fd = 2.0 * radial_v_mps / lam
-    n_rotors = n_rotors or int(rng.choice([4, 4, 6, 8]))
-    blades = blades or int(rng.choice([2, 2, 3]))
-        omega = 2 * np.pi * (rpm * (1.0 + rng.normal(0, 0.02))) / 60.0
-        theta0 = rng.uniform(0, 2 * np.pi)
         for b in range(blades):
             ph = theta0 + 2 * np.pi * b / blades
             for frac, amp in ((1.0, 0.25), (0.55, 0.15)):
