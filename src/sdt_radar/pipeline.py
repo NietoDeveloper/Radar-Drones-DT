@@ -87,8 +87,3 @@ from dataclasses import dataclass, field
             for a in res.alerts:
                 self.store.write_alert(a)
                 for fn in self._alert_listeners:
-                    fn(a)
-        self.step_ms.append((time.perf_counter() - t0) * 1000.0)
-        return res
-
-    # ----------------------------------------------------------------------------- internals
