@@ -9,12 +9,4 @@ Wire format (one of):
 
 from __future__ import annotations
 
-import asyncio
-import json
-        if pipeline.ingest_raw(o):
-            accepted += 1
-    return accepted
-
-
-class _UdpProtocol(asyncio.DatagramProtocol):
-    def __inis
+import 
