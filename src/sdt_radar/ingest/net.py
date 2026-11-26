@@ -57,16 +57,3 @@ class UdpIngest:
         if self._transport is not None:
             self._transport.close()
             self._transport = None
-
-
-class TcpIngest:
-    def __init__(self, pipeline: Pipeline, host: str, port: int) -> None:
-        self.pipeline, self.host, self.port = pipeline, host, port
-        self._server: asyncio.Server | None = None
-
-    async def start(self) -> int:
-        self._server = await asyncio.start_server(self._handle, self.host, self.port, limit=MAX_LINE)
-        self.port = self._server.sockets[0].getsockname()[1]
-        return self.port
-
-    asyn
