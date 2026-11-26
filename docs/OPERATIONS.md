@@ -9,11 +9,7 @@
 so before/after comparisons are exact.
 
 ## 5. Storage, retention, backups
-
-* **SQLite file** at `storage.path` (WAL: `-wal` and `-shm` side files are normal). Writes are batched
-  every 200 ms; a clean shutdown drains the queue and archives live tracks as `lost`. A hard kill can lose
-  up to ~200 ms of queued writes.
-* **Growth estimate:** one point per confirmed track per second; a point row is ~300 bytes of JSON →
+ON →
   100 tracks ≈ 30 KB/s ≈ 2.6 GB/day. Raise `storage.point_interval_s` to thin it (e.g. 2–5 s).
 * **Retention:** `SqliteStore.prune(older_than_epoch)` deletes old points and closed/lost records;
   schedule it (cron job calling a short Python snippet) or move to TimescaleDB retention policies.
