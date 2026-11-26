@@ -7,10 +7,6 @@ target (tracks); tell drones from birds; alert on protected zones; record everyt
 UI with < 500 ms display latency; scale
 
 ## 2. Data flow
-
-```
-sensor ──► Detection (wire, pydantic) ──► Measurement (ENU z, R) ──► ReorderBuffer ──► batches
-                                                                                          │
    alerts ◄── AlertEngine ◄── tracks ◄── MultiTargetTracker ◄──────────────────────────────┘
       │            ▲              │ ▲
       │            │              │ └── classifier posterior per track (micro-Doppler dwell)
