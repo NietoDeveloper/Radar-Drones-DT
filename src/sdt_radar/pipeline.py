@@ -75,8 +75,4 @@ from dataclasses import dataclass, field
                         self.store.write_track(self._track_out(tr, now, False, TrackStatus.lost))
             if not ready:
                 ev = self.tracker.sweep(now)
-                res.lost += len(ev.lost)
-                for tr in ev.lost:
-                    res.alerts.extend(self.alerts.close_for_track(tr.track_id, now))
-                    if tr.announced:
-         
+ 
