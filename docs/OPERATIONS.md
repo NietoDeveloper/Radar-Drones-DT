@@ -7,16 +7,7 @@
 | Virtualenv | `pip install . && sdt-radar serve --config /etc/sdt-radar/radar.toml` | Simplest; runs on one core of any Linux/macOS/Windows host with Python ≥ 3.11 |
 | systemd | unit below | Restarts on failure, journald logs |
 | Docker | `docker build -t sdt-drone-radar .` then `docker run -e SDT_RADAR_API_KEY=… -p 8080:8080 -p 9100:9100/udp -p 9101:9101 -v radar-data:/data …` | Dockerfile pr
-[Unit]
-Description=SoftwareDT drone radar backend
-After=network-online.target
-NoNewPrivileges=true
-* **API key:** set `SDT_RADAR_API_KEY` (never commit it). The CLI refuses a non-loopback bind without one.
-* **TLS:** not built in. Terminate TLS (and add rate limiting / user auth / CORS policy) in a reverse
-  proxy (nginx, Caddy, Traefik) or a VPN. The WebSocket must be proxied with upgrade headers.
-* **Ingest ports are unauthenticated** by design (radar adapters send datagrams). Bind to a private
-  interface and restrict with a firewall / VLAN; only sensor hosts should reach 9100/9101.
-* **Validation:** every message is schema-validated; unknown fields and NaN/Inf are rejected. Message sizes
+[Unit]nknown fields and NaN/Inf are rejected. Message sizes
   are capped (UDP 64 KB, TCP line 1 MiB, HTTP batch 5 000).
 * **Data protection:** tracks and recordings can be sensitive (site layout, security events). Restrict
   filesystem access to `data/`; plan retention (below).
