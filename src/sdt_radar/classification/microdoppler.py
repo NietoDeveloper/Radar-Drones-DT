@@ -6,17 +6,7 @@ over kHz) versus flapping wings of a bird (slow, strongly time-varying, spread o
 Both are synthesised here from first principles so the classifier can be trained and tested without
 hardware, and so every radar-band / PRF assumption is explicit.
 
-Everything works on *slow-time complex samples* at the radar PRF (a short dwell on one target).
-"""
-
-from __future__ import annotations
-        r_wing = amp * envelope * np.sin(phase + (0.0 if side < 0 else rng.uniform(-0.3, 0.3)))
-        s = s + 0.5 * np.exp(1j * (2 * np.pi * fd * t + 4 * np.pi * r_wing / lam))
-    bob = 0.02 * np.sin(phase * 0.5)
-    s = s * np.exp(1j * 4 * np.pi * bob / lam)
-    s = s / np.sqrt(np.mean(np.abs(s) ** 2))
-    return s + _noise(rng, n, 10 ** (-snr_db / 10.0))
-
+Everything works on *slow-time complex 
 
 def synth_clutter(
     rng: np.random.Generator,
