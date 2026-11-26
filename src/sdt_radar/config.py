@@ -80,21 +80,7 @@ class AlertConfig(_Cfg):
     suppress_class_above: float = Field(0.9, ge=0.5, le=1.0, description="bird/clutter at/above this confidence: no alerts")
 
 
-class Settings(_Cfg):
-    site: SiteConfig = SiteConfig()
-    sensors: list[SensorConfig] = Field(default_factory=list)
-    zones: list[Zone] = Field(default_factory=list)
-    tracker: TrackerConfig = TrackerConfig()
-    classifier: ClassifierConfig = ClassifierConfig()
-    fusion: FusionConfig = FusionConfig()
-    ingest: IngestConfig = IngestConfig()
-    storage: StorageConfig = StorageConfig()
-    api: ApiConfig = ApiConfig()
-    alerts: AlertConfig = AlertConfig()
-
-    @model_validator(mode="after")
-    def _unique_ids(self) -> Settings:
-        ids = [s.id for s in self.sensors]
+class Settings(_Cfg):rs]
         if len(ids) != len(set(ids)):
             raise ValueError("sensor ids must be unique")
         zids = [z.id for z in self.zones]
