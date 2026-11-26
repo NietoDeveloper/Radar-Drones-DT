@@ -41,7 +41,3 @@ from dataclasses import dataclass, field
         return sum(1 for d in dets if self.ingest(d))
 
     # --------------------------------------------------------------------------------- step
-    def step(self, now: float, *, flush: bool = False) -> StepResult:
-        """Release time-ordered measurements, track, classify, alert, record. Returns what happened."""
-        t0 = time.perf_counter()
-        res = StepResult()
