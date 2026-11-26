@@ -81,6 +81,3 @@ from dataclasses import dataclass, field
                     if tr.announced:
                         self.store.write_track(self._track_out(tr, now, False, TrackStatus.lost))
             self._persist(touched.values(), now)
-            if now - self._last_alert_eval >= 0.5 or flush:
-                self._last_alert_eval = now
-                res.alerts.extend(self.alerts.evaluate(self.tracker.active_tracks(), now))
