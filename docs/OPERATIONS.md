@@ -14,12 +14,5 @@
 Measured on one general-purpose core (offline data time, no network): 500 simultaneous targets ≈ 73 ms
 per 2 s scan (p99 104 ms), i.e. about 3.6 % of one core. Classifying one micro-Doppler dwell costs
 ≈ 0.4 ms, so 100 dwells/s ≈ 4 % of a core. These 
-| `serve` exits with code 2 | Non-loopback host without an API key |
-| WebSocket closes with 4401 | Wrong/missing API key |
-| High CPU | Many tentative tracks (clutter), huge `ws` fan-out, or tracks ≫ 500 |
-
-## 8. Upgrade and compatibility
-
-The API is versioned under `/api/v1` and the WebSocket carries `protocol: 1` in `hello`. Config unknown
-keys are errors, so upgrade notes list renamed keys. The packaged classifier file records its feature
+| `serve` exits with code 2 | Non-loopbacamed keys. The packaged classifier file records its feature
 names and is rejected if they do not match the code.
