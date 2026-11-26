@@ -187,6 +187,3 @@ from dataclasses import dataclass, field
         if ok:
             self.store.delete_zone(zone_id)
         return ok
-
-    def metrics(self) -> dict[str, Any]:
-        def pct(d: deque[flo
