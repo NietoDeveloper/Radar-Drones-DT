@@ -9,16 +9,7 @@ UI with < 500 ms display latency; scale
 ## 2. Data flow
    alerts ◄── AlertEngine ◄── tracks ◄── MultiTargetTracker ◄──────────────────────────────┘sotropic). Geodetic: WGS-84 → ENU, diagonal covariance from
    `sigma_h_m` / `sigma_v_m`. Unknown sensors → `rejected_sensor`.
-3. **Re-ordering (`fusion/reorder.py`).** A heap sorted by measurement time. `release(now)` pops
-8. **Persistence.** Confirmed tracks write metadata + one point per `point_interval_s`; alerts are upserted.
-9. **Publication.** REST reads live state; the WebSocket hub snapshots at `snapshot_hz` (5 Hz) and pushes
-   alerts immediately.
-
-## 3. The tracker
-
-State `x = [x y z vx vy vz]` (ENU, metres, m/s), covariance `P` (6×6).
-
-* **Predict:** `F(dt)`, `Q(dt)` from white-noise acceleration (σ_h = 4, σ_v = 2.5 m/s²). All tracks are
+3. **Re-ordering (`fusion/reorder.py`).** A heap sorted by measurement time. `release(now)` popss are
   predicted together with `einsum` (`kalman.batch_predict`), verified equal to the scalar version.
 * **Gate:** tracks × measurements → Euclidean distance matrix; only pairs within
   `5·(σ_track + σ_meas) + 5 m` get the exact `d² = yᵀ(P_pos + R_meas)⁻¹y` (batched `np.linalg.solve`);
