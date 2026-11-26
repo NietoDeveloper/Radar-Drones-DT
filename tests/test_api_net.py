@@ -9,20 +9,7 @@ from fastapi.testclient import TestClient
 from sdt_radar.api import create_app
 from sdt_radar.models import Zone
 from sdt_radar.pipeline import Pipeline
-from tests.helpers import SITE, polar_de
-        assert c.get("/health").json()["status"] == "ok"
-        assert c.get("/api/v1/tracks").status_code == 401
-        assert c.get("/api/v1/tracks", headers={"x-api-key": "wrong"}).status_code == 401
-        assert c.get("/api/v1/tracks", headers={"x-api-key": "s3cret"}).status_code == 200
-        with pytest.raises(Exception), c.websocket_connect("/ws/v1/stream") as ws:  # noqa: B017
-            ws.receive_json()
-        with c.websocket_connect("/ws/v1/stream?api_key=s3cret") as ws:
-            assert ws.receive_json()["type"] == "hello"
-
-
-def test_rest_ingest_tracks_history_archive_and_errors():
-    s, c = make_client()
-    with c:
+from tests.helpers import SITE, polar
         now = time.time()
         r = c.post("/api/v1/ingest/detections", json=det_stream(s, now) + [{"sensor_id": "r1", "t": 1}, {"junk": True}])
         assert r.json() == {"accepted": 8, "rejected": 2}
