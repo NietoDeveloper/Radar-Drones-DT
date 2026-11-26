@@ -20,8 +20,4 @@ from dataclasses import dataclass, field
             for tr in self.tracker.active_tracks():  # archive what was live at shutdown as ended
                 if tr.announced:
                     self.store.write_track(senfig) -> None:
-        with self._lock:None = None) -> bool:
-        rx = time.time() if rx_wall is None else rx_wall
-        try:
-            m = self.factory.convert(det, rx)
-        except RejectedDetection:
+        with
