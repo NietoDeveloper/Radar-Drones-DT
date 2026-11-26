@@ -15,15 +15,6 @@ zone_management():
     assert len(closed) == 1 and closed[0].state == "closed" and not eng.open_alerts()
     assert eng.remove_zone("z1") and not eng.remove_zone("z1") and eng.evaluate([tr], 102.0) == []
 
-
-# ------------------------------------------------------------------------------- storage
-def _track_out(tid="t1", status=TrackStatus.confirmed, last=100.0, cls=TargetClass.drone):
-    return TrackOut(track_id=tid, seq=1, status=status, target_class=cls, class_confidence=0.9, confidence=0.8,
-                    lat=4.7, lon=-74.0, alt_m=2700, east_m=1, north_m=2, up_m=3, vel_e_mps=1, vel_n_mps=0,
-                    vel_u_mps=0, speed_mps=1, heading_deg=90, climb_mps=0, rcs_dbsm=-20, position_sigma_m=5,
-                    sensors=["r1"], first_seen=90.0, last_seen=last, age_s=10, hits=9)
-
-
 def _point(t):
     from sdt_radar.models import TrackPoint
     return TrackPoint(t=t, lat=4.7, lon=-74.0, alt_m=2700, vel_e_mps=1, vel_n_mps=0, vel_u_mps=0, speed_mps=1,
