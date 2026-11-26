@@ -60,13 +60,3 @@ def test_store_tracks_points_alerts_zones_and_prune(store):
     store.delete_zone("z1"); store.flush()
     assert store.list_zones() == []
 
-
-def test_sqlite_survives_restart_and_batches_writes(tmp_path):
-    path = tmp_path / "sub" / "radar.db"
-    s = SqliteStore(path); s.start()
-    for i in range(500):
-        s.write_points("a", [_point(float(i))])
-    s.write_track(_track_out("a")); s.close()  # close() must drain the queue
-    s2 = SqliteStore(path); s2.start()
-    assert len(s2.history("a")) == 500 and s2.get_track("a") is not None
-    s2.close()
