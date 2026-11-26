@@ -13,15 +13,6 @@ from collections import defaultdict, deque
 from collections.abc import Callable, Iterable
 from dataclasses import dataclass, field
 
-@dataclass(slots=True) | None = None) -> None:
-        self.settings = settingsue(maxlen=4096)
-        self.step_ms: deque[float] = deque(maxlen=1024)
-        self.sensor_state: dict[str, dict[str, float]] = {}
-        self._alert_listeners: list[AlertListener] = []
-        self._lock = threading.RLock()
-        self._last_alert_eval = float("-inf")
-        self._started = False
-
     # ----------------------------------------------------------------------------- lifecycle
     def start(self) -> None:
         if self._started:
