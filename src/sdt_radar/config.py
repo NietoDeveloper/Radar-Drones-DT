@@ -44,8 +44,3 @@ class ClassifierConfig(_Cfg):
     model_path: str | None = None  # None = packaged model
     decision_threshold: float = Field(0.7, ge=0.34, le=1.0)
     forgetting: float = Field(0.92, gt=0, le=1.0)
-
-
-class FusionConfig(_Cfg):
-    reorder_window_s: float = Field(0.2, ge=0)
-    batch_bucket_s: float 
