@@ -43,17 +43,3 @@ class _UdpProtocol(asyncio.DatagramProtocol):
 
 class UdpIngest:
     def __init__(self, pipeline: Pipeline, host: str, port: int) -> None:
-        self.pipeline, self.host, self.port = pipeline, host, port
-        self._transport: asyncio.DatagramTransport | None = None
-
-    async def start(self) -> int:
-        loop = asyncio.get_running_loop()
-        self._transport, _ = await loop.create_datagram_endpoint(
-            lambda: _UdpProtocol(self.pipeline), local_addr=(self.host, self.port))
-        self.port = self._transport.get_extra_info("sockname")[1]
-        return self.port
-
-    async def stop(self) -> None:
-        if self._transport is not None:
-            self._transport.close()
-            self._transport = None
