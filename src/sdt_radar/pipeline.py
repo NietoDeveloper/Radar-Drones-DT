@@ -14,17 +14,7 @@ from collections.abc import Callable, Iterable
 from dataclasses import dataclass, field
 
 @dataclass(slots=True) | None = None) -> None:
-        self.settings = settings
-        self.frame = LocalFrame(settings.site.lat, settings.site.lon, settings.site.alt_m)
-        self.factory = MeasurementFactory(self.frame, settings.sensors, settings.ingest.allow_unknown_sensors)
-        self.buffer = ReorderBuffer(settings.fusion.reorder_window_s, settings.ingest.queue_size)
-        self.tracker = MultiTargetTracker(settings.tracker)
-        self.classifier = (classifier or load_default_classifier()) if settings.classifier.enabled else None
-        self.store: Store = store or make_store(settings)
-        self.alerts = AlertEngine(self.frame, settings.zones, settings.alerts)
-        self.recorder = JsonlRecorder(settings.storage.recorder_path) if settings.storage.recorder_path else None
-        self.stats: dict[str, int] = defaultdict(int)
-        self.latency_ms: deque[float] = deque(maxlen=4096)
+        self.settings = settingsue(maxlen=4096)
         self.step_ms: deque[float] = deque(maxlen=1024)
         self.sensor_state: dict[str, dict[str, float]] = {}
         self._alert_listeners: list[AlertListener] = []
