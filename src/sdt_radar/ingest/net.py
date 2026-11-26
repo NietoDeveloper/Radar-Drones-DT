@@ -38,8 +38,3 @@ class _UdpProtocol(asyncio.DatagramProtocol):
         parse_payload(data, self.pipeline)
 
     def error_received(self, exc: Exception) -> None:  # pragma: no cover - OS dependent
-        log.warning("udp error: %s", exc)
-
-
-class UdpIngest:
-    def __init__(self, pipeline: Pipeline, host: str, port: int) -> None:
