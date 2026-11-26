@@ -103,6 +103,3 @@ from dataclasses import dataclass, field
         tr.klass.update(probs, self.settings.classifier.forgetting)
         self.stats["classified"] += 1
 
-    def _persist(self, tracks: Iterable[Track], now: float) -> None:
-        interval = self.settings.storage.point_interval_s
-        for tr 
