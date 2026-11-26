@@ -10,11 +10,6 @@
 [Unit]
 Description=SoftwareDT drone radar backend
 After=network-online.target
-[Service]
-User=radar
-Environment=SDT_RADAR_API_KEY=change-me
-ExecStart=/opt/sdt-radar/venv/bin/sdt-radar serve --config /etc/sdt-radar/radar.toml
-Restart=on-failure
 NoNewPrivileges=true
 ProtectSystem=strict
 ReadWritePaths=/var/lib/sdt-radar
