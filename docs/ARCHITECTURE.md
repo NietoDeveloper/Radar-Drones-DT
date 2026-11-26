@@ -62,7 +62,3 @@ drops oldest) · store queue (unbounded but drained continuously; `errors` count
 ## 8. Extension points
 
 | To add… | Do this |
-|---|---|
-| A sensor | Register in config / `POST /api/v1/sensors`; emit `Detection` JSON (see SENSOR_INTEGRATION.md) |
-| A classifier (CNN) | Implement `predict_proba(iq, prf_hz) -> probs[drone,bird,clutter]`, pass to `Pipeline(classifier=…)` | schema) |
-| A new alert rule | Add a type in `models.AlertType` and a branch in `AlertEngine._eval_one` |
