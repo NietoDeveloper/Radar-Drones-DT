@@ -15,16 +15,6 @@ import logging
 from typing import TYPE_CHECKING, Any
 
 if TYPE_CHECKING:
-    from ..pipeline import Pipeline
-
-log = logging.getLogger("sdt_radar.ingest")
-
-MAX_DATAGRAM = 65_507
-    objs: list[Any] = []
-    try:
-        parsed = json.loads(text)
-        objs = parsed if isinstance(parsenewline-delimited
-            line = line.strip()
             if not line:
                 continue
             try:
