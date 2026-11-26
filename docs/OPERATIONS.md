@@ -10,8 +10,3 @@
   upserted too).
 
 ## 6. Capacity
-
-Measured on one general-purpose core (offline data time, no network): 500 simultaneous targets ≈ 73 ms
-per 2 s scan (p99 104 ms), i.e. about 3.6 % of one core. Classifying one micro-Doppler dwell costs
-≈ 0.4 ms, so 100 dwells/s ≈ 4 % of a core. These 
-| `serve` exits with code 2 | Non-loopb
