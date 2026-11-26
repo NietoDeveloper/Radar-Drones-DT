@@ -11,25 +11,10 @@ from __future__ import annotations
 
 import asyncio
 import json
-import logging
-from typing import TYPE_CHECKING, Any
-
-if TYPE_CHECKING:
-            if not line:
-                continue
-            try:
-                objs.append(json.loads(line))
-            except json.JSONDecodeError:
-                pipeline.stats["rejected_malformed"] += 1
-    for o in objs:
         if pipeline.ingest_raw(o):
             accepted += 1
     return accepted
 
 
 class _UdpProtocol(asyncio.DatagramProtocol):
-    def __init__(self, pipeline: Pipeline) -> None:
-        self.pipeline = pipeline
-
-    def datagram_received(self, data: bytes, addr: tuple[str, int]) -> None:
-        if len(data) > MAX_DATAGRAM:
+    def __inis
