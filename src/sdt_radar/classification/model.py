@@ -12,17 +12,6 @@ from dataclasses import _DataclassT
 class Classifier(Protocol):
     classes: tuple[TargetClass, ...]
 
-    def predict_proba(self, iq: NDArray, prf_hz: fl
-
-
-def _softmax(z: NDArray[np.float64]) ->
-    mean: NDArray[np.float64]
-    std: NDArray[np.float64]
-    W: NDArray[np.float64]  # (2*F, C)
-    b: NDArray[np.float64]  # (C,)
-    version: str = "microdoppler_v1"
-    classes: tuple[TargetClass, ...] = CLASSES
-
     # --------------------------------------------------------------------------- inference
     def predict_proba_features(self, feats: NDArray[np.float64]) -> NDArray[np.float64]:
         z = (np.atleast_2d(feats) - self.mean) / self.std
