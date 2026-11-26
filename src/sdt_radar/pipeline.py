@@ -51,5 +51,3 @@ from dataclasses import dataclass, field
             for batch in group_batches(ready, self.settings.fusion.batch_bucket_s):
                 ev = self.tracker.process(batch, now=max(m.t for m in batch))
                 res.batches += 1
-                res.measurements += len(batch)
-                res.created += len(ev.created)
