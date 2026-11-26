@@ -117,6 +117,3 @@ from dataclasses import dataclass, field
                 position_sigma_m=out.position_sigma_m, confidence=out.confidence, sensors=out.sensors)])
 
     def _track_out(self, tr: Track, now: float, extrapolate: bool, status: TrackStatus | None = None) -> TrackOut:
-        return self._track_outs([tr], now, extrapolate, status)[0]
-
-    def _track_outs(self, tracks: list[Track], now: float, extrapolate: bool 
