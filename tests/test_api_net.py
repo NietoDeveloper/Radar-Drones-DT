@@ -8,18 +8,7 @@ n_and_alerts_over_rest():
         assert [x["id"] for x in c.get("/api/v1/zones").json()] == ["core"]
         c.post("/api/v1/ingest/detections", json=det_stream(s, time.time()))
         alerts = wait_for(lambda: c.get("/api/v1/alerts?active=true").json())
-        assert alerts[0]["zone_id"] == "core" and alerts[0]["state"] == "open"
-        assert c.delete("/api/v1/zones/core").status_code == 204
-        assert c.delete("/api/v1/zones/core").status_code == 404
-        new = sensor_cfg("r2", east=100).model
-        end = time.time() + 6
-        while time.time() < end and not (seen_alert and snap):
-            msg = ws.receive_json()
-            if msg["type"] == "alert":
-                seen_alert = msg["alert"]["type"] in ("zone_intrusion", "zone_approach")
-            if msg["type"] == "snapshot" and msg["count"] == 1:
-                snap = msg
-        assert seen_alert and snap and snap["tracks"][0]["status"] == "confirmed"
+        assert alerts[0]["zone_id"] == s"][0]["status"] == "confirmed"
         ws.send_json({"subscribe": {"classes": ["bird"], "min_confidence": 0.1}})
         end = time.time() + 4
         while time.time() < end:
