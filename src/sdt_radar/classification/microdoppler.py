@@ -14,12 +14,6 @@ from __future__ import annotations
 import numpy as np
     radial_v_mps: float = 5.0,
     snr_db: float = 15.0,
-    n_rotors: int | None = None,
-    blades: int | None = None,
-    rpm: float | None = None,
-    radius_m: float | None = None,
-) -> Complex:
-    lam = C0 / fc_hz
     t = np.arange(n) / prf_hz
     fd = 2.0 * radial_v_mps / lam
     n_rotors = n_rotors or int(rng.choice([4, 4, 6, 8]))
