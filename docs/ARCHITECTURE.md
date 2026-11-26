@@ -7,15 +7,7 @@ target (tracks); tell drones from birds; alert on protected zones; record everyt
 UI with < 500 ms display latency; scale
 
 ## 2. Data flow
-   alerts ◄── AlertEngine ◄── tracks ◄── MultiTargetTracker ◄──────────────────────────────┘sotropic). Geodetic: WGS-84 → ENU, diagonal covariance from
-   `sigma_h_m` / `sigma_v_m`. Unknown sensors →o **
-  | Transition | Rule (defaults) |
-  |---|---|
-  | tentative → confirmed | ≥ 4 hits within 12 s **and** speed estimate ≤ 50 m/s |ate) cannot rewind a filter; they are counted.
-* **Confidence** (`Track.confidence`): `(1 − 0.5^(hits−1)) × (0.4 + 0.6 × freshness)` — a monotone,
-  explainable score. It is **not** a calibrated probability.
-
-### Why GNN + Kalman (and not JPDA/MHT/IMM) in v1
+   alerts ◄── AlertEngine ◄── tracks ◄── MultiTargetTracker ◄──────────────────────────────┘sotropic). Geodetic: 
 
 GNN with a per-measurement covariance and a statistical merge handles the scenario set here (including
 500 targets) at 73 ms per scan and is easy to reason about and test. The measured weak spot is
