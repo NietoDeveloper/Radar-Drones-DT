@@ -7,18 +7,7 @@ from sdt_radar.models import AlertLevel, AlertType, TargetClass, TrackOut, Track
 from sdt_radar.storage import MemoryStore, SqliteStore
 from sdt_radar.tracking.track import Track
 from tests.helpers import FRAME, SITE
-
-def test_intrusion_opens_once_escalates_and_closes_with_hysteresis():
-    eng = AlertEngine(FRAME, [circle(300)], AlertConfig(clear_after_s=5.0, lookahead_s=0))
-    inside = mk_track([50, 50, 100], cls=TargetClass.drone)
-    ev = eng.evaluate([inside], 100.0)
-    assert len(ev) == 1 and ev[0].type == AlertType.zone_intrusion and ev[0].state == "open" and ev[0].risk > 0.9
-    assert eng.evaluate([inside], 101.0) == []  # no spam while nothing changes
-    inside.x[:3] = [900, 0, 100]  # left the zone
-    assert eng.evaluate([inside], 103.0) == []  # still within hysteresis
-    ev = eng.evaluate([inside], 107.0)
-
-def test_lost_track_closes_its_alerts_and_zone_management():
+zone_management():
     eng = AlertEngine(FRAME, [circle(300)], AlertConfig(lookahead_s=0))
     tr = mk_track([10, 10, 50], cls=TargetClass.drone)
     eng.evaluate([tr], 100.0)
