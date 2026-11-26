@@ -13,24 +13,7 @@ from collections import defaultdict, deque
 from collections.abc import Callable, Iterable
 from dataclasses import dataclass, field
 
-@dataclass(slots=True)
-class StepResult:
-    batches: int = 0
-    measurements: int = 0
-        self.confirmed += o.confirmed
-        self.lost += o.lost
-        self.alerts.extend(o.alerts)
-
-
-def make_store(settings: Settings) -> Store:
-    if settings.storage.kind == "memory":
-        return MemoryStore()
-    return SqliteStore(settings.storage.path)
-
-
-class Pipeline:
-    def __init__(self, settings: Settings, store: Store | None = None,
-                 classifier: MicroDopplerClassifier | None = None) -> None:
+@dataclass(slots=True) | None = None) -> None:
         self.settings = settings
         self.frame = LocalFrame(settings.site.lat, settings.site.lon, settings.site.alt_m)
         self.factory = MeasurementFactory(self.frame, settings.sensors, settings.ingest.allow_unknown_sensors)
