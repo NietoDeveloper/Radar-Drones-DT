@@ -11,11 +11,7 @@
 
 | Symptom | Likely cause | Knob |
 |---|---|---|
-| Tracks fragment on manoeuvres (ID switches) | Gate too tight / process noise too low | `tracker.gate_chi2` ↑ (21.1 → 25), `sigma_accel_h_mps2` ↑ |
-| Two tracks on one target | Sensors disagree (azimuth offset, time skew) | Fix `north_offset_deg`, sync clocks; `merge_chi2` |
-| Tracks "jump" between close targets | Gate too wide in dense scenes | `gate_chi2` ↓; better sensor σ values |
-| False tracks from clutter | Low radar threshold | `confirm_hits` ↑ (5), `max_confirm_speed_mps` ↓ |
-| New tracks take too long | Slow scans × `confirm_hits` | `confirm_hits` ↓ (3) — accepts more false tracks |
+| Tracks fragment on manoeuvres (ID switche tracks |
 | Coasting ghosts linger | `max_coast_s` too long | ↓ (e.g. 5 s) |
 | Targets lost during short occlusions | `max_coast_s` too short | ↑ (12 s) |
 | Display lags | Reorder window | `fusion.reorder_window_s` ↓ (0.1), `api.snapshot_hz` ↑ |
