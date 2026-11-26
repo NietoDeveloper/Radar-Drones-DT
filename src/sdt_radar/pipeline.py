@@ -95,6 +95,3 @@ from dataclasses import dataclass, field
     def _classify(self, tr: Track, ms: Measurement) -> None:
         if self.classifier is None or ms.md_iq is None or ms.md_prf_hz is None:
             return
-        try:
-            probs = self.classifier.predict_proba(ms.md_iq, ms.md_prf_hz)
-        except ValueError:
