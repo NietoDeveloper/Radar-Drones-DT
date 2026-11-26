@@ -109,6 +109,4 @@ from dataclasses import dataclass, field
             if not tr.announced or tr.t - tr.stored_t < interval:
                 continue
             tr.stored_t = tr.t
-            out = self._track_out(tr, now, False)
-            self.store.write_track(out)
-            self.store.write_point
+            
