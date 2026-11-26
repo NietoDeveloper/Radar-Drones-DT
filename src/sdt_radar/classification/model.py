@@ -10,24 +10,7 @@ from __future__ import annotations
 from collections.abc import Callable
 from dataclasses import _DataclassT
 class Classifier(Protocol):
-    classes: tuple[TargetClass, ...]
-
-    # --------------------------------------------------------------------------- inference
-    def predict_proba_features(self, featsn self.classes]), features=np.array(FEATURE_NAMES))
-
-    @classmethod
-    def load(cls, path: str | Path) -> MicroDopplerClassifier:
-        d = np.load(path, allow_pickle=False)
-        names = tuple(str(x) for x in d["features"])
-        if names != FEATURE_NAMES:
-            raise ValueError("model was trained with a different feature set")
-        return cls(d["mean"], d["std"], d["W"], d["b"], str(d["version"]),
-                   tuple(TargetClass(str(c)) for c in d["classes"]))
-
-    # -------------------------------------------------------------------------- training
-    @classmethod
-    def fit(cls, x: NDArray[np.float64], y: NDArray[np.int_], l2: float = 1e-2) -> MicroDopplerClassifier:
-        mean, std = x.mean(axis=0), x.std(axis=0) + 1e-9
+    classes: tuple[TargetClass, ...]+ 1e-9
         phi = _expand((x - mean) / std)
         n, d = phi.shape
         k = len(CLASSES)
