@@ -36,9 +36,3 @@ class _Cfg(BaseModel):
     def _ordering(self) -> TrackerConfig:
         if self.max_coast_s <= self.coast_after_s:
             raise ValueError("max_coast_s must exceed coast_after_s")
-        return self
-
-
-class ClassifierConfig(_Cfg):
-    enabled: bool =, ge=0.34, le=1.0)
-    forgetting
