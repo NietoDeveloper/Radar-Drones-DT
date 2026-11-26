@@ -17,16 +17,7 @@ def synth_clutter(
     snr_db: float = 12.0,
 ) -> Complex:
     """Rain / foliage / ground clutter: Gaussian-spectrum coloured noise, no rigid body line."""
-    width_hz = float(rng.uniform(15.0, 300.0one, padded=False)
-    pw = np.fft.fftshift(np.abs(z) ** 2, axes=0) + 1e-18  # (F, T)
-    mean_spec = pw.mean(axis=1)
-    k0 = int(np.argmax(mean_spec))
-    shift = nperseg // 2 - k0
-    pw = np.roll(pw, shift, axis=0)  # put the body line at the centre bin
-    mean_spec = pw.mean(axis=1)
-    bin_hz = prf_hz / nperseg
-    f_khz = (np.arange(nperseg) - nperseg // 2) * bin_hz / 1000.0
-
+    width_hz = float(rng.uniform(15.s
     floor = float(np.median(mean_spec))
     sig = np.clip(mean_spec - floor, 0.0, None)
     tot = float(sig.sum()) + 1e-18
