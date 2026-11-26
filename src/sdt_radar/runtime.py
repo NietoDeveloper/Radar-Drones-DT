@@ -14,7 +14,7 @@ from .pipeline import Pipeline
 
 log = logging.getLogger("sdt_radar.runtime")
 
-TICK_S = 0.05
+TICK_S = 0.
 
 
 class Runtime:
