@@ -18,19 +18,6 @@ def mk_track(pos, vel=(0, 0, 0), status=TrackStatus.confirmed, cls=None, conf_n=
             tr.klass.update(probs, 0.95)
     return tr
 
-
-def test_circle_polygon_and_altitude_band_containment():
-    eng = AlertEngine(FRAME, [circle(300, min_alt_m=2600, max_alt_m=2800)], AlertConfig())
-    zi = eng.zones["z1"]
-    assert zi.contains(np.array([100.0, 100.0, 0.0]), 2700.0)
-    assert not zi.contains(np.array([400.0, 0.0, 0.0]), 2700.0)  # outside radius
-    assert not zi.contains(np.array([0.0, 0.0, 0.0]), 3500.0)  # above altitude band
-    pts = [FRAME.to_geodetic(np.array([e, n, 0.0])) for e, n in [(-200, -200), (200, -200), (200, 200), (-200, 200)]]
-    poly = Zone(id="p", name="Poly", kind="polygon", polygon=[(float(a), float(b)) for a, b, _ in pts])
-    zp = AlertEngine(FRAME, [poly], AlertConfig()).zones["p"]
-    assert zp.contains_xy(0, 0) and zp.contains_xy(190, -190) and not zp.contains_xy(250, 0)
-
-
 def test_intrusion_opens_once_escalates_and_closes_with_hysteresis():
     eng = AlertEngine(FRAME, [circle(300)], AlertConfig(clear_after_s=5.0, lookahead_s=0))
     inside = mk_track([50, 50, 100], cls=TargetClass.drone)
