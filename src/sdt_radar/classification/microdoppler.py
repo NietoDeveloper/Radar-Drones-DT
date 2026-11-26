@@ -6,15 +6,6 @@ over kHz) versus flapping wings of a bird (slow, strongly time-varying, spread o
 Both are synthesised here from first principles so the classifier can be trained and tested without
 hardware, and so every radar-band / PRF assumption is explicit.
 
-Everything works on *slow-time complex 
-
-def synth_clutter(
-    rng: np.random.Generator,
-    n: int,
-    prf_hz: float,
-    fc_hz: float = 10e9,
-    radial_v_mps: float = 0.0,
-    snr_db: float = 12.0,
 ) -> Complex:
     """Rain / foliage / ground clutter: Gaussian-spectrum coloured noise, no rigid body line."""
     width_hz = float(rng.uniform(15.s
