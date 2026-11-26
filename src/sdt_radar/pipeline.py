@@ -92,5 +92,3 @@ from dataclasses import dataclass, field
         return res
 
     # ----------------------------------------------------------------------------- internals
-    def _classify(self, tr: Track, ms: Measurement) -> None:
-        if self.classifier is None or ms.md_iq is None or ms.md_prf_hz is None:
