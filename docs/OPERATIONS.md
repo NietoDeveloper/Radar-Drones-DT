@@ -6,14 +6,7 @@
 |---|---|---|
 | Virtualenv | `pip install . && sdt-radar serve --config /etc/sdt-radar/radar.toml` | Simplest; runs on one core of any Linux/macOS/Windows host with Python ≥ 3.11 |
 | systemd | unit below | Restarts on failure, journa Too many tracks per core | Reduce load / raise gate efficiency / scale out (roadmap) |
-| `tracker.dropped_capacity > 0` | `max_tracks` reached | Raise `tracker.max_tracks` or investigate clutter storm |
-| `tracks_by_status.tentative` consistently large | Clutter / false-alarm storm | Tune the radar CFAR, raise `confirm_hits` |
-| `sensors[*].last_rx` stale (`/api/v1/sensors` `last_seen_age_s`) | Sensor or network down | Check the sensor |
-| `ws.dropped` rising | Slow WebSocket clients | Fix the client / network |
-| `counters.step_errors` > 0 | An unexpected exception in a pipeline step (logged) | Read the server log |
-
-`GET /health` is for load balancers (always open).
-
+| `tracker.dropped_capacity > 0` | `max_tracks` reached
 ## 4. Tuning guide
 
 | Symptom | Likely cause | Knob |
