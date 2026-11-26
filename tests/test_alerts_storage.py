@@ -19,10 +19,6 @@ def mk_track(pos, vel=(0, 0, 0), status=TrackStatus.confirmed, cls=None, conf_n=
     return tr
 
 
-def circle(radius=300.0, **kw):
-    return Zone(id="z1", name="Core", kind="circle", center_lat=SITE.lat, center_lon=SITE.lon, radius_m=radius, **kw)
-
-
 def test_circle_polygon_and_altitude_band_containment():
     eng = AlertEngine(FRAME, [circle(300, min_alt_m=2600, max_alt_m=2800)], AlertConfig())
     zi = eng.zones["z1"]
