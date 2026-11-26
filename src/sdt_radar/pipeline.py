@@ -189,9 +189,4 @@ from dataclasses import dataclass, field
         return ok
 
     def metrics(self) -> dict[str, Any]:
-        def pct(d: deque[float], q: float) -> float | None:
-            return float(np.percentile(list(d), q)) if d else None
-
-        with self._lock:
-            by_status: dict[str, int] = defaultdict(int)
-          
+        def pct(d: deque[flo
