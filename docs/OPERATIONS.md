@@ -6,10 +6,7 @@
 |---|---|---|
 | Virtualenv | `pip install . && sdt-radar serve --config /etc/sdt-radar/radar.toml` | Simplest; runs on one core of any Linux/macOS/Windows host with Python ≥ 3.11 |
 | systemd | unit below | Restarts on failure, journald logs |
-| Docker | `docker build -t sdt-drone-radar .` then `docker run -e SDT_RADAR_API_KEY=… -p 8080:8080 -p 9100:9100/udp -p 9101:9101 -v radar-data:/data …` | Dockerfile provided; **not built in the authoring environment** — verify before relying on it. Set `storage.path = "/data/radar.db"` in the config you mount |
-
-```ini
-# /etc/systemd/system/sdt-radar.service   (illustrative, untested)
+| Docker | `docker build -t sdt-drone-radar .` then `docker run -e SDT_RADAR_API_KEY=… -p 8080:8080 -p 9100:9100/udp -p 9101:9101 -v radar-data:/data …` | Dockerfile pr
 [Unit]
 Description=SoftwareDT drone radar backend
 After=network-online.target
