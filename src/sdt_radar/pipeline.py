@@ -48,6 +48,4 @@ from dataclasses import dataclass, field
         with self._lock:
             ready = self.buffer.flush() if flush else self.buffer.release(now)
             touched: dict[str, Track] = {}
-            for batch in group_batches(ready, self.settings.fusion.batch_bucket_s):
-                ev = self.tracker.process(batch, now=max(m.t for m in batch))
-                res.batches += 1
+    
