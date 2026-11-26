@@ -19,8 +19,3 @@ class _Cfg(BaseModel):
     confirm_hits: int = Field(4, ge=2)
     confirm_window_s: float = Field(12.0, gt=0)
     tentative_timeout_s: float = Field(4.0, gt=0)
-    coast_after_s: float = Field(2.0, gt=0)
-    max_coast_s: float = Field(8.0, gt=0)
-    sigma_accel_h_mps2: float = Field(4.0, gt=0)
-    sigma_accel_v_mps2: float = Field(2.5, gt=0)
-    init_velocity_sigma_mps: float = Field(20.0, gt=0)
