@@ -9,19 +9,7 @@ from fastapi.testclient import TestClient
 from sdt_radar.api import create_app
 from sdt_radar.models import Zone
 from sdt_radar.pipeline import Pipeline
-from tests.helpers import SITE, polar_det, sensor_cfg, settings_for
-
-def make_client(api_key=None, udp=False, zones=()):
-    s = sensor_cfg("r1")
-    settings = settings_for(s, zones=list(zones), api={"api_key": api_key},
-                            ingest={"udp_port": 0 if udp else None, "tcp_port": 0 if udp else None})
-    return s, TestClient(create_app(settings))
-
-
-def wait_for(fn, timeout=5.0, step=0.05):
-def test_health_is_open_and_api_requires_key_when_configured():
-    _, c = make_client(api_key="s3cret")
-    with c:
+from tests.helpers import SITE, polar_de
         assert c.get("/health").json()["status"] == "ok"
         assert c.get("/api/v1/tracks").status_code == 401
         assert c.get("/api/v1/tracks", headers={"x-api-key": "wrong"}).status_code == 401
