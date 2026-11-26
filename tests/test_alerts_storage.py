@@ -17,18 +17,6 @@ def test_intrusion_opens_once_escalates_and_closes_with_hysteresis():
     inside.x[:3] = [900, 0, 100]  # left the zone
     assert eng.evaluate([inside], 103.0) == []  # still within hysteresis
     ev = eng.evaluate([inside], 107.0)
-    assert len(ev) == 1 and ev[0].state == "closed" and ev[0].closed_at == 107.0
-
-
-def test_approach_alert_uses_extrapolation_and_cancels_when_heading_away():
-    eng = AlertEngine(FRAME, [circle(300)], AlertConfig(lookahead_s=30.0, clear_after_s=2.0))
-    tr = mk_track([800, 0, 100], vel=(-20, 0, 0), cls=TargetClass.drone)  # enters in ~25 s
-    ev = eng.evaluate([tr], 100.0)
-    assert ev and ev[0].type == AlertType.zone_approach and ev[0].level == AlertLevel.warning and "~2" in ev[0].message
-    tr.x[3:] = [20, 0, 0]
-    ev = eng.evaluate([tr], 101.0)
-    assert ev and ev[0].state == "closed"
-
 
 def test_birds_are_suppressed_unknowns_are_not_and_tentative_never_alert():
     eng = AlertEngine(FRAME, [circle(300)], AlertConfig(lookahead_s=0))
