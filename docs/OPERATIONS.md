@@ -5,19 +5,7 @@
 | Option | Command | Notes |
 |---|---|---|
 | Virtualenv | `pip install . && sdt-radar serve --config /etc/sdt-radar/radar.toml` | Simplest; runs on one core of any Linux/macOS/Windows host with Python ≥ 3.11 |
-| systemd | unit below | Restarts on failure, journa Too many tracks per core | Reduce load / raise gate efficiency / scale out (roadmap) |
-| `tracker.dropped_capacity > 0` | `max_tracks` reached
-## 4. Tuning guide
-
-| Symptom | Likely cause | Knob |
-|---|---|---|
-| Tracks fragment on manoeuvres (ID switche tracks |
-| Coasting ghosts linger | `max_coast_s` too long | ↓ (e.g. 5 s) |
-| Targets lost during short occlusions | `max_coast_s` too short | ↑ (12 s) |
-| Display lags | Reorder window | `fusion.reorder_window_s` ↓ (0.1), `api.snapshot_hz` ↑ |
-| Alert noise from birds | Class not yet decided | Send micro-Doppler dwells; lower `classifier.decision_threshold`; `alerts.suppress_class_above` |
-
-Always tune by **replaying a recording**: `sdt-radar replay raw.jsonl --config tuned.toml` is deterministic,
+| systemd | unit below | Restarts on failure, journa Too many tracks per core | Reduce load / raise gate efficiency / ay raw.jsonl --config tuned.toml` is deterministic,
 so before/after comparisons are exact.
 
 ## 5. Storage, retention, backups
