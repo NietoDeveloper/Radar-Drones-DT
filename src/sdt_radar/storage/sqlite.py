@@ -14,13 +14,7 @@ import threading
         self._q.put(("zone_del", (zone_id,)))
 
     def prune(self------------------------------------------------------------------- reads
-    def _query(self, sql: str, args: tuple = ()) -> list[tuple]:
-        assert self._read is not None, "store not started"
-        with self._rlock:
-            return self._read.execute(sql, args).fetchall()
-since: float | None = None, limit: int = 1000) -> list[TrackOut]:
-        sql, args = "SELECT payload FROM tracks WHERE 1=1", []  # type: tuple[str, list[Any]]
-        if status is not None:
+    def _query(self, sql: str, args: tuple = 
             sql += " AND status = ?"
             args.append(status.value)
         if target_class is not None:
