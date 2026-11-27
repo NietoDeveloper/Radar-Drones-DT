@@ -6,10 +6,4 @@
 * Reads use their own connection (WAL lets them run concurrently with the writer).
 """
 
-from __future__ import annotations
-
-import queue
-import sqlite3ne.model_validate_json(r[0]) for r in self._query("SELECT payload FROM zones")]
-
-("INSERT OR REPLACE INTO zones VALUES (?,?)", data)
-        elif kind == "zone_del":
+from __future__ import 
