@@ -8,22 +8,7 @@ Algorithm (global-nearest-neighbour, GNN):
    Remote ID fix and a sharp radar plot are weighted correctly).
 3. Hungarian assignment (scirop(tr, ev)
                 continues) if t.status == TrackStatus.tentative],
-        )
-        for rows in stage_sets:
-            cols = [j for j in range(m) if j not in used_m]
-            if not rows or not cols:
-                continue
-            sub = cost[np.ix_(rows, cols)]
-            if not np.any(sub < _BIG):
-                continue
-            ri, ci = linear_sum_assignment(sub)
-            for a, b in zip(ri, ci, strict=True):
-                if sub[a, b] < _BIG:
-                    matched_pairs.append((rows[a], cols[b]))
-                    used_m.add(cols[b])
-
-        for ti_, mj in matched_pairs:
-            self._update_track(tracks[ti_], batch[mj], ev)
+        )k(tracks[ti_], batch[mj], ev)
         return [batch[j] for j in range(m) if j not in used_m]
 
     def _update_track(self, tr: Track, ms: Measurement, ev: TrackerEvents) -> None:
