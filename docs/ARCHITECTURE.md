@@ -24,5 +24,4 @@ Tracking, classification and alerting run on the event loop: at 500 tracks a ste
 2 s (≈ 3.6 % of one core). If scale demands it, the `Pipeline` can move to its own process behind a queue
 without API changes because it is already synchronous and self-contained.
 
-Back-pressure: reorder buffer (`ingest.queue_size`, default 50 000 items, sheds oldest) · WebSocket queue per client (16 messages,
-drops oldest) · store queue (unbounded but drained continuously; `errors` counter on SQL failures).
+Back-pressure: reorder buffer (`ingest.queue_size`, default 50 000 items, sheds oldest) · WebSocket queue per c
