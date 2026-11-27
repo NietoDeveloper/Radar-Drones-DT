@@ -8,15 +8,7 @@ CREATE TABLE tracks (
   seq              integer NOT NULL,
   status           text NOT NULL,
   target_class     text NOT NULL,
-  class_confidence real,
-  confidence       real,
-  first_seen       timestamptz NOT NULL,
-  last_seen        timestamptz NOT NULL,
-  sensors          text[] NOT NULL DEFAULT '{}',
-  rcs_dbsm         real,
-  payload          jsonb NOT NULL
-);
-CREATE INDEX ON tracks (last_seen DESC);
+  class_confidecks (last_seen DESC);
 CREATE INDEX ON tracks (target_class, status);
 
 CREATE TABLE track_points (
