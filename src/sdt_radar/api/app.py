@@ -15,15 +15,7 @@ from .. import __version__
 def create_app(settings: Settings | None = None, *, pipeline: Pipeline | None = None,
                run_runtime: bool = True) -> FastAPI:
     settings = settings or load_settings()
------------------------------------------------- protected
-    api = APIRouter(prefix="/api/v1", dependencies=[Depends(require_key)])
-
-    @api.get("/metrics", tags=["system"])
-    async def metrics() -> dict[str, Any]:
-        out = pipe.metrics()
-        out["ws"] = {"clients": len(hub.subscribers), "published": hub.published,
-                     "dropped": sum(s.dropped for s in hub.subscribers)}
-        return out
+-----------------------------------
 
     @api.get("/tracks", response_model=list[TrackOut], tags=["tracks"])
     async def tracks(target_class: TargetClass | None = None, status: TrackStatus | None = None,
