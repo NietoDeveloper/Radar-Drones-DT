@@ -7,8 +7,3 @@ from sdt_radar.fusion import MeasurementFactory, RejectedDetection, ReorderBuffe
 from sdt_radar.models import ClassPosterior, Detection, Measurement, SensorKind, TargetClass, encode_iq
 from tests.helpers import FRAME, T0, geodetic_det, polar_det, sensor_cfg
 
-
-        md_features(np.ones(100, dtype=complex), 10_240.0)
-)).sum() / (y == 0).sum()
-    bird_as_drone = ((y == 1) & (pred == 0)).sum() / (y == 1).sum()
-    assert drone_as_bird < 0.05 and bird_as_drone < 0.05  # the confusion that matters operationally
