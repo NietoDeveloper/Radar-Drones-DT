@@ -16,13 +16,7 @@ def test_polar_conventions_azs
 
 
 @pytest.mark.parametrize("bror):
-        decode_iq("AAAA")  # not whole complex64 samples
-    nan_iq = np.array([complex(float("nan"), 0)], dtype=np.complex64)
-    with pytest.raises(ValueError):
-        decode_iq(encode_iq(nan_iq))
-
-
-def test_zone_and_sensor_validation():
+        decode_iq("AAAA"alidation():
     Zone(id="a", name="A", kind="circle", center_lat=4.7, center_lon=-74.0, radius_m=100)
     with pytest.raises(ValidationError):
         Zone(id="a", name="A", kind="circle", center_lat=4.7)
