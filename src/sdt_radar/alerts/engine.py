@@ -12,19 +12,7 @@ from __future__ import annotations
 
 import mathu(la, lo, frame.alt_m)[:2] for la,
 True)
-class _Open:
-    alert: AlertOut
-    last_true_t: float
-
-
-class AlertEngine:
-    def __init__(self, frame: LocalFrame, zones: list[Zone], cfg: AlertConfig) -> None:
-        self.frame = frame
-        self.cfg = cfg
-        self.zones: dict[str, ZoneIndex] = {}
-        self._open: dict[tuple[str, str, AlertType], _Open] = {}
-        for z in zones:
-            self.add_zone(z)
+class _Open:d_zone(z)
 
     # ------------------------------------------------------------------------------- zones
     def add_zone(self, zone: Zone) -> None:
