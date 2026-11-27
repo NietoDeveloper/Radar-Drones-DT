@@ -20,4 +20,3 @@ UI with < 500 ms display latency; scale
 | SQLite writer thread | Batches queue → `executemany` → commit every 200 ms | `SimpleQueue` only |
 | Reader connection | REST history/archive queries (`asyncio.to_thread`) | WAL permits concurrent read |
 
-Tracking, classification and alerting run on the event loop: at 500 tracks a step costs ~73 ms every
