@@ -14,11 +14,7 @@ class MemoryStore:
         self._points: dict[str, list[TrackPoint]] = {}
         self._alerts: dict[str, AlertOut] = {}
         self._zones: dict[str, Zone] = {}
-
-    def start(self) -> None
-    def close(self) -> None: ...
-    def flush(self, t, alert: AlertOut) -> None:
-        with self._lock:
+ock:
             self._alerts[alert.alert_id] = alert
 
     def put_zonezone: Zone) -> None:
