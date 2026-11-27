@@ -17,12 +17,6 @@ class MemoryStore:
 ock:
             self._alerts[alert.alert_id] = alert
 
-    def put_zonezone: Zone) -> None:
-        with self._lock:
-            self._zones[zone.id] = zone
-
-    def delete_zone(self, zone_id: str) -> None:
-        with self._lock:
             self._zones.pop(zone_id, None)
 
     def get_track(self, track_id: str) -> TrackOut | None:
