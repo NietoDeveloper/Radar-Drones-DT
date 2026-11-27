@@ -14,21 +14,7 @@ from typing import Annotated, AnyertOut], tags=["alerts"])
         return await asyncio.to_thread(pipe.store.list_alerts, False, since, limit)
 
     @api.get("/zones", response_model=list[Zone], tags=["zones"])
-    async def zones() -> list[Zone]:
-        return pipe.alerts.list_zones()
-
-    @api.post("/zones", response_model=Zone, status_code=201, tags=["zones"])
-    async def add_zone(zone: Zone) -> Zone:
-        pipe.add_zone(zone)
-        return zone
-
-    @api.delete("/zones/{zone_id}", status_code=204, tags=["zones"])
-    async def delete_zone(zone_id: str) -> None:
-        if not pipe.remove_zone(zone_id):
-            raise HTTPException(404, "unknown zone")
-
-    @api.get("/sensors", tags=["sensors"])
-    async def sensors() -> list[dict[str, Any]]:
+    async def zors() -> list[dict[str, Any]]:
         now = time.time()
         out = []
         for sid, cfg in pipe.factory.sensors.items():
