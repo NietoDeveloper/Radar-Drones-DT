@@ -12,14 +12,7 @@ import queue
 import sqlite3
 import threading
         self._q.put(("zsnce
-        sql += " ORDER BY t ASC LIMIT ?"
-        args.append(limit)
-        return s not None:
-            sql += " AND updated_at >= ?"
-            args.append(since)
-        sql += " ORDER BY updated_at DESC LIMIT ?"
-        args.append(limit)
-        return [AlertOut.model_validate_json(r[0]) for r in self._query(sql, tuple(args))]
+        sql += " ORDER BY t ASC LIMIT ?" for r in self._query(sql, tuple(args))]
 
     def list_zones(self) -> list[Zone]:
         return [Zone.model_validate_json(r[0]) for r in self._query("SELECT payload FROM zones")]
