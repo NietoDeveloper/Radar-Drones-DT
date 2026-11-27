@@ -14,10 +14,7 @@ import mathu(la, lo, frame.alt_m)[:2] for la,
 True)
 class _Open:d_zone(
     def list_zones(self) -> list[Zone]:
-        return [z.zone for z in self.zones.values()]
-
-    # ----------------------------------------------------------------------------- evaluation
-    def evaluate(self, tracks: list[Track], now: float) -> list[AlertOut]:
+        return [z.zone t[Track], now: float) -> list[AlertOut]:
         """Return alerts that were opened, updated (escalated) or closed during this call."""
         events: list[AlertOut] 
             lat, lon, alt = self.frame.to_geodetic(np.stack([t.pos for t in live]))
