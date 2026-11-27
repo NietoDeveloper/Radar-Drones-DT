@@ -5,15 +5,7 @@ vendor SDK or protocol into `Detection` JSON and sends it to the ingest ports. T
 licences and crashes out of the tracking service.
 
 > The adapter skeletons 
-        "sensor_id": "fmcw-1",
-        "t": p.times restriction |
-| **Passive radar** | Polar or geodetic plots from the passive processing chain | Set noise conservatively |
-| **SAPIENT / ASTERIX** | A bridge process decodes and emits detections | Not included in v1 |
-
-## 7. Multi-radar sites
-
-Each radar is ifset_deg` accurate: a 1° azimuth error is 35 m at 2 km and shows up as persistent
-disagreement between radars.
+        "sensor_id"tween radars.
 
 ## 8. Time synchronisation
 
