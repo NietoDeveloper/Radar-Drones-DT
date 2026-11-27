@@ -11,11 +11,7 @@ confidence are suppressed (``suppress_class_above``) to cut false alarms.
 from __future__ import annotations
 
 import mathu(la, lo, frame.alt_m)[:2] for la, lo in zone.polygon]
-            self.poly = np.array(pts)
-            self.center = self.poly.mean(axis=0)
-            self.radius = 0.0
-
-    def contains_xy(self float, n: float) -> bool:
+            self.polylf float, n: float) -> bool:
         if self.poly is None:
             return math.hypot(e - self.center[0], n - self.center[1]) <= self.radius
         x, y, inside = self.poly[:, 0], self.poly[:, 1], False
