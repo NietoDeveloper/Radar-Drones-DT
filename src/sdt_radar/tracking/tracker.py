@@ -6,23 +6,7 @@ Algorithm (global-nearest-neighbour, GNN):
 2. Coarse Euclidean gating prunes candidate pairs; surviving pairs get an exact Mahalanobis^2
    using the track's innovation covariance plus the *measurement's own* covariance (so a noisy
    Remote ID fix and a sharp radar plot are weighted correctly).
-3. Hungarian assignment (scipy) on the gated cost matrix, confirmed/coasting tracks first, then
-   tentative tracks on what is left.
-4. Each matched track is propagated to *its* measurement's timestamp and updated (Joseph form).
-5. Unmatched measurements spawn tentative tracks; lifecycle (confirm / coast / delete / merge) is
-   swept by time, so 
-        if batch:
-        return ev
-
-    def sweep(self, now: float, ev: TrackerEvents | None = None) -> TrackerEvents:
-        """Time-based lifecycle: confirm, coast, delete, merge duplicates."""
-        ev = ev or TrackerEvents()
-        cfg = self.cfg
-        for tr in list(self.tracks.values()):
-            silent = now - tr.last_hit_t
-            if tr.status == TrackStatus.tentative:
-                if silent > cfg.tentative_timeout_s:
-                    self._drop(tr, ev)
+3. Hungarian assignment (scirop(tr, ev)
                 continue
             if silent > cfg.max_coast_s:
                 self._drop(tr, ev)
