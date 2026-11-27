@@ -8,11 +8,7 @@ site trial.
 ## 1. Sensor types
 
 | Type | Typical range | Strengths | Weaknesses | Best for |
-|---|---|---|---|---|
-| **FMCW** (frequency-modulated continuous wave) | 0.5 – 3 km | No near-range blind zone, compact, low power, fine range resolution | Shorter range; leakage and clutter handling | Perimeters* | 0.3 – 1 km | Passive, cheap, works behind obstacles | Short range, noise sensitive | Dense local coverage |
-
-The same table is available from the CLI: `sdt-radar catalog`.
-
+|---|---|---|--
 ## 2. Bands
 
 **X (8–12 GHz)** or **Ku (12–18 GHz)** give a good range/resolution balance for targets of RCS ≈ 0.01 m²
