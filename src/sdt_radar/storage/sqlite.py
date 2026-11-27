@@ -19,12 +19,7 @@ from ..models import AlertOut, Targe
     # ------------------------------------------------------------------------------ lifecycle
     def start(self) -> None:
         if self._thread is not None:
-            return
-        if self.path != ":memory:":
-            Path(self.path).parent.mkdir
-        self._read = sqlite3.connect(self.path, check_same_thread=False)
-        self._thread = threading.Thread(target=self._writer, name="sdt-store-writer", daemon=True)
-        self._thread.start()
+            return.start()
 
     def close(self) -> None:
         if self._thread is None:
