@@ -25,8 +25,7 @@ class MemoryStore:
 
     def history(self, track_id: str, since: float | None = None, until: float | None = None,
                 limit: int = 5000) -> list[TrackPoint]:
-        with self._lock:
-            pts = [p for p in self._points.get(track_id, [])
+        with self._lock:p in self._points.get(track_id, [])
                    if (since is None or p.t >= since) and (until is None or p.t <= until)]
         return pts[:limit]
 
