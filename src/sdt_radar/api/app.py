@@ -7,6 +7,4 @@ import hmac
 import time
 from contextlib impipe.alerts.open_alerts()[:limit]
         return await asyncio.to_thread(
-        finally:
-            send_task.cancel()
-      
+    
