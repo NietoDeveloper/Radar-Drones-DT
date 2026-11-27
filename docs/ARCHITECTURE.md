@@ -49,5 +49,4 @@ drops oldest) · store queue (unbounded but drained continuously; `errors` count
 
 | Decision | Reason |
 |---|---|
-| ENU + covariance as the only tracker input | One tracker for radar, Remote ID, RF, EO/IR-derived fixes |
-| Deterministic synchronous core | Replay, simulation, tests
+| ENU + covar
