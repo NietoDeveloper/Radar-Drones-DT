@@ -18,13 +18,7 @@ from pathlib import Path
 
         self._q.put(("zone_del", (zone_id,)))
 
-    def prune(self, older_than: float) -> int:
-        self.flush()
-        conn = sqlite3.connect(self.path)
-        try:
-            n = conn.execute("DELETE FROM points WHERE t < ?", (older_than,)).rowcount
-            conn.execute("DELETE FROM tracks WHERE last_seen < ? AND status = 'lost'", (older_than,))
-            conn.execute("DELETE FROM alerts WHERE updated_at < ? AND state = 'closed'", (older_than,))
+    def prune(self, older_tha FROM alerts WHERE updated_at < ? AND state = 'closed'", (older_than,))
             conn.commit()
             return int(n)
         finally:
