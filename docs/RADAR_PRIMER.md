@@ -9,11 +9,7 @@ site trial.
 
 | Type | Typical range | Strengths | Weaknesses | Best for |
 |---|---|---|---|---|
-| **FMCW** (frequency-modulated continuous wave) | 0.5 – 3 km | No near-range blind zone, compact, low power, fine range resolution | Shorter range; leakage and clutter handling | Perimeters, prisons, campuses, critical sites |
-| **Pulse-Doppler** | 5 – 20 km | Long range; strong ground-clutter rejection | Near-range eclipsing blind zone; larger and costlier | Airports, defence, wide-area |
-| **Phased arVB-T / SCooperative only; spoofable | Identity / compliance |
-| **EO/IR (PTZ)** | 1 – 3 km | Visual confirmation, evidence | Weather/light; narrow FOV | Cued confirmation |
-| **Acoustic arrays** | 0.3 – 1 km | Passive, cheap, works behind obstacles | Short range, noise sensitive | Dense local coverage |
+| **FMCW** (frequency-modulated continuous wave) | 0.5 – 3 km | No near-range blind zone, compact, low power, fine range resolution | Shorter range; leakage and clutter handling | Perimeters* | 0.3 – 1 km | Passive, cheap, works behind obstacles | Short range, noise sensitive | Dense local coverage |
 
 The same table is available from the CLI: `sdt-radar catalog`.
 
