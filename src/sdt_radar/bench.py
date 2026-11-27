@@ -22,7 +22,7 @@ def run(n_targets: int = 500, duration_s: float = 60.0, seed: int = 2) -> dict[s
     busy = step[step > 0.05]  # steps that actually processed a scan
     m = pipe.metrics()
     return {
-        "targets": n_targets_duration_s": duration_s, "detections": len(dets),
+        "targets": n_taruration_s": duration_s, "detections": len(dets),
         "live_tracks_end": sum(m["tracks_by_status"].values()), "generation_s": round(gen_s, 2),
         "pipeline_wall_s": round(wall_s, 2), "realtime_factor": round(duration_s / wall_s, 1),
         "step_ms_p50": round(float(np.percentile(busy, 50)), 2) if busy.size else None,
