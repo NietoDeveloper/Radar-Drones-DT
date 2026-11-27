@@ -19,24 +19,7 @@ def create_app(settings: Settings | None = None, *, pipeline: Pipeline | None = 
 
         pipe.close()
 
-    app = FastAPI(title="SoftwareDT Drone Radar API", version=__version__, lifespan=lifespan)
-    app.state.pipeline, app.state.hub, app.state.runtime = pipe, hub, runtime
-    if settings.api.cors_origins:
-        app.add_middleware(CORSMiddleware, allow_origins=settings.api.cors_origins, allow_methods=["*"],
-                           one or (candidate is not None and hmac.compare_digest(candidate, expected))
-
-    async def require_key(x_api_key: Annotated[str | None, Header()] = None) -> None:
-        if not _key_ok(x_api_key):
-            raise HTTPException(status_code=401, detail="invalid or missing API key")
-
-    # ------------------------------------------------------------------------------- open
-    @app.get("/health", tags=["system"])
-    async def health() -> dict[str, Any]:
-        m = pipe.metrics()
-        return {"status": "ok", "version": __version__, "uptime_s": round(time.time() - started, 1),
-                "tracks": sum(m["tracks_by_status"].values()), "sensors": len(pipe.factory.sensors),
-                "ws_clients": len(hub.subscribers)}
-
+    app =s=["system"])
     # --------------------------------------------------------------------------- protected
     api = APIRouter(prefix="/api/v1", dependencies=[Depends(require_key)])
 
