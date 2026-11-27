@@ -11,17 +11,7 @@ Algorithm (global-nearest-neighbour, GNN):
         )k(tracks[ti_], batch[mj], ev)
         return [batch[j] for j in range(m) if j not in used_m]
 s.R.cfg.history_min_dt_s:
-            return
-        tr.last_hist_t = t
-        tr.history.append(
-            HistoryPoint(t, tr.x.copy(), tr.position_sigma, tr.confidence(t, self.cfg.max_coast_s), tuple(tr.sensor_list()))
-        )
-        while len(tr.history) > self.cfg.history_len:
-            tr.history.popleft()
-
-    def _drop(self, tr: Track, ev: TrackerEvents) -> None:
-        tr.status = TrackStatus.lost
-        self.tracks.pop(tr.track_id, None)
+            returne)
         self.stats["lost"] += 1
         ev.lost.append(tr)
 
