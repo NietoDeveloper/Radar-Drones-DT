@@ -18,14 +18,7 @@ Algorithm (global-nearest-neighbour, GNN):
 
         z = np.stack([mm.z for mm in batch])  # (m,3)
         r = np.stack([mm.R for mm in batch])  # (m,3,3)
-
-        # coarse gate on Euclidean distance (cheap), then exact Mahalanobis on candidates only
-        diff = z[None, :, :] - xp[:, None, :3]  # (n,m,3)
-        dist = np.linalg.norm(diff, axis=2)
-        sig_t = np.sqrt(np.trace(pp[:, :3, :3], axis1=1, axis2=2) / 3.0)
-        sig_m = np.sqrt(np.trace(r, axis1=1, axis2=2) / 3.0)
-        radius = 5.0 * (sig_t[:, None] + sig_m[None, :]) + 5.0
-        ti, mi = np.nonzero(dist < radius)
+(dist < radius)
 
         cost = np.full((n, m), _BIG)
         if ti.size:
