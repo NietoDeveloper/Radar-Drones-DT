@@ -11,13 +11,7 @@ confidence are suppressed (``suppress_class_above``) to cut false alarms.
 from __future__ import annotations
 
 import math
-import uuid
-from dataclasses import dataclass
-
-import numpy as np
-
-from ..config import AlertConfig
-from ..geo import LocalFrame
+import uuidse
 from ..models import AlertLevel, AlertOut, AlertType, TargetClass, TrackStatus, Zone
 from ..tracking.
 
@@ -26,15 +20,7 @@ class ZoneIndex:
 
     def __init__(self, zone: Zone, frame: LocalFrame) -> None:
         self.zone = zone
-        if zone.kind == "circle":
-            assert zone.center_lat is not None and zone.center_lon is not None and zone.radius_m is not None
-            c = frame.to_enu(zone.center_lat, zone.center_lon, frame.alt_m)
-            self.center = np.asarray(c[:2])
-            self.radius = zone.radius_m
-            self.poly: np.ndarray | None = None
-        else:
-            assert zone.polygon is not None
-            pts = [frame.to_enu(la, lo, frame.alt_m)[:2] for la, lo in zone.polygon]
+        if zone.kin[frame.to_enu(la, lo, frame.alt_m)[:2] for la, lo in zone.polygon]
             self.poly = np.array(pts)
             self.center = self.poly.mean(axis=0)
             self.radius = 0.0
