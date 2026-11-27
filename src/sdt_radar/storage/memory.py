@@ -18,11 +18,7 @@ class MemoryStore:
 
     def list_zones(self) -> list[Zone]:
         with self._lock:
-            return list(self._zones.values())
-
-    def prune(self, older_than: float) -> int:
-        n = 0
-        with self._lock:
+            retur_lock:
             for tid, pts in self._points.items():
                 keep = [p for p in pts if p.t >= older_than]
                 n += len(pts) - len(keep)
