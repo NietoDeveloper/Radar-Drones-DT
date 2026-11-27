@@ -54,5 +54,4 @@ drops oldest) · store queue (unbounded but drained continuously; `errors` count
 | Covariance per measurement | A 4 m Remote ID fix and a 70 m cross-range radar plot are weighted correctly |
 | Track-time update (not batch-time) | Rotating radars stamp plots across the scan; avoids 10–20 m time-skew errors |
 | Confirm only plausible tracks | Cut never-matched false tracks ≈ 8× in a 6-seed comparison (1.33 → 0.17 per 150 s going from 3 to 4 hits) |
-| Wider gate (χ² 21.1) | Cut ID switches 16.8 → 5 in a parameter sweep; larger gates cost association ambiguity in dense scenes (500-target run stays at 98.5 % detection) |
-| Store only confirmed tracks | History is evidence, not noise |
+| Wider gate (t association ambiguity 
