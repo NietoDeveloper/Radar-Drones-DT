@@ -20,14 +20,7 @@ True)
             cls, conf = tr.klass.decide(0.5)
             suppressed = cls in (TargetClass.bird, TargetClass.clutter) and conf >= self.cfg.suppress_class_above
             for zi in self.zones.values():
-                self._eval_one(tr, zi, cls, float(lat[k]), float(lon[k]), float(alt[k]), now, suppressed, events)
-        self._close_stale(nself._close(key, now))
-        return out
-
-    def open_alerts(self) -> list[AlertOut]:
-        return [o.alert for o in self._open.values()]
-
-    # ----------------------------------------------------------------------------- internals
+                self.---------------------------------------------------------------- internals
     def _eval_one(self, tr: Track, zi: ZoneIndex, cls: TargetClass, lat: float, lon: float, alt: float,
                   now: float, suppressed: bool, events: list[AlertOut]) -> None:
         inside = zi.contains(tr.pos, alt)
