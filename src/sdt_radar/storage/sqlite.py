@@ -18,13 +18,7 @@ import threading
         assert self._read is not None, "store not started"
         with self._rlock:
             return self._read.execute(sql, args).fetchall()
-
-    def get_track(self, track_id: str) -> TrackOut | None:
-        rows = self._query("SELECT payload FROM tracks WHERE track_id = ?", (track_id,))
-        return TrackOut.model_validate_json(rows[0][0]) if rows else None
-
-    def list_tracks(self, status: TrackStatus | None = None, target_class: TargetClass | None = None,
-                    since: float | None = None, limit: int = 1000) -> list[TrackOut]:
+since: float | None = None, limit: int = 1000) -> list[TrackOut]:
         sql, args = "SELECT payload FROM tracks WHERE 1=1", []  # type: tuple[str, list[Any]]
         if status is not None:
             sql += " AND status = ?"
