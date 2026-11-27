@@ -32,6 +32,3 @@ drops oldest) · store queue (unbounded but drained continuously; `errors` count
 | Module | Responsibility |
 |---|---|
 | `models.py` | Enums, `Detection` (wire), `Measurement`, `ClassPosterior`, API output models, `Zone`, `SensorConfig` |
-| `geo.py` | WGS-84 ↔ ENU, polar ↔ ENU with covariance |
-| `config.py` | Typed settings + TOML loader + env override |
-| `fu
