@@ -45,8 +45,4 @@ drops oldest) · store queue (unbounded but drained continuously; `errors` count
 | `sim/` | Targets, sensor models, scenarios, scoring |
 | `radar/` | Radar equation + catalogue |
 
-## 7. Key decisions
-
-| Decision | Reason |
-|---|---|
-| ENU + covar
+## 7.
