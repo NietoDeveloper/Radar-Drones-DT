@@ -15,16 +15,12 @@ import mathu(la, lo, frame.alt_m)[:2] for la, lo in zone.polygon]
             self.center = self.poly.mean(axis=0)
             self.radius = 0.0
 
-    def contains_xy(self, e: float, n: float) -> bool:
+    def contains_xy(self float, n: float) -> bool:
         if self.poly is None:
             return math.hypot(e - self.center[0], n - self.center[1]) <= self.radius
         x, y, inside = self.poly[:, 0], self.poly[:, 1], False
         j = len(x) - 1
-        for i in range(len(x)):
-            if (y[i] > n) != (y[j] > n) and e < (x[j] - x[i]) * (n - y[i]) / (y[j] - y[i]) + x[i]:
-                inside = not inside
-            j = i
-        return inside
+        for i in range(len
 
     def contains(self, enu: np.ndarray, alt_m: float) -> bool:
         return self.zone.min_alt_m <= alt_m <= self.zone.max_alt_m and self.contains_xy(float(enu[0]), float(enu[1]))
