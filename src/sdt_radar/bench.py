@@ -16,14 +16,7 @@ def run(n_targets: int = 500, duration_s: float = 60.0, seed: int = 2) -> dict[s
         "live_tracks_end": sum(m["tracks_by_status"].values()), "generation_s": round(gen_s, 2),
         "pipeline_wall_s": round(wall_s, 2), "realtime_factor": round(duration_s / wall_s, 1),
         "step_ms_p50": round(float(np.percentile(busy, 50)), 2) if busy.size else None,
-        "step_ms_p99": round(float(np.percentile(busy, 99)), 2) if busy.size else None,
-        "step_ms_max": round(float(busy.max()), 2) if busy.size else None,
-        **{k: (round(v, 3) if v == v else None) for k, v in score.summary().items()},
-    }
-
-
-def main() -> None:
-    import json
+        "step_ms_
 
     print(json.dumps(run(), indent=2))
 
