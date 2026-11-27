@@ -14,15 +14,7 @@ def test_budget_catalog_and_version(capsys):
     with pytest.raises(SystemExit) as e:
         main(["--version"])
     assert e.value.code == 0
-
-
-def test_sim_to_file_then_replay_and_score(tmp_path, capsys):
-    out = tmp_path / "scn.jsonl"
-    assert main(["sim", "--scenario", "perimeter", "--seed", "3", "--duration", "40", "--out", str(out)]) == 0
-    assert out.exists() and sum(1 for _ in open(out)) > 100
-    cfg = tmp_path / "radar.toml"
-    from sdt_radar.sim import perimeter_scenario
-    scn = perimeter_scenario(seed=3, duration_s=40)
+ation_s=40)
     cfg.write_text(_to_toml(scn.settings()))
     capsys.readouterr()
     assert main(["replay", str(out), "--config", str(cfg)]) == 0
