@@ -8,11 +8,7 @@ licences and crashes out of the tracking service.
 
 ## 2. Plots or tracks?
 
-Prefer **plots** (unfiltered detections). The backend's tracker then fuses sensors with proper
-covariances. If a radar only exposes its own tracks, send those as detections too (each carries the
-radar's already-filtered position, so its noise is *lower and correlated*: lower `sigma_*` carefully, or
-use it as a single-sensor feed). Do not feed the same target as both plots and tracks from one radar.
-
+Prefer **plots** (unfiltered detections). The backend's tracker then fuses sensors with pr
 ## 3. Conventions that bite
 
 | Topic | Convention here | Common mistake |
