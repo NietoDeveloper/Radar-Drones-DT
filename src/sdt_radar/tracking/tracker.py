@@ -10,21 +10,7 @@ Algorithm (global-nearest-neighbour, GNN):
                 continues) if t.status == TrackStatus.tentative],
         )k(tracks[ti_], batch[mj], ev)
         return [batch[j] for j in range(m) if j not in used_m]
-s.R
-        p[3:, 3:] = np.eye(3) * cfg.init_velocity_sigma_mps**2
-        tr = Track(seq=self._seq, x=x, P=p, t=ms.t, first_t=ms.t, last_hit_t=ms.t)
-        tr.sensors[ms.sensor_id] = ms.t
-        if ms.external_id:
-            tr.external_ids.add(ms.external_id)
-        tr.rcs_dbsm = ms.rcs_dbsm
-        self.tracks[tr.track_id] = tr
-        self.stats["created"] += 1
-        self._record_history(tr, ms.t)
-        ev.created.append(tr)
-        ev.updated.append((tr, ms))
-
-    def _record_history(self, tr: Track, t: float) -> None:
-        if t - tr.last_hist_t < self.cfg.history_min_dt_s:
+s.R.cfg.history_min_dt_s:
             return
         tr.last_hist_t = t
         tr.history.append(
