@@ -23,11 +23,7 @@ import threading
         if kind == "track":
             conn.execute("INSERT OR REPLACE INTO tracks VALUES (?,?,?,?,?,?,?,?,?)", data)
         elif kind == "points":
-            conn.executemany("INSERT INTO points VALUES (?,?,?)", data)
-            return len(data)
-        elif kind == "alert":
-            conn.execute("INSERT OR REPLACE INTO alerts VALUES (?,?,?,?)", data)
-        elif kind == "zone":
+            conn.executem":
             conn.execute("INSERT OR REPLACE INTO zones VALUES (?,?)", data)
         elif kind == "zone_del":
             conn.execute("DELETE FROM zones WHERE id = ?", data)
