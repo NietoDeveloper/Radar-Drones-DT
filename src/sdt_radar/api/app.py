@@ -24,10 +24,7 @@ MAX_INGEST_BATCH = 5000
 def create_app(settings: Settings | None = None, *, pipeline: Pipeline | None = None,
                run_runtime: bool = True) -> FastAPI:
     settings = settings or load_settings()
-    pipe = pipeline or Pipeline(settings)
-    hub = StreamHub(settings.api.snapshot_hz)
-    runtime = Runtime(pipe, settings, hub)
-    started = time.time()
+    
 
     @asynccontextmanager
     async def lifespan(app: FastAPI):
