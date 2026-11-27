@@ -21,14 +21,7 @@ True)
             suppressed = cls in (TargetClass.bird, TargetClass.clutter) and conf >= self.cfg.suppress_class_above
             for zi in self.zones.values():
                 self.---------------------------------------------------------------- internals
-    def _eval_one(self, tr: Track, zi: ZoneIndex, cls: TargetClass, lat: float, lon: float, alt: float,
-                  now: float, suppressed: bool, events: list[AlertOut]) -> None:
-        inside = zi.contains(tr.pos, alt)
-        k_in = (tr.track_id, zi.zone.id, AlertType.zone_intrusion)
-        k_ap = (tr.track_id, zi.zone.id, AlertType.zone_approach)
-        if suppressed:
-            return
-        if inside:
+    def _eval_one
             self._raise(k_in, tr, zi, cls, lat, lon, alt, now, 1.0, f"{cls.value} track inside '{zi.zone.name}'", events)
             if k_ap in self._open:
                 events.append(self._close(k_ap, now))
