@@ -17,17 +17,7 @@ from typing import Any
 
 from ..models import AlertOut, TargetClass, TrackOut, TrackPoint, TrackStatus, Zone
 
-_SCHEMA = """
-CREATE TABLE IF NOT EXISTS tracks (
-  track_id TEXT PRIMARY KEY, seq INTEGER, status TEXT, target_class TEXT, class_confidence REAL,
-  confidence REAL, first_seen REAL, last_seen REAL, payload TEXT NOT NULL);
-CREATE INDEX IF NOT EXISTS ix_tracks_last_seen ON tracks(last_seen);
-CREATE TABLE IF NOT EXISTS points (
-  track_id TEXT NOT NULL, t REAL NOT NULL, payload TEXT NOT NULL);
-CREATE INDEX IF NOT EXISTS ix_points_track_t ON points(track_id, t);
-CREATE INDEX IF NOT EXISTS ix_points_t ON poted_at REAL, payload TEXT NOT NULL);
-CREATE INDEX IF NOT EXISTS ix_alerts_updated ON alerts(updated_at);
-CREATE TABLE IF NOT EXISTS zones (id TEXT PRIMARY KEY, payload TEXT NOT NULL);
+_SCHEMA = """T EXISTS zones (id TEXT PRIMARY KEY, payload TEXT NOT NULL);
 """
 
 _STOP = object()
