@@ -10,12 +10,7 @@ licences and crashes out of the tracking service.
 
 Prefer **plots** (unfiltered detections). The backend's tracker then fuses sensors with pr
 ## 3. Conventions that bite
-
-| Topic | Convention here | Common mistake |
-|---|---|---|
-| Azimuth | Degrees, **clockwise from true North** | Math convention (CCW from East) |
-| Elevation | Up positive from the local horizontal | Sensor tilt not removed |
-| Range | Slant range, metres | Ground range |
+ range |
 | Time | Epoch seconds, **measurement time**, clocks synced (NTP/PTP) | Using receive time; skewed clocks |
 | Altitude | Ellipsoidal, metres | Mixing MSL / AGL |
 | Radial velocity | Positive receding | Sign flipped |
