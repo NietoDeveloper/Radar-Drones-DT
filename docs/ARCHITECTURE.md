@@ -26,5 +26,3 @@ without API changes because it is already synchronous and self-contained.
 
 Back-pressure: reorder buffer (`ingest.queue_size`, default 50 000 items, sheds oldest) · WebSocket queue per client (16 messages,
 drops oldest) · store queue (unbounded but drained continuously; `errors` counter on SQL failures).
-
-## 6. Module map
