@@ -6,10 +6,7 @@ licences and crashes out of the tracking service.
 
 > The adapter skeletons 
         "sensor_id": "fmcw-1",
-        "t": p.timestamp_unix, det]).encode(), TARGET)   # fuse, don't trust |
-| **RF detector / DF** | Geodetic detection if it geolocates (large `sigma_h_m`, e.g. 30–100 m) | Bearing-only RF must be triangulated upstream |
-| **EO/IR + PTZ** | Geodetic detection from a ranging/triangulated fix | Bearing-only cameras are not fused natively in v1 |
-| **Acoustic array** | Geodetic fix from the array's localisation | Same restriction |
+        "t": p.times restriction |
 | **Passive radar** | Polar or geodetic plots from the passive processing chain | Set noise conservatively |
 | **SAPIENT / ASTERIX** | A bridge process decodes and emits detections | Not included in v1 |
 
