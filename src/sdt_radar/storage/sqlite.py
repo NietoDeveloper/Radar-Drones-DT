@@ -19,8 +19,3 @@ import threading
 
 ("INSERT OR REPLACE INTO zones VALUES (?,?)", data)
         elif kind == "zone_del":
-            conn.execute("DELETE FROM zones WHERE id = ?", data)
-        elif kind == "barrier":
-            barriers.append(data)
-            return 0
-        return 1
