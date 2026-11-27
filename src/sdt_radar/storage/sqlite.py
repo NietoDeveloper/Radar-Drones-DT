@@ -9,13 +9,7 @@
 from __future__ import annotations
 
 import queue
-import sqlite3
-import threading
-        self._q.put(("zsnce
-        sql += " ORDER BY t ASC LIMIT ?" for r in self._query(sql, tuple(args))]
-
-    def list_zones(self) -> list[Zone]:
-        return [Zone.model_validate_json(r[0]) for r in self._query("SELECT payload FROM zones")]
+import sqlite3ne.model_validate_json(r[0]) for r in self._query("SELECT payload FROM zones")]
 
 ("INSERT OR REPLACE INTO zones VALUES (?,?)", data)
         elif kind == "zone_del":
