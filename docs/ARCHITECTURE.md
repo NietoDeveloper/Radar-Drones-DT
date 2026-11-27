@@ -7,5 +7,4 @@ target (tracks); tell drones from birds; alert on protected zones; record everyt
 UI with < 500 ms display latency; scale
 
 ## 2. Data flow
-   alerts ◄── AlertEngine ◄── tracks ◄── MultiTargetTracker ◄──────────────────────────────┘sotropic). Geodetic: 
-
+   alerts ◄── AlertEngine ◄── tracks ◄── 
