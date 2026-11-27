@@ -6,14 +6,7 @@ licences and crashes out of the tracking service.
 
 > The adapter skeletons 
         "sensor_id": "fmcw-1",
-        "t": p.timestamp_unix, det]).encode(), TARGET)   # batch several plots per datagram when possible
-```
-40.0                   # pulse repetition frequency of the dwell
-det["md_iq_b64"] = encode_iq(iq_complex64)    # ≥ 256 samples; 1024 is a good default
-```
-nters | Notes |
-|---|---|---|
-| **Remote ID** receiver | Geodetic detection, `sigma_h_m` ≈ GNSS error (3–10 m), `external_id` = serial | Cooperative drones only; position is self-reported (spoofable) — fuse, don't trust |
+        "t": p.timestamp_unix, det]).encode(), TARGET)   # fuse, don't trust |
 | **RF detector / DF** | Geodetic detection if it geolocates (large `sigma_h_m`, e.g. 30–100 m) | Bearing-only RF must be triangulated upstream |
 | **EO/IR + PTZ** | Geodetic detection from a ranging/triangulated fix | Bearing-only cameras are not fused natively in v1 |
 | **Acoustic array** | Geodetic fix from the array's localisation | Same restriction |
