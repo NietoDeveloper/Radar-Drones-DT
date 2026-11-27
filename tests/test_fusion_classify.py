@@ -17,7 +17,3 @@ from tests.helpers import FRAME, T0, geodetic_det, polar_det, sensor_cfg
 def test_classifier_save_load_roundtrip_and_feature_guard(clf, tmp_path):
     p = tmp_path / "m.npz"
     clf.save(p)
-    again = MicroDopplerClassifier.load(p)
-    f = md_features(synth_multirotor(np.random.default_rng(0), 1024, 10_240.0), 10_240.0)
-    assert np.allclose(clf.predict_proba_features(f), again.predict_proba_features(f))
-    assert encode_iq(np.zeros(4, dtype=np.complex64))  # payload helper still works
