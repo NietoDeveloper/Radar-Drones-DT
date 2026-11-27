@@ -7,19 +7,7 @@ Algorithm (global-nearest-neighbour, GNN):
    using the track's innovation covariance plus the *measurement's own* covariance (so a noisy
    Remote ID fix and a sharp radar plot are weighted correctly).
 3. Hungarian assignment (scirop(tr, ev)
-                continue
-            if silent > cfg.max_coast_s:
-                self._drop(tr, ev)
-            elif silent > cfg.coast_after_s:
-                tack([t.x for t in tracks])
-        p = np.stack([t.P for t in tracks])
-        dt = np.array([max(t_ref - t.t, 0.0) for t in tracks])
-        xp, pp = kalman.batch_predict(x, p, dt, cfg.sigma_accel_h_mps2, cfg.sigma_accel_v_mps2)
-3] + r[mi]
-            y = diff[ = set()
-        stage_sets = (
-            [i for i, t in enumerate(tracks) if t.status != TrackStatus.tentative],
-            [i for i, t in enumerate(tracks) if t.status == TrackStatus.tentative],
+                continues) if t.status == TrackStatus.tentative],
         )
         for rows in stage_sets:
             cols = [j for j in range(m) if j not in used_m]
