@@ -10,14 +10,7 @@ CREATE TABLE tracks (ENCES tracks(track_id),
   vel_e_mps    real, vel_n_mps real, vel_u_mps real,
   speed_mps    real, heading_deg real,
   position_sigma_m real,
-  confidence   real,
-  sensors      text[]
-);
-SELECT create_hypertable('track_points', 't', chunk_time_interval => INTERVAL '1 day');
-CREATE INDEX ON track_points (track_id, t DESC);
-ALTER TABLE track_points SET (timescaledb.compress, timescaledb.compress_segmentby = 'track_id');
-SELECT add_compression_policy('track_points', INTERVAL '7 days');
-SELECT add_retention_policy('track_points', INTERVAL '180 days');
+  confidence   real,ck_points', INTERVAL '180 days');
 
 CREATE TABLE alerts (
   alert_id   text PRIMARY KEY,
