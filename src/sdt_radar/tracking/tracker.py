@@ -11,19 +11,7 @@ Algorithm (global-nearest-neighbour, GNN):
             if silent > cfg.max_coast_s:
                 self._drop(tr, ev)
             elif silent > cfg.coast_after_s:
-                tr.status = TrackStatus.coasting
-        self._merge_duplicates(ev)
-        return ev
-
-    # ------------------------------------------------------------------------------ internals
-    def _associate_and_update(self, batch: list[Measurement], t_ref: float, ev: TrackerEvents) -> list[Measurement]:
-        cfg = self.cfg
-        tracks = list(self.tracks.values())
-        if not tracks:
-            return batch
-        n, m = len(tracks), len(batch)
-
-        x = np.stack([t.x for t in tracks])
+                tack([t.x for t in tracks])
         p = np.stack([t.P for t in tracks])
         dt = np.array([max(t_ref - t.t, 0.0) for t in tracks])
         xp, pp = kalman.batch_predict(x, p, dt, cfg.sigma_accel_h_mps2, cfg.sigma_accel_v_mps2)
