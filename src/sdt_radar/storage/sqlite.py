@@ -22,13 +22,7 @@ from ..models import AlertOut, Targe
             return.start()
 
     def close(self) -> None:
-        if self._thread i None:
-            self._read.close()
-            self._read = None
-
-    def flush(self, timeout: float = 5.0) -> None:
-        if self._thread is None:
-            return
+        if self._threa
         ev = threading.Event()
         self._q.put(("barrier", ev))
         ev.wait(timeout)
