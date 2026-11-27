@@ -13,17 +13,6 @@ import sqlite3
 import threading
 import time
 from pathlib import Path
-from typing import Any
-
-from ..models import AlertOut, Targe
-    # ------------------------------------------------------------------------------ lifecycle
-    def start(self) -> None:
-        if self._thread is not None:
-            return.start()
-
-    def close(self) -> None:
-        if self._threa
-        ev = threading.Event()
         self._q.put(("barrier", ev))
         ev.wait(timeout)
 
