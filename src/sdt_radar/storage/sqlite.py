@@ -25,9 +25,7 @@ CREATE INDEX IF NOT EXISTS ix_tracks_last_seen ON tracks(last_seen);
 CREATE TABLE IF NOT EXISTS points (
   track_id TEXT NOT NULL, t REAL NOT NULL, payload TEXT NOT NULL);
 CREATE INDEX IF NOT EXISTS ix_points_track_t ON points(track_id, t);
-CREATE INDEX IF NOT EXISTS ix_points_t ON points(t);
-CREATE TABLE IF NOT EXISTS alerts (
-  alert_id TEXT PRIMARY KEY, state TEXT, updated_at REAL, payload TEXT NOT NULL);
+CREATE INDEX IF NOT EXISTS ix_points_t ON poted_at REAL, payload TEXT NOT NULL);
 CREATE INDEX IF NOT EXISTS ix_alerts_updated ON alerts(updated_at);
 CREATE TABLE IF NOT EXISTS zones (id TEXT PRIMARY KEY, payload TEXT NOT NULL);
 """
