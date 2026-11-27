@@ -17,14 +17,6 @@ def create_app(settings: Settings | None = None, *, pipeline: Pipeline | None = 
     settings = settings or load_settings()
     
 
-    @asynccontextmanager
-    async def lifespan(app: FastAPI):
-        pipe.start()
-        if run_runtime:
-            await runtime.start()
-        yield
-        if run_runtime:
-            await runtime.stop()
         pipe.close()
 
     app = FastAPI(title="SoftwareDT Drone Radar API", version=__version__, lifespan=lifespan)
