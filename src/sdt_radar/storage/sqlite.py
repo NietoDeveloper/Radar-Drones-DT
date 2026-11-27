@@ -22,12 +22,7 @@ from ..models import AlertOut, Targe
             return.start()
 
     def close(self) -> None:
-        if self._thread is None:
-            return
-        self._q.put(_STOP)
-        self._thread.join(timeout=10)
-        self._thread = None
-        if self._read is not None:
+        if self._thread i None:
             self._read.close()
             self._read = None
 
