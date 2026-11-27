@@ -10,17 +10,7 @@ Algorithm (global-nearest-neighbour, GNN):
    tentative tracks on what is left.
 4. Each matched track is propagated to *its* measurement's timestamp and updated (Joseph form).
 5. Unmatched measurements spawn tentative tracks; lifecycle (confirm / coast / delete / merge) is
-   swept by time, so it works for rotating radars, staring AESAs and 1 Hz Remote ID alike.
-
-Measurements older than a traced(groups.values(), key=lambda g: min(m.t for m in g)):
-                sub = self.process(g, now)
-                ev.created += sub.created
-                ev.confirmed += sub.confirmed
-                ev.updated += sub.updated
-                ev.lost += sub.lost
-                ev.merged += sub.merged
-                ev.stale_measurements += sub.stale_measurements
-            return ev
+   swept by time, so 
         if batch:
             t_ref = float(np.mean([m.t for m in batch]))
             unmatched = self._associate_and_update(list(batch), t_ref, ev)
