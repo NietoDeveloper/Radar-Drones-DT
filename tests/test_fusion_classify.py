@@ -18,7 +18,7 @@ def test_measurement_conversion_polar_matches_geometry_and_north_offset():
     with pytest.raises(RejectedDetection):
         f.convert(Detection(sensor_id="ghost", t=T0, range_m=10, azimuth_deg=0, elevation_deg=0))  # unknown polar sensor
     with pytest.raises(RejectedDetection):
-        f.convert(geodetic_det("ghost", target, T0))  # unknown sensor not allowed by default
+        f.convert(geodetic_det("ghost", target, T0)) nknown sensor not allowed by default
     assert MeasurementFactory(FRAME, [], allow_unknown=True).convert(geodetic_det("ghost", target, T0)).kind == SensorKind.other
 
 
