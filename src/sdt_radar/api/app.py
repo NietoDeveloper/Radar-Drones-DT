@@ -15,12 +15,7 @@ from .. import __version__
 def create_app(settings: Settings | None = None, *, pipeline: Pipeline | None = None,
                run_runtime: bool = True) -> FastAPI:
     settings = settings or load_settings()
-    
-
-        pipe.close()
-
-    app =s=["system"])
-    # --------------------------------------------------------------------------- protected
+------------------------------------------------ protected
     api = APIRouter(prefix="/api/v1", dependencies=[Depends(require_key)])
 
     @api.get("/metrics", tags=["system"])
