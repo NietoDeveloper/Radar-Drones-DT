@@ -23,10 +23,6 @@ class MemoryStore:
         with self._lock:
             self._tracks[track.track_id] = track
 
-    def write_points(self, track_id: str, points: list[TrackPoint]) -> None:
-        with self._lock:
-            self._points.setdefault(track_id, []).extend(points)
-
     def write_alert(self, alert: AlertOut) -> None:
         with self._lock:
             self._alerts[alert.alert_id] = alert
