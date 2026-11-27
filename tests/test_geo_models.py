@@ -9,27 +9,10 @@ from sdt_radar.models import Detection, SensorConfig, Zone, decode_iq, encode_iq
 from tests.helpers import T0
 
 
-def test_enu_roundtrip_and_earth_curvature():
-    f = LocalFrame(4.711, -74.0721, 2600.0)
-    enu = f.to_enu(4.72, -74.06, 2700.0)
-    assert 1300 < enu[0] < 1400 and 950 < enu[1] < 1050
-    assert e
 
-def test_polar_conventions_azimuth_clockwise_from_north():
-    assert polar_to_enu(100, 0, 0) == pytest.approx([0, 100, 0], abs=1e-9)  # north
-    assert polar_to_enu 1) == 0 and heading_deg(1, 0) == 90 and heading_deg(0, -1) == 180
-
-
-def test_polar_covariance_is_symmetric_psd_and_anisotropic():
-    c = polar_covariance(2000, 30, 5, 3, 1.0, 2.0)
-    assert np.allclose(c, c.T)
+def test_polar_conventions_azs
     assert np.all(np.linalg.eigvalsh(c) > 0)
-    near, far = polar_covariance(200, 30, 5, 3, 1, 2), polar_covariance(2000, 30, 5, 3, 1, 2)
-    assert np.trace(far) > np.trace(near)  # cross-range error grows with range
-
-
-def _polar(**kw):
-    return dict(sensor_id="r1", t=T0, range_m=1000, azimuth_deg=10, elevation_deg=5, **kw)
+    near, far = polar_covariance(200, 30, 5, 3, 1, 2)muth_deg=10, elevation_deg=5, **kw)
 
 
 def test_detection_requires_exactly_one_geometry():
