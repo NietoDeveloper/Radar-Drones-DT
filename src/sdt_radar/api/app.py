@@ -19,14 +19,7 @@ from typing import Annotated, AnyertOut], tags=["alerts"])
         await ws.accept()
         sub = hub.add()
 
-        async def sender() -> None:
-            while True:
-                await ws.send_json(await sub.queue.get())
-
-        send_task = asyncio.create_task(sender())
-        try:
-            while True:
-                msg = await ws.receive_json()
+        async def await ws.receive_json()
                 try:
                     cfg = msg.get("subscribe", {})
                     if "classes" in cfg:
