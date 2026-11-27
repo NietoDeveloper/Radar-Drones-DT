@@ -10,21 +10,7 @@ Algorithm (global-nearest-neighbour, GNN):
                 continues) if t.status == TrackStatus.tentative],
         )k(tracks[ti_], batch[mj], ev)
         return [batch[j] for j in range(m) if j not in used_m]
-
-    def _update_track(self, tr: Track, ms: Measurement, ev: TrackerEvents) -> None:
-        cfg = self.cfgcoasting:
-            tr.status = TrackStatus.confirmed
-        if (tr.status == TrackStatus.tentative a
-    def _spawn(self, ms: Measurement, ev: TrackerEvents) -> None:
-        cfg = self.cfg
-        if len(self.tracks) >= cfg.max_tracks:
-            self.stats["dropped_capacity"] += 1
-            return
-        self._seq += 1
-        x = np.zeros(6)
-        x[:3] = ms.z
-        p = np.zeros((6, 6))
-        p[:3, :3] = ms.R
+s.R
         p[3:, 3:] = np.eye(3) * cfg.init_velocity_sigma_mps**2
         tr = Track(seq=self._seq, x=x, P=p, t=ms.t, first_t=ms.t, last_hit_t=ms.t)
         tr.sensors[ms.sensor_id] = ms.t
