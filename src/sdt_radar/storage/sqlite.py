@@ -11,13 +11,7 @@ from __future__ import annotations
 import queue
 import sqlite3
 import threading
-        self._q.put(("zone_del", (zo
-        if target_class is not None:
-            sql += " AND target_class = ?"
-            args.append(target_class.value)
-        if since is not None:
-            sql += " AND last_seen >= ?"
-            args.append(since)
+        self._q.put(("zsnce)
         sql += " ORDER BY last_seen DESC LIMIT ?"
         args.append(limit)
         return [TrackOut.model_validate_json(r[0]) for r in self._query(sql, tuple(args))]
