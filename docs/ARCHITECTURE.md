@@ -50,6 +50,4 @@ drops oldest) · store queue (unbounded but drained continuously; `errors` count
 | Decision | Reason |
 |---|---|
 | ENU + covariance as the only tracker input | One tracker for radar, Remote ID, RF, EO/IR-derived fixes |
-| Deterministic synchronous core | Replay, simulation, tests and live share code; bit-identical replays |
-| Covariance per measurement | A 4 m Remote ID fix and a 70 m cross-range radar plot are weighted correctly |
-| Track-time update (not batch-time) | Rotating radars stam
+| Deterministic synchronous core | Replay, simulation, tests
