@@ -14,14 +14,7 @@ Algorithm (global-nearest-neighbour, GNN):
 
 Measurements older than a track's state are discarded and counted (the reorder buffer in
 ``fusion`` makes this rare).
-"""
-from ..models import Measurement, TrackStatus
-from . import kalm:
-    """What changed during one ``process`` / ``sweep`` call."""
-
-    created: list[Track] = field(default_factory=list)
-    confirmed: list[Track] = field(default_factory=list)
-    updated: list[tuple[Track, Measurement]] = field(default_factory=list)
+"""Track, Measurement]] = field(default_factory=list)
     lost: list[Track] = field(default_factory=list)
     merged: list[tuple[Track, Track]] = field(default_factory=list)  # (dropped, kept)
     stale_measurements: int = 0
