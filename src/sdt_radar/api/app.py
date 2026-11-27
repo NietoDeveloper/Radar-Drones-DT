@@ -17,11 +17,7 @@ def create_app(settings: Settings | None = None, *, pipeline: Pipeline | None = 
     settings = settings or load_settings()
 -----------------------------------
 
-    @api.get("/tracks", response_model=list[TrackOut], tags=["tracks"])
-    async def tracks(target_class: TargetClass | None = None, status: TrackStatus | None = None,
-                     min_confidence: Annotated[float, Query(ge=0, le=1)] = 0.0,
-                     include_tentative: bool = False,
-                     limit: Annotated[int, Query(ge=1, le=5000)] = 1000) -> list[TrackOut]:
+    @api.get("/tracks", response_modd[int, Query(ge=1, le=5000)] = 1000) -> list[TrackOut]:
         rows = pipe.snapshot(include_tentative=include_tentative)
         rows = [t for t in rows if (target_class is None or t.target_class == target_class)
                 and (status is None or t.status == status) and t.confidence >= min_confidence]
