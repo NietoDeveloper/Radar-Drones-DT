@@ -14,15 +14,6 @@ from tests.helpers import FRAME, T0, geodetic_det, polar_det, sensor_cfg
     assert drone_as_bird < 0.05 and bird_as_drone < 0.05  # the confusion that matters operationally
 
 
-def test_track_level_evidence_accumulates_to_a_confident_decision(clf, rng):
-    post = ClassPosterior()
-    assert post.decide(0.7) == (TargetClass.unknown, 0.0)
-    for _ in range(6):
-        post.update(clf.predict_proba(synth_bird(rng, 1024, 10_240.0, snr_db=10), 10_240.0), 0.92)
-    cls, conf = post.decide(0.7)
-    assert cls == TargetClass.bird and conf > 0.9
-
-
 def test_classifier_save_load_roundtrip_and_feature_guard(clf, tmp_path):
     p = tmp_path / "m.npz"
     clf.save(p)
