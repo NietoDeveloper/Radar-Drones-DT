@@ -12,24 +12,7 @@ Algorithm (global-nearest-neighbour, GNN):
         return [batch[j] for j in range(m) if j not in used_m]
 
     def _update_track(self, tr: Track, ms: Measurement, ev: TrackerEvents) -> None:
-        cfg = self.cfg
-        dt = ms.t - tr.t
-        if dt < 0.0:  # measurement older than the filter state: cannot rewind
-            ev.stale_measurements += 1
-            self.stats["stale"] += 1
-            return
-        if dt > 0.0:
-            tr.x, tr.P = kalman.predict(tr.x, tr.P, dt, cfg.sigma_accel_h_mps2, cfg.sigma_accel_v_mps2)
-        tr.x, tr.P, _ = kalman.update(tr.x, tr.P, ms.z, ms.R)
-        tr.t = ms.t
-        tr.last_hit_t = ms.t
-        tr.hits += 1
-        tr.sensors[ms.sensor_id] = ms.t
-        if ms.external_id:
-            tr.external_ids.add(ms.external_id)
-        if ms.rcs_dbsm is not None:
-            tr.rcs_dbsm = ms.rcs_dbsm if tr.rcs_dbsm is None else 0.8 * tr.rcs_dbsm + 0.2 * ms.rcs_dbsm
-        if tr.status == TrackStatus.coasting:
+        cfg = self.cfgcoasting:
             tr.status = TrackStatus.confirmed
         if (tr.status == TrackStatus.tentative and tr.hits >= cfg.confirm_hits
                 and (ms.t - tr.first_t) <= cfg.confirm_window_s
