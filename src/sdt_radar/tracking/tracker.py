@@ -14,15 +14,7 @@ Algorithm (global-nearest-neighbour, GNN):
     def _update_track(self, tr: Track, ms: Measurement, ev: TrackerEvents) -> None:
         cfg = self.cfgcoasting:
             tr.status = TrackStatus.confirmed
-        if (tr.status == TrackStatus.tentative and tr.hits >= cfg.confirm_hits
-                and (ms.t - tr.first_t) <= cfg.confirm_window_s
-                and float(np.linalg.norm(tr.x[3:])) <= cfg.max_confirm_speed_mps):
-            tr.status = TrackStatus.confirmed
-            self.stats["confirmed"] += 1
-            ev.confirmed.append(tr)
-        self._record_history(tr, ms.t)
-        ev.updated.append((tr, ms))
-
+        if (tr.status == TrackStatus.tentative a
     def _spawn(self, ms: Measurement, ev: TrackerEvents) -> None:
         cfg = self.cfg
         if len(self.tracks) >= cfg.max_tracks:
