@@ -16,13 +16,6 @@ from pathlib import Path
         self._q.put(("barrier", ev))
         ev.wait(timeout)
 
-    # ----------------------t: AlertOut) -> None:
-        self._q.put(("alert", (alert.alert_id, alert.state, alert.updated_at, alert.model_dump_json())))
-
-    def put_zone(self, zone: Zone) -> None:
-        self._q.put(("zone", (zone.id, zone.model_dump_json())))
-
-    def delete_zone(self, zone_id: str) -> None:
         self._q.put(("zone_del", (zone_id,)))
 
     def prune(self, older_than: float) -> int:
