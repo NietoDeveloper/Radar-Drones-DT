@@ -9,12 +9,6 @@ from ..models import AlertOut, TargetClass, TrackOut, TrackPoint, TrackStatus, Z
 
 class MemoryStore:
     def __init__(self) -> None:
-        self._lock 
-            self._alerts[alert.alert_id] = alert
-
-    def history(self, track_id: str, sis.get(track_id, [])
-                   ifda a: a.updated_at, reverse=True)
-        return rows[:limit]
 
     def list_zones(self) -> list[Zone]:
         with self._lock:
