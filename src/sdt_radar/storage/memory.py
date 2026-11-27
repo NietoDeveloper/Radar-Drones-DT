@@ -9,10 +9,7 @@ from ..models import AlertOut, TargetClass, TrackOut, TrackPoint, TrackStatus, Z
 
 class MemoryStore:
     def __init__(self) -> None:
-        self._lock = threading.RLock()
-        self._tracks: dict[str, TrackOut] = {}
-        self._points: dict[str, list[TrackPoint]] = {}
-        sel
+        self._lock 
             self._alerts[alert.alert_id] = alert
 
             self._zones.pop(zone_id, None)
