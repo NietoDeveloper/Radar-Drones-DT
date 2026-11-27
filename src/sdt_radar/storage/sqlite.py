@@ -15,11 +15,7 @@ import time
 from pathlib import Path
 from typing import Any
 
-from ..models import AlertOut, TargetClass, TrackOut, TrackPoint, TrackStatus, Zone
-te3.Connection | None = None
-        self._rlock = threading.Lock()
-        self.errors = 0
-
+from ..models import AlertOut, Targe
     # ------------------------------------------------------------------------------ lifecycle
     def start(self) -> None:
         if self._thread is not None:
