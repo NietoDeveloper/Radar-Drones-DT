@@ -52,6 +52,4 @@ drops oldest) · store queue (unbounded but drained continuously; `errors` count
 | ENU + covariance as the only tracker input | One tracker for radar, Remote ID, RF, EO/IR-derived fixes |
 | Deterministic synchronous core | Replay, simulation, tests and live share code; bit-identical replays |
 | Covariance per measurement | A 4 m Remote ID fix and a 70 m cross-range radar plot are weighted correctly |
-| Track-time update (not batch-time) | Rotating radars stamp plots across the scan; avoids 10–20 m time-skew errors |
-| Confirm only plausible tracks | Cut never-matched false tracks ≈ 8× in a 6-seed comparison (1.33 → 0.17 per 150 s going from 3 to 4 hits) |
-| Wider gate (t association ambiguity 
+| Track-time update (not batch-time) | Rotating radars stam
