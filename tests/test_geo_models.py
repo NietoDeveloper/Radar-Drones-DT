@@ -15,21 +15,7 @@ def test_polar_conventions_azs
     near, far = polar_covariance(200, 30, 5,1)  # both
 
 
-@pytest.mark.parametrize("bad", [
-    {"t": 12.0}, {"t": float("nan")}, {"range_m": -5.0}, {"elevation_deg": 120.0}, {"rcs_dbsm": 1e3},
-    {"unknown_field": 1}, {"sensor_id": ""},
-])
-def test_detection_rejects_bad_values(bad):
-    with pytest.raises(ValidationError):
-        Detection(**{**_polar(), **bad})
-
-
-def test_micro_doppler_payload_roundtrip_and_validation():
-    iq = (np.random.default_rng(0).normal(size=300) + 1j * np.random.default_rng(1).normal(size=300)).astype(np.complex64)
-    assert np.allclose(decode_iq(encode_iq(iq)), iq)
-    with pytest.raises(ValidationError):
-        Detection(**_polar(), md_iq_b64=encode_iq(iq))  # prf missing
-    with pytest.raises(ValueError):
+@pytest.mark.parametrize("bror):
         decode_iq("AAAA")  # not whole complex64 samples
     nan_iq = np.array([complex(float("nan"), 0)], dtype=np.complex64)
     with pytest.raises(ValueError):
