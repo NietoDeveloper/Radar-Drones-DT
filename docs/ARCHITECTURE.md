@@ -6,5 +6,3 @@
 target (tracks); tell drones from birds; alert on protected zones; record everything; serve a real-time
 UI with < 500 ms display latency; scale
 
-## 2. Data flow
-   alerts ◄── AlertEngine ◄── tracks ◄── 
