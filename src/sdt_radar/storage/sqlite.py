@@ -11,11 +11,6 @@ from __future__ import annotations
 import queue
 import sqlite3
 import threading
-import time
-from pathlib import Path
-        self._q.put(("barrier", ev))
-        ev.wait(timeout)
-
         self._q.put(("zone_del", (zone_id,)))
 
     def prune(self, older_tha FROM alerts WHERE updated_at < ? AND state = 'closed'", (older_than,))
