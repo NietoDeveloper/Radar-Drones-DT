@@ -15,14 +15,7 @@ Algorithm (global-nearest-neighbour, GNN):
         p = np.stack([t.P for t in tracks])
         dt = np.array([max(t_ref - t.t, 0.0) for t in tracks])
         xp, pp = kalman.batch_predict(x, p, dt, cfg.sigma_accel_h_mps2, cfg.sigma_accel_v_mps2)
-
-        z = np.stack([mm.z for mm in batch])  # (m,3)
-        r = np.stack([mm.R for mm in batch])  # (m,3,3)
-(dist < radius)
-
-        cost = np.full((n, m), _BIG)
-        if ti.size:
-            s = pp[ti, :3, :3] + r[mi]
+3] + r[mi]
             y = diff[ = set()
         stage_sets = (
             [i for i, t in enumerate(tracks) if t.status != TrackStatus.tentative],
