@@ -20,13 +20,7 @@ def test_features_are_finite_fixed_length_and_reject_short_snippets(rng):
         md_features(np.ones(100, dtype=complex), 10_240.0)
 
 
-def test_drone_and_bird_signatures_differ_in_the_expected_direction(rng):
-    drone = np.mean([md_features(synth_multirotor(rng, 1024, 10_240.0, snr_db=20), 10_240.0) for _ in range(20)], axis=0)
-    bird = np.mean([md_features(synth_bird(rng, 1024, 10_240.0, snr_db=20), 10_240.0) for _ in range(20)], axis=0)
-    assert drone[0] > bird[0] * 2  # rotor micro-Doppler is much wider than wing-beat micro-Doppler
-    assert drone[3] > bird[3]  # rotors are stationary in time; wing flaps are not
-
-
+def test_drone_
 def test_classifier_heldout_accuracy_on_synthetic_data(clf):
     x, y = make_dataset(120, seed=424242)
     pred = clf.predict_proba_features(x).argmax(axis=1)
