@@ -11,13 +11,7 @@ licences and crashes out of the tracking service.
 40.0                   # pulse repetition frequency of the dwell
 det["md_iq_b64"] = encode_iq(iq_complex64)    # ≥ 256 samples; 1024 is a good default
 ```
-
-The packaged classifier was trained for X-band with PRF 10–16 kHz and a ~0.1 s dwell
-(see CLASSIFICATION.md). Send a dwell only for detections you want classified (e.g. every 2nd–5th plot).
-
-## 6. Other source types
-
-| Source | How it enters | Notes |
+nters | Notes |
 |---|---|---|
 | **Remote ID** receiver | Geodetic detection, `sigma_h_m` ≈ GNSS error (3–10 m), `external_id` = serial | Cooperative drones only; position is self-reported (spoofable) — fuse, don't trust |
 | **RF detector / DF** | Geodetic detection if it geolocates (large `sigma_h_m`, e.g. 30–100 m) | Bearing-only RF must be triangulated upstream |
