@@ -13,11 +13,7 @@ class MemoryStore:
             self._alerts[alert.alert_id] = alert
 
     def history(self, track_id: str, sis.get(track_id, [])
-                   if (since is None or p.t >= since) and (until is None or p.t <= until)]
-        return pts[:limit]
-
-    def list_     if (not active_only or a.state == "open") and (since is None or a.updated_at >= since)]
-        rows.sort(key=lambda a: a.updated_at, reverse=True)
+                   ifda a: a.updated_at, reverse=True)
         return rows[:limit]
 
     def list_zones(self) -> list[Zone]:
