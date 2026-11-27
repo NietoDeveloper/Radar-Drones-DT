@@ -12,24 +12,7 @@ Algorithm (global-nearest-neighbour, GNN):
 5. Unmatched measurements spawn tentative tracks; lifecycle (confirm / coast / delete / merge) is
    swept by time, so it works for rotating radars, staring AESAs and 1 Hz Remote ID alike.
 
-Measurements older than a track's state are discarded and counted (the reorder buffer in
-``fusion`` makes this rare).
-"""Track, Measurement]] = field(default_factory=list)
-    lost: list[Track] = field(default_factory=list)
-    merged: list[tuple[Track, Track]] = field(default_factory=list)  # (dropped, kept)
-    stale_measurements: int = 0
------------------------------------------------------------------------ public API
-    def active_tracks(self) -> list[Track]:
-        return list(self.tracks.values())
-
-    def process(self, batch: Sequence[Measurement], now: float | None = None) -> TrackerEvents:
-        """Associate and fuse a batch of measurements (any mix of sensors), then sweep lifecycle."""
-        ev = TrackerEvents()
-        if len({m.sensor_id for m in batch}) > 1:  # one association pass per sensor: a sensor cannot see a target twice
-            groups: dict[str, list[Measurement]] = {}
-            for m in batch:
-                groups.setdefault(m.sensor_id, []).append(m)
-            for g in sorted(groups.values(), key=lambda g: min(m.t for m in g)):
+Measurements older than a traced(groups.values(), key=lambda g: min(m.t for m in g)):
                 sub = self.process(g, now)
                 ev.created += sub.created
                 ev.confirmed += sub.confirmed
