@@ -5,13 +5,7 @@ vendor SDK or protocol into `Detection` JSON and sends it to the ingest ports. T
 licences and crashes out of the tracking service.
 
 > The adapter skeletons 
-| Time | Epoch seconds, **measurement time**, clocks synced (NTP/PTP) | Using receive time; skewed clocks |
-| Altitude | Ellipsoidal, metres | Mixing MSL / AGL |
-| Radial velocity | Positive receding | Sign flipped |
-| Units | SI everywhere; dBsm for RCS | Mixed units |
-
-## 4. Skeleton: UDP radar adapter
-
+| Time | Epoch seconds, *
 ```python
 import json, socket, time
 
