@@ -10,17 +10,7 @@ confidence are suppressed (``suppress_class_above``) to cut false alarms.
 
 from __future__ import annotations
 
-import math
-import uuidse
-from ..models import AlertLevel, AlertOut, AlertType, TargetClass, TrackStatus, Zone
-from ..tracking.
-
-class ZoneIndex:
-    """A zone pre-projected into the local ENU frame."""
-
-    def __init__(self, zone: Zone, frame: LocalFrame) -> None:
-        self.zone = zone
-        if zone.kin[frame.to_enu(la, lo, frame.alt_m)[:2] for la, lo in zone.polygon]
+import mathu(la, lo, frame.alt_m)[:2] for la, lo in zone.polygon]
             self.poly = np.array(pts)
             self.center = self.poly.mean(axis=0)
             self.radius = 0.0
