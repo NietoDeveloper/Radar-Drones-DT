@@ -12,15 +12,7 @@ from __future__ import annotations
 
 import mathu(la, lo, frame.alt_m)[:2] for la,
 True)
-class _Open:d_zone(z)
-
-    # ------------------------------------------------------------------------------- zones
-    def add_zone(self, zone: Zone) -> None:
-        self.zones[zone.id] = ZoneIndex(zone, self.frame)
-
-    def remove_zone(self, zone_id: str) -> bool:
-        return self.zones.pop(zone_id, None) is not None
-
+class _Open:d_zone(
     def list_zones(self) -> list[Zone]:
         return [z.zone for z in self.zones.values()]
 
