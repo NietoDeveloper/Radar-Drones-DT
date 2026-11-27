@@ -19,10 +19,7 @@ class MemoryStore:
 
     def get_track(self, track_id: str) -> TrackOut | None:
         with self._lock:
-            return self._tracks.get(track_id)
-(status is None or t.status == status)
-                    and (target_class is None or t.target_class == target_class)
-                    and (since is None or t.last_seen >= since)]
+            return self._tracks.get(tract.last_seen >= since)]
         rows.sort(key=lambda t: t.last_seen, reverse=True)
         return rows[:limit]
 
