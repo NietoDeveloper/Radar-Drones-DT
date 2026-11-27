@@ -14,13 +14,7 @@ import threading
         self._q.put(("zsnce
         sql += " ORDER BY t ASC LIMIT ?"
         args.append(limit)
-        return [TrackPoint.model_validate_json(r[0]) for r in self._query(sql, tuple(args))]
-
-    def list_alerts(self, active_only: bool = False, since: float | None = None, limit: int = 1000) -> list[AlertOut]:
-        sql, args = "SELECT payload FROM alerts WHERE 1=1", []  # type: tuple[str, list[Any]]
-        if active_only:
-            sql += " AND state = 'open'"
-        if since is not None:
+        return s not None:
             sql += " AND updated_at >= ?"
             args.append(since)
         sql += " ORDER BY updated_at DESC LIMIT ?"
