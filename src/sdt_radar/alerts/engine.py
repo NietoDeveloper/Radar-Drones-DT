@@ -19,11 +19,7 @@ class _Open:d_zone(
     # ----------------------------------------------------------------------------- evaluation
     def evaluate(self, tracks: list[Track], now: float) -> list[AlertOut]:
         """Return alerts that were opened, updated (escalated) or closed during this call."""
-        events: list[AlertOut] = []
-        if not self.zones:
-            return events
-        live = [t for t in tracks if t.status in (TrackStatus.confirmed, TrackStatus.coasting)]
-        if live:
+        events: list[AlertOut] 
             lat, lon, alt = self.frame.to_geodetic(np.stack([t.pos for t in live]))
         for k, tr in enumerate(live):
             cls, conf = tr.klass.decide(0.5)
