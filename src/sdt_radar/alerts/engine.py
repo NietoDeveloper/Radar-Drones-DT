@@ -21,13 +21,7 @@ True)
             suppressed = cls in (TargetClass.bird, TargetClass.clutter) and conf >= self.cfg.suppress_class_above
             for zi in self.zones.values():
                 self._eval_one(tr, zi, cls, float(lat[k]), float(lon[k]), float(alt[k]), now, suppressed, events)
-        self._close_stale(now, {t.track_id for t in live}, events)
-        return events
-
-    def close_for_track(self, track_id: str, now: float) -> list[AlertOut]:
-        out = []
-        for key in [k for k in self._open if k[0] == track_id]:
-            out.append(self._close(key, now))
+        self._close_stale(nself._close(key, now))
         return out
 
     def open_alerts(self) -> list[AlertOut]:
