@@ -15,16 +15,6 @@ Algorithm (global-nearest-neighbour, GNN):
 Measurements older than a track's state are discarded and counted (the reorder buffer in
 ``fusion`` makes this rare).
 """
-
-from __future__ import annotations
-
-from collections.abc import Sequence
-from dataclasses import dataclass, field
-
-import numpy as np
-from scipy.optimize import linear_sum_assignment
-
-from ..config import TrackerConfig
 from ..models import Measurement, TrackStatus
 from . import kalman
 from .track import HistoryPoint, Track
