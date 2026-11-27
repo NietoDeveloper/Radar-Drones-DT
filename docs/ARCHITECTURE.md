@@ -28,7 +28,3 @@ Back-pressure: reorder buffer (`ingest.queue_size`, default 50 000 items, sheds 
 drops oldest) · store queue (unbounded but drained continuously; `errors` counter on SQL failures).
 
 ## 6. Module map
-
-| Module | Responsibility |
-|---|---|
-| `models.py` | Enums, `Detection` (wire), `Measurement`, `ClassPosterior`, API output models, `Zone`, `SensorConfig` |
