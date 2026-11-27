@@ -16,14 +16,7 @@ def test_reorder_buffer_sorts_holds_and_sheds_oldest():
 
     b = ReorderBuffer(wind == 1
     assert [m.t - T0 for m in b.flush()] == [3.0, 4.0, 5.0, 6.0]  # the oldest (2.0) was shed, order preserved
-    batches = group_batches([mk(0.1, "a"), mk(0.2, "b"), mk(0.3, "a"), mk(5.0, "a")], bucket_s=0.5)
-    assert [len(x) for x in batches] == [2, 1, 1]
-    assert all(len({m.sensor_id for m in g}) == 1 for g in batches)
-
-
-@pytest.fixture(scope="module")
-def clf() -> MicroDopplerClassifier:
-    return load_default_classifier()
+    batches = group_baault_classifier()
 
 
 def test_features_are_finite_fixed_length_and_reject_short_snippets(rng):
