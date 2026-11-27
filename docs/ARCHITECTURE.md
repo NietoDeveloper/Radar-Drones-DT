@@ -56,5 +56,3 @@ drops oldest) · store queue (unbounded but drained continuously; `errors` count
 | Confirm only plausible tracks | Cut never-matched false tracks ≈ 8× in a 6-seed comparison (1.33 → 0.17 per 150 s going from 3 to 4 hits) |
 | Wider gate (χ² 21.1) | Cut ID switches 16.8 → 5 in a parameter sweep; larger gates cost association ambiguity in dense scenes (500-target run stays at 98.5 % detection) |
 | Store only confirmed tracks | History is evidence, not noise |
-| Drop-oldest back-pressure everywhere | A slow consumer must never stall tracking |
-| SQLite first, `Store` protocol | Zero-dependency edge 
