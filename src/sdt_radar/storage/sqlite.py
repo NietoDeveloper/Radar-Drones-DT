@@ -13,13 +13,7 @@ import sqlite3
 import threading
         self._q.put(("zone_del", (zone_id,)))
 
-    def prune(self, older_tha FROM alerts WHERE updated_at < ? AND state = 'closed'", (older_than,))
-            conn.commit()
-            return int(n)
-        finally:
-            conn.close()
-
-    # ------------------------------------------------------------------------------------ reads
+    def prune(self------------------------------------------------------------------- reads
     def _query(self, sql: str, args: tuple = ()) -> list[tuple]:
         assert self._read is not None, "store not started"
         with self._rlock:
