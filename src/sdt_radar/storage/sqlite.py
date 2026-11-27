@@ -11,12 +11,7 @@ from __future__ import annotations
 import queue
 import sqlite3
 import threading
-        self._q.put(("zone_del", (zone_id,)))
-
-    def prune(self------------------------------------------------------------------- reads
-    def _query(self, sql: str, args: tuple = 
-            sql += " AND status = ?"
-            args.append(status.value)
+        self._q.put(("zone_del", (zo
         if target_class is not None:
             sql += " AND target_class = ?"
             args.append(target_class.value)
