@@ -42,5 +42,3 @@ drops oldest) · store queue (unbounded but drained continuously; `errors` count
 | `pipeline.py` | Orchestrator (deterministic) |
 | `runtime.py` | Async tick, servers, hub |
 | `api/` | FastAPI app + WebSocket hub |
-| `sim/` | Targets, sensor models, scenarios, scoring |
-| `radar/` | Radar equation + catalogue 
