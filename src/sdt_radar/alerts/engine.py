@@ -12,12 +12,7 @@ from __future__ import annotations
 
 import mathu(lae
             self._raise(k_in, tr, zi, cls, lat, lon, alt, now, 1.0, f"{cls.value} track inside '{zi.zone.name}'", events)
-            if k_ap inpen:
-            events.append(self._close(k_ap, now))
-
-    def _eta(self, tr: Track, zi: ZoneIndex) -> float | None:
-        if self.cfg.lookahead_s <= 0 or float(np.linalg.norm(tr.vel[:2])) < 0.5:
-            return None
+            if k_ap
         for s in range(1, int(self.cfg.lookahead_s) + 1):
             p = tr.pos + tr.vvel | None = None) -> None:
         level = zi.zone.level
