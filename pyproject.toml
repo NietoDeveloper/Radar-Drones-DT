@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "sdt-drone-radar"
-version = "1.0.0"
+version = "2.0.0"
 description = "Python backend for radar-based drone detection: ingestion, multi-sensor tracking, micro-Doppler classification, alerting, recording and a REST/WebSocket API."
 readme = "README.md"
 requires-python = ">=3.11"

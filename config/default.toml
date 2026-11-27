@@ -1,6 +1,7 @@
-# SoftwareDT drone-radar backend — example configuration.
+# SoftwareDT drone-radar backend v2 — example configuration.
 # Every key is optional (defaults shown). Unknown keys are errors, so typos never pass silently.
-# Secrets: set SDT_RADAR_API_KEY in the environment instead of api.api_key.
+# Secrets never live in this file: API keys are stored as SHA-256 hashes ([[api.keys]], create them with
+# `sdt-radar keygen`), sensor signing secrets come from the environment or a file.
 
 [site]                      # origin of the shared local ENU frame (usually the protected site)
 lat = 4.7110
@@ -9,9 +10,14 @@ alt_m = 2600.0
 
 [ingest]
 host = "127.0.0.1"          # bind loopback unless a reverse proxy / firewall protects the ports
+udp_enabled = true          # false on a hub that only takes HTTPS from edge nodes
+tcp_enabled = true
 udp_port = 9100             # JSON datagrams: object, array, or newline-delimited
 tcp_port = 9101             # newline-delimited JSON stream
 allow_unknown_sensors = false
+require_signatures = false  # true: every network detection must carry a valid per-sensor HMAC
+max_clock_skew_s = 30.0     # signed detections must be this close to server time (replay protection)
+default_rate_limit_per_s = 5000.0   # per-sensor cap on the network path
 
 [fusion]
 reorder_window_s = 0.2      # hold measurements this long (data time) to restore ordering
@@ -19,7 +25,7 @@ batch_bucket_s = 0.25
 
 [tracker]
 gate_chi2 = 21.1            # Mahalanobis^2 association gate (3 dof, 99.99 %)
-confirm_hits = 4
+confirm_hits = 5
 confirm_window_s = 12.0
 tentative_timeout_s = 4.0
 coast_after_s = 2.0
@@ -27,7 +33,15 @@ max_coast_s = 8.0
 sigma_accel_h_mps2 = 4.0
 sigma_accel_v_mps2 = 2.5
 max_confirm_speed_mps = 50.0
+max_track_speed_mps = 70.0  # a live track faster than this is dropped (kinematically impossible)
 max_tracks = 2000
+imm_enabled = true          # blend a quiet and a manoeuvre motion model
+imm_sigma_h_mps2 = [1.5, 8.0]
+imm_sigma_v_mps2 = [1.0, 4.0]
+imm_stay_prob = 0.95        # per second
+use_doppler = true          # fuse radial velocity when a radar reports it
+doppler_gate_chi2 = 9.0
+angle_gate_chi2 = 13.8      # bearing-only (EO/IR, acoustic, RF DF) gate
 
 [classifier]
 enabled = true
@@ -43,14 +57,47 @@ suppress_class_above = 0.9  # bird/clutter tracks classified this confidently ra
 kind = "sqlite"             # or "memory"
 path = "data/radar.db"
 point_interval_s = 1.0      # one stored trajectory point per track per second
+# retention_days = 90       # auto-delete old points / closed records (hourly)
 # recorder_path = "data/raw.jsonl"   # raw detections for audit / deterministic replay
 
 [api]
 host = "127.0.0.1"
 port = 8080
 snapshot_hz = 5.0
-# api_key = "..."           # prefer the SDT_RADAR_API_KEY environment variable
+rate_limit_per_s = 50.0     # per client IP (token bucket) ...
+rate_limit_burst = 100.0
+lockout_failures = 8        # ... and lockout after repeated failed authentications
+lockout_window_s = 60.0
+lockout_s = 300.0
+ws_ticket_ttl_s = 30.0      # single-use WebSocket tickets
+allow_query_api_key = false # keep false: keys in URLs leak into logs
+max_body_bytes = 5000000
+metrics_public = false      # true only if /metrics is scraped inside a private network
+trust_proxy_headers = false # true only behind your own reverse proxy
+allowed_hosts = []          # e.g. ["radar.example.com"]
 cors_origins = []           # e.g. ["http://localhost:3000"] for a browser dashboard
+# tls_certfile = "/etc/ssl/radar.pem"   # or terminate TLS in a reverse proxy
+# tls_keyfile  = "/etc/ssl/radar.key"
+
+# API keys: hashed, with roles viewer < operator < admin. Generate with:  sdt-radar keygen --role admin
+# [[api.keys]]
+# id = "dashboard"
+# role = "viewer"
+# sha256 = "<hash printed by keygen>"
+
+[audit]                     # tamper-evident, hash-chained log of security events
+enabled = true
+path = "data/audit.jsonl"
+max_per_min = 30
+
+[logging]
+format = "text"             # "json" for log shippers
+level = "INFO"
+
+# [[notify.webhooks]]       # signed outbound alert delivery
+# url = "https://hooks.example.com/radar"
+# secret_env = "SDT_WEBHOOK_SECRET"
+# min_level = "warning"
 
 # --- sensors: the position and noise model of each source ----------------------------------
 [[sensors]]
@@ -65,6 +112,9 @@ sigma_az_deg = 1.2
 sigma_el_deg = 2.5
 max_range_m = 3500
 scan_period_s = 1.0
+sigma_radial_velocity_mps = 1.5   # range-rate noise used for Doppler-aided updates (omit to disable)
+# hmac_secret_env = "SDT_FMCW1_SECRET"   # sensor must sign every detection with this secret
+# rate_limit_per_s = 2000
 
 # --- zones (also manageable at runtime through POST /api/v1/zones) -------------------------
 [[zones]]

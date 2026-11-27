@@ -65,3 +65,35 @@ def batch_predict(x: F64, p: F64, dt: F64, sigma_h: float, sigma_v: float) -> tu
         q[:, i + 3, i + 3] = dt**2 * s2[i]
     pp = np.einsum("nij,njk,nlk->nil", f, p, f) + q
     return xp, pp
+
+
+def batch_fq(dt: F64, sigma_h: float, sigma_v: float) -> tuple[F64, F64]:
+    """Vectorised transition F (N,6,6) and process noise Q (N,6,6) for N time steps."""
+    n = dt.shape[0]
+    f = np.broadcast_to(np.eye(6), (n, 6, 6)).copy()
+    for i in range(3):
+        f[:, i, i + 3] = dt
+    s2 = np.array([sigma_h**2, sigma_h**2, sigma_v**2])
+    q = np.zeros((n, 6, 6))
+    for i in range(3):
+        q[:, i, i] = dt**4 / 4.0 * s2[i]
+        q[:, i, i + 3] = q[:, i + 3, i] = dt**3 / 2.0 * s2[i]
+        q[:, i + 3, i + 3] = dt**2 * s2[i]
+    return f, q
+
+
+def ekf_update(x: F64, p: F64, y: F64, h: F64, r: F64) -> tuple[F64, F64, float, float]:
+    """Generic (extended) Kalman update from a linearised measurement.
+
+    ``y`` is the innovation (already wrapped for angles), ``h`` the Jacobian, ``r`` the noise covariance.
+    Returns (x, P, d2, log-likelihood); Joseph form keeps ``P`` symmetric positive-definite.
+    """
+    s = h @ p @ h.T + r
+    k = np.linalg.solve(s.T, (p @ h.T).T).T
+    x_new = x + k @ y
+    ikh = _I6 - k @ h
+    p_new = ikh @ p @ ikh.T + k @ r @ k.T
+    p_new = 0.5 * (p_new + p_new.T)
+    d2 = float(y @ np.linalg.solve(s, y))
+    _, logdet = np.linalg.slogdet(2.0 * np.pi * s)
+    return x_new, p_new, d2, -0.5 * (d2 + float(logdet))

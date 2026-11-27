@@ -7,6 +7,8 @@ covariance, so the tracker needs no sensor-specific code.
 
 from __future__ import annotations
 
+import math
+
 import numpy as np
 
 from ..geo import LocalFrame, polar_covariance, polar_to_enu
@@ -42,15 +44,29 @@ class MeasurementFactory:
             except ValueError as exc:
                 raise RejectedDetection(str(exc)) from exc
 
-        if det.is_polar:
+        geom: str = "pos"
+        sensor_pos = None
+        sigma_rv = None
+        if det.geometry == "polar":
             if sensor is None:
                 raise RejectedDetection(f"polar detection from unregistered sensor '{det.sensor_id}'")
             assert det.range_m is not None and det.azimuth_deg is not None and det.elevation_deg is not None
             az = det.azimuth_deg + sensor.north_offset_deg
-            z = self._sensor_enu[sensor.id] + polar_to_enu(det.range_m, az, det.elevation_deg)
+            sensor_pos = self._sensor_enu[sensor.id]
+            z = sensor_pos + polar_to_enu(det.range_m, az, det.elevation_deg)
             r = polar_covariance(det.range_m, az, det.elevation_deg, sensor.sigma_range_m,
                                  sensor.sigma_az_deg, sensor.sigma_el_deg)
             kind = sensor.kind
+            if det.radial_velocity_mps is not None:
+                sigma_rv = sensor.sigma_radial_velocity_mps
+        elif det.geometry == "angular":
+            if sensor is None:
+                raise RejectedDetection(f"angular detection from unregistered sensor '{det.sensor_id}'")
+            assert det.azimuth_deg is not None and det.elevation_deg is not None
+            geom, sensor_pos, kind = "ang", self._sensor_enu[sensor.id], sensor.kind
+            z = np.array([math.radians((det.azimuth_deg + sensor.north_offset_deg) % 360.0),
+                          math.radians(det.elevation_deg)])
+            r = np.diag([math.radians(sensor.sigma_az_deg) ** 2, math.radians(sensor.sigma_el_deg) ** 2])
         else:
             if sensor is None and not self.allow_unknown:
                 raise RejectedDetection(f"detection from unregistered sensor '{det.sensor_id}'")
@@ -65,4 +81,5 @@ class MeasurementFactory:
             sensor_id=det.sensor_id, t=det.t, z=np.asarray(z, dtype=float), R=np.asarray(r, dtype=float),
             kind=kind, radial_velocity=det.radial_velocity_mps, rcs_dbsm=det.rcs_dbsm, snr_db=det.snr_db,
             external_id=det.external_id, md_iq=md, md_prf_hz=det.md_prf_hz, rx_wall=rx_wall,
+            geom=geom, sensor_pos=sensor_pos, sigma_rv=sigma_rv,  # type: ignore[arg-type]
         )

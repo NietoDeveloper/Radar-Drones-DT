@@ -42,6 +42,16 @@ class Track:
     last_hist_t: float = -1e18
     stored_t: float = -1e18  # last time a point was handed to storage
     announced: bool = False  # confirmation event already emitted
+    # IMM model bank (xs (M,6), Ps (M,6,6), mu (M,)); `x`/`P` above are always the fused estimate.
+    xs: F64 | None = None
+    Ps: F64 | None = None
+    mu: F64 | None = None
+
+    def ensure_models(self, m: int, mu0: F64) -> None:
+        if self.xs is None or self.xs.shape[0] != m:
+            self.xs = np.repeat(self.x[None], m, axis=0)
+            self.Ps = np.repeat(self.P[None], m, axis=0)
+            self.mu = mu0.copy()
 
     # ---- derived quantities -------------------------------------------------------------------
     @property

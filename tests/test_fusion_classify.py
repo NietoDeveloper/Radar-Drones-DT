@@ -1,0 +1,96 @@
+import numpy as np
+import pytest
+
+from sdt_radar.classification import MicroDopplerClassifier, load_default_classifier, md_features, synth_bird, synth_multirotor
+from sdt_radar.classification.model import make_dataset
+from sdt_radar.fusion import MeasurementFactory, RejectedDetection, ReorderBuffer, group_batches
+from sdt_radar.models import ClassPosterior, Detection, Measurement, SensorKind, TargetClass, encode_iq
+from tests.helpers import FRAME, T0, geodetic_det, polar_det, sensor_cfg
+
+
+def test_measurement_conversion_polar_matches_geometry_and_north_offset():
+    s = sensor_cfg("r1", east=500.0, north=-200.0, alt=10.0, north_offset_deg=0.0)
+    f = MeasurementFactory(FRAME, [s])
+    target = np.array([1500.0, 600.0, 120.0])
+    m = f.convert(polar_det(s, target, T0))
+    assert np.allclose(m.z, target, atol=1e-3) and m.R.shape == (3, 3) and m.kind == SensorKind.radar_fmcw
+    s_off = sensor_cfg("r2", east=0, north=0, alt=10.0, north_offset_deg=90.0)  # radar mounted rotated 90 degrees
+    f.add_sensor(s_off)
+    d = Detection(sensor_id="r2", t=T0, range_m=1000, azimuth_deg=0, elevation_deg=0)  # reports 0, true bearing 90 (east)
+    assert f.convert(d).z[0] - f._sensor_enu["r2"][0] == pytest.approx(1000, abs=1e-6)
+
+
+def test_measurement_conversion_geodetic_and_rejections():
+    f = MeasurementFactory(FRAME, [sensor_cfg("rid", SensorKind.remote_id, sigma_range_m=4.0)])
+    target = np.array([300.0, 400.0, 90.0])
+    m = f.convert(geodetic_det("rid", target, T0, sigma_h_m=3.0))
+    assert np.allclose(m.z, target, atol=1e-3)
+    assert m.R[0, 0] == pytest.approx(9.0) and m.R[2, 2] == pytest.approx(4.5 ** 2)  # vertical defaults to 1.5x horizontal
+    with pytest.raises(RejectedDetection):
+        f.convert(Detection(sensor_id="ghost", t=T0, range_m=10, azimuth_deg=0, elevation_deg=0))  # unknown polar sensor
+    with pytest.raises(RejectedDetection):
+        f.convert(geodetic_det("ghost", target, T0))  # unknown sensor not allowed by default
+    assert MeasurementFactory(FRAME, [], allow_unknown=True).convert(geodetic_det("ghost", target, T0)).kind == SensorKind.other
+
+
+def test_reorder_buffer_sorts_holds_and_sheds_oldest():
+    def mk(t, sid="r1"):
+        return Measurement(sid, T0 + t, np.zeros(3), np.eye(3), SensorKind.radar_fmcw)
+
+    b = ReorderBuffer(window_s=1.0, max_items=4)
+    for t in (3.0, 1.0, 2.0, 0.5):
+        b.push(mk(t))
+    assert [m.t - T0 for m in b.release(T0 + 2.2)] == [0.5, 1.0]  # only t <= now - window, in order
+    assert len(b) == 2
+    b.push(mk(4.0)); b.push(mk(5.0)); b.push(mk(6.0))  # 5 > capacity 4 -> oldest shed
+    assert b.dropped_overflow == 1
+    assert [m.t - T0 for m in b.flush()] == [3.0, 4.0, 5.0, 6.0]  # the oldest (2.0) was shed, order preserved
+    batches = group_batches([mk(0.1, "a"), mk(0.2, "b"), mk(0.3, "a"), mk(5.0, "a")], bucket_s=0.5)
+    assert [len(x) for x in batches] == [2, 1, 1]
+    assert all(len({m.sensor_id for m in g}) == 1 for g in batches)
+
+
+@pytest.fixture(scope="module")
+def clf() -> MicroDopplerClassifier:
+    return load_default_classifier()
+
+
+def test_features_are_finite_fixed_length_and_reject_short_snippets(rng):
+    f = md_features(synth_multirotor(rng, 1024, 10_240.0), 10_240.0)
+    assert f.shape == (7,) and np.all(np.isfinite(f))
+    with pytest.raises(ValueError):
+        md_features(np.ones(100, dtype=complex), 10_240.0)
+
+
+def test_drone_and_bird_signatures_differ_in_the_expected_direction(rng):
+    drone = np.mean([md_features(synth_multirotor(rng, 1024, 10_240.0, snr_db=20), 10_240.0) for _ in range(20)], axis=0)
+    bird = np.mean([md_features(synth_bird(rng, 1024, 10_240.0, snr_db=20), 10_240.0) for _ in range(20)], axis=0)
+    assert drone[0] > bird[0] * 2  # rotor micro-Doppler is much wider than wing-beat micro-Doppler
+    assert drone[3] > bird[3]  # rotors are stationary in time; wing flaps are not
+
+
+def test_classifier_heldout_accuracy_on_synthetic_data(clf):
+    x, y = make_dataset(120, seed=424242)
+    pred = clf.predict_proba_features(x).argmax(axis=1)
+    assert (pred == y).mean() > 0.88
+    drone_as_bird = ((y == 0) & (pred == 1)).sum() / (y == 0).sum()
+    bird_as_drone = ((y == 1) & (pred == 0)).sum() / (y == 1).sum()
+    assert drone_as_bird < 0.05 and bird_as_drone < 0.05  # the confusion that matters operationally
+
+
+def test_track_level_evidence_accumulates_to_a_confident_decision(clf, rng):
+    post = ClassPosterior()
+    assert post.decide(0.7) == (TargetClass.unknown, 0.0)
+    for _ in range(6):
+        post.update(clf.predict_proba(synth_bird(rng, 1024, 10_240.0, snr_db=10), 10_240.0), 0.92)
+    cls, conf = post.decide(0.7)
+    assert cls == TargetClass.bird and conf > 0.9
+
+
+def test_classifier_save_load_roundtrip_and_feature_guard(clf, tmp_path):
+    p = tmp_path / "m.npz"
+    clf.save(p)
+    again = MicroDopplerClassifier.load(p)
+    f = md_features(synth_multirotor(np.random.default_rng(0), 1024, 10_240.0), 10_240.0)
+    assert np.allclose(clf.predict_proba_features(f), again.predict_proba_features(f))
+    assert encode_iq(np.zeros(4, dtype=np.complex64))  # payload helper still works

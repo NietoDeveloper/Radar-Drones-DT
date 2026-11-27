@@ -114,11 +114,11 @@ def test_capacity_limit_is_enforced():
 
 
 def test_two_sensors_fuse_into_one_track_and_improve_accuracy():
-    rng = np.random.default_rng(11)
     truth_v = np.array([10.0, 5.0, 0.0])
     p0 = np.array([800.0, 200.0, 80.0])
 
-    def rmse(sensors):
+    def rmse(sensors, seed):
+        rng = np.random.default_rng(seed)
         tr = MultiTargetTracker()
         err = []
         for k in range(80):
@@ -130,8 +130,9 @@ def test_two_sensors_fuse_into_one_track_and_improve_accuracy():
         assert len(tr.tracks) == 1
         return float(np.sqrt(np.mean(np.square(err))))
 
-    one, two = rmse(["a"]), rmse(["a", "b"])
-    assert two < one * 0.9  # independent sensors reduce the error
+    one = np.mean([rmse(["a"], s) for s in range(6)])
+    two = np.mean([rmse(["a", "b"], s) for s in range(6)])
+    assert two < one * 0.9  # independent sensors reduce the error (ideal: 1/sqrt(2) = 0.71)
 
 
 def test_duplicate_tracks_on_same_target_are_merged():

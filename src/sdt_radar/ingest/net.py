@@ -1,0 +1,124 @@
+"""Network ingestion: UDP datagrams and TCP line streams carrying JSON detections.
+
+Wire format (one of):
+
+* a JSON object                       -> one detection
+* a JSON array of objects             -> a batch
+* newline-delimited JSON (TCP / UDP)  -> one detection per line
+
+Everything is validated by the ``Detection`` model; invalid input is counted, never trusted.
+Vendor protocols (SAPIENT, ASTERIX, proprietary SDKs) are bridged by small adapters that emit this
+format (see ``docs/SENSOR_INTEGRATION.md``).
+"""
+
+from __future__ import annotations
+
+import asyncio
+import json
+import logging
+from typing import TYPE_CHECKING, Any
+
+if TYPE_CHECKING:
+    from ..pipeline import Pipeline
+
+log = logging.getLogger("sdt_radar.ingest")
+
+MAX_DATAGRAM = 65_507
+MAX_LINE = 1 << 20
+
+
+def iter_json_objects(data: bytes) -> tuple[list[Any], int]:
+    """Split a datagram / stream chunk into JSON values. Returns (values, malformed line count)."""
+    text = data.decode("utf-8", errors="replace").strip()
+    if not text:
+        return [], 0
+    try:
+        parsed = json.loads(text)
+        return (parsed if isinstance(parsed, list) else [parsed]), 0
+    except json.JSONDecodeError:
+        pass
+    objs: list[Any] = []
+    bad = 0
+    for line in text.splitlines():  # newline-delimited
+        line = line.strip()
+        if not line:
+            continue
+        try:
+            objs.append(json.loads(line))
+        except json.JSONDecodeError:
+            bad += 1
+    return objs, bad
+
+
+def parse_payload(data: bytes, pipeline: Pipeline) -> int:
+    """Parse one datagram / line group; returns the number of accepted detections."""
+    objs, bad = iter_json_objects(data)
+    pipeline.stats["rejected_malformed"] += bad
+    return sum(1 for o in objs if pipeline.ingest_raw(o))
+
+
+class _UdpProtocol(asyncio.DatagramProtocol):
+    def __init__(self, pipeline: Pipeline) -> None:
+        self.pipeline = pipeline
+
+    def datagram_received(self, data: bytes, addr: tuple[str, int]) -> None:
+        if len(data) > MAX_DATAGRAM:
+            self.pipeline.stats["rejected_malformed"] += 1
+            return
+        parse_payload(data, self.pipeline)
+
+    def error_received(self, exc: Exception) -> None:  # pragma: no cover - OS dependent
+        log.warning("udp error: %s", exc)
+
+
+class UdpIngest:
+    def __init__(self, pipeline: Pipeline, host: str, port: int) -> None:
+        self.pipeline, self.host, self.port = pipeline, host, port
+        self._transport: asyncio.DatagramTransport | None = None
+
+    async def start(self) -> int:
+        loop = asyncio.get_running_loop()
+        self._transport, _ = await loop.create_datagram_endpoint(
+            lambda: _UdpProtocol(self.pipeline), local_addr=(self.host, self.port))
+        self.port = self._transport.get_extra_info("sockname")[1]
+        return self.port
+
+    async def stop(self) -> None:
+        if self._transport is not None:
+            self._transport.close()
+            self._transport = None
+
+
+class TcpIngest:
+    def __init__(self, pipeline: Pipeline, host: str, port: int) -> None:
+        self.pipeline, self.host, self.port = pipeline, host, port
+        self._server: asyncio.Server | None = None
+
+    async def start(self) -> int:
+        self._server = await asyncio.start_server(self._handle, self.host, self.port, limit=MAX_LINE)
+        self.port = self._server.sockets[0].getsockname()[1]
+        return self.port
+
+    async def stop(self) -> None:
+        if self._server is not None:
+            self._server.close()
+            await self._server.wait_closed()
+            self._server = None
+
+    async def _handle(self, reader: asyncio.StreamReader, writer: asyncio.StreamWriter) -> None:
+        try:
+            while True:
+                try:
+                    line = await reader.readuntil(b"\n")
+                except asyncio.IncompleteReadError as exc:
+                    if exc.partial:
+                        parse_payload(exc.partial, self.pipeline)
+                    break
+                except asyncio.LimitOverrunError:
+                    self.pipeline.stats["rejected_malformed"] += 1
+                    break  # drop the connection: framing is lost
+                parse_payload(line, self.pipeline)
+        except (ConnectionResetError, asyncio.CancelledError):  # pragma: no cover
+            pass
+        finally:
+            writer.close()
