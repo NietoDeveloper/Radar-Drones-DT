@@ -57,6 +57,4 @@ drops oldest) · store queue (unbounded but drained continuously; `errors` count
 | Wider gate (χ² 21.1) | Cut ID switches 16.8 → 5 in a parameter sweep; larger gates cost association ambiguity in dense scenes (500-target run stays at 98.5 % detection) |
 | Store only confirmed tracks | History is evidence, not noise |
 | Drop-oldest back-pressure everywhere | A slow consumer must never stall tracking |
-| SQLite first, `Store` protocol | Zero-dependency edge deployments; clean seam for TimescaleDB |
-
-## 8. Extensio
+| SQLite first, `Store` protocol | Zero-dependency edge 
