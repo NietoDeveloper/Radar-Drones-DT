@@ -6,15 +6,6 @@ licences and crashes out of the tracking service.
 
 > The adapter skeletons below are illustrative starting points, not shipped or tested drivers.
 
-## 1. Step by step
-
-1. **Survey the sensor.** Position (lat, lon, altitude of the antenna phase centre), where azimuth 0
-   points relative to true North, range/azimuth/elevation noise (datasheet or measured), scan period.
-2. **Register it** in `[[sensors]]` or `POST /api/v1/sensors`:
-   `north_offset_deg` is *added* to the azimuth the radar reports to reference true North.
-3. **Write the adapter**: read plots (or tracks) from the SDK/UDP feed, convert units, emit one JSON per
-   detection with the **sensor'sage.recorder_path`) and replay them to tune the tracker.
-
 ## 2. Plots or tracks?
 
 Prefer **plots** (unfiltered detections). The backend's tracker then fuses sensors with proper
