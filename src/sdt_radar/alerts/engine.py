@@ -15,12 +15,7 @@ True)
         return [z.zone t[Track], now: float) -> list[AlertOut]:
         """Return alerts that were opened, updated (escalated) or closed during this call."""
         events: list[AlertOut] 
-            lat, lon, alt = self.frame.to_geodetic(np.stack([t.pos for t in live]))
-        for k, tr in enumerate(live):
-            cls, conf = tr.klass.decide(0.5)
-            suppressed = cls in (TargetClass.bird, TargetClass.clutter) and conf >= self.cfg.suppress_class_above
-            for zi in self.zones.values():
-                self.---------------------------------------------------------------- internals
+            lat, lon, alt = se------------------------------------------------------ internals
     def _eval_one
             self._raise(k_in, tr, zi, cls, lat, lon, alt, now, 1.0, f"{cls.value} track inside '{zi.zone.name}'", events)
             if k_ap in self._open:
