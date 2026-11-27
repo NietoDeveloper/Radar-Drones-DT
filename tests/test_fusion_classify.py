@@ -14,13 +14,7 @@ def test_reorder_buffer_sorts_holds_and_sheds_oldest():
     def mk(t, sid="r1"):
         return Measurement(sid, T0 + t, np.zeros(3), np.eye(3), SensorKind.radar_fmcw)
 
-    b = ReorderBuffer(window_s=1.0, max_items=4)
-    for t in (3.0, 1.0, 2.0, 0.5):
-        b.push(mk(t))
-    assert [m.t - T0 for m in b.release(T0 + 2.2)] == [0.5, 1.0]  # only t <= now - window, in order
-    assert len(b) == 2
-    b.push(mk(4.0)); b.push(mk(5.0)); b.push(mk(6.0))  # 5 > capacity 4 -> oldest shed
-    assert b.dropped_overflow == 1
+    b = ReorderBuffer(wind == 1
     assert [m.t - T0 for m in b.flush()] == [3.0, 4.0, 5.0, 6.0]  # the oldest (2.0) was shed, order preserved
     batches = group_batches([mk(0.1, "a"), mk(0.2, "b"), mk(0.3, "a"), mk(5.0, "a")], bucket_s=0.5)
     assert [len(x) for x in batches] == [2, 1, 1]
