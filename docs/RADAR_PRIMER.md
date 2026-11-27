@@ -11,8 +11,7 @@ site trial.
 |---|---|---|---|---|
 | **FMCW** (frequency-modulated continuous wave) | 0.5 – 3 km | No near-range blind zone, compact, low power, fine range resolution | Shorter range; leakage and clutter handling | Perimeters, prisons, campuses, critical sites |
 | **Pulse-Doppler** | 5 – 20 km | Long range; strong ground-clutter rejection | Near-range eclipsing blind zone; larger and costlier | Airports, defence, wide-area |
-| **Phased array (AESA / MESA)** | 1 – 10 km | Electronic scanning (no moving pates drones from birds; > 97 % reported with AI on real data | Needs dwell time, SNR and band-specific training | Classification on any coherent radar |
-| **Passive** (DVB-T / 4G / 5G illuminators, ISAC) | 2 – 10+ km | Non-emitting, covert, cheap, reuses infrastructure | Depends on illuminator geometry; lower accuracy | Low-cost dense networks |
+| **Phased arVB-T / 4G / 5G illuminators, ISAC) | 2 – 10+ km | Non-emitting, covert, cheap, reuses infrastructure | Depends on illuminator geometry; lower accuracy | Low-cost dense networks |
 | **RF detection / DF** | 1 – 10 km | Finds control/video links, sometimes the pilot | Blind to autonomous / link-silent drones | Complement to radar |
 | **Remote ID receiver** | ~1 – 3 km | Identity + position from cooperative drones | Cooperative only; spoofable | Identity / compliance |
 | **EO/IR (PTZ)** | 1 – 3 km | Visual confirmation, evidence | Weather/light; narrow FOV | Cued confirmation |
