@@ -16,14 +16,7 @@ from pathlib import Path
 from typing import Any
 
 from ..models import AlertOut, TargetClass, TrackOut, TrackPoint, TrackStatus, Zone
-
-_SCHEMA = """T EXISTS zones (id TEXT PRIMARY KEY, payload TEXT NOT NULL);
-"""
-        self.commit_interval_s = commit_interval_s
-        self.batch_max = batch_max
-        self._q: queue.SimpleQueue[Any] = queue.SimpleQueue()
-        self._thread: threading.Thread | None = None
-        self._read: sqlite3.Connection | None = None
+te3.Connection | None = None
         self._rlock = threading.Lock()
         self.errors = 0
 
