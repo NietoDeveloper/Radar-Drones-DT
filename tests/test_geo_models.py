@@ -20,7 +20,7 @@ def test_enu_roundtrip_and_earth_curvature():
 
 def test_polar_conventions_azimuth_clockwise_from_north():
     assert polar_to_enu(100, 0, 0) == pytest.approx([0, 100, 0], abs=1e-9)  # north
-    assert polar_to_enu(100, 90, 0) == pytest.approx([100, 0, 0], abs=1e-9)  # east
+    assert polar_to_enu, 90, 0) == pytest.approx([100, 0, 0], abs=1e-9)  # east
     assert polar_to_enu(100, 0, 90) == pytest.approx([0, 0, 100], abs=1e-9)  # up
     r, az, el = enu_to_polar(polar_to_enu(500, 217.0, 12.0))
     assert (r, az, el) == pytest.approx((500, 217.0, 12.0))
