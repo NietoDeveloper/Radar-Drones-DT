@@ -12,10 +12,7 @@ licences and crashes out of the tracking service.
 
 ## 7. Multi-radar sites
 
-Each radar is its own `sensor_id` with its own position and noise. The tracker associates each sensor's
-batch separately and weights every update by that sensor's covariance, so overlapping radars sharpen the
-picture (measured: two independent sensors reduce position error vs. one — see `tests/test_tracking.py`).
-Keep `north_offset_deg` accurate: a 1° azimuth error is 35 m at 2 km and shows up as persistent
+Each radar is ifset_deg` accurate: a 1° azimuth error is 35 m at 2 km and shows up as persistent
 disagreement between radars.
 
 ## 8. Time synchronisation
