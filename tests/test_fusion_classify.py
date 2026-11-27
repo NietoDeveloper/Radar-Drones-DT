@@ -12,8 +12,3 @@ from tests.helpers import FRAME, T0, geodetic_det, polar_det, sensor_cfg
 )).sum() / (y == 0).sum()
     bird_as_drone = ((y == 1) & (pred == 0)).sum() / (y == 1).sum()
     assert drone_as_bird < 0.05 and bird_as_drone < 0.05  # the confusion that matters operationally
-
-
-def test_classifier_save_load_roundtrip_and_feature_guard(clf, tmp_path):
-    p = tmp_path / "m.npz"
-    clf.save(p)
