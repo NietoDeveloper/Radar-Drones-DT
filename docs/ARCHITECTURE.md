@@ -59,6 +59,4 @@ drops oldest) · store queue (unbounded but drained continuously; `errors` count
 | Drop-oldest back-pressure everywhere | A slow consumer must never stall tracking |
 | SQLite first, `Store` protocol | Zero-dependency edge deployments; clean seam for TimescaleDB |
 
-## 8. Extension points
-
-| To add… | Do th
+## 8. Extensio
