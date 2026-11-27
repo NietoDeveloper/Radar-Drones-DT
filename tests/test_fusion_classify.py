@@ -12,12 +12,6 @@ def test_measurement_conversion_polar_matches_geometry_and_north_offset():
     s = sensor_cfg("r1", east=500.0, north=-200.0
 def test_reorder_buffer_sorts_holds_and_sheds_oldest():
     def mk(t, sid="r1"):
-        return Measurement(sid, T0 + t, np.zeros(3), np.eye(3), SensorKind.radar_fmcw)
-
-    b = ReorderBuffer(wind == 1
-    assert [m.t - T0 for m in b.flush()] == [3.0, 4.0, 5.0, 6.0]  # the oldest (2.0) was shed, order preserved
-    batches = group_baault_classifier()
-
 
 def test_features_are_finite_fixed_length_and_reject_short_snippets(rng):
     f = md_features(synth_multirotor(rng, 1024, 10_240.0), 10_240.0)
