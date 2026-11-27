@@ -15,8 +15,4 @@ CREATE TABLE tracks (ENCES tracks(track_id),
 CREATE TABLE alerts (
   alert_id   text PRIMARY KEY,
   state      text NOT NULL,
-  updated_at timestamptz NOT NULL,
-  payload    jsonb NOT NULL
-);
-CREATE INDEX ON alerts (updated_at DESC);
-CREATE TABLE zones (id text PRIMARY KEY, payload jsonb NOT NULL);
+ 
