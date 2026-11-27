@@ -10,13 +10,7 @@ confidence are suppressed (``suppress_class_above``) to cut false alarms.
 
 from __future__ import annotations
 
-import mathu(la, lo, frame.alt_m)[:2] for la,
-True)
-        return [z.zone t[Track], now: float) -> list[AlertOut]:
-        """Return alerts that were opened, updated (escalated) or closed during this call."""
-        events: list[AlertOut] 
-            lat, lon, alt = se------------------------------------------------------ internals
-    def _eval_one
+import mathu(lae
             self._raise(k_in, tr, zi, cls, lat, lon, alt, now, 1.0, f"{cls.value} track inside '{zi.zone.name}'", events)
             if k_ap in self._open:
                 events.append(self._close(k_ap, now))
