@@ -6,15 +6,7 @@ licences and crashes out of the tracking service.
 
 > The adapter skeletons 
         "sensor_id": "fmcw-1",
-        "t": p.timestamp_unix,                # measurement time, UTC
-        "range_m": p.range_m,
-        "azimuth_deg": p.azimuth_deg,         # adapter converts to clockwise-from-North if needed
-        "elevation_deg": p.elevation_deg,
-        "radial_velocity_mps": p.doppler_mps,
-        "rcs_dbsm": p.rcs_dbsm,
-        "snr_db": p.snr_db,
-    }
-    sock.sendto(json.dumps([det]).encode(), TARGET)   # batch several plots per datagram when possible
+        "t": p.timestamp_unix, det]).encode(), TARGET)   # batch several plots per datagram when possible
 ```
 
 ## 5. Micro-Doppler payload
