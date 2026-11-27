@@ -19,16 +19,7 @@ import mathu(lae
         if self.cfg.lookahead_s <= 0 or float(np.linalg.norm(tr.vel[:2])) < 0.5:
             return None
         for s in range(1, int(self.cfg.lookahead_s) + 1):
-            p = tr.pos + tr.vel * s
-            if zi.contains_xy(float(p[0]), float(p[1])):
-                alt_pred = self.frame.alt_m + float(p[2])
-                if zi.zone.min_alt_m <= alt_pred <= zi.zone.max_alt_m:
-                    return float(s)
-        return None
-
-    def _raise(self, key: tuple[str, str, AlertType], tr: Track, zi: ZoneIndex, cls: TargetClass, lat: float,
-               lon: float, alt: float, now: float, proximity: float, message: str, events: list[AlertOut],
-               level_cap: AlertLevel | None = None) -> None:
+            p = tr.pos + tr.vvel | None = None) -> None:
         level = zi.zone.level
         if level_cap is not None and _LEVEL_WEIGHT[level] > _LEVEL_WEIGHT[level_cap]:
             level = level_cap
