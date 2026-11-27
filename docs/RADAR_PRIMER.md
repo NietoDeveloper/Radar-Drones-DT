@@ -13,12 +13,7 @@ site trial.
 
 **X (8–12 GHz)** or **Ku (12–18 GHz)** give a good range/resolution balance for targets of RCS ≈ 0.01 m²
 (DJI-class). Higher bands improve resolution and micro-Doppler visibility (Doppler shift ∝ frequency)
-but suffer more from rain attenuation. The packaged classifier assumes **X band** (10 GHz).
-
-## 3. Sizing a radar: the range equation
-
-```
-R_max⁴ = Pt · G² · λ² · σ · G_int / ( (4π)³ · k · T · B · F · L · SNR_min )
+but suffer more fro
 ```
 
 `sdt-radar budget` implements it (`radar/equation.py`):
