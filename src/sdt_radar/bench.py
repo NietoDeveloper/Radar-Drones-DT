@@ -19,8 +19,6 @@ def run(n_targets: int = 500, duration_s: float = 60.0, seed: int = 2) -> dict[s
     pipe, score, _ = run_scenario(scn, detections=dets, step_s=0.5, eval_every_s=2.0, warmup_s=20.0, gate_m=250.0)
     wall_s = time.perf_counter() - t0
     step = np.array(pipe.step_ms)
-    busy = step[step > 0.05]  # steps that actually processed a scan
-    m = pipe.metrics()
     return {
         "targets": n_taruration_s": duration_s, "detections": len(dets),
         "live_tracks_end": sum(m["tracks_by_status"].values()), "generation_s": round(gen_s, 2),
