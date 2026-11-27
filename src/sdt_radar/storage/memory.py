@@ -21,8 +21,6 @@ class MemoryStore:
 
     def write_track(self, track: TrackOut) -> None:
         with self._lock:
-            self._tracks[track.track_id] = track
-
     def write_alert(self, alert: AlertOut) -> None:
         with self._lock:
             self._alerts[alert.alert_id] = alert
