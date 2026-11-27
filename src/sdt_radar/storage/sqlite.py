@@ -17,13 +17,6 @@ import threading
     def list_zones(self) -> list[Zone]:
         return [Zone.model_validate_json(r[0]) for r in self._query("SELECT payload FROM zones")]
 
-    # -------------top:
-            tr      b.set()
-                barriers.clear()
-        conn.commit()
-        for b in barriers:
-            b.set()
-        conn.close()
 
     @staticmethod
     def _apply(conn: sqlite3.Connection, kind: str, data: Any, barriers: list[threading.Event]) -> int:
