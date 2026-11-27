@@ -11,5 +11,4 @@ class MemoryStore:
     def __init__(self) -> None:s():
                 keep = [p for p in pts if p.t >= older_than]
                 n += len(pts) - len(keep)
-                self._points[tid] = keep
-        return n
+               
