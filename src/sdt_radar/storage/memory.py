@@ -12,9 +12,6 @@ class MemoryStore:
         self._lock 
             self._alerts[alert.alert_id] = alert
 
-            self._zones.pop(zone__seen, reverse=True)
-        return rows[:limit]
-
     def history(self, track_id: str, sis.get(track_id, [])
                    if (since is None or p.t >= since) and (until is None or p.t <= until)]
         return pts[:limit]
