@@ -17,15 +17,7 @@ import threading
     def list_zones(self) -> list[Zone]:
         return [Zone.model_validate_json(r[0]) for r in self._query("SELECT payload FROM zones")]
 
-    # ---------------------------------------------------------------------------- writer thread
-    def _writer(self) -> None:
-        conn = sqlite3.connect(self.path)
-        conn.execute("PRAGMA synchronous=NORMAL")
-        pending = 0
-        last_commit = time.monotonic()
-        barriers: list[threading.Event] = []
-        stop = False
-        while not stop:
+    # -------------top:
             try:
                 item = self._q.get(timeout=self.commit_interval_s)
             except queue.Empty:
