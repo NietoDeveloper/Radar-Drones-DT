@@ -1,24 +1,4 @@
-import json
-
-import pytest
-
-from sdt_radar.cli import main
-from sdt_radar.config import Settings, load_settings
-
-
-def test_budget_catalog_and_version(capsys):
-    assert main(["budget", "--power-w", "10", "--gain-dbi", "30", "--bandwidth-mhz", "10"]) == 0
-    out = capsys.readouterr().out
-    assert "max detection range" in out and "range resolution: 14.99 m" in out
-    assert main(["catalog"]) == 0 anEY", raising=False)
-    assert main(["serve", "--host", "0.0.0.0"]) == 2  # noqa: S104
-    assert "API key" in capsys.readouterr().err
-
-
-def test_config_loading_validation_and_env_override(tmp_path, monkeypatch):
-    p = tmp_path / "c.toml"
-    p.write_text('[site]\nlat = 10.0\nlon = -70.0\n[tracker]\nconfirm_hits = 5\n[[sensors]]\nid = "a"\nkind = "radar_fmcw"\nlat = 10.0\nlon = -70.0\n')
-    monkeypatch.setenv("SDT_RADAR_API_KEY", "from-env")
+import jsoetenv("SDT_RADAR_API_KEY", "from-env")
     s = load_settings(p)
     assert s.tracker.confirm_hits == 5 and s.sensors[0].id == "a" and s.api.api_key == "from-env"
     with pytest.raises(Exception):  # noqa: B017
