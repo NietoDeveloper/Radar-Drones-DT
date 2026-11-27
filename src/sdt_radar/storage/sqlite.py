@@ -16,17 +16,7 @@ from pathlib import Path
         self._q.put(("barrier", ev))
         ev.wait(timeout)
 
-    # ----------------------------------------------------------------------------------- writes
-    def write_track(self, track: TrackOut) -> None:
-        self._q.put(("track", (track.track_id, track.seq, track.status.value, track.target_class.value,
-                               track.class_confidence, track.confidence, track.first_seen, track.last_seen,
-                               track.model_dump_json())))
-
-    def write_points(self, track_id: str, points: list[TrackPoint]) -> None:
-        if points:
-            self._q.put(("points", [(track_id, p.t, p.model_dump_json()) for p in points]))
-
-    def write_alert(self, alert: AlertOut) -> None:
+    # ----------------------t: AlertOut) -> None:
         self._q.put(("alert", (alert.alert_id, alert.state, alert.updated_at, alert.model_dump_json())))
 
     def put_zone(self, zone: Zone) -> None:
