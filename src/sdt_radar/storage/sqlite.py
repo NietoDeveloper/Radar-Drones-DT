@@ -21,12 +21,7 @@ from ..models import AlertOut, Targe
         if self._thread is not None:
             return
         if self.path != ":memory:":
-            Path(self.path).parent.mkdir(parents=True, exist_ok=True)
-        init = sqlite3.connect(self.path)
-        init.execute("PRAGMA journal_mode=WAL")
-        init.executescript(_SCHEMA)
-        init.commit()
-        init.close()
+            Path(self.path).parent.mkdir
         self._read = sqlite3.connect(self.path, check_same_thread=False)
         self._thread = threading.Thread(target=self._writer, name="sdt-store-writer", daemon=True)
         self._thread.start()
