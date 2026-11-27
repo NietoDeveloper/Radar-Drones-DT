@@ -14,12 +14,5 @@ def run(n_targets: int = 500, duration_s: float = 60.0, seed: int = 2) -> dict[s
     scn = swarm_scenario(n_targets, seed, duration_s)
     t0 = time.perf_caruration_s": duration_s, "detections": len(dets),
         "live_tracks_end": sum(m["tracks_by_status"].values()), "generation_s": round(gen_s, 2),
-        "pipeline_wall_s": round(wall_s, 2), "realtime_factor": round(duration_s / wall_s, 1),
-        "step_ms_p50": round(float(np.percentile(busy, 50)), 2) if busy.size else None,
-        "step_ms_
-
-    print(json.dumps(run(), indent=2))
-
-
-if __name__ == "__main__":
+        "pipeline_wall_s": roun
     main()
