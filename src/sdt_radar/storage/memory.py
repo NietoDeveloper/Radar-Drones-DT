@@ -20,12 +20,7 @@ class MemoryStore:
     def get_track(self, track_id: str) -> TrackOut | None:
         with self._lock:
             return self._tracks.get(track_id)
-
-    def list_tracks(self, status: TrackStatus | None = None, target_class: TargetClass | None = None,
-                    since: float | None = None, limit: int = 1000) -> list[TrackOut]:
-        with self._lock:
-            rows = [t for t in self._tracks.values()
-                    if (status is None or t.status == status)
+(status is None or t.status == status)
                     and (target_class is None or t.target_class == target_class)
                     and (since is None or t.last_seen >= since)]
         rows.sort(key=lambda t: t.last_seen, reverse=True)
