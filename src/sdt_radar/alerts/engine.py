@@ -5,6 +5,4 @@
 
 Alerts are *stateful*: one open alert per (track, zone, type); closed after the condition has been
 absent for ``clear_after_s`` or when the track is lost. Bird/clutter tracks classified with high
-confidelert.model_copy(update={"state": "closed", "closed_at": now, "updated_at": now})
-
-    def _close_stale(self, now: float, live_ids: set[str], events: list[AlertOut]) -> None:
+confideler
