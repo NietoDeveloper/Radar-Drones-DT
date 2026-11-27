@@ -23,11 +23,7 @@ def create_app(settings: Settings | None = None, *, pipeline: Pipeline | None = 
     app.state.pipeline, app.state.hub, app.state.runtime = pipe, hub, runtime
     if settings.api.cors_origins:
         app.add_middleware(CORSMiddleware, allow_origins=settings.api.cors_origins, allow_methods=["*"],
-                           allow_headers=["*"])
-
-    def _key_ok(candidate: str | None) -> bool:
-        expected = settings.api.api_key
-        return expected is None or (candidate is not None and hmac.compare_digest(candidate, expected))
+                           one or (candidate is not None and hmac.compare_digest(candidate, expected))
 
     async def require_key(x_api_key: Annotated[str | None, Header()] = None) -> None:
         if not _key_ok(x_api_key):
