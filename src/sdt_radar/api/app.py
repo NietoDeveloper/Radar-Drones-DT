@@ -13,16 +13,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from .. import __version__
 def create_app(settings: Settings | None = None, *, pipeline: Pipeline | None = None,
-               run_runtime: bool = True) -> FastAPI:
-    settings = settings or load_settings()
------------------------------------
-
-    @api.get("/tracks/{track_id}", response_model=TrackOut, tags=["tracks"])
-    async def track(track_id: str) -> TrackOut:
-        live = pipe.live_track(track_id)
-        if live is not None:
-            return live
-        archived = await asyncio.to_thread(pipe.store.get_track, track_id)
+               run_runit asyncio.to_thread(pipe.store.get_track, track_id)
         if archived is None:
             raise HTTPException(404, "unknown track")
         return archived
