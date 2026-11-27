@@ -12,9 +12,7 @@ class MemoryStore:
         self._lock 
             self._alerts[alert.alert_id] = alert
 
-            self._zones.pop(zone_id, None)
-
-    def get_track(selfbda t: t.last_seen, reverse=True)
+            self._zones.pop(zone__seen, reverse=True)
         return rows[:limit]
 
     def history(self, track_id: str, sis.get(track_id, [])
