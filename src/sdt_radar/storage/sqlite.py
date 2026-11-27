@@ -18,16 +18,7 @@ import threading
         return [Zone.model_validate_json(r[0]) for r in self._query("SELECT payload FROM zones")]
 
     # -------------top:
-            try:
-                item = self._q.get(timeout=self.commit_interval_s)
-            except queue.Empty:
-                item = None
-            if item is _STOP:
-                stop = True
-            elif item is not None:
-                kind, data = item
-                try:
-                    pending += self._apply(conn, kind, data, barriers)
+            try:ding += self._apply(conn, kind, data, barriers)
                 except sqlite3.Error:
                     self.errors += 1
             due = time.monotonic() - last_commit >= self.commit_interval_s
