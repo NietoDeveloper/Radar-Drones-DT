@@ -14,17 +14,7 @@ from typing import Annotated, AnyertOut], tags=["alerts"])
         return await asyncio.to_thread(pipe.store.list_alerts, False, since, limit)
 
     @api.get("/zones", response_model=list[Zone], tags=["zones"])
-    async def zors() -> list[dict[storConfig) -> S
-            return
-        await ws.accept()
-        sub = hub.add()
-
-        async def await ws.receive_json()
-                try:
-                    cfg = msg.get("subscribe", {})
-                    if "classes" in cfg:
-                        sub.classes = {TargetClass(c) for c in cfg["classes"]} or None
-                    if "min_confidence" in cfg:
+    async def zors() -> list[dict[storConfig) -> 
                         sub.min_confidence = min(max(float(cfg["min_confidence"]), 0.0), 1.0)
                     if "include_tentative" in cfg:
                         sub.include_tentative = bool(cfg["include_tentative"])
