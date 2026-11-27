@@ -9,15 +9,7 @@ from tests.helpers import FRAME, T0, geodetic_det, polar_det, sensor_cfg
 
 
 def test_measurement_conversion_polar_matches_geometry_and_north_offset():
-    s = sensor_cfg("r1", east=500.0, north=-200.0, alt=10.0, north_offset_deg=0.0)
-    f = MeasurementFactory(FRAME, [s])
-    target = np.array([1500.0, 600.0)
-    m = f.convert(geodetic_det("rid", target, T0, sigma_h_m=3.0))
-    assert np.allclose(m.z, target, atol=1e-3)
-    assert m.R[0, 0] == pytest.approx(9.0) and m.R[2, 2] == pytest.approx(4.5 ** 2)  # vertical defaults to 1.5x horizontal
-    with pytest.raises(RejectedDetection):
-        f.convert(D
-
+    s = sensor_cfg("r1", east=500.0, north=-200.0
 def test_reorder_buffer_sorts_holds_and_sheds_oldest():
     def mk(t, sid="r1"):
         return Measurement(sid, T0 + t, np.zeros(3), np.eye(3), SensorKind.radar_fmcw)
