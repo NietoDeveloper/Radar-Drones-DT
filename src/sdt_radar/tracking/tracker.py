@@ -18,16 +18,7 @@ Measurements older than a track's state are discarded and counted (the reorder b
     lost: list[Track] = field(default_factory=list)
     merged: list[tuple[Track, Track]] = field(default_factory=list)  # (dropped, kept)
     stale_measurements: int = 0
-
-
-class MultiTargetTracker:
-    def __init__(self, cfg: TrackerConfig | None = None) -> None:
-        self.cfg = cfg or TrackerConfig()
-        self.tracks: dict[str, Track] = {}
-        self._seq = 0
-        self.stats = {"created": 0, "confirmed": 0, "lost": 0, "merged": 0, "stale": 0, "dropped_capacity": 0}
-
-    # ------------------------------------------------------------------------------- public API
+----------------------------------------------------------------------- public API
     def active_tracks(self) -> list[Track]:
         return list(self.tracks.values())
 
