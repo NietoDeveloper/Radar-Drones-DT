@@ -11,14 +11,7 @@ from typing import Annotated, AnyertOut], tags=["alerts"])
                      limit: Annotated[int, Query(ge=1, le=5000)] = 1000) -> list[AlertOut]:
         if active:
             return pipe.alerts.open_alerts()[:limit]
-        return await asyncio.to_thread(pipe.store.list_alerts, False, since, limit)
-
-    @api.get("/zones", response_model=list[Zone], tags=["zones"])
-    async def zors() -> list[dict[sidence": sub.min_confidence, "include_tentative": sub.include_tentative})
-                except (ValueError, TypeError, AttributeError) as exc:
-                    sub.push({"type": "error", "detail": str(exc)})
-        except WebSocketDisconnect:
-            pass
+        return await asyncio.to_thread(
         finally:
             send_task.cancel()
             hub.remove(sub)
