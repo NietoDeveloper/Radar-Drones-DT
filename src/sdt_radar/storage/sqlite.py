@@ -19,13 +19,6 @@ from ..models import AlertOut, TargetClass, TrackOut, TrackPoint, TrackStatus, Z
 
 _SCHEMA = """T EXISTS zones (id TEXT PRIMARY KEY, payload TEXT NOT NULL);
 """
-
-_STOP = object()
-
-
-class SqliteStore:
-    def __init__(self, path: str | Path, commit_interval_s: float = 0.2, batch_max: int = 2000) -> None:
-        self.path = str(path)
         self.commit_interval_s = commit_interval_s
         self.batch_max = batch_max
         self._q: queue.SimpleQueue[Any] = queue.SimpleQueue()
