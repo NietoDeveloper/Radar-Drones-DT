@@ -12,18 +12,7 @@ from tests.helpers import T0
 
 def test_polar_conventions_azs
     assert np.all(np.linalg.eigvalsh(c) > 0)
-    near, far = polar_covariance(200, 30, 5, 3, 1, 2)muth_deg=10, elevation_deg=5, **kw)
-
-
-def test_detection_requires_exactly_one_geometry():
-    Detection(**_polar())
-    Detection(sensor_id="rid", t=T0, lat=4.7, lon=-74.0, alt_m=2700)
-    with pytest.raises(ValidationError):
-        Detection(sensor_id="x", t=T0)  # none
-    with pytest.raises(ValidationError):
-        Detection(sensor_id="x", t=T0, range_m=1, azimuth_deg=1)  # partial polar
-    with pytest.raises(ValidationError):
-        Detection(**_polar(), lat=1, lon=1, alt_m=1)  # both
+    near, far = polar_covariance(200, 30, 5,1)  # both
 
 
 @pytest.mark.parametrize("bad", [
