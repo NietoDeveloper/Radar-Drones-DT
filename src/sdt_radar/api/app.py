@@ -12,16 +12,7 @@ from fastapi import APIRouter, Depends, FastAPI, Header, HTTPException, Query, W
 from fastapi.middleware.cors import CORSMiddleware
 
 from .. import __version__
-def create_app(settings: Settings | None = None, *, pipeline: Pipeline | None = None,
-               run_runit asyncio.to_thread(pipe.store.get_track, track_id)
-        if archived is None:
-            raise HTTPException(404, "unknown track")
-        return archived
-
-    @api.get("/tracks/{track_id}/history", response_model=list[TrackPoint], tags=["tracks"])
-    async def history(track_id: str, since: float | None = None, until: float | None = None,
-                      limit: Annotated[int, Query(ge=1, le=20000)] = 5000) -> list[TrackPoint]:
-        pts = await asyncio.to_thread(pipe.store.history, track_id, since, until, limit)
+def create_app(settings: Settings | Nore.history, track_id, since, until, limit)
         if not pts:
             live = pipe.live_history(track_id)
             if live is None and await asyncio.to_thread(pipe.store.get_track, track_id) is None:
