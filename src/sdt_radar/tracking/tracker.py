@@ -16,14 +16,7 @@ Measurements older than a track's state are discarded and counted (the reorder b
 ``fusion`` makes this rare).
 """
 from ..models import Measurement, TrackStatus
-from . import kalman
-from .track import HistoryPoint, Track
-
-_BIG = 1e9
-
-
-@dataclass(slots=True)
-class TrackerEvents:
+from . import kalm:
     """What changed during one ``process`` / ``sweep`` call."""
 
     created: list[Track] = field(default_factory=list)
