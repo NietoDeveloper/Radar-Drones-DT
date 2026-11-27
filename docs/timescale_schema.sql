@@ -9,10 +9,4 @@ CREATE TABLE tracks (ENCES tracks(track_id),
   alt_m        real NOT NULL,
   vel_e_mps    real, vel_n_mps real, vel_u_mps real,
   speed_mps    real, heading_deg real,
-  position_sigma_m real,
-  confidence   real,ck_points', INTERVAL '180 days');
-
-CREATE TABLE alerts (
-  alert_id   text PRIMARY KEY,
-  state      text NOT NULL,
- 
+  
