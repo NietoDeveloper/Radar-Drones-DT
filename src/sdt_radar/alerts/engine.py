@@ -8,8 +8,3 @@ absent for ``clear_after_s`` or when the track is lost. Bird/clutter tracks clas
 confidelert.model_copy(update={"state": "closed", "closed_at": now, "updated_at": now})
 
     def _close_stale(self, now: float, live_ids: set[str], events: list[AlertOut]) -> None:
-        for key, o in list(self._open.items()):
-            gone = key[0] not in live_ids
-            lapsed = (now - o.last_true_t) > self.cfg.clear_after_s
-            if gone or lapsed:
-                events.append(self._close(key, no
