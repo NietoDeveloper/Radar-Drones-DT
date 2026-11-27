@@ -12,22 +12,7 @@ Algorithm (global-nearest-neighbour, GNN):
         return [batch[j] for j in range(m) if j not in used_m]
 s.R.cfg.history_min_dt_s:
             returne)
-        self.stats["lost"] += 1
-        ev.lost.append(tr)
-
-    def _merge_duplicates(self, ev: TrackerEvents) -> None:
-        """Merge confirmed/coasting tracks that are statistically the same target.
-
-        for i, j in close:
-            a, b = live[i], live[j]
-            if a.track_id in gone or b.track_id in gone:
-                continue
-            dt = b.t - a.t  # align the older state to the newer one before comparing
-            xa, pa = (a.x, a.P) if dt <= 0 else kalman.predict(a.x, a.P, dt, cfg.sigma_accel_h_mps2, cfg.sigma_accel_v_mps2)
-            xb, pb = (b.x, b.P) if dt >= 0 else kalman.predict(b.x, b.P, -dt, cfg.sigma_accel_h_mps2, cfg.sigma_accel_v_mps2)
-            diff = xa - xb
-            dvel = float(np.linalg.norm(diff[3:]))
-            dpos = float(np.linalg.norm(diff[:3]))
+        self.stats["lost"] += 1.norm(diff[:3]))
             stat = cfg.merge_chi2 > 0 and float(diff @ np.linalg.solve(pa + pb, diff)) < cfg.merge_chi2 \
                 and dvel <= 2.0 * cfg.merge_speed_diff_mps
             simple = cfg.merge_distance_m > 0 and dpos < cfg.merge_distance_m and dvel <= cfg.merge_speed_diff_mps
