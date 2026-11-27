@@ -21,5 +21,3 @@ UI with < 500 ms display latency; scale
 | Reader connection | REST history/archive queries (`asyncio.to_thread`) | WAL permits concurrent read |
 
 Tracking, classification and alerting run on the event loop: at 500 tracks a step costs ~73 ms every
-2 s (≈ 3.6 % of one core). If scale demands it, the `Pipeline` can move to its own process behind a queue
-without API changes because it is already synchronous and 
