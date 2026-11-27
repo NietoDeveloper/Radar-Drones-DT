@@ -1,26 +1,6 @@
 # Radar and sensor primer for drone detection
 
-How the sensor landscape maps to this backend. Ranges are typical figures for planning; real
-performance depends on target RCS, clutter, weather, antenna height and the specific product. Commercial
-systems report micro-drone detection at roughly 2–10 km; always confirm with a vendor datasheet and a
-site trial.
-
-## 1. Sensor types
-
-| Type | Typical range | Strengths | Weaknesses | Best for |
-|---|---|---|--
-## 2. Bands
-
-**X (8–12 GHz)** or **Ku (12–18 GHz)** give a good range/resolution balance for targets of RCS ≈ 0.01 m²
-(DJI-class). Higher bands improve resolution and micro-Doppler visibility (Doppler shift ∝ frequency)
-but suffer more fro
-```
-
-`sdt-radar budget` implements it (`radar/equation.py`):
-
-```bash
-sdt-radar budget --power-w 10 --gain-dbi 35 --freq-ghz 10 --bandwidth-mhz 5 --integration-db 30
-# max detection range (0.01 m² at SNR>=13.0 dB): 3,457 m
+How the sensor landscape maps to this backend. Ranges are typical figuresrange (0.01 m² at SNR>=13.0 dB): 3,457 m
 # range resolution: 29.98 m   velocity resolution (50 ms dwell): 0.30 m/s
 ```
 
