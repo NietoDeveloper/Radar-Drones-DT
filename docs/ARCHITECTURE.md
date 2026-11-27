@@ -36,4 +36,4 @@ drops oldest) · store queue (unbounded but drained continuously; `errors` count
 | `config.py` | Typed settings + TOML loader + env override |
 | `fusion/` | Conversion, reorder buffer, batching |
 | `tracking/` | Kalman math, `Track`, `MultiTargetTracker` |
-| `classification/` | Signal synthesis, features, logistic model, training |
+| `clas
