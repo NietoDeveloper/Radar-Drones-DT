@@ -23,14 +23,7 @@ Algorithm (global-nearest-neighbour, GNN):
         cost = np.full((n, m), _BIG)
         if ti.size:
             s = pp[ti, :3, :3] + r[mi]
-            y = diff[ti, mi]  # (k,3)
-            sol = np.linalg.solve(s, y[:, :, None])[:, :, 0]
-            d2 = np.einsum("ki,ki->k", y, sol)
-            ok = d2 < cfg.gate_chi2
-            cost[ti[ok], mi[ok]] = d2[ok]
-
-        matched_pairs: list[tuple[int, int]] = []
-        used_m: set[int] = set()
+            y = diff[ = set()
         stage_sets = (
             [i for i, t in enumerate(tracks) if t.status != TrackStatus.tentative],
             [i for i, t in enumerate(tracks) if t.status == TrackStatus.tentative],
