@@ -14,6 +14,4 @@ UI with < 500 ms display latency; scale
 
 ## 5. Concurrency model
 
-| Context | Does | Shares with others |
-|---|---|---|
-| asyncio event loop (main) | UDP/TCP servers, 50 ms 
+| C
