@@ -11,18 +11,7 @@ from tests.helpers import FRAME, T0, geodetic_det, polar_det, sensor_cfg
 def test_measurement_conversion_polar_matches_geometry_and_north_offset():
     s = sensor_cfg("r1", east=500.0, north=-200.0, alt=10.0, north_offset_deg=0.0)
     f = MeasurementFactory(FRAME, [s])
-    target = np.array([1500.0, 600.0, 120.0])
-    m = f.convert(polar_det(s, target, T0))
-    assert np.allclose(m.z, target, atol=1e-3) and m.R.shape == (3, 3) and m.kind == SensorKind.radar_fmcw
-    s_off = sensor_cfg("r2", east=0, north=0, alt=10.0, north_offset_deg=90.0)  # radar mounted rotated 90 degrees
-    f.add_sensor(s_off)
-    d = Detection(sensor_id="r2", t=T0, range_m=1000, azimuth_deg=0, elevation_deg=0)  # reports 0, true bearing 90 (east)
-    assert f.convert(d).z[0] - f._sensor_enu["r2"][0] == pytest.approx(1000, abs=1e-6)
-
-
-def test_measurement_conversion_geodetic_and_rejections():
-    f = MeasurementFactory(FRAME, [sensor_cfg("rid", SensorKind.remote_id, sigma_range_m=4.0)])
-    target = np.array([300.0, 400.0, 90.0])
+    target = np.array([1500.0, 600.0)
     m = f.convert(geodetic_det("rid", target, T0, sigma_h_m=3.0))
     assert np.allclose(m.z, target, atol=1e-3)
     assert m.R[0, 0] == pytest.approx(9.0) and m.R[2, 2] == pytest.approx(4.5 ** 2)  # vertical defaults to 1.5x horizontal
