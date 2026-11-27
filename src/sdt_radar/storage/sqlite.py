@@ -18,16 +18,7 @@ import threading
         return [Zone.model_validate_json(r[0]) for r in self._query("SELECT payload FROM zones")]
 
     # -------------top:
-            try:ding += self._apply(conn, kind, data, barriers)
-                except sqlite3.Error:
-                    self.errors += 1
-            due = time.monotonic() - last_commit >= self.commit_interval_s
-            if pending and (stop or due or pending >= self.batch_max or barriers):
-                conn.commit()
-                pending, last_commit = 0, time.monotonic()
-            if barriers and not pending:
-                for b in barriers:
-                    b.set()
+            tr      b.set()
                 barriers.clear()
         conn.commit()
         for b in barriers:
