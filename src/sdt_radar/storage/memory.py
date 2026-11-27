@@ -24,10 +24,7 @@ class MemoryStore:
                    if (since is None or p.t >= since) and (until is None or p.t <= until)]
         return pts[:limit]
 
-    def list_alerts(self, active_only: bool = False, since: float | None = None, limit: int = 1000) -> list[AlertOut]:
-        with self._lock:
-            rows = [a for a in self._alerts.values()
-                    if (not active_only or a.state == "open") and (since is None or a.updated_at >= since)]
+    def list_     if (not active_only or a.state == "open") and (since is None or a.updated_at >= since)]
         rows.sort(key=lambda a: a.updated_at, reverse=True)
         return rows[:limit]
 
