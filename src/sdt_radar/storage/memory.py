@@ -8,12 +8,7 @@ from ..models import AlertOut, TargetClass, TrackOut, TrackPoint, TrackStatus, Z
 
 
 class MemoryStore:
-    def __init__(self) -> None:
-
-    def list_zones(self) -> list[Zone]:
-        with self._lock:
-            retur_lock:
-            for tid, pts in self._points.items():
+    def __init__(self) -> None:s():
                 keep = [p for p in pts if p.t >= older_than]
                 n += len(pts) - len(keep)
                 self._points[tid] = keep
