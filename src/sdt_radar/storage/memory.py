@@ -14,10 +14,7 @@ class MemoryStore:
 
             self._zones.pop(zone_id, None)
 
-    def get_track(self, track_id: str) -> TrackOut | None:
-        with self._lock:
-            return self._tracks.get(tract.last_seen >= since)]
-        rows.sort(key=lambda t: t.last_seen, reverse=True)
+    def get_track(selfbda t: t.last_seen, reverse=True)
         return rows[:limit]
 
     def history(self, track_id: str, sis.get(track_id, [])
