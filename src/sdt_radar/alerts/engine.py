@@ -10,13 +10,7 @@ confidence are suppressed (``suppress_class_above``) to cut false alarms.
 
 from __future__ import annotations
 
-import mathu(la, lo, frame.alt_m)[:2] for la, lo in zone.polygon]
-            self.polylf float, n: float) -> bool:
-        if self.poly is None:
-            return math.hypot(e - self.center[0], n - self.center[1]) <= self.radius
-        x, y, inside = self.poly[:, 0], self.poly[:, 1], False
-        j = len(x) - 1
-        for i in range(len
+import mathu(la, lo, frame.alt_m)[:2] for la,
 True)
 class _Open:
     alert: AlertOut
