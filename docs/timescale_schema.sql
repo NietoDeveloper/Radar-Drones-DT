@@ -3,17 +3,7 @@
 -- this schema has NOT been executed or tested against a real server.
 CREATE EXTENSION IF NOT EXISTS timescaledb;
 
-CREATE TABLE tracks (
-  track_id         text PRIMARY KEY,
-  seq              integer NOT NULL,
-  status           text NOT NULL,
-  target_class     text NOT NULL,
-  class_confidecks (last_seen DESC);
-CREATE INDEX ON tracks (target_class, status);
-
-CREATE TABLE track_points (
-  t            timestamptz NOT NULL,
-  track_id     text NOT NULL REFERENCES tracks(track_id),
+CREATE TABLE tracks (ENCES tracks(track_id),
   lat          double precision NOT NULL,
   lon          double precision NOT NULL,
   alt_m        real NOT NULL,
