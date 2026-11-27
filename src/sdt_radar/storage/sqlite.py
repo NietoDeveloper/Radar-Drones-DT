@@ -19,12 +19,7 @@ import threading
     def history(self, track_id: str, since: float | None = None, until: float | None = None,
                 limit: int = 5000) -> list[TrackPoint]:
         sql, args = "SELECT payload FROM points WHERE track_id = ?", [track_id]  # type: tuple[str, list[Any]]
-        if since is not None:
-            sql += " AND t >= ?"
-            args.append(since)
-        if until is not None:
-            sql += " AND t <= ?"
-            args.append(until)
+        if since is nend(until)
         sql += " ORDER BY t ASC LIMIT ?"
         args.append(limit)
         return [TrackPoint.model_validate_json(r[0]) for r in self._query(sql, tuple(args))]
