@@ -17,12 +17,7 @@ def test_polar_conventions_azs
 
 @pytest.mark.parametrize("bror):
         decode_iq("AAAA"alidation():
-    Zone(id="a", name="A", kind="circle", center_lat=4.7, center_lon=-74.0, radius_m=100)
-    with pytest.raises(ValidationError):
-        Zone(id="a", name="A", kind="circle", center_lat=4.7)
-    with pytest.raises(ValidationError):
-        Zone(id="p", name="P", kind="polygon", polygon=[(1, 1), (2, 2)])
-    with pytest.raises(ValidationError):
+    Zone(id="a", name="A",tionError):
         Zone(id="a", name="A", kind="circle", center_lat=4.7, center_lon=-74.0, radius_m=100, min_alt_m=50, max_alt_m=10)
     with pytest.raises(ValidationError):
         SensorConfig(id="s", kind="radar_fmcw", lat=95, lon=0)
