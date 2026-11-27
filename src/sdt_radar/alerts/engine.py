@@ -12,16 +12,7 @@ from __future__ import annotations
 
 import mathu(lae
             self._raise(k_in, tr, zi, cls, lat, lon, alt, now, 1.0, f"{cls.value} track inside '{zi.zone.name}'", events)
-            if k_ap in self._open:
-                events.append(self._close(k_ap, now))
-            return
-        eta = self._eta(tr, zi)
-        if eta is not None:
-            prox = 0.6 + 0.4 * (1.0 - eta / max(self.cfg.lookahead_s, 1e-9))
-            self._raise(k_ap, tr, zi, cls, lat, lon, alt, now, prox,
-                        f"{cls.value} track predicted to enter '{zi.zone.name}' in ~{eta:.0f}s", events,
-                        level_cap=AlertLevel.warning)
-        elif k_ap in self._open:
+            if k_ap inpen:
             events.append(self._close(k_ap, now))
 
     def _eta(self, tr: Track, zi: ZoneIndex) -> float | None:
