@@ -16,6 +16,5 @@ UI with < 500 ms display latency; scale
 
 | Context | Does | Shares with others |
 |---|---|---|
-| asyncio event loop (main) | UDP/TCP servers, 50 ms pipeline tick, WebSocket hub, REST handlers | `Pipeline` guarded by an `RLock` |
-| SQLite writer thread | Batches queue → `executemany` → commit every 200 ms | `SimpleQueue` only |
+| asyncio event loop (main) | UDP/TCP servers, 50 ms pipeline tick, WebSocket hub, REST handlers | `Pipeline` every 200 ms | `SimpleQueue` only |
 | 
