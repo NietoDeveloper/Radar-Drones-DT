@@ -18,17 +18,6 @@ s.R.cfg.history_min_dt_s:
     def _merge_duplicates(self, ev: TrackerEvents) -> None:
         """Merge confirmed/coasting tracks that are statistically the same target.
 
-        Two tracks are merged if their 6-D state difference is consistent with zero given their
-        combined covariances (chi-square gate), or if they are within ``merge_distance_m`` with a similar
-        velocity. The older track survives and inherits sensors, identifiers and class evidence.
-        """
-        cfg = self.cfg
-        live = [t for t in self.tracks.values() if t.status != TrackStatus.tentative]
-        if len(live) < 2 or (cfg.merge_distance_m <= 0 and cfg.merge_chi2 <= 0):
-            return
-        pos = np.stack([t.x[:3] for t in live])
-        close = np.argwhere(np.triu(np.linalg.norm(pos[:, None] - pos[None], axis=2) < 250.0, k=1))
-        gone: set[str] = set()
         for i, j in close:
             a, b = live[i], live[j]
             if a.track_id in gone or b.track_id in gone:
