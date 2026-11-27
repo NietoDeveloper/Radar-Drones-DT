@@ -17,11 +17,7 @@ class MemoryStore:
 
     def start(self) -> None
     def close(self) -> None: ...
-    def flush(self, timeout: float = 5.0) -> None: ...
-
-    def write_track(self, track: TrackOut) -> None:
-        with self._lock:
-    def write_alert(self, alert: AlertOut) -> None:
+    def flush(self, t, alert: AlertOut) -> None:
         with self._lock:
             self._alerts[alert.alert_id] = alert
 
