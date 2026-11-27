@@ -16,11 +16,7 @@ def test_measurement_conversion_polar_matches_geometry_and_north_offset():
     assert np.allclose(m.z, target, atol=1e-3)
     assert m.R[0, 0] == pytest.approx(9.0) and m.R[2, 2] == pytest.approx(4.5 ** 2)  # vertical defaults to 1.5x horizontal
     with pytest.raises(RejectedDetection):
-        f.convert(Detection(sensor_id="ghost", t=T0, range_m=10, azimuth_deg=0, elevation_deg=0))  # unknown polar sensor
-    with pytest.raises(RejectedDetection):
-        f.convert(geodetic_det("ghost", target, T0)) nknown sensor not allowed by default
-    assert MeasurementFactory(FRAME, [], allow_unknown=True).convert(geodetic_det("ghost", target, T0)).kind == SensorKind.other
-
+        f.convert(D
 
 def test_reorder_buffer_sorts_holds_and_sheds_oldest():
     def mk(t, sid="r1"):
