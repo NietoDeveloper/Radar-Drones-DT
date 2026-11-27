@@ -25,7 +25,7 @@ class MemoryStore:
         with self._lock:
             self._alerts[alert.alert_id] = alert
 
-    def put_zone(self, zone: Zone) -> None:
+    def put_zonezone: Zone) -> None:
         with self._lock:
             self._zones[zone.id] = zone
 
