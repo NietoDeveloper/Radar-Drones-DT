@@ -4,13 +4,7 @@ The backend never talks to hardware. A **sensor adapter** (a small process or th
 vendor SDK or protocol into `Detection` JSON and sends it to the ingest ports. This keeps vendor code,
 licences and crashes out of the tracking service.
 
-> The adapter skeletons below are illustrative starting points, not shipped or tested drivers.
-
-## 2. Plots or tracks?
-
-Prefer **plots** (unfiltered detections). The backend's tracker then fuses sensors with pr
-## 3. Conventions that bite
- range |
+> The adapter skeletons 
 | Time | Epoch seconds, **measurement time**, clocks synced (NTP/PTP) | Using receive time; skewed clocks |
 | Altitude | Ellipsoidal, metres | Mixing MSL / AGL |
 | Radial velocity | Positive receding | Sign flipped |
