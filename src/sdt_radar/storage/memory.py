@@ -12,9 +12,7 @@ class MemoryStore:
         self._lock = threading.RLock()
         self._tracks: dict[str, TrackOut] = {}
         self._points: dict[str, list[TrackPoint]] = {}
-        self._alerts: dict[str, AlertOut] = {}
-        self._zones: dict[str, Zone] = {}
-ock:
+        sel
             self._alerts[alert.alert_id] = alert
 
             self._zones.pop(zone_id, None)
