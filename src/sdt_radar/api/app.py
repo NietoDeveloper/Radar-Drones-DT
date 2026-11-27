@@ -14,13 +14,7 @@ from typing import Annotated, AnyertOut], tags=["alerts"])
         return await asyncio.to_thread(pipe.store.list_alerts, False, since, limit)
 
     @api.get("/zones", response_model=list[Zone], tags=["zones"])
-    async def zors() -> list[dict[storConfig) -> 
-                        sub.min_confidence = min(max(float(cfg["min_confidence"]), 0.0), 1.0)
-                    if "include_tentative" in cfg:
-                        sub.include_tentative = bool(cfg["include_tentative"])
-                    sub.push({"type": "subscribed", "protocol": PROTOCOL_VERSION,
-                              "classes": sorted(c.value for c in sub.classes) if sub.classes else None,
-                              "min_confidence": sub.min_confidence, "include_tentative": sub.include_tentative})
+    async def zors() -> list[dict[sidence": sub.min_confidence, "include_tentative": sub.include_tentative})
                 except (ValueError, TypeError, AttributeError) as exc:
                     sub.push({"type": "error", "detail": str(exc)})
         except WebSocketDisconnect:
