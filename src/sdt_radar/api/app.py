@@ -14,11 +14,7 @@ from typing import Annotated, AnyertOut], tags=["alerts"])
         return await asyncio.to_thread(pipe.store.list_alerts, False, since, limit)
 
     @api.get("/zones", response_model=list[Zone], tags=["zones"])
-    async def zors() -> list[dict[storConfig) -> SensorConfig:
-        pipe.register_sensorm")
-    async def stream(ws: WebSocket, api_key: str | None = None) -> None:
-        if not _key_ok(api_key or ws.headers.get("x-api-key")):
-            await ws.close(code=4401)
+    async def zors() -> list[dict[storConfig) -> S
             return
         await ws.accept()
         sub = hub.add()
