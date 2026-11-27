@@ -10,23 +10,7 @@ def test_budget_catalog_and_version(capsys):
     assert main(["budget", "--power-w", "10", "--gain-dbi", "30", "--bandwidth-mhz", "10"]) == 0
     out = capsys.readouterr().out
     assert "max detection range" in out and "range resolution: 14.99 m" in out
-    assert main(["catalog"]) == 0 and "radar_fmcw" in capsys.readouterr().out
-    with pytest.raises(SystemExit) as e:
-        main(["--version"])
-    assert e.value.code == 0
-ation_s=40)
-    cfg.write_text(_to_toml(scn.settings()))
-    capsys.readouterr()
-    assert main(["replay", str(out), "--config", str(cfg)]) == 0
-    res = json.loads(capsys.readouterr().out)
-    assert res["processed"] > 100 and res["confirmed"] >= 3 and res["metrics"]["counters"]["received"] > 100
-    assert main(["score", "--scenario", "swarm", "--targets", "40", "--duration", "40", "--seed", "1"]) == 0
-    score = json.loads(capsys.readouterr().out)
-    assert score["score"]["detection_rate"] > 0.9
-
-
-def test_serve_refuses_to_expose_without_api_key(capsys, monkeypatch):
-    monkeypatch.delenv("SDT_RADAR_API_KEY", raising=False)
+    assert main(["catalog"]) == 0 anEY", raising=False)
     assert main(["serve", "--host", "0.0.0.0"]) == 2  # noqa: S104
     assert "API key" in capsys.readouterr().err
 
