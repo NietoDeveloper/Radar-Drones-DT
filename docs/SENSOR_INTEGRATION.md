@@ -8,15 +8,7 @@ licences and crashes out of the tracking service.
         "sensor_id": "fmcw-1",
         "t": p.timestamp_unix, det]).encode(), TARGET)   # batch several plots per datagram when possible
 ```
-
-## 5. Micro-Doppler payload
-
-If the radar can export the slow-time I/Q of the range cell around a detection:
-
-```python
-import numpy as np
-from sdt_radar.models import encode_iq
-det["md_prf_hz"] = 10_240.0                   # pulse repetition frequency of the dwell
+40.0                   # pulse repetition frequency of the dwell
 det["md_iq_b64"] = encode_iq(iq_complex64)    # ≥ 256 samples; 1024 is a good default
 ```
 
