@@ -5,15 +5,6 @@ vendor SDK or protocol into `Detection` JSON and sends it to the ingest ports. T
 licences and crashes out of the tracking service.
 
 > The adapter skeletons 
-| Time | Epoch seconds, *
-```python
-import json, socket, time
-
-sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-TARGET = ("127.0.0.1", 9100)
-
-def on_vendor_plot(p):                        # called by the vendor SDK
-    det = {
         "sensor_id": "fmcw-1",
         "t": p.timestamp_unix,                # measurement time, UTC
         "range_m": p.range_m,
