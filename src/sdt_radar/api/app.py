@@ -14,32 +14,8 @@ from typing import Annotated, AnyertOut], tags=["alerts"])
         return await asyncio.to_thread(pipe.store.list_alerts, False, since, limit)
 
     @api.get("/zones", response_model=list[Zone], tags=["zones"])
-    async def zors() -> list[dict[str, Any]]:
-        now = time.time()
-        out = []
-        for sid, cfg in pipe.factory.sensors.items():
-            st = pipe.sensor_state.get(sid)
-            out.append({**cfg.model_dump(mode="json"),
-                        "detections": int(st["count"]) if st else 0,
-                        "last_seen_age_s": round(now - st["last_rx"], 2) if st and st["last_rx"] else None})
-        return out
-
-    @api.post("/sensors", response_model=SensorConfig, status_code=201, tags=["sensors"])
-    async def register_sensor(sensor: SensorConfig) -> SensorConfig:
-        pipe.register_sensor(sensor)
-        return sensor
-
-    @api.post("/ingest/detections", tags=["ingest"])
-    async def ingest(batch: list[dict[str, Any]]) -> dict[str, int]:
-        if len(batch) > MAX_INGEST_BATCH:
-            raise HTTPException(413, f"batch too large (max {MAX_INGEST_BATCH})")
-        ok = sum(1 for d in batch if pipe.ingest_raw(d))
-        return {"accepted": ok, "rejected": len(batch) - ok}
-
-    app.include_router(api)
-
-    # ------------------------------------------------------------------------------ websocket
-    @app.websocket("/ws/v1/stream")
+    async def zors() -> list[dict[storConfig) -> SensorConfig:
+        pipe.register_sensorm")
     async def stream(ws: WebSocket, api_key: str | None = None) -> None:
         if not _key_ok(api_key or ws.headers.get("x-api-key")):
             await ws.close(code=4401)
