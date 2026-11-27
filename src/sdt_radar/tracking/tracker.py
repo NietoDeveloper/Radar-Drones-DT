@@ -12,14 +12,6 @@ Algorithm (global-nearest-neighbour, GNN):
 5. Unmatched measurements spawn tentative tracks; lifecycle (confirm / coast / delete / merge) is
    swept by time, so 
         if batch:
-            t_ref = float(np.mean([m.t for m in batch]))
-            unmatched = self._associate_and_update(list(batch), t_ref, ev)
-            for m in unmatched:
-                self._spawn(m, ev)
-            now = max(now if now is not None else t_ref, t_ref)
-        elif now is None:
-            return ev
-        self.sweep(now, ev)
         return ev
 
     def sweep(self, now: float, ev: TrackerEvents | None = None) -> TrackerEvents:
