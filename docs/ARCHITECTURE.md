@@ -37,5 +37,3 @@ drops oldest) · store queue (unbounded but drained continuously; `errors` count
 | `fusion/` | Conversion, reorder buffer, batching |
 | `tracking/` | Kalman math, `Track`, `MultiTargetTracker` |
 | `classification/` | Signal synthesis, features, logistic model, training |
-| `alerts/` | Zone geometry, alert state machine, risk |
-| `storage/` | `Store` protocol + memory + SQLite |
