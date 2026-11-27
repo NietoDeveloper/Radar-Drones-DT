@@ -12,8 +12,6 @@ from __future__ import annotations
 
 import mathu(la, lo, frame.alt_m)[:2] for la,
 True)
-class _Open:d_zone(
-    def list_zones(self) -> list[Zone]:
         return [z.zone t[Track], now: float) -> list[AlertOut]:
         """Return alerts that were opened, updated (escalated) or closed during this call."""
         events: list[AlertOut] 
