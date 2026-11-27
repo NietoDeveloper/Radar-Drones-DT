@@ -10,14 +10,6 @@ confidence are suppressed (``suppress_class_above``) to cut false alarms.
 
 from __future__ import annotations
 
-import mathu(lae
-            self._raise(k_in, tr, zi, cls, lat, lon, alt, now, 1.0, f"{cls.value} track inside '{zi.zone.name}'", events)
-            if k_ap
-        for s in range(1, int(self.cfg.lookahead_s) + 1):
-            p = tr.pos + tr.vvel | None = None) -> None:
-        level = zi.zone.level
-        if level_cap is not None and _LEVEL_WEIGHT[level] > _LEVEL_WEIGHT[level_cap]:
-            level = level_cap
         risk = float(np.clip(_CLASS_WEIGHT[cls] * proximity * _LEVEL_WEIGHT[level], 0.0, 1.0))
         o = self._open.get(key)
         if o is None:
