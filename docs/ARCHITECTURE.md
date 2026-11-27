@@ -40,5 +40,3 @@ drops oldest) · store queue (unbounded but drained continuously; `errors` count
 | `alerts/` | Zone geometry, alert state machine, risk |
 | `storage/` | `Store` protocol + memory + SQLite |
 | `pipeline.py` | Orchestrator (deterministic) |
-| `runtime.py` | Async tick, servers, hub |
-| `api/` | FastAPI app + WebSocket hub |
