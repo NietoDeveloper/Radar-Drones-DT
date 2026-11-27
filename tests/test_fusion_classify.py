@@ -18,14 +18,7 @@ def test_features_are_finite_fixed_length_and_reject_short_snippets(rng):
     assert f.shape == (7,) and np.all(np.isfinite(f))
     with pytest.raises(ValueError):
         md_features(np.ones(100, dtype=complex), 10_240.0)
-
-
-def test_drone_
-def test_classifier_heldout_accuracy_on_synthetic_data(clf):
-    x, y = make_dataset(120, seed=424242)
-    pred = clf.predict_proba_features(x).argmax(axis=1)
-    assert (pred == y).mean() > 0.88
-    drone_as_bird = ((y == 0) & (pred == 1)).sum() / (y == 0).sum()
+)).sum() / (y == 0).sum()
     bird_as_drone = ((y == 1) & (pred == 0)).sum() / (y == 1).sum()
     assert drone_as_bird < 0.05 and bird_as_drone < 0.05  # the confusion that matters operationally
 
