@@ -11,9 +11,7 @@ site trial.
 |---|---|---|---|---|
 | **FMCW** (frequency-modulated continuous wave) | 0.5 – 3 km | No near-range blind zone, compact, low power, fine range resolution | Shorter range; leakage and clutter handling | Perimeters, prisons, campuses, critical sites |
 | **Pulse-Doppler** | 5 – 20 km | Long range; strong ground-clutter rejection | Near-range eclipsing blind zone; larger and costlier | Airports, defence, wide-area |
-| **Phased arVB-T / 4G / 5G illuminators, ISAC) | 2 – 10+ km | Non-emitting, covert, cheap, reuses infrastructure | Depends on illuminator geometry; lower accuracy | Low-cost dense networks |
-| **RF detection / DF** | 1 – 10 km | Finds control/video links, sometimes the pilot | Blind to autonomous / link-silent drones | Complement to radar |
-| **Remote ID receiver** | ~1 – 3 km | Identity + position from cooperative drones | Cooperative only; spoofable | Identity / compliance |
+| **Phased arVB-T / SCooperative only; spoofable | Identity / compliance |
 | **EO/IR (PTZ)** | 1 – 3 km | Visual confirmation, evidence | Weather/light; narrow FOV | Cued confirmation |
 | **Acoustic arrays** | 0.3 – 1 km | Passive, cheap, works behind obstacles | Short range, noise sensitive | Dense local coverage |
 
