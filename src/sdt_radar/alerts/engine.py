@@ -12,4 +12,4 @@ confidelert.model_copy(update={"state": "closed", "closed_at": now, "updated_at"
             gone = key[0] not in live_ids
             lapsed = (now - o.last_true_t) > self.cfg.clear_after_s
             if gone or lapsed:
-                events.append(self._close(key, now))
+                events.append(self._close(key, no
