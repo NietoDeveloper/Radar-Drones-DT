@@ -6,18 +6,7 @@ import asyncio
 import hmac
 import time
 from contextlib import asynccontextmanager
-from typing import Annotated, Any
-
-from fastapi import APIRouter, Depends, FastAPI, Header, HTTPException, Query, WebSocket, WebSocketDisconnect
-from fastapi.middleware.cors import CORSMiddleware
-
-from .. import __version__
-    @api.get("/archive/tracks", response_model=list[TrackOut], tags=["archive"])
-    async def archive(status: TrackStatus | None = None, target_class: TargetClass | None = None,
-                      since: float | None = None, limit: Annotated[int, Query(ge=1, le=5000)] = 1000) -> list[TrackOut]:
-        return await asyncio.to_thread(pipe.store.list_tracks, status, target_class, since, limit)
-
-    @api.get("/alerts", response_model=list[AlertOut], tags=["alerts"])
+from typing import Annotated, AnyertOut], tags=["alerts"])
     async def alerts(active: bool = False, since: float | None = None,
                      limit: Annotated[int, Query(ge=1, le=5000)] = 1000) -> list[AlertOut]:
         if active:
