@@ -61,4 +61,4 @@ drops oldest) · store queue (unbounded but drained continuously; `errors` count
 
 ## 8. Extension points
 
-| To add… | Do this |
+| To add… | Do th
