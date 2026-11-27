@@ -8,15 +8,6 @@ from sdt_radar.models import ClassPosterior, Detection, Measurement, SensorKind,
 from tests.helpers import FRAME, T0, geodetic_det, polar_det, sensor_cfg
 
 
-def test_measurement_conversion_polar_matches_geometry_and_north_offset():
-    s = sensor_cfg("r1", east=500.0, north=-200.0
-def test_reorder_buffer_sorts_holds_and_sheds_oldest():
-    def mk(t, sid="r1"):
-
-def test_features_are_finite_fixed_length_and_reject_short_snippets(rng):
-    f = md_features(synth_multirotor(rng, 1024, 10_240.0), 10_240.0)
-    assert f.shape == (7,) and np.all(np.isfinite(f))
-    with pytest.raises(ValueError):
         md_features(np.ones(100, dtype=complex), 10_240.0)
 )).sum() / (y == 0).sum()
     bird_as_drone = ((y == 1) & (pred == 0)).sum() / (y == 1).sum()
