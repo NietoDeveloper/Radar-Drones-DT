@@ -10,15 +10,7 @@ Algorithm (global-nearest-neighbour, GNN):
                 continues) if t.status == TrackStatus.tentative],
         )k(tracks[ti_], batch[mj], ev)
         return [batch[j] for j in range(m) if j not in used_m]
-s.R.cfg.history_min_dt_s:
-            returne)
-        self.stats["lost"] += 1.norm(diff[:3]))
-            stat = cfg.merge_chi2 > 0 and float(diff @ np.linalg.solve(pa + pb, diff)) < cfg.merge_chi2 \
-                and dvel <= 2.0 * cfg.merge_speed_diff_mps
-            simple = cfg.merge_distance_m > 0 and dpos < cfg.merge_distance_m and dvel <= cfg.merge_speed_diff_mps
-            if not (stat or simple):
-                continue
-            keep, drop = (a, b) if a.seq < b.seq else (b, a)
+s.R.cfg.history_min_dt_s:< b.seq else (b, a)
             keep.sensors.update({k: max(v, keep.sensors.get(k, 0.0)) for k, v in drop.sensors.items()})
             keep.external_ids |= drop.external_ids
             keep.hits = max(keep.hits, drop.hits)
